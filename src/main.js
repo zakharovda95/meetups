@@ -5,9 +5,9 @@ import store from '@/store';
 import 'material-design-lite/material.min.css';
 import 'material-design-lite/material.min.js';
 
-const app = createApp(App);
+createApp(App).use(store).use(router).mount('#app');
 
-app.use(store);
-app.use(router);
-
-app.mount('#app');
+//import { setFirebaseData } from '@/api/firebase/_firebase.services';
+//import { meetups } from '@/api/localDataBase/formatedMeetups';
+//import { links } from '@/api/localDataBase/links';
+//setFirebaseData('meetups', meetups);

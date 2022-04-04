@@ -1,5 +1,8 @@
 <template>
   <navbar-item></navbar-item>
+  <div class="mdl-grid">
+    <slot></slot>
+  </div>
   <footer-item></footer-item>
 </template>
 <script>

@@ -1,5 +1,5 @@
-export const testRoutes = {
-  mainPageRoutes: {
+export const links = {
+  mainPageLinks: {
     mainPage: {
       name: 'Главная',
       path: '/main',

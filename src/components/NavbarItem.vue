@@ -5,31 +5,42 @@
         <span class="mdl-layout-title">MEETUPS</span>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <a class="mdl-navigation__link" href="">Главная</a>
-          <a class="mdl-navigation__link" href="">Вход</a>
-          <a class="mdl-navigation__link" href="">Регистрация</a>
-          <a class="mdl-navigation__link" href="">Создать митап</a>
+          <router-link
+            v-for="link in navbarLinks"
+            :key="link.about"
+            class="mdl-navigation__link"
+            :to="link.data.path"
+          >
+            {{ link.data.name }}
+          </router-link>
         </nav>
       </div>
     </header>
     <div class="mdl-layout__drawer mdl-layout--small-screen-only">
       <span class="mdl-layout-title">MEETUPS</span>
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Главная</a>
-        <a class="mdl-navigation__link" href="">Вход</a>
-        <a class="mdl-navigation__link" href="">Регистрация</a>
-        <a class="mdl-navigation__link" href="">Создать митап</a>
+        <router-link
+          v-for="link in navbarLinks"
+          :key="link.about"
+          class="mdl-navigation__link"
+          href=""
+          :to="link.data.path"
+        >
+          {{ link.data.name }}
+        </router-link>
       </nav>
     </div>
   </div>
 </template>
 <script>
-import { testRoutes } from '@/api/localDataBase/routes';
 export default {
   name: 'NavbarItem',
-  data: () => ({
-    routes: testRoutes,
-  }),
+  data: () => ({}),
+  computed: {
+    navbarLinks() {
+      return this.$store.state.main.navbarLinks;
+    },
+  },
 };
 </script>
 <style scoped lang="scss">

@@ -2,8 +2,8 @@ import { get, ref, set } from 'firebase/database';
 import { fbDb } from '@/api/firebase/_options.firebase';
 
 // Запись данных в БД
-export async function setFirebaseData(data) {
-  await set(ref(fbDb), data);
+export async function setFirebaseData(path, data) {
+  await set(ref(fbDb, path), data);
 }
 // Получение данных из БД
 export function getFirebaseData(path) {
