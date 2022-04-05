@@ -2,7 +2,9 @@
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title">MEETUPS</span>
+        <span class="mdl-layout-title">
+          <router-link class="main_link" to="/">MEETUPS</router-link>
+        </span>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
           <router-link
@@ -17,7 +19,9 @@
       </div>
     </header>
     <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-      <span class="mdl-layout-title">MEETUPS</span>
+      <span class="mdl-layout-title">
+        <router-link class="main_link" to="/">MEETUPS</router-link>
+      </span>
       <nav class="mdl-navigation">
         <router-link
           v-for="link in navbarLinks"
@@ -56,10 +60,18 @@ export default {
       align-self: center;
       font-size: 2.5em;
       font-family: 'JetBrainMono-Bold', sans-serif;
+      .main_link {
+        text-decoration: none;
+        color: white;
+      }
     }
     .mdl-navigation__link {
-      font-size: 1.8em;
+      font-size: 1.4em;
       font-family: 'JetBrainMono-Bold', sans-serif;
+    }
+    .mdl-navigation__link:hover {
+      transition: 0.5s;
+      transform: scale(1.1);
     }
   }
 }
@@ -67,9 +79,13 @@ export default {
   .mdl-layout-title {
     font-size: 2.5em;
     font-family: 'JetBrainMono-Bold', sans-serif;
+    .main_link {
+      text-decoration: none;
+      color: gray;
+    }
   }
   .mdl-navigation__link {
-    font-size: 1.8em;
+    font-size: 1.4em;
     font-family: 'JetBrainMono-Bold', sans-serif;
   }
 }

@@ -18,7 +18,7 @@ export default {
 @import '../assets/styles/_constants.scss';
 @import '../assets/fonts/_fonts.css';
 .mdl-mini-footer {
-  background: $main-color;
+  background: $footer-color;
   position: absolute;
   padding: 0;
   width: 100%;
