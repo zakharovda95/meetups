@@ -1,24 +1,17 @@
-# vuejs-option_api-20220404-pet_project-meetups-spa
+. Маркировка проекта:
 
-## Project setup
-```
-npm install
-```
+vuejs - основной язык проекта;
+option_api - основная технология;
+20220404 - дата инициализации проекта;
+pet_project - тип проекта;
+meetups - название прооекта;
+spa - тип приложения;
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+. Основные используемые библиотеки и интерфейсы:
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+vue js - основная библиотека;
+vue cli - система инструментов для разработки приложения;
+vue router - библиотека маршрутизации;
+vuex 4 - глобальное хранилище;
+moment - библиотека форматирования даты и времени;
+firebase - база данных, авторизация, хранилище;
