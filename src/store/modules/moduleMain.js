@@ -1,5 +1,9 @@
 import { getFirebaseData } from '@/api/firebase/_firebase.services';
 
+import moment from 'moment';
+import 'moment/locale/ru';
+moment.locale('ru');
+
 export const moduleMain = {
   state: () => ({
     navbarLinks: null,
@@ -17,6 +21,9 @@ export const moduleMain = {
       });
     },
     setMeetups(state, payload) {
+      payload.forEach(item => {
+        item.date = moment(item.date).format('D MMMM yy г.');
+      });
       state.meetups = payload;
     },
   },

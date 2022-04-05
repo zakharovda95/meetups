@@ -73,6 +73,9 @@ export default {
       transition: 0.5s;
       transform: scale(1.1);
     }
+    .link_active {
+      transform: scale(1.1);
+    }
   }
 }
 .mdl-layout__drawer {

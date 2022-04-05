@@ -49,8 +49,12 @@ export default {
   color: white;
 }
 .mdl-card__supporting-text {
+  margin-bottom: -15px;
   font-family: JetBrainMono-Bold, sans-serif;
   font-size: 1.1em;
   color: $footer-color;
+}
+.mdl-card--border {
+  margin-top: 15px;
 }
 </style>
