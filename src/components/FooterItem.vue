@@ -1,8 +1,8 @@
 <template>
-  <footer class="mdl-mini-footer">
-    <div class="mdl-mini-footer__left-section">
-      <div class="mdl-logo">MEETUPS</div>
-      <ul class="mdl-mini-footer__link-list">
+  <footer class="meetups_footer">
+    <div class="meetups_footer__wrapper">
+      <div class="meetups_footer__logo">MEETUPS</div>
+      <ul class="meetups_footer__links">
         <li><a href="#">GitHub</a></li>
         <li><a href="#">Контакты</a></li>
       </ul>
@@ -17,22 +17,33 @@ export default {
 <style scoped lang="scss">
 @import '../assets/styles/_constants.scss';
 @import '../assets/fonts/_fonts.css';
-.mdl-mini-footer {
-  background: $footer-color;
-  position: absolute;
-  padding: 0;
+.meetups_footer {
+  display: flex;
   width: 100%;
-  left: 0;
-  bottom: 0;
-  .mdl-mini-footer__left-section {
-    padding: 25px;
-    .mdl-logo {
+  .meetups_footer__wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    height: 50px;
+    width: 100vw;
+    background: #444343;
+    .meetups_footer__logo {
       font-size: 1.2em;
-      font-family: JetBrainMono-Bold, sans-serif;
+      color: white;
     }
-    .mdl-mini-footer__link-list {
-      font-size: 1.1em;
-      font-family: JetBrainMono-Bold, sans-serif;
+    .meetups_footer__links {
+      display: flex;
+      li {
+        display: flex;
+        align-self: center;
+        list-style-type: none;
+        margin-left: 10px;
+        a {
+          text-decoration: none;
+          color: white;
+        }
+      }
     }
   }
 }
