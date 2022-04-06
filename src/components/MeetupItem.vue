@@ -3,9 +3,20 @@
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text">{{ meetup.title }}</h2>
     </div>
-    <div class="mdl-card__supporting-text">{{ meetup.organizer }}</div>
-    <div class="mdl-card__supporting-text">{{ meetup.place }}</div>
-    <div class="mdl-card__supporting-text">{{ meetup.date }}</div>
+    <div class="meetups_item__previews_info">
+      <div class="mdl-card__supporting-text">
+        <ui-icon class="ui_icon__card" icon-name="organizer"></ui-icon
+        >{{ meetup.organizer }}
+      </div>
+      <div class="mdl-card__supporting-text">
+        <ui-icon class="ui_icon__card" icon-name="location"></ui-icon
+        >{{ meetup.place }}
+      </div>
+      <div class="mdl-card__supporting-text">
+        <ui-icon class="ui_icon__card" icon-name="calendar"></ui-icon
+        >{{ meetup.date }}
+      </div>
+    </div>
     <div class="mdl-card__actions mdl-card--border">
       <router-link
         to="/"
@@ -17,16 +28,17 @@
   </div>
 </template>
 <script>
+import UiIcon from '@/components/ui/UiIcon';
 export default {
   name: 'MeetupsItem',
+  components: {
+    UiIcon,
+  },
   props: {
     meetup: {
       type: Object,
       default: () => {},
     },
-  },
-  created() {
-    console.log(this.meetup);
   },
 };
 </script>
@@ -56,5 +68,9 @@ export default {
 }
 .mdl-card--border {
   margin-top: 15px;
+}
+.ui_icon__card {
+  width: 32px;
+  margin-right: 25px;
 }
 </style>

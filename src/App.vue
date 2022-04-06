@@ -10,6 +10,7 @@ export default {
   created() {
     this.$store.dispatch('getNavbarLinks');
     this.$store.dispatch('getMeetups');
+    this.$store.dispatch('getIconList');
   },
 };
 </script>

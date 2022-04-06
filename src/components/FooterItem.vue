@@ -4,7 +4,7 @@
       <div class="meetups_footer__logo">MEETUPS</div>
       <ul class="meetups_footer__links">
         <li><a href="#">GitHub</a></li>
-        <li><a href="#">Контакты</a></li>
+        <li><a href="#">Сайт разработчика</a></li>
       </ul>
     </div>
   </footer>
@@ -19,7 +19,6 @@ export default {
 @import '../assets/fonts/_fonts.css';
 .meetups_footer {
   display: flex;
-  width: 100%;
   .meetups_footer__wrapper {
     display: flex;
     align-items: center;

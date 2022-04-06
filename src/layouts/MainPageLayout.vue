@@ -2,8 +2,8 @@
   <navbar-item></navbar-item>
   <div class="mdl-grid">
     <router-view></router-view>
-    <footer-item></footer-item>
   </div>
+  <footer-item></footer-item>
 </template>
 <script>
 import NavbarItem from '@/components/NavbarItem';
