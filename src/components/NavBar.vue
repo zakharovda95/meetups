@@ -38,7 +38,7 @@
 </template>
 <script>
 export default {
-  name: 'NavbarItem',
+  name: 'NavBar',
   data: () => ({}),
   computed: {
     navbarLinks() {
@@ -70,11 +70,11 @@ export default {
       font-family: 'JetBrainMono-Bold', sans-serif;
     }
     .mdl-navigation__link:hover {
-      transition: 0.5s;
+      transition: 0.3s;
       transform: scale(1.1);
     }
     .link_active {
-      transform: scale(1.1);
+      transform: scale(1.03);
     }
   }
 }

@@ -1,17 +1,17 @@
 <template>
-  <navbar-item></navbar-item>
+  <nav-bar></nav-bar>
   <div class="mdl-grid">
     <router-view></router-view>
   </div>
   <footer-item></footer-item>
 </template>
 <script>
-import NavbarItem from '@/components/NavbarItem';
+import NavBar from '@/components/NavBar';
 import FooterItem from '@/components/FooterItem';
 export default {
   name: 'MainPageLayout',
   components: {
-    NavbarItem,
+    NavBar,
     FooterItem,
   },
 };

@@ -23,7 +23,6 @@ export default {
 </script>
 <style scoped lang="scss">
 .meetups_list {
-  margin-top: 55px;
   width: 100%;
 }
 </style>
