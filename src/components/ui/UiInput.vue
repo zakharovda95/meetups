@@ -37,6 +37,7 @@ export default {
   margin: 5px;
   padding: 8px;
   font-size: 1.1em;
-  font-family: JetBrainMono-Bold, sans-serif;
+  font-family: JetBrainMono-Light, sans-serif;
+  width: 30vh;
 }
 </style>

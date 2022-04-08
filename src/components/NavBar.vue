@@ -67,7 +67,7 @@ export default {
     }
     .mdl-navigation__link {
       font-size: 1.4em;
-      font-family: 'JetBrainMono-Bold', sans-serif;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
     .mdl-navigation__link:hover {
       transition: 0.3s;
@@ -89,7 +89,7 @@ export default {
   }
   .mdl-navigation__link {
     font-size: 1.4em;
-    font-family: 'JetBrainMono-Bold', sans-serif;
+    font-family: 'JetBrainMono-Light', sans-serif;
   }
 }
 </style>
