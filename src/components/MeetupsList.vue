@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     meetups() {
-      return this.$store.state.main.meetups;
+      return this.$store.getters.filteredMeetups;
     },
   },
 };

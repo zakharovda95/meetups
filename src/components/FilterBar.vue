@@ -6,7 +6,12 @@
       <ui-button variant="bgBlue">Ожидаемые</ui-button>
     </div>
     <div class="meetups__filterer__input_group">
-      <ui-input class="meetups__filterer__ui_input"></ui-input>
+      <ui-input
+        class="meetups__filterer__ui_input"
+        placeholder="Поиск"
+        @update:model-value="updateInput"
+        :model-value="inputValue"
+      ></ui-input>
     </div>
     <div class="meetups__filterer__toggle_group">
       <ui-button variant="blue">
@@ -26,6 +31,16 @@ export default {
   components: {
     UiButton,
     UiInput,
+  },
+  computed: {
+    inputValue() {
+      return this.$store.state.main.inputValue;
+    },
+  },
+  methods: {
+    updateInput(payload) {
+      this.$store.dispatch('updateInputValue', payload);
+    },
   },
 };
 </script>

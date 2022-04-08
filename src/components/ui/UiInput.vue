@@ -1,5 +1,12 @@
 <template>
-  <component id="sample1" :is="tag" class="ui_input" :type="type"></component>
+  <component
+    @input="proxyModelValue = $event.target.value"
+    :value="modelValue"
+    id="sample1"
+    :is="tag"
+    class="ui_input"
+    :type="type"
+  ></component>
 </template>
 <script>
 export default {
@@ -16,7 +23,6 @@ export default {
     },
   },
   emits: ['update:modelValue'],
-  inheritAttrs: false,
   computed: {
     proxyModelValue: {
       get() {

@@ -10,10 +10,20 @@ moment.locale('ru');
 export const moduleMain = {
   state: () => ({
     mainPageIcons: [],
+    filteredMeetups: [],
     navbarLinks: null,
-    meetups: null,
+    meetups: [],
+    inputValue: '',
   }),
-  getters: {},
+  getters: {
+    filteredMeetups(state) {
+      return (state.filteredMeetups = state.meetups.filter(item => {
+        return item.title
+          .toUpperCase()
+          .includes(state.inputValue.toUpperCase());
+      }));
+    },
+  },
   mutations: {
     setNavbarLinks(state, payload) {
       const dataEntries = Object.entries(payload);
@@ -32,6 +42,9 @@ export const moduleMain = {
     },
     setMainPageIcons(state, payload) {
       state.mainPageIcons.push(payload);
+    },
+    updateInputValue(state, payload) {
+      state.inputValue = payload;
     },
   },
   actions: {
@@ -62,6 +75,9 @@ export const moduleMain = {
       } catch (err) {
         console.log(err);
       }
+    },
+    updateInputValue({ commit }, payload) {
+      commit('updateInputValue', payload);
     },
   },
 };
