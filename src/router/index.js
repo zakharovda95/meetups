@@ -4,11 +4,11 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    redirect: '/main',
+    redirect: '',
     component: () => import('@/layouts/MainPageLayout.vue'),
     children: [
       {
-        path: '/main',
+        path: '',
         name: 'main',
         component: () => import('@/views/MainPage.vue'),
       },
