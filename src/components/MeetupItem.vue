@@ -3,37 +3,22 @@
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text">{{ meetup.title }}</h2>
     </div>
-    <div class="meetups_item__previews_info">
-      <div class="mdl-card__supporting-text">
-        <ui-icon class="ui_icon__card" icon-name="organizer"></ui-icon
-        >{{ meetup.organizer }}
-      </div>
-      <div class="mdl-card__supporting-text">
-        <ui-icon class="ui_icon__card" icon-name="location"></ui-icon
-        >{{ meetup.place }}
-      </div>
-      <div class="mdl-card__supporting-text">
-        <ui-icon class="ui_icon__card" icon-name="calendar"></ui-icon
-        >{{ meetup.date }}
-      </div>
-    </div>
+    <meetup-info :meetup="meetup"></meetup-info>
     <div class="mdl-card__actions mdl-card--border">
-      <router-link
-        to="/"
-        class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+      <ui-link :to="{ name: 'meetup', params: { meetupId: meetup.id } }"
+        >Подробнее</ui-link
       >
-        Подробнее
-      </router-link>
     </div>
   </div>
 </template>
 <script>
-import UiIcon from '@/components/ui/UiIcon';
-
+import MeetupInfo from '@/components/meetupPage/MeetupInfo';
+import UiLink from '@/components/ui/UiLink';
 export default {
   name: 'MeetupsItem',
   components: {
-    UiIcon,
+    MeetupInfo,
+    UiLink,
   },
   props: {
     meetup: {
@@ -61,17 +46,7 @@ export default {
   font-size: 1.8em;
   color: white;
 }
-.mdl-card__supporting-text {
-  margin-bottom: -15px;
-  font-family: JetBrainMono-Bold, sans-serif;
-  font-size: 1.1em;
-  color: $footer-color;
-}
 .mdl-card--border {
   margin-top: 15px;
-}
-.ui_icon__card {
-  width: 32px;
-  margin-right: 25px;
 }
 </style>

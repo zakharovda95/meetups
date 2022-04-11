@@ -4,13 +4,21 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    redirect: '',
+    redirect: { name: 'meetups' },
     component: () => import('@/layouts/MainPageLayout.vue'),
     children: [
       {
-        path: '',
-        name: 'main',
+        path: '/meetups',
+        name: 'meetups',
         component: () => import('@/views/MainPage.vue'),
+      },
+      {
+        path: '/meetups/:meetupId',
+        name: 'meetup',
+        component: () => import('@/views/MeetupPage.vue'),
+        meta: {
+          showReturnToMeetupList: true,
+        },
       },
     ],
   },

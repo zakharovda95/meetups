@@ -3,10 +3,17 @@
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title">
-          <router-link class="main_link" to="/">MEETUPS</router-link>
+          <ui-link variant="logo" :to="{ name: 'meetups' }">MEETUPS</ui-link>
         </span>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <router-link
+            v-if="$route.meta.showReturnToMeetupList"
+            class="mdl-navigation__link"
+            :to="{ name: 'meetups' }"
+          >
+            К списку
+          </router-link>
           <router-link
             v-for="link in navbarLinks"
             :key="link.about"
@@ -20,9 +27,16 @@
     </header>
     <div class="mdl-layout__drawer mdl-layout--small-screen-only">
       <span class="mdl-layout-title">
-        <router-link class="main_link" to="/">MEETUPS</router-link>
+        <ui-link variant="logo" :to="{ name: 'meetups' }">MEETUPS</ui-link>
       </span>
       <nav class="mdl-navigation">
+        <router-link
+          v-if="$route.meta.showReturnToMeetupList"
+          class="mdl-navigation__link"
+          :to="{ name: 'meetups' }"
+        >
+          К списку
+        </router-link>
         <router-link
           v-for="link in navbarLinks"
           :key="link.about"
@@ -37,9 +51,12 @@
   </div>
 </template>
 <script>
+import UiLink from '@/components/ui/UiLink';
 export default {
   name: 'NavBar',
-  data: () => ({}),
+  components: {
+    UiLink,
+  },
   computed: {
     navbarLinks() {
       return this.$store.state.main.navbarLinks;
@@ -69,13 +86,6 @@ export default {
     .mdl-navigation__link {
       font-size: 1.4em;
       font-family: 'JetBrainMono-Light', sans-serif;
-    }
-    .mdl-navigation__link:hover {
-      transition: 0.3s;
-      transform: scale(1.1);
-    }
-    .link_active {
-      transform: scale(1.03);
     }
   }
 }

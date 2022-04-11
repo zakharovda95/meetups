@@ -11,21 +11,29 @@ export const moduleMain = {
   state: () => ({
     isLoading: false,
     mainPageIcons: [],
-    filteredMeetups: [],
     navbarLinks: null,
     meetups: [],
     inputValue: '',
+    meetupId: '',
   }),
   getters: {
     filteredMeetups(state) {
-      return (state.filteredMeetups = state.meetups.filter(item => {
+      return state.meetups.filter(item => {
         return item.title
           .toUpperCase()
           .includes(state.inputValue.toUpperCase());
-      }));
+      });
+    },
+    meetupById(state) {
+      return state.meetups.filter(item => {
+        return item.id === state.meetupId;
+      });
     },
   },
   mutations: {
+    setMeetupId(state, payload) {
+      state.meetupId = payload;
+    },
     checkLoading(state, payload) {
       state.isLoading = payload;
     },
@@ -52,6 +60,9 @@ export const moduleMain = {
     },
   },
   actions: {
+    setMeetupId({ commit }, payload) {
+      commit('setMeetupId', payload);
+    },
     async getNavbarLinks({ commit }) {
       try {
         const response = await getFirebaseData('links/mainPageLinks');
