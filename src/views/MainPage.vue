@@ -1,6 +1,7 @@
 <template>
   <div class="main">
-    <div class="content">
+    <ui-loading v-if="isLoading" />
+    <div v-else class="content">
       <filter-bar></filter-bar>
       <meetups-list></meetups-list>
     </div>
@@ -9,11 +10,18 @@
 <script>
 import MeetupsList from '@/components/MeetupsList';
 import FilterBar from '@/components/FilterBar';
+import UiLoading from '@/components/ui/UiLoading';
 export default {
   name: 'MainPage',
   components: {
     MeetupsList,
     FilterBar,
+    UiLoading,
+  },
+  computed: {
+    isLoading() {
+      return this.$store.state.main.isLoading;
+    },
   },
 };
 </script>

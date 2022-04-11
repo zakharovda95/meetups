@@ -9,6 +9,7 @@ moment.locale('ru');
 
 export const moduleMain = {
   state: () => ({
+    isLoading: false,
     mainPageIcons: [],
     filteredMeetups: [],
     navbarLinks: null,
@@ -25,6 +26,9 @@ export const moduleMain = {
     },
   },
   mutations: {
+    checkLoading(state, payload) {
+      state.isLoading = payload;
+    },
     setNavbarLinks(state, payload) {
       const dataEntries = Object.entries(payload);
       state.navbarLinks = dataEntries.map(item => {
@@ -58,10 +62,13 @@ export const moduleMain = {
     },
     async getMeetups({ commit }) {
       try {
+        commit('checkLoading', true);
         const response = await getFirebaseData('meetups');
         commit('setMeetups', response);
       } catch (err) {
         console.log(err);
+      } finally {
+        commit('checkLoading', false);
       }
     },
     async getIconList({ commit }) {

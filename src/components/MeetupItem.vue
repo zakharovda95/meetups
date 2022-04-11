@@ -29,6 +29,7 @@
 </template>
 <script>
 import UiIcon from '@/components/ui/UiIcon';
+
 export default {
   name: 'MeetupsItem',
   components: {

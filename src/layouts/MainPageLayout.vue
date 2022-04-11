@@ -19,5 +19,6 @@ export default {
 <style scoped lang="scss">
 .mdl-grid {
   display: flex;
+  flex-grow: 1;
 }
 </style>

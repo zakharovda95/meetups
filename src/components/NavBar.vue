@@ -53,6 +53,7 @@ export default {
 .mdl-layout__header {
   display: flex;
   height: 60px;
+  flex: 0 0 auto;
   .mdl-layout__header-row {
     display: flex;
     .mdl-layout-title {

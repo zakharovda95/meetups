@@ -16,9 +16,10 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '../assets/styles/_constants.scss';
-@import '../assets/fonts/_fonts.css';
 .meetups_footer {
   display: flex;
+  flex: 0 0 auto;
+  flex-shrink: 0;
   .meetups_footer__wrapper {
     display: flex;
     align-items: center;
@@ -30,6 +31,7 @@ export default {
     .meetups_footer__logo {
       font-size: 1.2em;
       color: white;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
     .meetups_footer__links {
       display: flex;
@@ -41,6 +43,7 @@ export default {
         a {
           text-decoration: none;
           color: white;
+          font-family: 'JetBrainMono-Light', sans-serif;
         }
       }
     }
