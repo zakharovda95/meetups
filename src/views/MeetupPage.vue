@@ -1,7 +1,6 @@
 <template>
   <div class="main">
     <div class="content">
-      <h1>Страница</h1>
       <meetup-view />
     </div>
   </div>

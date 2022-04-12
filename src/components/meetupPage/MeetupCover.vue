@@ -5,7 +5,7 @@
 export default {
   name: 'MeetupCover',
   components: {},
-  data: () => ({}),
+  data: () => {},
 };
 </script>
 <style scoped lang="scss"></style>

@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <ui-loading v-if="isLoading" />
+    <ui-loading v-if="loading" />
     <div v-else class="content">
       <filter-bar></filter-bar>
       <meetups-list></meetups-list>
@@ -19,7 +19,7 @@ export default {
     UiLoading,
   },
   computed: {
-    isLoading() {
+    loading() {
       return this.$store.state.main.isLoading;
     },
   },

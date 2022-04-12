@@ -1,5 +1,6 @@
 <template>
-  <div class="meetup_info">
+  <ui-loading v-if="loading" />
+  <div class="meetup_info" v-else>
     <div class="mdl-card__supporting-text">
       <ui-icon class="ui_icon__card" icon-name="organizer"></ui-icon
       >{{ meetup.organizer }}
@@ -16,15 +17,22 @@
 </template>
 <script>
 import UiIcon from '@/components/ui/UiIcon';
+import UiLoading from '@/components/ui/UiLoading';
 export default {
   name: 'MeetupInfo',
   components: {
     UiIcon,
+    UiLoading,
   },
   props: {
     meetup: {
       type: Object,
       default: () => {},
+    },
+  },
+  computed: {
+    loading() {
+      return this.$store.state.main.isLoading;
     },
   },
 };

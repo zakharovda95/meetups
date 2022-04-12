@@ -24,14 +24,18 @@ export const moduleMain = {
           .includes(state.inputValue.toUpperCase());
       });
     },
-    meetupById(state) {
-      return state.meetups.filter(item => {
-        return item.id === state.meetupId;
+    meetup(state) {
+      let elem = null;
+      state.meetups.forEach(item => {
+        if (item.id === state.meetupId) {
+          elem = item;
+        }
       });
+      return elem;
     },
   },
   mutations: {
-    setMeetupId(state, payload) {
+    chooseMeetupById(state, payload) {
       state.meetupId = payload;
     },
     checkLoading(state, payload) {
@@ -60,15 +64,18 @@ export const moduleMain = {
     },
   },
   actions: {
-    setMeetupId({ commit }, payload) {
-      commit('setMeetupId', payload);
+    setMeetupById({ commit }, payload) {
+      commit('chooseMeetupById', payload);
     },
     async getNavbarLinks({ commit }) {
       try {
+        commit('checkLoading', true);
         const response = await getFirebaseData('links/mainPageLinks');
         commit('setNavbarLinks', response);
       } catch (err) {
         console.log(err);
+      } finally {
+        commit('checkLoading', false);
       }
     },
     async getMeetups({ commit }) {
@@ -84,6 +91,7 @@ export const moduleMain = {
     },
     async getIconList({ commit }) {
       try {
+        commit('checkLoading', true);
         await listAll(ref(fbStorage, 'icons/')).then(res =>
           res.items.forEach(async item => {
             const link = await getStorageDataLink(item);
@@ -92,6 +100,8 @@ export const moduleMain = {
         );
       } catch (err) {
         console.log(err);
+      } finally {
+        commit('checkLoading', false);
       }
     },
     updateInputValue({ commit }, payload) {

@@ -1,11 +1,15 @@
 <template>
-  <div class="meetup_description"></div>
+  <div class="meetup_description">{{ meetup.description }}</div>
 </template>
 <script>
 export default {
   name: 'MeetupDescription',
-  components: {},
-  data: () => ({}),
+  props: {
+    meetup: {
+      type: Object,
+      default: () => {},
+    },
+  },
 };
 </script>
 <style scoped lang="scss"></style>
