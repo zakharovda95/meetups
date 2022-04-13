@@ -1,24 +1,29 @@
 <template>
-  <div class="layout_wrapper">
-    <div class="navbar">
-      <nav-bar></nav-bar>
+  <div class="layout-wrapper">
+    <div class="layout-wrapper-navbar">
+      <NavbarItem />
     </div>
-    <div class="mdl-grid">
-      <router-view></router-view>
+    <div class="layout-wrapper-filterbar">
+      <FilterbarItem />
     </div>
-    <!--    <div class="footer">-->
-    <!--      <footer-item></footer-item>-->
-    <!--    </div>-->
+    <div class="layout-wrapper-pages">
+      <router-view />
+    </div>
+    <div class="layout-wrapper-footer">
+      <FooterItem />
+    </div>
   </div>
 </template>
 <script>
-import NavBar from '@/components/NavBar';
-// import FooterItem from '@/components/FooterItem';
+import NavbarItem from '@/components/NavbarItem';
+import FilterbarItem from '@/components/FilterbarItem';
+import FooterItem from '@/components/FooterItem';
 export default {
   name: 'MainPageLayout',
   components: {
-    NavBar,
-    // FooterItem,
+    NavbarItem,
+    FilterbarItem,
+    FooterItem,
   },
 };
 </script>

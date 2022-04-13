@@ -1,5 +1,5 @@
 <template>
-  <div class="meetups_list">
+  <div class="meetups-list">
     <meetup-item
       v-for="meetup in meetups"
       :key="meetup.id"
@@ -22,7 +22,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.meetups_list {
+.meetups-list {
   width: 100%;
 }
 </style>

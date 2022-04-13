@@ -5,9 +5,9 @@
     </div>
     <meetup-info :meetup="meetup"></meetup-info>
     <div class="mdl-card__actions mdl-card--border">
-      <ui-link :to="{ name: 'meetup', params: { meetupId: meetup.id } }"
-        >Подробнее</ui-link
-      >
+      <ui-link :to="{ name: 'meetup', params: { meetupId: meetup.id } }">
+        Подробнее
+      </ui-link>
     </div>
   </div>
 </template>

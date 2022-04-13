@@ -1,5 +1,7 @@
 <template>
-  <component :is="tag" :class="linkClasses"><slot></slot> </component>
+  <component class="ui-link" :is="tag" :class="linkClasses"
+    ><slot></slot>
+  </component>
 </template>
 <script>
 export default {
@@ -17,17 +19,27 @@ export default {
   computed: {
     linkClasses() {
       return {
-        'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect':
-          this.variant === 'default',
-        'main_link': this.variant === 'logo',
+        'ui-link-header-nav-links': this.variant === 'nav-link',
       };
     },
   },
 };
 </script>
+
 <style scoped lang="scss">
-.main_link {
+@import '../../assets/styles/_constants.scss';
+@import '../../assets/fonts/_fonts.css';
+.ui-link {
   text-decoration: none;
-  color: white;
+  font-family: 'JetBrainMono-Light', sans-serif;
+  color: $font-color-white;
+}
+.ui-link-header-nav-links {
+  display: flex;
+  align-self: center;
+  margin: 20px;
+  color: $main-color;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 </style>

@@ -15,10 +15,14 @@ export default {
 };
 </script>
 <style lang="scss">
-body {
-  @import './assets/styles/_constants.scss';
-  width: 100%;
-  height: 100%;
-  background-color: $layout-color;
+@import './assets/styles/_constants.scss';
+* {
+  margin: 0;
+  padding: 0;
+  body {
+    width: 100%;
+    height: 100%;
+    background-color: $layout-color;
+  }
 }
 </style>
