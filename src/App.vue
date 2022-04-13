@@ -18,7 +18,7 @@ export default {
 body {
   @import './assets/styles/_constants.scss';
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   background-color: $layout-color;
 }
 </style>

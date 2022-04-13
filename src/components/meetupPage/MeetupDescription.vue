@@ -1,4 +1,5 @@
 <template>
+  <h4>Описание:</h4>
   <div class="meetup_description">{{ meetup.description }}</div>
 </template>
 <script>

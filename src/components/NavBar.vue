@@ -12,7 +12,7 @@
             class="mdl-navigation__link"
             :to="{ name: 'meetups' }"
           >
-            К списку
+            &#10229; К списку
           </router-link>
           <router-link
             v-for="link in navbarLinks"
@@ -35,7 +35,7 @@
           class="mdl-navigation__link"
           :to="{ name: 'meetups' }"
         >
-          К списку
+          &#10229; К списку
         </router-link>
         <router-link
           v-for="link in navbarLinks"

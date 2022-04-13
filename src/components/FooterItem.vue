@@ -18,8 +18,7 @@ export default {
 @import '../assets/styles/_constants.scss';
 .meetups_footer {
   display: flex;
-  flex: 0 0 auto;
-  flex-shrink: 0;
+  align-self: flex-end;
   .meetups_footer__wrapper {
     display: flex;
     align-items: center;
