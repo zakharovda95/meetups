@@ -6,6 +6,7 @@
     <div class="meetup-item-wrapper-info">
       <meetup-info :meetup="meetup"></meetup-info>
     </div>
+    <hr />
     <div class="meetup-item-wrapper-link">
       <ui-link
         variant="nav-link"
@@ -61,6 +62,7 @@ export default {
     }
   }
   .meetup-item-wrapper-link {
+    margin-top: -15px;
     text-align: center;
     width: 120px;
   }

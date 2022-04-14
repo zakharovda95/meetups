@@ -8,19 +8,27 @@ const routes = [
     component: () => import('@/layouts/MainPageLayout.vue'),
     children: [
       {
-        path: '/meetups',
+        path: 'meetups',
         name: 'meetups',
         component: () => import('@/views/MainPage.vue'),
       },
+    ],
+  },
+  {
+    path: '/meetup',
+    name: 'meetup',
+    redirect: { name: 'meetupById' },
+    component: import('@/layouts/MeetupPageLayout.vue'),
+    children: [
       {
-        path: '/meetups/:meetupId',
-        name: 'meetup',
+        path: ':meetupId',
+        name: 'meetupById',
         component: () => import('@/views/MeetupPage.vue'),
-        meta: {
-          showReturnToMeetupList: true,
-        },
       },
     ],
+    meta: {
+      showReturnToMeetupList: true,
+    },
   },
 ];
 

@@ -27,9 +27,6 @@ export default {
       justify-content: center;
       margin: 0 auto;
       width: 100%;
-      h1 {
-        margin-top: 100px;
-      }
     }
   }
 }
@@ -46,9 +43,6 @@ export default {
       justify-content: center;
       margin: 0 auto;
       width: 100%;
-      h1 {
-        margin-top: 100px;
-      }
     }
   }
 }

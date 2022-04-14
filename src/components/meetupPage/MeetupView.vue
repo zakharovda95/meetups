@@ -31,6 +31,7 @@ export default {
     MeetupToggle,
     UiLoading,
   },
+
   mounted() {
     this.$store.dispatch('setMeetupById', this.meetupId);
   },
@@ -49,7 +50,6 @@ export default {
   .meetup_view__toggle {
     display: flex;
     justify-content: flex-start;
-    margin-top: 80px;
     margin-bottom: 25px;
   }
   .meetup_view {
