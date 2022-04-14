@@ -20,6 +20,7 @@ export default {
     linkClasses() {
       return {
         'ui-link-header-nav-links': this.variant === 'nav-link',
+        'ui-link-filterbar-button-link': this.variant === 'filter-button-link',
       };
     },
   },
@@ -37,9 +38,24 @@ export default {
 .ui-link-header-nav-links {
   display: flex;
   align-self: center;
-  margin: 20px;
+  margin: 10px;
+  padding: 10px;
   color: $main-color;
   text-align: center;
   letter-spacing: 0.5px;
+}
+.ui-link-header-nav-links:hover {
+  background: $navbar-link-hover;
+}
+.ui-link-filterbar-button-link {
+  display: flex;
+  align-self: center;
+  margin: 10px;
+  padding: 10px 15px 10px 15px;
+  color: $font-color-white;
+  font-size: 1.2em;
+  text-align: center;
+  letter-spacing: 0.5px;
+  background: $main-color;
 }
 </style>

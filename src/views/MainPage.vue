@@ -39,13 +39,13 @@ export default {
   }
 }
 @media (min-width: 1020px) {
-  .main {
+  .main-page {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     width: 50%;
     height: 100%;
-    .content {
+    .main-page-content {
       display: flex;
       flex-direction: column;
       justify-content: center;

@@ -27,4 +27,11 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.layout-wrapper {
+  .layout-wrapper-filterbar {
+    display: flex;
+    justify-content: center;
+  }
+}
+</style>
