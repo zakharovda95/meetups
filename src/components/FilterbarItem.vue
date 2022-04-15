@@ -14,8 +14,8 @@
       />
     </div>
     <div class="filterbar-wrapper-toggle-group">
-      <UiLink variant="nav-link" to="/">Список</UiLink>
-      <UiLink variant="nav-link" to="/">Календарь</UiLink>
+      <UiLink variant="nav-link" :to="{ name: 'meetups' }">Список</UiLink>
+      <UiLink variant="nav-link" :to="{ name: 'calendar' }"> Календарь </UiLink>
     </div>
   </div>
 </template>

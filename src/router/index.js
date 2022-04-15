@@ -12,6 +12,11 @@ const routes = [
         name: 'meetups',
         component: () => import('@/views/MainPage.vue'),
       },
+      {
+        path: 'calendar',
+        name: 'calendar',
+        component: () => import('@/views/CalendarPage.vue'),
+      },
     ],
   },
   {

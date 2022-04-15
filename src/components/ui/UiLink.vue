@@ -58,4 +58,7 @@ export default {
   letter-spacing: 0.5px;
   background: $main-color;
 }
+.router-link-exact-active {
+  border-bottom: 2px solid $main-color;
+}
 </style>
