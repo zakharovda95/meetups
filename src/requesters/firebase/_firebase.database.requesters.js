@@ -1,5 +1,5 @@
 import { get, ref, set } from 'firebase/database';
-import { fbDb } from '@/api/firebase/_options.firebase';
+import { fbDb } from '@/requesters/firebase/_options.firebase';
 
 // Запись данных в БД
 export async function setFirebaseData(path, data) {

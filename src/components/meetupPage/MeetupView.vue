@@ -2,27 +2,25 @@
   <ui-loading v-if="!meetup" />
   <div class="meetup-view-wrapper" v-else>
     <div class="meetup-view-wrapper-cover">
-      <MeetupCover :meetup="meetup" :title="meetup.title" />
+      <MeetupCover :image="meetup.image" :title="meetup.title" />
     </div>
     <div class="meetup-view-wrapper-info">
       <MeetupInfo :meetup="meetup" />
     </div>
-    <div class="meetup-view-wrapper-description">
-      <MeetupDescription :meetup="meetup" />
+    <div class="meetup-view-wrapper-description-agenda">
+      <router-view />
     </div>
   </div>
 </template>
 <script>
 import MeetupCover from '@/components/meetupPage/MeetupCover';
 import MeetupInfo from '@/components/meetupPage/MeetupInfo';
-import MeetupDescription from '@/components/meetupPage/MeetupDescription';
 import UiLoading from '@/components/ui/UiLoading';
 
 export default {
   name: 'MeetupView',
   components: {
     MeetupCover,
-    MeetupDescription,
     MeetupInfo,
     UiLoading,
   },
@@ -54,7 +52,7 @@ export default {
       align-self: center;
       width: 100%;
     }
-    .meetup-view-wrapper-description {
+    .meetup-view-wrapper-description-agenda {
       display: flex;
       flex-direction: column;
       align-self: center;
@@ -82,7 +80,7 @@ export default {
       align-self: center;
       width: 100%;
     }
-    .meetup-view-wrapper-description {
+    .meetup-view-wrapper-description-agenda {
       display: flex;
       flex-direction: column;
       align-self: center;

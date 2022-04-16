@@ -1,8 +1,5 @@
-import { getFirebaseData } from '@/api/firebase/_firebase.database.services';
-import { getStorageDataLink } from '@/api/firebase/_firebase.storage.services';
-import { listAll, ref } from 'firebase/storage';
-import { fbStorage } from '@/api/firebase/_options.firebase';
-//import { debounce } from 'lodash';
+import { getFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
+import { createIconsList } from '@/requesters/firebase/_firebase.storage.requesters';
 import moment from 'moment';
 import 'moment/locale/ru';
 moment.locale('ru');
@@ -23,6 +20,12 @@ export const moduleMain = {
           .includes(state.inputValue.toUpperCase());
       });
     },
+    // sortedMeetups(state) {
+    //   return state.meetups.filter(item => {
+    //     const now = moment().unix();
+    //     return item.date;
+    //   });
+    // },
     meetup(state) {
       let elem = null;
       state.meetups.forEach(item => {
@@ -71,12 +74,7 @@ export const moduleMain = {
     async getIconList({ commit }) {
       try {
         commit('checkLoading', true);
-        await listAll(ref(fbStorage, 'icons/')).then(res =>
-          res.items.forEach(async item => {
-            const link = await getStorageDataLink(item);
-            commit('setMainPageIcons', { name: item.name, url: link });
-          }),
-        );
+        await createIconsList(commit, 'icons/');
       } catch (err) {
         console.log(err);
       } finally {

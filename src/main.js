@@ -14,3 +14,7 @@ createApp(App).use(store).use(router).mount('#app');
 //   return await getStorageDataLink('covers/meetup_adventure_cover.jpg');
 // }
 // console.log(link());
+
+// import { setFirebaseData } from '@/api/firebase/_firebase.database.services';
+// import { meetups } from '@/api/localDataBase/formatedMeetups';
+// setFirebaseData('/meetups', meetups);

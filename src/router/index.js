@@ -34,7 +34,8 @@ const routes = [
           {
             path: 'description',
             name: 'description',
-            component: () => import('@/components/meetupPage/MeetupView.vue'),
+            component: () =>
+              import('@/components/meetupPage/MeetupDescription.vue'),
           },
           {
             path: 'agenda',
