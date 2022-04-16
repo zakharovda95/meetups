@@ -1,6 +1,6 @@
 <template>
   <h4>Описание:</h4>
-  <div class="meetup_description">{{ meetup.description }}</div>
+  <div class="meetup-sdescription">{{ meetup.description }}</div>
 </template>
 <script>
 export default {

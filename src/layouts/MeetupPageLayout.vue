@@ -24,5 +24,10 @@ export default {
 </script>
 <style scoped lang="scss">
 .layout-wrapper {
+  .layout-wrapper-pages {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
 }
 </style>

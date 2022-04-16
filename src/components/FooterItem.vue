@@ -1,51 +1,49 @@
 <template>
-  <footer class="meetups_footer">
-    <div class="meetups_footer__wrapper">
-      <div class="meetups_footer__logo">MEETUPS</div>
-      <ul class="meetups_footer__links">
-        <li><a href="#">GitHub</a></li>
-        <li><a href="#">Сайт разработчика</a></li>
-      </ul>
+  <footer class="footer-item-wrapper">
+    <div class="footer-wrapper-logo">MEETUPS</div>
+    <div class="footer-date">2022 г.</div>
+    <div class="footer-wrapper-links">
+      <UiLink class="footer-link" to="/">GitHub</UiLink>
+      <UiLink class="footer-link" to="/">Сайт</UiLink>
     </div>
   </footer>
 </template>
 <script>
+import UiLink from '@/components/ui/UiLink';
 export default {
   name: 'FooterItem',
+  components: { UiLink },
 };
 </script>
 <style scoped lang="scss">
+@import '../assets/fonts/_fonts.css';
 @import '../assets/styles/_constants.scss';
-.meetups_footer {
+.footer-item-wrapper {
   display: flex;
-  align-self: flex-end;
-  .meetups_footer__wrapper {
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  height: 50px;
+  width: 100%;
+  background: $footer-color;
+  .footer-wrapper-logo {
+    font-size: 1.2em;
+    margin: 20px;
+    color: $font-color-white;
+    font-family: 'JetBrainMono-Light', sans-serif;
+  }
+  .footer-wrapper-links {
     display: flex;
-    align-items: center;
-    margin-top: 20px;
-    padding: 20px;
-    height: 50px;
-    width: 100vw;
-    background: #444343;
-    .meetups_footer__logo {
-      font-size: 1.2em;
-      color: white;
-      font-family: 'JetBrainMono-Light', sans-serif;
+    .footer-link {
+      margin-right: 20px;
     }
-    .meetups_footer__links {
-      display: flex;
-      li {
-        display: flex;
-        align-self: center;
-        list-style-type: none;
-        margin-left: 10px;
-        a {
-          text-decoration: none;
-          color: white;
-          font-family: 'JetBrainMono-Light', sans-serif;
-        }
-      }
-    }
+  }
+  .footer-date {
+    display: flex;
+    font-family: 'JetBrainMono-Light', sans-serif;
+    color: $font-color-white;
+    align-self: center;
+    margin-left: 20px;
   }
 }
 </style>

@@ -28,12 +28,40 @@ const routes = [
       {
         path: ':meetupId',
         name: 'meetupById',
+        redirect: { name: 'description' },
         component: () => import('@/views/MeetupPage.vue'),
+        children: [
+          {
+            path: 'description',
+            name: 'description',
+            component: () => import('@/components/meetupPage/MeetupView.vue'),
+          },
+          {
+            path: 'agenda',
+            name: 'agenda',
+            component: () => import('@/components/meetupPage/MeetupAgenda.vue'),
+          },
+        ],
       },
     ],
     meta: {
       showReturnToMeetupList: true,
     },
+  },
+  {
+    path: '/auth',
+    name: 'auth',
+    component: () => import('@/layouts/AuthPageLayout.vue'),
+  },
+  {
+    path: '/registration',
+    name: 'registration',
+    component: () => import('@/layouts/AuthPageLayout.vue'),
+  },
+  {
+    path: '/create',
+    name: 'create',
+    component: () => import('@/layouts/AuthPageLayout.vue'),
   },
 ];
 

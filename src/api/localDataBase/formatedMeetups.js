@@ -15,8 +15,9 @@ export const meetups = [
     id: 2,
     title: 'Встреча фанатов Наруто',
     description: 'Встреча сильнейших шиноби всех деревень ниндзя',
-    imageId: null,
-    image: null,
+    imageId: 1,
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetup_naruto_cover.jpg?alt=media&token=c0229277-561f-4ea0-879b-f3442ae555ff',
     date: 1640995200000,
     organizer: 'Udzumaki123',
     place: 'Деревня скрытая в листве',
@@ -37,8 +38,9 @@ export const meetups = [
     id: 4,
     title: 'Приключение Финна и Джейка',
     description: 'Очередная захватывающая история',
-    imageId: null,
-    image: null,
+    imageId: 4,
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetup_adventure_cover.jpg?alt=media&token=06d1cfcf-35ca-4f36-8267-eebf19ffa0aa',
     date: 1640995200000,
     organizer: 'Финн Парнишка и Джейк Пес',
     place: 'Какая-то пещера',

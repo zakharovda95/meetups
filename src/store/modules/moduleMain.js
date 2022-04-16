@@ -11,7 +11,6 @@ export const moduleMain = {
   state: () => ({
     isLoading: false,
     mainPageIcons: [],
-    navbarLinks: null,
     meetups: [],
     inputValue: '',
     meetupId: '',
@@ -41,15 +40,6 @@ export const moduleMain = {
     checkLoading(state, payload) {
       state.isLoading = payload;
     },
-    setNavbarLinks(state, payload) {
-      const dataEntries = Object.entries(payload);
-      state.navbarLinks = dataEntries.map(item => {
-        return {
-          about: item[0],
-          data: item[1],
-        };
-      });
-    },
     setMeetups(state, payload) {
       payload.forEach(item => {
         item.date = moment(item.date).format('DD MMMM yy г.');
@@ -66,17 +56,6 @@ export const moduleMain = {
   actions: {
     setMeetupById({ commit }, payload) {
       commit('chooseMeetupById', payload);
-    },
-    async getNavbarLinks({ commit }) {
-      try {
-        commit('checkLoading', true);
-        const response = await getFirebaseData('links/mainPageLinks');
-        commit('setNavbarLinks', response);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        commit('checkLoading', false);
-      }
     },
     async getMeetups({ commit }) {
       try {

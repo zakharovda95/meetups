@@ -16,13 +16,12 @@
         >
           &#10229; К списку
         </UiLink>
-        <UiLink
-          variant="nav-link"
-          v-for="link in navbarLinks"
-          :key="link.about"
-          :to="link.data.path"
-        >
-          {{ link.data.name }}
+        <UiLink variant="nav-link" :to="{ name: 'auth' }">Вход</UiLink>
+        <UiLink variant="nav-link" :to="{ name: 'registration' }">
+          Регистрация
+        </UiLink>
+        <UiLink variant="nav-link" :to="{ name: 'create' }">
+          Создать митап
         </UiLink>
       </nav>
     </div>
@@ -34,11 +33,6 @@ export default {
   name: 'NavBar',
   components: {
     UiLink,
-  },
-  computed: {
-    navbarLinks() {
-      return this.$store.state.main.navbarLinks;
-    },
   },
 };
 </script>

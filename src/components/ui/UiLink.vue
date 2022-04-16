@@ -20,7 +20,8 @@ export default {
     linkClasses() {
       return {
         'ui-link-header-nav-links': this.variant === 'nav-link',
-        'ui-link-filterbar-button-link': this.variant === 'filter-button-link',
+        'ui-link-filter-panel-button-link':
+          this.variant === 'filter-button-link',
       };
     },
   },
@@ -47,7 +48,7 @@ export default {
 .ui-link-header-nav-links:hover {
   background: $navbar-link-hover;
 }
-.ui-link-filterbar-button-link {
+.ui-link-filter-panel-button-link {
   display: flex;
   align-self: center;
   margin: 10px;

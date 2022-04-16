@@ -1,19 +1,24 @@
 <template>
-  <div class="filterbar-wrapper">
-    <div class="filterbar-wrapper-button-group">
-      <UiLink variant="filter-button-link" to="/">Все</UiLink>
-      <UiLink variant="filter-button-link" to="/">Прошедшие</UiLink>
-      <UiLink variant="filter-button-link" to="/">Ожидаемые</UiLink>
+  <div class="filter-panel-wrapper">
+    <div class="filter-panel-wrapper-radio-group">
+      <UiRadio v-model="abc" value="all" name="filter-panel" id="all" checked>
+        Все
+      </UiRadio>
+      <UiRadio v-model="abc" value="past" name="filter-panel" id="past">
+        Прошедшие
+      </UiRadio>
+      <UiRadio v-model="abc" value="future" name="filter-panel" id="future">
+        Ожидаемые
+      </UiRadio>
     </div>
-    <div class="filterbar-wrapper-input-group">
+    <div class="filter-panel-wrapper-input-group">
       <UiInput
-        class="meetups__filterer__ui_input"
         placeholder="Поиск"
         @update:model-value="updateInput"
         :model-value="inputValue"
       />
     </div>
-    <div class="filterbar-wrapper-toggle-group">
+    <div class="filter-panel-wrapper-toggle-group">
       <UiLink variant="nav-link" :to="{ name: 'meetups' }">Список</UiLink>
       <UiLink variant="nav-link" :to="{ name: 'calendar' }"> Календарь </UiLink>
     </div>
@@ -22,17 +27,22 @@
 <script>
 import UiLink from '@/components/ui/UiLink.vue';
 import UiInput from '@/components/ui/UiInput.vue';
+import UiRadio from '@/components/ui/UiRadio.vue';
 export default {
-  name: 'FilterBar',
+  name: 'FilterPanel',
   components: {
     UiLink,
     UiInput,
+    UiRadio,
   },
   computed: {
     inputValue() {
       return this.$store.state.main.inputValue;
     },
   },
+  data: () => ({
+    abc: 'dff',
+  }),
   methods: {
     updateInput(payload) {
       this.$store.dispatch('updateInputValue', payload);
@@ -41,24 +51,27 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../assets/styles/_constants.scss';
+@import '../assets/styles/constants';
 @media (max-width: 1019px) {
-  .filterbar-wrapper {
+  .filter-panel-wrapper {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     margin-top: 25px;
     flex-wrap: wrap;
     background-color: $navbar-color-white;
     width: 100%;
     min-height: 90px;
-    .filterbar-wrapper-button-group,
-    .filterbar-wrapper-input-group {
+    .filter-panel-wrapper-radio-group {
+      display: flex;
+      justify-content: space-between;
+    }
+    .filter-panel-wrapper-input-group {
       display: flex;
       align-self: center;
       margin-left: 5px;
-      margin-top: 5px;
     }
-    .filterbar-wrapper-toggle-group {
+    .filter-panel-wrapper-toggle-group {
       display: flex;
       align-self: center;
       align-items: center;
@@ -67,21 +80,21 @@ export default {
   }
 }
 @media (min-width: 1020px) {
-  .filterbar-wrapper {
+  .filter-panel-wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 25px;
     flex-wrap: wrap;
     background-color: whitesmoke;
     width: 50%;
     min-height: 80px;
-    .filterbar-wrapper-button-group,
-    .filterbar-wrapper-input-group {
+    .filter-panel-wrapper-radio-group,
+    .filter-panel-wrapper-input-group {
       display: flex;
       align-self: center;
       margin-left: 5px;
     }
-    .filterbar-wrapper-toggle-group {
+    .filter-panel-wrapper-toggle-group {
       display: flex;
       align-self: center;
       align-items: center;

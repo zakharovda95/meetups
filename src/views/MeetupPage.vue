@@ -1,5 +1,6 @@
 <template>
-  <div class="main">
+  <div class="meetup-page">
+    <MeetupToggle />
     <div class="content">
       <meetup-view />
     </div>
@@ -7,17 +8,20 @@
 </template>
 <script>
 import MeetupView from '@/components/meetupPage/MeetupView';
+import MeetupToggle from '@/components/meetupPage/MeetupToggle';
 export default {
   name: 'MeetupPage',
   components: {
+    MeetupToggle,
     MeetupView,
   },
 };
 </script>
 <style scoped lang="scss">
 @media (max-width: 1019px) {
-  .main {
+  .meetup-page {
     display: flex;
+    flex-direction: column;
     margin: 0 auto;
     width: 90%;
     height: 100%;
@@ -31,7 +35,7 @@ export default {
   }
 }
 @media (min-width: 1020px) {
-  .main {
+  .meetup-page {
     margin: 0 auto;
     display: flex;
     flex-direction: column;

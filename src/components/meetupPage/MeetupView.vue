@@ -1,17 +1,14 @@
 <template>
-  <div class="meetup_view__toggle">
-    <meetup-toggle />
-  </div>
   <ui-loading v-if="!meetup" />
-  <div class="meetup_view" v-else>
-    <div class="meetup_view__meetup_cover">
-      <meetup-cover :meetup="meetup" />
+  <div class="meetup-view-wrapper" v-else>
+    <div class="meetup-view-wrapper-cover">
+      <MeetupCover :meetup="meetup" :title="meetup.title" />
     </div>
-    <div class="meetup_view__meetup_description">
-      <meetup-description :meetup="meetup" />
+    <div class="meetup-view-wrapper-info">
+      <MeetupInfo :meetup="meetup" />
     </div>
-    <div class="meetup_view__meetup_info">
-      <meetup-info :meetup="meetup" />
+    <div class="meetup-view-wrapper-description">
+      <MeetupDescription :meetup="meetup" />
     </div>
   </div>
 </template>
@@ -19,7 +16,6 @@
 import MeetupCover from '@/components/meetupPage/MeetupCover';
 import MeetupInfo from '@/components/meetupPage/MeetupInfo';
 import MeetupDescription from '@/components/meetupPage/MeetupDescription';
-import MeetupToggle from '@/components/meetupPage/MeetupToggle';
 import UiLoading from '@/components/ui/UiLoading';
 
 export default {
@@ -28,7 +24,6 @@ export default {
     MeetupCover,
     MeetupDescription,
     MeetupInfo,
-    MeetupToggle,
     UiLoading,
   },
 
@@ -47,30 +42,26 @@ export default {
 </script>
 <style scoped lang="scss">
 @media (max-width: 1019px) {
-  .meetup_view__toggle {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 25px;
-  }
-  .meetup_view {
+  .meetup-view-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'JetBrainMono-Light', sans-serif;
     background: whitesmoke;
     padding: 25px;
-    .meetup_view__meetup_cover {
+    .meetup-view-wrapper-cover {
       display: flex;
       align-self: center;
+      width: 100%;
     }
-    .meetup_view__meetup_description {
+    .meetup-view-wrapper-description {
       display: flex;
       flex-direction: column;
       align-self: center;
       font-size: 1.5em;
       width: 100%;
     }
-    .meetup_view__meetup_info {
+    .meetup-view-wrapper-info {
       display: flex;
       flex-direction: column;
       align-self: center;
@@ -79,31 +70,26 @@ export default {
   }
 }
 @media (min-width: 1020px) {
-  .meetup_view__toggle {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 80px;
-    margin-bottom: 25px;
-  }
-  .meetup_view {
+  .meetup-view-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'JetBrainMono-Light', sans-serif;
     background: whitesmoke;
     padding: 25px;
-    .meetup_view__meetup_cover {
+    .meetup-view-wrapper-cover {
       display: flex;
       align-self: center;
+      width: 100%;
     }
-    .meetup_view__meetup_description {
+    .meetup-view-wrapper-description {
       display: flex;
       flex-direction: column;
       align-self: center;
       font-size: 1.5em;
       width: 100%;
     }
-    .meetup_view__meetup_info {
+    .meetup-view-wrapper-info {
       display: flex;
       flex-direction: column;
       align-self: center;

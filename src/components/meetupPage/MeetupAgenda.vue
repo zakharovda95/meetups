@@ -1,5 +1,5 @@
 <template>
-  <div class="meetup_agenda"></div>
+  <div class="meetup-agenda"></div>
 </template>
 <script>
 export default {

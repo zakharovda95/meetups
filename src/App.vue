@@ -8,7 +8,6 @@
 export default {
   name: 'App',
   created() {
-    this.$store.dispatch('getNavbarLinks');
     this.$store.dispatch('getMeetups');
     this.$store.dispatch('getIconList');
   },
