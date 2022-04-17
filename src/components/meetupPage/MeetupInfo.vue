@@ -1,16 +1,16 @@
 <template>
-  <ui-loading v-if="loading" />
+  <UiLoading v-if="loading" />
   <div class="meetup_info" v-else>
     <div class="mdl-card__supporting-text">
-      <ui-icon class="ui_icon__card" icon-name="organizer"></ui-icon
+      <UiIcon class="ui_icon__card" icon-name="organizer"></UiIcon
       >{{ meetup.organizer }}
     </div>
     <div class="mdl-card__supporting-text">
-      <ui-icon class="ui_icon__card" icon-name="location"></ui-icon
+      <UiIcon class="ui_icon__card" icon-name="location"></UiIcon
       >{{ meetup.place }}
     </div>
     <div class="mdl-card__supporting-text">
-      <ui-icon class="ui_icon__card" icon-name="calendar"></ui-icon
+      <UiIcon class="ui_icon__card" icon-name="calendar"></UiIcon
       >{{ meetup.date }}
     </div>
   </div>

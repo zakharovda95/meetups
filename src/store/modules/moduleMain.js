@@ -2,6 +2,10 @@ import { getFirebaseData } from '@/requesters/firebase/_firebase.database.reques
 import { createIconsList } from '@/requesters/firebase/_firebase.storage.requesters';
 import moment from 'moment';
 import 'moment/locale/ru';
+import {
+  filterMeetupsByInput,
+  sortMeetupsByDate,
+} from '@/services/_sorting.service';
 moment.locale('ru');
 
 export const moduleMain = {
@@ -11,21 +15,15 @@ export const moduleMain = {
     meetups: [],
     inputValue: '',
     meetupId: '',
+    meetupSortParam: 'all',
   }),
   getters: {
-    filteredMeetups(state) {
-      return state.meetups.filter(item => {
-        return item.title
-          .toUpperCase()
-          .includes(state.inputValue.toUpperCase());
-      });
+    filteredMeetups(state, getters) {
+      return filterMeetupsByInput(getters.sortedMeetups, state.inputValue);
     },
-    // sortedMeetups(state) {
-    //   return state.meetups.filter(item => {
-    //     const now = moment().unix();
-    //     return item.date;
-    //   });
-    // },
+    sortedMeetups(state) {
+      return sortMeetupsByDate(state.meetups, state.meetupSortParam);
+    },
     meetup(state) {
       let elem = null;
       state.meetups.forEach(item => {
@@ -45,6 +43,7 @@ export const moduleMain = {
     },
     setMeetups(state, payload) {
       payload.forEach(item => {
+        item.dateUnix = item.date;
         item.date = moment(item.date).format('DD MMMM yy г.');
       });
       state.meetups = payload;
@@ -54,6 +53,9 @@ export const moduleMain = {
     },
     updateInputValue(state, payload) {
       state.inputValue = payload;
+    },
+    updateRadioValue(state, payload) {
+      state.meetupSortParam = payload;
     },
   },
   actions: {
@@ -83,6 +85,9 @@ export const moduleMain = {
     },
     updateInputValue({ commit }, payload) {
       commit('updateInputValue', payload);
+    },
+    updateRadioValue({ commit }, payload) {
+      commit('updateRadioValue', payload);
     },
   },
 };

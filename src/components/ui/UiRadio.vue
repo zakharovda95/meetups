@@ -1,6 +1,11 @@
 <template>
   <div class="ui-checkbox">
-    <input v-bind="$attrs" :id="id" type="radio" />
+    <input
+      v-bind="$attrs"
+      :id="id"
+      @change="proxyModelValue = $event.target.value"
+      type="radio"
+    />
     <label :for="id"><slot /></label>
   </div>
 </template>
@@ -11,9 +16,20 @@ export default {
   props: {
     modelValue: {
       type: String,
+      default: 'all',
     },
     id: {
       type: String,
+    },
+  },
+  computed: {
+    proxyModelValue: {
+      get() {
+        return this.modelValue;
+      },
+      set(value) {
+        this.$emit('update:modelValue', value);
+      },
     },
   },
 };

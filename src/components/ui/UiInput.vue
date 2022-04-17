@@ -2,9 +2,8 @@
   <component
     @input="proxyModelValue = $event.target.value"
     :value="modelValue"
-    id="sample1"
     :is="tag"
-    class="ui_input"
+    class="ui-input"
     :type="type"
   ></component>
 </template>
@@ -39,7 +38,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.ui_input {
+.ui-input {
   margin: 5px;
   padding: 8px;
   font-size: 1.1em;

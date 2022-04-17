@@ -1,13 +1,32 @@
 <template>
   <div class="filter-panel-wrapper">
     <div class="filter-panel-wrapper-radio-group">
-      <UiRadio v-model="abc" value="all" name="filter-panel" id="all" checked>
+      <UiRadio
+        @update:model-value="updateRadioValue"
+        :model-value="radioModel"
+        value="all"
+        name="filter-panel"
+        id="all"
+        checked
+      >
         Все
       </UiRadio>
-      <UiRadio v-model="abc" value="past" name="filter-panel" id="past">
+      <UiRadio
+        @update:model-value="updateRadioValue"
+        :model-value="radioModel"
+        value="past"
+        name="filter-panel"
+        id="past"
+      >
         Прошедшие
       </UiRadio>
-      <UiRadio v-model="abc" value="future" name="filter-panel" id="future">
+      <UiRadio
+        @update:model-value="updateRadioValue"
+        :model-value="radioModel"
+        value="future"
+        name="filter-panel"
+        id="future"
+      >
         Ожидаемые
       </UiRadio>
     </div>
@@ -39,13 +58,16 @@ export default {
     inputValue() {
       return this.$store.state.main.inputValue;
     },
+    radioModel() {
+      return this.$store.state.main.meetupSortParam;
+    },
   },
-  data: () => ({
-    abc: 'dff',
-  }),
   methods: {
     updateInput(payload) {
       this.$store.dispatch('updateInputValue', payload);
+    },
+    updateRadioValue(payload) {
+      this.$store.dispatch('updateRadioValue', payload);
     },
   },
 };

@@ -4,16 +4,16 @@
       <MeetupCover :title="meetup.title" :image="meetup.image" />
     </div>
     <div class="meetup-item-wrapper-info">
-      <meetup-info :meetup="meetup"></meetup-info>
+      <MeetupInfo :meetup="meetup"></MeetupInfo>
     </div>
     <hr />
     <div class="meetup-item-wrapper-link">
-      <ui-link
+      <UiLink
         variant="nav-link"
         :to="{ name: 'meetup', params: { meetupId: meetup.id } }"
       >
         Подробнее
-      </ui-link>
+      </UiLink>
     </div>
   </div>
 </template>
@@ -39,12 +39,7 @@ export default {
 <style scoped lang="scss">
 @import '../assets/fonts/_fonts.css';
 @import '../assets/styles/_constants.scss';
-.meetup-item-wrapper > .meetup-item-wrapper-title {
-  height: 250px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetups_card__background.jpg?alt=media&token=744441d9-c81e-4332-82a5-f41e5cc96b58')
-      center / cover;
-}
+
 .meetup-item-wrapper {
   display: flex;
   flex-direction: column;
