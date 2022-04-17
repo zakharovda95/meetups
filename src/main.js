@@ -15,6 +15,6 @@ createApp(App).use(store).use(router).mount('#app');
 // }
 // console.log(link());
 
-// import { setFirebaseData } from '@/api/firebase/_firebase.database.services';
+// import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters.js';
 // import { meetups } from '@/api/localDataBase/formatedMeetups';
 // setFirebaseData('/meetups', meetups);
