@@ -12,9 +12,9 @@ export const agendaItemIcons = {
   registration: 'clipboard',
   opening: 'clock',
   talk: 'dialog',
-  break: 'cup',
-  coffee: 'coffee',
+  break: 'bell',
+  coffee: 'cup',
   closing: 'close',
   afterparty: 'moon',
-  other: 'bell',
+  other: 'list',
 };
