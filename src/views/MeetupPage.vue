@@ -2,7 +2,7 @@
   <div class="meetup-page">
     <MeetupToggle />
     <div class="content">
-      <meetup-view />
+      <MeetupView />
     </div>
   </div>
 </template>
