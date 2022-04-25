@@ -2,11 +2,11 @@
   <div class="event-calendar">
     <div class="event-calendar-filter-panel">
       <div class="event-calendar-filter-panel-items-group">
-        <UiButton>&#8592;</UiButton>
+        <UiButton @click="previousMonth">&#8592;</UiButton>
         <div class="event-calendar-filter-panel-current-date">
-          {{ currentMonth }} {{ currentYear }}
+          {{ month }} {{ year }}
         </div>
-        <UiButton>&#8594;</UiButton>
+        <UiButton @click="nextMonth">&#8594;</UiButton>
       </div>
     </div>
     <div class="event-calendar-weekday-panel">
@@ -47,15 +47,51 @@ export default {
     getDaysInMonth(year, month) {
       return moment([year, month]).daysInMonth();
     },
-    getWeekdayMonthBegin() {
-      return moment().startOf('month').format('d');
+    getWeekdayMonthBegin(year, month) {
+      if (+moment([year, month]).startOf('month').format('d') === 0) {
+        return 7;
+      }
+      return moment([year, month]).startOf('month').format('d');
+    },
+    getCurrentMonthData() {
+      this.daysInCurrentMonth = this.getDaysInMonth(
+        this.currentYear,
+        this.currentMonth,
+      );
+      this.weekDayMonthBegin = this.getWeekdayMonthBegin(
+        this.currentYear,
+        this.currentMonth,
+      );
+    },
+    previousMonth() {
+      this.currentMonth -= 1;
+      if (this.currentMonth < 0) {
+        this.currentMonth = 11;
+        this.currentYear -= 1;
+      }
+      this.getCurrentMonthData();
+    },
+    nextMonth() {
+      this.currentMonth += 1;
+      if (this.currentMonth > 11) {
+        this.currentMonth = 0;
+        this.currentYear += 1;
+      }
+      this.getCurrentMonthData();
+    },
+  },
+  computed: {
+    month() {
+      return moment([this.currentYear, this.currentMonth]).format('MMMM');
+    },
+    year() {
+      return moment([this.currentYear, this.currentMonth]).format('YYYY');
     },
   },
   mounted() {
-    this.daysInCurrentMonth = moment().daysInMonth();
-    this.weekDayMonthBegin = +this.getWeekdayMonthBegin();
-    this.currentYear = moment().format('YYYY');
-    this.currentMonth = moment().format('MMMM');
+    this.currentYear = +moment().format('YYYY');
+    this.currentMonth = +moment().format('M') - 1;
+    this.getCurrentMonthData();
   },
 };
 </script>
