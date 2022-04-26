@@ -18,6 +18,14 @@ export const moduleMain = {
     meetupSortParam: 'all',
   }),
   getters: {
+    eventsDates(state) {
+      return state.meetups.map(item => {
+        return {
+          id: item.id,
+          date: item.dateUnix,
+        };
+      });
+    },
     filteredMeetups(state, getters) {
       return filterMeetupsByInput(getters.sortedMeetups, state.inputValue);
     },

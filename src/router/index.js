@@ -52,12 +52,20 @@ const routes = [
   {
     path: '/auth',
     name: 'auth',
+    redirect: { name: 'registration' },
     component: () => import('@/layouts/AuthPageLayout.vue'),
-  },
-  {
-    path: '/registration',
-    name: 'registration',
-    component: () => import('@/layouts/AuthPageLayout.vue'),
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import('@/views/LoginPage.vue'),
+      },
+      {
+        path: 'registration',
+        name: 'registration',
+        component: () => import('@/views/RegistrationPage.vue'),
+      },
+    ],
   },
   {
     path: '/create',

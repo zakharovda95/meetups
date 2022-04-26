@@ -1,6 +1,7 @@
 <template>
   <div class="calendar-page">
-    <EventCalendar />
+    <UiLoading v-if="isLoading" />
+    <EventCalendar :events="eventsDates" v-else />
   </div>
 </template>
 <script>
@@ -10,6 +11,14 @@ export default {
   name: 'CalendarPage',
   components: {
     EventCalendar,
+  },
+  computed: {
+    eventsDates() {
+      return this.$store.getters.eventsDates;
+    },
+    isLoading() {
+      return this.$store.state.main.isLoading;
+    },
   },
 };
 </script>

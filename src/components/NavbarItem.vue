@@ -16,7 +16,7 @@
         >
           &#10229; К списку
         </UiLink>
-        <UiLink variant="nav-link" :to="{ name: 'auth' }">Вход</UiLink>
+        <UiLink variant="nav-link" :to="{ name: 'login' }">Вход</UiLink>
         <UiLink variant="nav-link" :to="{ name: 'registration' }">
           Регистрация
         </UiLink>

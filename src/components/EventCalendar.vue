@@ -16,12 +16,15 @@
         :key="day"
       >
         {{ day }}
+        <div class="event-calendar-weekday-panel-item-event">
+          <slot />
+        </div>
       </div>
     </div>
     <div class="event-calendar-container">
       <div
         class="event-calendar-item"
-        v-for="day of daysInCurrentMonth"
+        v-for="day in daysInCurrentMonth"
         :key="day"
       >
         {{ day }}
@@ -36,12 +39,19 @@ import UiButton from '@/components/ui/UiButton';
 export default {
   name: 'EventCalendar',
   components: { UiButton },
+  props: {
+    events: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data: () => ({
     weekDays: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
     daysInCurrentMonth: null,
     weekDayMonthBegin: null,
     currentMonth: null,
     currentYear: null,
+    formattedEvents: null,
   }),
   methods: {
     getDaysInMonth(year, month) {
@@ -79,6 +89,33 @@ export default {
       }
       this.getCurrentMonthData();
     },
+    calculateEventYearMonthAndDay() {
+      return this.events.map(item => {
+        return {
+          id: item.id,
+          day: +moment(item.date).format('D'),
+          month: +moment(item.date).format('M'),
+          year: +moment(item.date).format('YYYY'),
+        };
+      });
+    },
+  },
+  watch: {
+    currentMonth: {
+      // deep: true,
+      // immediate: true,
+      handler() {
+        console.log(this.currentMonth);
+        this.formattedEvents.forEach(item => {
+          if (
+            this.currentMonth === item.month - 1 &&
+            this.currentYear === item.year
+          ) {
+            console.log(item);
+          }
+        });
+      },
+    },
   },
   computed: {
     month() {
@@ -92,6 +129,7 @@ export default {
     this.currentYear = +moment().format('YYYY');
     this.currentMonth = +moment().format('M') - 1;
     this.getCurrentMonthData();
+    this.formattedEvents = this.calculateEventYearMonthAndDay();
   },
 };
 </script>
