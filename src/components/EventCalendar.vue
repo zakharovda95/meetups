@@ -16,9 +16,6 @@
         :key="day"
       >
         {{ day }}
-        <div class="event-calendar-weekday-panel-item-event">
-          <slot />
-        </div>
       </div>
     </div>
     <div class="event-calendar-container">
@@ -27,7 +24,17 @@
         v-for="day in daysInCurrentMonth"
         :key="day.day"
       >
-        {{ day.day }}
+        <div class="event-calendar-item-day">{{ day.day }}</div>
+        <div class="event-calendar-item-events" v-if="day.events.length">
+          <UiLink
+            variant="calendar-link"
+            v-for="event in day.events"
+            :key="event.id"
+            :to="{ name: 'meetup', params: { meetupId: event.id } }"
+          >
+            {{ event.title }}
+          </UiLink>
+        </div>
       </div>
     </div>
   </div>
@@ -35,10 +42,11 @@
 <script>
 import moment from 'moment';
 import UiButton from '@/components/ui/UiButton';
+import UiLink from '@/components/ui/UiLink';
 
 export default {
   name: 'EventCalendar',
-  components: { UiButton },
+  components: { UiLink, UiButton },
   props: {
     events: {
       type: Array,
@@ -54,16 +62,26 @@ export default {
     formattedEvents: null,
   }),
   methods: {
-    // getDaysInMonth(year, month) {
-    //   return moment([year, month]).daysInMonth();
-    // },
-
     getDaysInMonthArray(year, month) {
       let monthDate = moment([year, month]).startOf('month');
       return [...Array(monthDate.daysInMonth())].map((_, i) => {
         return {
           day: i + 1,
+          events: [],
         };
+      });
+    },
+    setEvents() {
+      this.formattedEvents.forEach(item => {
+        this.daysInCurrentMonth.forEach(elem => {
+          if (
+            this.currentMonth === item.date.month &&
+            this.currentYear === item.date.year &&
+            elem.day === item.date.day
+          ) {
+            elem.events.push(item);
+          }
+        });
       });
     },
     getWeekdayMonthBegin(year, month) {
@@ -89,6 +107,7 @@ export default {
         this.currentYear -= 1;
       }
       this.getCurrentMonthData();
+      this.setEvents();
     },
     nextMonth() {
       this.currentMonth += 1;
@@ -97,6 +116,7 @@ export default {
         this.currentYear += 1;
       }
       this.getCurrentMonthData();
+      this.setEvents();
     },
     formatEventsDates() {
       return this.events.map(item => {
@@ -125,7 +145,7 @@ export default {
     this.currentYear = +moment().format('YYYY');
     this.currentMonth = +moment().format('M') - 1;
     this.getCurrentMonthData();
-    console.log(this.daysInCurrentMonth);
+    this.setEvents();
   },
 };
 </script>

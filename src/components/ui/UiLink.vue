@@ -22,6 +22,7 @@ export default {
         'ui-link-header-nav-links': this.variant === 'nav-link',
         'ui-link-filter-panel-button-link':
           this.variant === 'filter-button-link',
+        'ui-link-event-calendar-item': this.variant === 'calendar-link',
       };
     },
   },
@@ -59,6 +60,14 @@ export default {
   letter-spacing: 0.5px;
   background: $main-color;
 }
+
+.ui-link-event-calendar-item {
+  font-size: 0.9rem;
+  overflow: hidden;
+  color: white;
+  background: $main-color;
+}
+
 .router-link-exact-active {
   border-bottom: 2px solid $main-color;
 }
