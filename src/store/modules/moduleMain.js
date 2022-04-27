@@ -6,6 +6,7 @@ import {
   filterMeetupsByInput,
   sortMeetupsByDate,
 } from '@/services/_sorting.service';
+import { getEventsDates } from '@/services/_events-dates.service';
 moment.locale('ru');
 
 export const moduleMain = {
@@ -19,12 +20,7 @@ export const moduleMain = {
   }),
   getters: {
     eventsDates(state) {
-      return state.meetups.map(item => {
-        return {
-          id: item.id,
-          date: item.dateUnix,
-        };
-      });
+      return getEventsDates(state.meetups);
     },
     filteredMeetups(state, getters) {
       return filterMeetupsByInput(getters.sortedMeetups, state.inputValue);

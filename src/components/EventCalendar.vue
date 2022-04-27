@@ -25,9 +25,9 @@
       <div
         class="event-calendar-item"
         v-for="day in daysInCurrentMonth"
-        :key="day"
+        :key="day.day"
       >
-        {{ day }}
+        {{ day.day }}
       </div>
     </div>
   </div>
@@ -54,8 +54,17 @@ export default {
     formattedEvents: null,
   }),
   methods: {
-    getDaysInMonth(year, month) {
-      return moment([year, month]).daysInMonth();
+    // getDaysInMonth(year, month) {
+    //   return moment([year, month]).daysInMonth();
+    // },
+
+    getDaysInMonthArray(year, month) {
+      let monthDate = moment([year, month]).startOf('month');
+      return [...Array(monthDate.daysInMonth())].map((_, i) => {
+        return {
+          day: i + 1,
+        };
+      });
     },
     getWeekdayMonthBegin(year, month) {
       if (+moment([year, month]).startOf('month').format('d') === 0) {
@@ -64,7 +73,7 @@ export default {
       return moment([year, month]).startOf('month').format('d');
     },
     getCurrentMonthData() {
-      this.daysInCurrentMonth = this.getDaysInMonth(
+      this.daysInCurrentMonth = this.getDaysInMonthArray(
         this.currentYear,
         this.currentMonth,
       );
@@ -89,32 +98,18 @@ export default {
       }
       this.getCurrentMonthData();
     },
-    calculateEventYearMonthAndDay() {
+    formatEventsDates() {
       return this.events.map(item => {
         return {
           id: item.id,
-          day: +moment(item.date).format('D'),
-          month: +moment(item.date).format('M'),
-          year: +moment(item.date).format('YYYY'),
+          title: item.title,
+          date: {
+            day: +moment(item.date).format('D'),
+            month: +moment(item.date).format('M'),
+            year: +moment(item.date).format('YYYY'),
+          },
         };
       });
-    },
-  },
-  watch: {
-    currentMonth: {
-      // deep: true,
-      // immediate: true,
-      handler() {
-        console.log(this.currentMonth);
-        this.formattedEvents.forEach(item => {
-          if (
-            this.currentMonth === item.month - 1 &&
-            this.currentYear === item.year
-          ) {
-            console.log(item);
-          }
-        });
-      },
     },
   },
   computed: {
@@ -126,10 +121,11 @@ export default {
     },
   },
   mounted() {
+    this.formattedEvents = this.formatEventsDates();
     this.currentYear = +moment().format('YYYY');
     this.currentMonth = +moment().format('M') - 1;
     this.getCurrentMonthData();
-    this.formattedEvents = this.calculateEventYearMonthAndDay();
+    console.log(this.daysInCurrentMonth);
   },
 };
 </script>
