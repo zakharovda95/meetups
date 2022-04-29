@@ -35,12 +35,13 @@ const routes = [
             path: 'description',
             name: 'description',
             component: () =>
-              import('@/components/meetupPage/MeetupDescription.vue'),
+              import('@/components/Public/MeetupPage/MeetupDescription.vue'),
           },
           {
             path: 'agenda',
             name: 'agenda',
-            component: () => import('@/components/meetupPage/MeetupAgenda.vue'),
+            component: () =>
+              import('@/components/Public/MeetupPage/MeetupAgenda.vue'),
           },
         ],
       },

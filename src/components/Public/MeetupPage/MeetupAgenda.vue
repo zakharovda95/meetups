@@ -13,7 +13,7 @@
   <hr />
 </template>
 <script>
-import MeetupAgendaItem from '@/components/meetupPage/MeetupAgendaItem';
+import MeetupAgendaItem from '@/components/Public/MeetupPage/MeetupAgendaItem';
 import UiMessage from '@/components/ui/UiMessage';
 export default {
   name: 'MeetupAgenda',

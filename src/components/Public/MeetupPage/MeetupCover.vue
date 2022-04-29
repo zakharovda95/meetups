@@ -27,8 +27,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../assets/styles/_constants.scss';
-@import '../../assets/fonts/_fonts.css';
+@import '../../../assets/styles/constants';
+@import '../../../assets/fonts/_fonts.css';
 .meetup-cover {
   background-size: cover;
   background-position: center;

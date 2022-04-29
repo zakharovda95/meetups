@@ -38,7 +38,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../assets/styles/_constants.scss';
+@import '../../../assets/styles/constants';
 .meetup_info {
   .mdl-card__supporting-text {
     margin-bottom: -15px;

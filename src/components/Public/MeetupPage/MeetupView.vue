@@ -4,8 +4,9 @@
     <div class="meetup-view-wrapper-cover">
       <MeetupCover :image="meetup.image" :title="meetup.title" />
     </div>
-    <div class="meetup-view-wrapper-info">
+    <div class="info-buttons-group">
       <MeetupInfo :meetup="meetup" />
+      <MeetupButtonGroup />
     </div>
     <div class="meetup-view-wrapper-description-agenda">
       <router-view />
@@ -13,9 +14,10 @@
   </div>
 </template>
 <script>
-import MeetupCover from '@/components/meetupPage/MeetupCover';
-import MeetupInfo from '@/components/meetupPage/MeetupInfo';
+import MeetupCover from '@/components/Public/MeetupPage/MeetupCover';
+import MeetupInfo from '@/components/Public/MeetupPage/MeetupInfo';
 import UiLoading from '@/components/ui/UiLoading';
+import MeetupButtonGroup from '@/components/Autorized/MeetupPage/MeetupButtonGroup';
 
 export default {
   name: 'MeetupView',
@@ -23,6 +25,7 @@ export default {
     MeetupCover,
     MeetupInfo,
     UiLoading,
+    MeetupButtonGroup,
   },
 
   mounted() {
@@ -59,7 +62,7 @@ export default {
       font-size: 1.5em;
       width: 100%;
     }
-    .meetup-view-wrapper-info {
+    .info-buttons-group {
       display: flex;
       flex-direction: column;
       align-self: center;
@@ -87,11 +90,12 @@ export default {
       font-size: 1.5em;
       width: 100%;
     }
-    .meetup-view-wrapper-info {
+    .info-buttons-group {
+      margin-top: 15px;
       display: flex;
-      flex-direction: column;
       align-self: center;
       width: 100%;
+      justify-content: space-between;
     }
   }
 }

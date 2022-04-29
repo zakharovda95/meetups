@@ -1,7 +1,7 @@
 <template>
   <div class="meetups-list">
-    <UiMessage v-if="!meetups">
-      По заданным параметрам ничего не найдено
+    <UiMessage v-if="!meetups.length">
+      По заданным параметрам ничего не найдено :(
     </UiMessage>
     <MeetupItem
       v-else
@@ -12,7 +12,7 @@
   </div>
 </template>
 <script>
-import MeetupItem from '@/components/MeetupItem';
+import MeetupItem from '@/components/Public/MeetupList/MeetupItem';
 import UiMessage from '@/components/ui/UiMessage';
 export default {
   name: 'MeetupsList',

@@ -37,8 +37,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../assets/fonts/_fonts.css';
-@import '../assets/styles/_constants.scss';
+@import '../../assets/fonts/_fonts.css';
+@import '../../assets/styles/constants';
 .navbar-wrapper {
   display: flex;
   flex-direction: column;

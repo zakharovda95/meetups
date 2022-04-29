@@ -10,6 +10,9 @@ export default {
   created() {
     this.$store.dispatch('getMeetups');
     this.$store.dispatch('getIconList');
+    setTimeout(() => {
+      this.$toast.show('Приветствую на моем демонстрационном проекте!');
+    }, 2000);
   },
 };
 </script>

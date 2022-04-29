@@ -12,8 +12,8 @@
   </div>
 </template>
 <script>
-import NavbarItem from '@/components/NavbarItem';
-import FooterItem from '@/components/FooterItem';
+import NavbarItem from '@/components/LayoutComponents/NavbarItem';
+import FooterItem from '@/components/LayoutComponents/FooterItem';
 export default {
   name: 'MainPageLayout',
   components: {

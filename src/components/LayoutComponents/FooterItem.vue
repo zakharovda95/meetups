@@ -16,8 +16,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../assets/fonts/_fonts.css';
-@import '../assets/styles/_constants.scss';
+@import '../../assets/fonts/_fonts.css';
+@import '../../assets/styles/constants';
 .footer-item-wrapper {
   display: flex;
   align-items: center;

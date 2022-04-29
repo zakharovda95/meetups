@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import EventCalendar from '@/components/EventCalendar';
+import EventCalendar from '@/components/Public/EventCalendar/EventCalendar';
 
 export default {
   name: 'CalendarPage',

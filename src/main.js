@@ -3,10 +3,16 @@ import App from '@/App.vue';
 import router from '@/router';
 import store from '@/store';
 import 'material-design-lite/material.min.css';
-import 'material-design-lite/material.min.js';
+import Toaster from '@meforma/vue-toaster';
+import UUID from 'vue-uuid';
 // import { getStorageDataLink } from '@/api/firebase/_firebase.storage.services';
 
-createApp(App).use(store).use(router).mount('#app');
+const app = createApp(App);
+app.use(Toaster);
+app.use(store);
+app.use(router);
+app.use(UUID);
+app.mount('#app');
 
 // import { setFirebaseData } from '@/api/firebase/_firebase.services';
 // setFirebaseData('meetups', meetups);

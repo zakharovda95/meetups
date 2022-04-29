@@ -4,6 +4,10 @@
       <MeetupCover :title="meetup.title" :image="meetup.image" />
     </div>
     <div class="meetup-item-wrapper-info">
+      <div class="meetup-item-badge">
+        <UiBadge v-if="false">Участник</UiBadge>
+        <UiBadge variant="organizer">Организатор</UiBadge>
+      </div>
       <MeetupInfo :meetup="meetup"></MeetupInfo>
     </div>
     <hr />
@@ -18,12 +22,14 @@
   </div>
 </template>
 <script>
-import MeetupInfo from '@/components/meetupPage/MeetupInfo';
-import MeetupCover from '@/components/meetupPage/MeetupCover';
+import MeetupInfo from '@/components/Public/MeetupPage/MeetupInfo';
+import MeetupCover from '@/components/Public/MeetupPage/MeetupCover';
 import UiLink from '@/components/ui/UiLink';
+import UiBadge from '@/components/ui/UiBadge';
 export default {
   name: 'MeetupsItem',
   components: {
+    UiBadge,
     MeetupCover,
     MeetupInfo,
     UiLink,
@@ -37,8 +43,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../assets/fonts/_fonts.css';
-@import '../assets/styles/_constants.scss';
+@import '../../../assets/fonts/_fonts.css';
+@import '../../../assets/styles/constants';
 
 .meetup-item-wrapper {
   display: flex;
@@ -46,6 +52,12 @@ export default {
   width: 100%;
   margin-top: 25px;
   background: $navbar-color-white;
+  .meetup-item-wrapper-info {
+    .meetup-item-badge {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
 
   .meetup-item-wrapper-title {
     display: flex;

@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../assets/styles/_constants.scss';
+@import '../../../assets/styles/constants';
 .agenda-item-wrapper {
   display: flex;
   margin-top: 30px;

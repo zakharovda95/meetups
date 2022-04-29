@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import MeetupsList from '@/components/MeetupsList';
+import MeetupsList from '@/components/Public/MeetupList/MeetupsList';
 import UiLoading from '@/components/ui/UiLoading';
 export default {
   name: 'MainPage',

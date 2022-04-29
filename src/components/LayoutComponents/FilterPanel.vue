@@ -73,7 +73,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../assets/styles/constants';
+@import '../../assets/styles/constants';
 @media (max-width: 1019px) {
   .filter-panel-wrapper {
     display: flex;
