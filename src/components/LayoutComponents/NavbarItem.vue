@@ -7,7 +7,7 @@
         </div>
       </header>
     </div>
-    <div class="navbar-wrapper-nav-wrapper">
+    <div class="navbar-links-public" v-if="false">
       <nav class="navbar-wrapper-nav">
         <UiLink
           variant="nav-link"
@@ -23,6 +23,23 @@
         <UiLink variant="nav-link" :to="{ name: 'create' }">
           Создать митап
         </UiLink>
+      </nav>
+    </div>
+    <div class="navbar-links-authorized">
+      <nav class="navbar-wrapper-nav">
+        <UiLink
+          variant="nav-link"
+          v-if="$route.meta.showReturnToMeetupList"
+          :to="{ name: 'meetups' }"
+        >
+          &#10229; К списку
+        </UiLink>
+        <UiLink variant="nav-link" to="/">Мои митапы</UiLink>
+        <UiLink variant="nav-link" to="/"> Организуемые митапы </UiLink>
+        <UiLink variant="nav-link" :to="{ name: 'create' }">
+          Создать митап
+        </UiLink>
+        <UiLink variant="nav-link" to="/"> Выйти </UiLink>
       </nav>
     </div>
   </div>
@@ -61,7 +78,8 @@ export default {
       }
     }
   }
-  .navbar-wrapper-nav-wrapper {
+  .navbar-links-authorized,
+  .navbar-links-public {
     display: flex;
     justify-content: center;
     height: 80px;
