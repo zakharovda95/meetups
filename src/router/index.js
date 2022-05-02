@@ -69,9 +69,22 @@ const routes = [
     ],
   },
   {
-    path: '/create',
-    name: 'create',
-    component: () => import('@/layouts/AuthPageLayout.vue'),
+    path: '',
+    name: 'createEdit',
+    redirect: { name: 'create' },
+    component: () => import('@/layouts/CreateEditLayout.vue'),
+    children: [
+      {
+        path: 'create',
+        name: 'create',
+        component: () => import('@/views/CreatePage.vue'),
+      },
+      {
+        path: 'edit',
+        name: 'edit',
+        component: () => import('@/views/EditPage.vue'),
+      },
+    ],
   },
 ];
 
