@@ -1,4 +1,4 @@
-import { ref, getDownloadURL, listAll } from 'firebase/storage';
+import { ref, getDownloadURL, listAll, uploadBytes } from 'firebase/storage';
 import { fbStorage } from '@/requesters/firebase/_options.firebase';
 // Формирование ссылки
 export function getStorageDataLink(path) {
@@ -12,4 +12,13 @@ export async function createIconsList(action, path) {
       action('setMainPageIcons', { name: item.name, url: link });
     }),
   );
+}
+// Загрузка файла в сторадж
+export async function uploadImage(path, file) {
+  const imageRef = ref(fbStorage, path);
+  const imageName = file.name;
+  const spaceRef = ref(imageRef, imageName);
+  return await uploadBytes(spaceRef, file).then(snapshot => {
+    return snapshot;
+  });
 }
