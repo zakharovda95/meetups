@@ -1,6 +1,10 @@
 <template>
   <div class="image-uploader">
-    <label class="preview" :class="uploaderClass" :style="uploaderBgImage">
+    <label
+      class="preview"
+      :class="uploaderClass"
+      :style="{ 'background-image': bgImage }"
+    >
       <span class="text">{{ text }}</span>
       <input
         type="file"
@@ -8,11 +12,12 @@
         accept="image/*"
         class="input"
         v-bind="$attrs"
+        :disabled="loading"
         @change="uploadImage"
+        @click="removeImg"
       />
     </label>
   </div>
-  <div class="123" @click="removeImg">Удалить</div>
 </template>
 
 <script>
@@ -64,10 +69,12 @@ export default {
         'loading': this.loading,
       };
     },
-    uploaderBgImage() {
-      return this.url
-        ? `url(${this.url})`
-        : `url('https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetups_card__background.jpg?alt=media&token=744441d9-c81e-4332-82a5-f41e5cc96b58')`;
+    bgImage() {
+      if (this.url) {
+        return `linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.url})`;
+      } else {
+        return `linear-gradient( 0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetups_card__background.jpg?alt=media&token=744441d9-c81e-4332-82a5-f41e5cc96b58')`;
+      }
     },
     // eslint-disable-next-line vue/return-in-computed-property
     text() {
@@ -94,14 +101,7 @@ export default {
 .preview {
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
-    ),
-    url('https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetups_card__background.jpg?alt=media&token=744441d9-c81e-4332-82a5-f41e5cc96b58');
-  border: 2px solid blue;
-  border-radius: 8px;
+  border: 2px solid white;
   transition: 0.2s border-color;
   cursor: pointer;
   display: flex;
