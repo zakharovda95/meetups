@@ -1,6 +1,12 @@
-import { ref, getDownloadURL, listAll, uploadBytes } from 'firebase/storage';
+import {
+  ref,
+  getDownloadURL,
+  listAll,
+  uploadBytes,
+  deleteObject,
+} from 'firebase/storage';
 import { fbStorage } from '@/requesters/firebase/_options.firebase';
-// Формирование ссылки
+// Получение ссылки для загрузки/отображения
 export function getStorageDataLink(path) {
   return getDownloadURL(ref(fbStorage, path));
 }
@@ -13,12 +19,26 @@ export async function createIconsList(action, path) {
     }),
   );
 }
+// Формирование ссылки на файл
+export function createStorageImageUrl(path, file) {
+  return ref(ref(fbStorage, path), file.name);
+}
+
 // Загрузка файла в сторадж
 export async function uploadImage(path, file) {
-  const imageRef = ref(fbStorage, path);
-  const imageName = file.name;
-  const spaceRef = ref(imageRef, imageName);
-  return await uploadBytes(spaceRef, file).then(snapshot => {
+  const ref = createStorageImageUrl(path, file);
+  return await uploadBytes(ref, file).then(snapshot => {
     return snapshot;
   });
+}
+// Удаление файла из стораджа
+export async function removeImage(path, file) {
+  const ref = createStorageImageUrl(path, file);
+  await deleteObject(ref)
+    .then(() => {
+      console.log('Удалено!');
+    })
+    .catch(error => {
+      console.log('Ошибка!' + error);
+    });
 }

@@ -1,78 +1,127 @@
 <template>
   <div class="image-uploader">
-    <label class="image-uploader__preview">
-      <span class="image-uploader__text">123</span>
+    <label class="preview" :class="uploaderClass" :style="uploaderBgImage">
+      <span class="text">{{ text }}</span>
       <input
         type="file"
         ref="input"
         accept="image/*"
-        class="image-uploader__input"
+        class="input"
         v-bind="$attrs"
         @change="uploadImage"
       />
     </label>
   </div>
+  <div class="123" @click="removeImg">Удалить</div>
 </template>
 
 <script>
-import { uploadImage } from '@/requesters/firebase/_firebase.storage.requesters';
-import { getStorageDataLink } from '@/requesters/firebase/_firebase.storage.requesters';
+import {
+  getStorageDataLink,
+  uploadImage,
+  removeImage,
+} from '@/requesters/firebase/_firebase.storage.requesters';
+
 export default {
   name: 'UiImageUploader',
   props: {
     preview: String,
-    uploader: Function,
+  },
+  data: () => ({
+    loading: false,
+    url: undefined,
+  }),
+  created() {
+    if (this.preview) {
+      this.url = this.preview;
+    }
   },
   methods: {
     async uploadImage() {
+      this.loading = true;
       const file = this.$refs.input.files[0];
       const res = await uploadImage('/covers/', file);
-      const link = await getStorageDataLink(res.metadata.fullPath);
-      console.log(link);
+      this.url = await getStorageDataLink(res.metadata.fullPath);
+      this.loading = false;
+    },
+
+    async removeImg(event) {
+      if (this.url) {
+        this.loading = true;
+        event.preventDefault();
+        const file = this.$refs.input.files[0];
+        await removeImage('/covers/', file);
+        this.url = undefined;
+        this.loading = false;
+      }
+      this.$emit('remove');
+      this.$refs.input.value = null;
+    },
+  },
+  computed: {
+    uploaderClass() {
+      return {
+        'loading': this.loading,
+      };
+    },
+    uploaderBgImage() {
+      return this.url
+        ? `url(${this.url})`
+        : `url('https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetups_card__background.jpg?alt=media&token=744441d9-c81e-4332-82a5-f41e5cc96b58')`;
+    },
+    // eslint-disable-next-line vue/return-in-computed-property
+    text() {
+      if (!this.url && !this.loading) {
+        return 'Загрузить изображение';
+      }
+      if (this.loading) {
+        return 'Загрузка...';
+      }
+      if (this.url && !this.loading) {
+        return 'Удалить изображение';
+      }
     },
   },
 };
 </script>
 
 <style scoped>
-/*.image-uploader {*/
-/*  //background-image: var(--bg-url);*/
-/*}*/
-/*.image-uploader__input {*/
-/*  opacity: 0;*/
-/*  height: 0;*/
-/*}*/
-/*.image-uploader__preview {*/
-/*  //--bg-url: ;*/
-/*  background-size: cover;*/
-/*  background-position: center;*/
-/*  background-image: linear-gradient(*/
-/*      0deg,*/
-/*      rgba(0, 0, 0, 0.4),*/
-/*      rgba(0, 0, 0, 0.4)*/
-/*    ),*/
-/*  // border: 2px solid var(--blue-light);*/
-/*  border-radius: 8px;*/
-/*  transition: 0.2s border-color;*/
-/*  cursor: pointer;*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  max-width: 512px;*/
-/*  height: 228px;*/
-/*}*/
-/*.image-uploader__text {*/
-/*  color: white;*/
-/*  font-family: 'Nunito', sans-serif;*/
-/*  font-weight: 600;*/
-/*  font-size: 20px;*/
-/*  line-height: 28px;*/
-/*}*/
-/*.image-uploader__preview:hover {*/
-/*  border-color: blue;*/
-/*}*/
-/*.image-uploader__preview.image-uploader__preview-loading {*/
-/*  cursor: no-drop;*/
-/*}*/
+@import '../../../assets/styles/_constants.scss';
+.input {
+  opacity: 0;
+  height: 0;
+}
+.preview {
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url('https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetups_card__background.jpg?alt=media&token=744441d9-c81e-4332-82a5-f41e5cc96b58');
+  border: 2px solid blue;
+  border-radius: 8px;
+  transition: 0.2s border-color;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 512px;
+  height: 228px;
+}
+.text {
+  color: white;
+  font-family: 'JetBrainMono-Light', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+}
+.preview:hover {
+  border-color: blue;
+}
+.loading {
+  cursor: no-drop;
+}
 </style>
