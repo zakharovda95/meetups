@@ -13,7 +13,7 @@
         class="input"
         v-bind="$attrs"
         :disabled="loading"
-        @change="uploadImage"
+        @change="selectImage"
         @click="removeImg"
       />
     </label>
@@ -29,6 +29,7 @@ import {
 
 export default {
   name: 'UiImageUploader',
+  emits: ['select', 'upload', 'error', 'remove'],
   props: {
     preview: String,
   },
@@ -42,20 +43,33 @@ export default {
     }
   },
   methods: {
-    async uploadImage() {
-      this.loading = true;
+    selectImage() {
       const file = this.$refs.input.files[0];
-      const res = await uploadImage('/covers/', file);
-      this.url = await getStorageDataLink(res.metadata.fullPath);
-      this.loading = false;
+      this.$emit('select', file);
+      this.uploadImg(file);
+    },
+    async uploadImg(file) {
+      try {
+        this.loading = true;
+        const res = await uploadImage('/covers/', file);
+        const url = await getStorageDataLink(res.metadata.fullPath);
+        this.url = url;
+        this.$emit('upload', url);
+      } catch (err) {
+        console.log(err);
+        this.$emit('error', err);
+      } finally {
+        this.loading = false;
+      }
     },
 
     async removeImg(event) {
       if (this.url) {
-        this.loading = true;
         event.preventDefault();
+        this.loading = true;
         const file = this.$refs.input.files[0];
         await removeImage('/covers/', file);
+        this.$emit('remove');
         this.url = undefined;
         this.loading = false;
       }
@@ -76,7 +90,6 @@ export default {
         return `linear-gradient( 0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetups_card__background.jpg?alt=media&token=744441d9-c81e-4332-82a5-f41e5cc96b58')`;
       }
     },
-    // eslint-disable-next-line vue/return-in-computed-property
     text() {
       if (!this.url && !this.loading) {
         return 'Загрузить изображение';
@@ -87,6 +100,7 @@ export default {
       if (this.url && !this.loading) {
         return 'Удалить изображение';
       }
+      return '';
     },
   },
 };

@@ -1,12 +1,13 @@
 <template>
-  <UiImageUploader />
+  <div class="create-page">
+    <CreateView />
+  </div>
 </template>
 <script>
-import UiImageUploader from '@/components/Autorized/MeetupCreate/ImageUploader';
+import CreateView from '@/components/Autorized/MeetupCreate/CreateView.vue';
 export default {
   name: 'CreatePage',
-  components: { UiImageUploader },
-  data: () => ({}),
+  components: { CreateView },
 };
 </script>
 <style scoped lang="scss"></style>
