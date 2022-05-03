@@ -10,4 +10,9 @@ export default {
   components: { CreateView },
 };
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.create-page {
+  display: flex;
+  justify-content: center;
+}
+</style>

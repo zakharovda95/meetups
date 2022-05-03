@@ -43,6 +43,7 @@ export default {
   padding: 8px;
   font-size: 1.1em;
   font-family: JetBrainMono-Light, sans-serif;
-  width: 25vh;
+  max-width: 70vw;
+  border: 1px solid blue;
 }
 </style>

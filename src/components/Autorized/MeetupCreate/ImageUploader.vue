@@ -52,9 +52,10 @@ export default {
       try {
         this.loading = true;
         const res = await uploadImage('/covers/', file);
-        const url = await getStorageDataLink(res.metadata.fullPath);
+        const path = res.metadata.fullPath;
+        const url = await getStorageDataLink(path);
         this.url = url;
-        this.$emit('upload', url);
+        this.$emit('upload', { url, path });
       } catch (err) {
         console.log(err);
         this.$emit('error', err);
@@ -106,31 +107,38 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 @import '../../../assets/styles/_constants.scss';
-.input {
-  opacity: 0;
-  height: 0;
-}
-.preview {
-  background-size: cover;
-  background-position: center;
-  border: 2px solid white;
-  transition: 0.2s border-color;
-  cursor: pointer;
+.image-uploader {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 512px;
-  height: 228px;
-}
-.text {
-  color: white;
-  font-family: 'JetBrainMono-Light', sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 28px;
+
+  .input {
+    opacity: 0;
+    height: 0;
+  }
+
+  .preview {
+    background-size: cover;
+    background-position: center;
+    border: 2px solid white;
+    transition: 0.2s border-color;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 512px;
+    height: 228px;
+    width: 100%;
+  }
+
+  .text {
+    color: white;
+    font-family: 'JetBrainMono-Light', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+  }
 }
 .preview:hover {
   border-color: blue;
