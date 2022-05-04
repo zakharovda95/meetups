@@ -8,6 +8,41 @@ export const agendaItemTitles = {
   talk: 'Доклад',
   other: 'Другое',
 };
+
+export const agendaItemsOptions = [
+  {
+    value: 'registration',
+    name: 'Регистрация',
+  },
+  {
+    value: 'opening',
+    name: 'Открытие',
+  },
+  {
+    value: 'break',
+    name: 'Перерыв',
+  },
+  {
+    value: 'coffee',
+    name: 'Coffee Break',
+  },
+  {
+    value: 'closing',
+    name: 'Закрытие',
+  },
+  {
+    value: 'afterparty',
+    name: 'Afterparty',
+  },
+  {
+    value: 'talk',
+    name: 'Доклад',
+  },
+  {
+    value: 'other',
+    name: 'Другое',
+  },
+];
 export const agendaItemIcons = {
   registration: 'clipboard',
   opening: 'clock',

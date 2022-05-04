@@ -1,27 +1,21 @@
 <template>
   <div class="create-view">
     <h3>Создайте митап</h3>
-    <div class="row">
-      <div class="creation-form">
-        <form>
-          <UiLabel label="Заголовок">
-            <UiInput v-model="meetupForm.title" required />
-          </UiLabel>
-          <UiLabel label="Дата мероприятия">
-            <UiInputDate v-model="meetupForm.date" />
-          </UiLabel>
-          <UiLabel label="Место проведения">
-            <UiInput v-model="meetupForm.place" />
-          </UiLabel>
-          <UiLabel label="Описание">
-            <UiInput multiline v-model="meetupForm.description" />
-          </UiLabel>
-        </form>
-      </div>
-      <div class="creation-buttons">
-        <UiButton variant="bgBlue" @click="create">Создать</UiButton>
-        <UiButton variant="bgRed" @click="cancel">Отменить</UiButton>
-      </div>
+    <div class="creation-form">
+      <form>
+        <UiLabel label="Заголовок">
+          <UiInput v-model="meetupForm.title" required />
+        </UiLabel>
+        <UiLabel label="Дата мероприятия">
+          <UiInputDate v-model="meetupForm.date" />
+        </UiLabel>
+        <UiLabel label="Место проведения">
+          <UiInput v-model="meetupForm.place" />
+        </UiLabel>
+        <UiLabel label="Описание">
+          <UiInput multiline v-model="meetupForm.description" />
+        </UiLabel>
+      </form>
     </div>
     <UiImageUploader
       class="uploader"
@@ -29,6 +23,11 @@
       @upload="uploadUrl"
       @remove="removeUrl"
     />
+    <AgendaItemForm class="agenda-item"></AgendaItemForm>
+    <div class="creation-buttons">
+      <UiButton variant="bgBlue" @click="create">Создать</UiButton>
+      <UiButton variant="bgRed" @click="cancel">Отменить</UiButton>
+    </div>
   </div>
 </template>
 <script>
@@ -39,28 +38,31 @@ import UiLabel from '@/components/ui/UiLabel';
 import UiButton from '@/components/ui/UiButton';
 import { removeImage } from '@/requesters/firebase/_firebase.storage.requesters';
 import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
+import AgendaItemForm from '@/components/Autorized/MeetupCreate/AgendaItemForm';
 export default {
   name: 'CreateView',
-  components: { UiImageUploader, UiLabel, UiInput, UiInputDate, UiButton },
+  components: {
+    AgendaItemForm,
+    UiImageUploader,
+    UiLabel,
+    UiInput,
+    UiInputDate,
+    UiButton,
+  },
   data: () => ({
     preview: null,
-    meetupForm: {
-      id: Date.now() - 2,
-      organizer: '123',
-      image: '',
-      imageId: Date.now() - 1,
-      title: '',
-      date: '',
-      place: '',
-      description: '',
-      agenda: [],
-    },
   }),
+  computed: {
+    meetupForm() {
+      return this.$store.state.creating.meetupForm;
+    },
+  },
   methods: {
     uploadUrl(url) {
       console.log(url);
       this.meetupForm.imageId = url.url;
-      this.meetupForm.image = url.file;
+      this.meetupForm.image = url.url;
+      this.meetupForm.file = url.file;
     },
     removeUrl() {
       this.meetupForm.imageId = null;
@@ -75,7 +77,7 @@ export default {
       await this.$router.push({ name: 'meetups' });
     },
     async create() {
-      await setFirebaseData('meetups/', this.meetupForm);
+      await setFirebaseData('meetups/' + this.meetupForm.id, this.meetupForm);
       await this.$router.push({ name: 'meetups' });
     },
   },
@@ -93,22 +95,21 @@ export default {
     font-family: JetBrainMono-Bold, sans-serif;
     color: #3535ad;
   }
-  .row {
+  .creation-form {
     display: flex;
-    justify-content: space-between;
-    .creation-form {
-      display: flex;
-      flex-direction: column;
-      width: 60%;
-    }
-    .creation-buttons {
-      display: flex;
-      flex-direction: column;
-      align-self: center;
-    }
+    flex-direction: column;
+    width: 100%;
   }
   .uploader {
     width: 100%;
+  }
+  .agenda-item {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .creation-buttons {
+    display: flex;
+    align-self: center;
   }
 }
 </style>

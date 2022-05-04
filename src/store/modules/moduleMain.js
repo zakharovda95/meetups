@@ -70,7 +70,8 @@ export const moduleMain = {
       try {
         commit('checkLoading', true);
         const response = await getFirebaseData('meetups');
-        commit('setMeetups', response);
+        const result = Object.values(response);
+        commit('setMeetups', result);
       } catch (err) {
         console.log(err);
       } finally {

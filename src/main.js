@@ -13,7 +13,7 @@ app.use(store);
 app.use(router);
 app.use(UUID);
 app.mount('#app');
-//import { meetups } from '@/api/localDataBase/formatedMeetups';
+// import { meetups } from '@/api/localDataBase/formatedMeetups';
 // import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
 // setFirebaseData('meetups', meetups);
 // async function link() {

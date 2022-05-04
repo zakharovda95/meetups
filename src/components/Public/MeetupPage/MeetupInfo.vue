@@ -40,6 +40,7 @@ export default {
 <style scoped lang="scss">
 @import '../../../assets/styles/constants';
 .meetup_info {
+  width: 100%;
   .mdl-card__supporting-text {
     margin-bottom: -15px;
     font-family: JetBrainMono-Bold, sans-serif;

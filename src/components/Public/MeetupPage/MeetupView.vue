@@ -18,7 +18,6 @@ import MeetupCover from '@/components/Public/MeetupPage/MeetupCover';
 import MeetupInfo from '@/components/Public/MeetupPage/MeetupInfo';
 import UiLoading from '@/components/ui/UiLoading';
 import MeetupButtonGroup from '@/components/Autorized/MeetupPage/MeetupButtonGroup';
-
 export default {
   name: 'MeetupView',
   components: {
@@ -67,6 +66,7 @@ export default {
       flex-direction: column;
       align-self: center;
       width: 100%;
+      align-items: center;
     }
   }
 }
@@ -91,7 +91,7 @@ export default {
       width: 100%;
     }
     .info-buttons-group {
-      margin-top: 15px;
+      margin-top: 20px;
       display: flex;
       align-self: center;
       width: 100%;
