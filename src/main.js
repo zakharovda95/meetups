@@ -13,8 +13,8 @@ app.use(store);
 app.use(router);
 app.use(UUID);
 app.mount('#app');
-
-// import { setFirebaseData } from '@/api/firebase/_firebase.services';
+//import { meetups } from '@/api/localDataBase/formatedMeetups';
+// import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
 // setFirebaseData('meetups', meetups);
 // async function link() {
 //   return await getStorageDataLink('covers/meetup_adventure_cover.jpg');

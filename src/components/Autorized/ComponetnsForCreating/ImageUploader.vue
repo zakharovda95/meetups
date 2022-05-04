@@ -55,7 +55,7 @@ export default {
         const path = res.metadata.fullPath;
         const url = await getStorageDataLink(path);
         this.url = url;
-        this.$emit('upload', { url, path });
+        this.$emit('upload', { url, file });
       } catch (err) {
         console.log(err);
         this.$emit('error', err);
@@ -69,6 +69,7 @@ export default {
         event.preventDefault();
         this.loading = true;
         const file = this.$refs.input.files[0];
+        console.log(file);
         await removeImage('/covers/', file);
         this.$emit('remove');
         this.url = undefined;
@@ -108,7 +109,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../../assets/styles/_constants.scss';
+@import '../../../assets/styles/constants';
 .image-uploader {
   display: flex;
 
@@ -127,9 +128,9 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 512px;
-    height: 228px;
     width: 100%;
+    min-width: 380px;
+    height: 228px;
   }
 
   .text {
