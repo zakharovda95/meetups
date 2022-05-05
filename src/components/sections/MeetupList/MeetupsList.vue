@@ -12,7 +12,7 @@
   </div>
 </template>
 <script>
-import MeetupItem from '@/components/Public/MeetupList/MeetupItem';
+import MeetupItem from '@/components/sections/MeetupList/MeetupItem';
 import UiMessage from '@/components/ui/UiMessage';
 export default {
   name: 'MeetupsList',

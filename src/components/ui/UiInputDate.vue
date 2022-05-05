@@ -29,11 +29,7 @@ export default {
         return moment(this.modelValue).utc().format('YYYY-MM-DD');
       }
       if (this.type === 'time') {
-        if (this.$attrs.step && +this.$attrs.step % 60 !== 0) {
-          return moment.utc(this.modelValue).utc().format('HH:mm');
-        } else {
-          return moment.utc(this.modelValue).utc().format('HH:mm');
-        }
+        return moment.utc(this.modelValue).utc().format('HH:mm');
       }
       if (this.type === 'datetime-local') {
         return moment.utc(this.modelValue).utc().format('YYYY-MM-DDTHH:mm');

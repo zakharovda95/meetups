@@ -22,8 +22,8 @@
   </div>
 </template>
 <script>
-import MeetupInfo from '@/components/Public/MeetupPage/MeetupInfo';
-import MeetupCover from '@/components/Public/MeetupPage/MeetupCover';
+import MeetupInfo from '@/components/sections/MeetupPage/MeetupInfo';
+import MeetupCover from '@/components/sections/MeetupPage/MeetupCover';
 import UiLink from '@/components/ui/UiLink';
 import UiBadge from '@/components/ui/UiBadge';
 export default {

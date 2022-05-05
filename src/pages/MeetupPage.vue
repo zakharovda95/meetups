@@ -7,8 +7,8 @@
   </div>
 </template>
 <script>
-import MeetupView from '@/components/Public/MeetupPage/MeetupView';
-import MeetupToggle from '@/components/Public/MeetupPage/MeetupToggle';
+import MeetupView from '@/components/sections/MeetupPage/MeetupView';
+import MeetupToggle from '@/components/sections/MeetupPage/MeetupToggle';
 export default {
   name: 'MeetupPage',
   components: {

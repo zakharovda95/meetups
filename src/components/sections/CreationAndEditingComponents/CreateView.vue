@@ -23,7 +23,19 @@
       @upload="uploadUrl"
       @remove="removeUrl"
     />
-    <AgendaItemForm class="agenda-item"></AgendaItemForm>
+    <div class="agenda-item-group">
+      <h3>Программа</h3>
+      <AgendaItemForm
+        v-for="agenda in meetupForm.agenda"
+        :key="agenda.id"
+        class="agenda-item"
+      ></AgendaItemForm>
+      <div class="add-button">
+        <UiButton variant="blue" @click="addAgendaItem">
+          + Добавить пункт программы
+        </UiButton>
+      </div>
+    </div>
     <div class="creation-buttons">
       <UiButton variant="bgBlue" @click="create">Создать</UiButton>
       <UiButton variant="bgRed" @click="cancel">Отменить</UiButton>
@@ -31,14 +43,14 @@
   </div>
 </template>
 <script>
-import UiImageUploader from '@/components/Autorized/ComponetnsForCreating/ImageUploader';
+import UiImageUploader from '@/components/sections/CreationAndEditingComponents/ImageUploader';
 import UiInput from '@/components/ui/UiInput';
 import UiInputDate from '@/components/ui/UiInputDate';
 import UiLabel from '@/components/ui/UiLabel';
 import UiButton from '@/components/ui/UiButton';
 import { removeImage } from '@/requesters/firebase/_firebase.storage.requesters';
 import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
-import AgendaItemForm from '@/components/Autorized/MeetupCreate/AgendaItemForm';
+import AgendaItemForm from '@/components/sections/CreationAndEditingComponents/AgendaItemForm';
 export default {
   name: 'CreateView',
   components: {
@@ -58,6 +70,9 @@ export default {
     },
   },
   methods: {
+    addAgendaItem() {
+      this.$store.dispatch('addAgendaItem', this.agendaItemForm);
+    },
     uploadUrl(url) {
       console.log(url);
       this.meetupForm.imageId = url.url;

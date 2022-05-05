@@ -14,10 +14,10 @@
   </div>
 </template>
 <script>
-import MeetupCover from '@/components/Public/MeetupPage/MeetupCover';
-import MeetupInfo from '@/components/Public/MeetupPage/MeetupInfo';
+import MeetupCover from '@/components/sections/MeetupPage/MeetupCover';
+import MeetupInfo from '@/components/sections/MeetupPage/MeetupInfo';
 import UiLoading from '@/components/ui/UiLoading';
-import MeetupButtonGroup from '@/components/Autorized/MeetupPage/MeetupButtonGroup';
+import MeetupButtonGroup from '@/components/sections/MeetupPage/MeetupButtonGroup';
 export default {
   name: 'MeetupView',
   components: {

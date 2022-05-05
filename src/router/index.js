@@ -10,12 +10,12 @@ const routes = [
       {
         path: 'meetups',
         name: 'meetups',
-        component: () => import('@/views/MainPage.vue'),
+        component: () => import('@/pages/MainPage.vue'),
       },
       {
         path: 'calendar',
         name: 'calendar',
-        component: () => import('@/views/CalendarPage.vue'),
+        component: () => import('@/pages/CalendarPage.vue'),
       },
     ],
   },
@@ -29,19 +29,19 @@ const routes = [
         path: ':meetupId',
         name: 'meetupById',
         redirect: { name: 'description' },
-        component: () => import('@/views/MeetupPage.vue'),
+        component: () => import('@/pages/MeetupPage.vue'),
         children: [
           {
             path: 'description',
             name: 'description',
             component: () =>
-              import('@/components/Public/MeetupPage/MeetupDescription.vue'),
+              import('@/components/sections/MeetupPage/MeetupDescription.vue'),
           },
           {
             path: 'agenda',
             name: 'agenda',
             component: () =>
-              import('@/components/Public/MeetupPage/MeetupAgenda.vue'),
+              import('@/components/sections/MeetupPage/MeetupAgenda.vue'),
           },
         ],
       },
@@ -59,12 +59,12 @@ const routes = [
       {
         path: 'login',
         name: 'login',
-        component: () => import('@/views/LoginPage.vue'),
+        component: () => import('@/pages/LoginPage.vue'),
       },
       {
         path: 'registration',
         name: 'registration',
-        component: () => import('@/views/RegistrationPage.vue'),
+        component: () => import('@/pages/RegistrationPage.vue'),
       },
     ],
   },
@@ -77,12 +77,12 @@ const routes = [
       {
         path: 'create',
         name: 'create',
-        component: () => import('@/views/CreatePage.vue'),
+        component: () => import('@/pages/CreatePage.vue'),
       },
       {
         path: 'edit',
         name: 'edit',
-        component: () => import('@/views/EditPage.vue'),
+        component: () => import('@/pages/EditPage.vue'),
       },
     ],
   },

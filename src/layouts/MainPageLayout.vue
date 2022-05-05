@@ -15,9 +15,9 @@
   </div>
 </template>
 <script>
-import NavbarItem from '@/components/LayoutComponents/NavbarItem';
-import FilterPanel from '@/components/LayoutComponents/FilterPanel';
-import FooterItem from '@/components/LayoutComponents/FooterItem';
+import NavbarItem from '@/components/layouts/NavbarItem';
+import FilterPanel from '@/components/layouts/FilterPanel';
+import FooterItem from '@/components/layouts/FooterItem';
 export default {
   name: 'MainPageLayout',
   components: {
