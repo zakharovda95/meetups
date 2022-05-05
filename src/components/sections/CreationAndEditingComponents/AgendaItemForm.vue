@@ -1,22 +1,35 @@
 <template>
   <div class="agenda-item-form">
     <div class="row-1">
-      <UiDropdown :options="options" v-model="agendaItemForm.type" />
-      <UiButton @click="remove"
-        ><UiIcon class="trash" icon-name="trash"
-      /></UiButton>
+      <UiDropdown
+        :options="options"
+        :model-value="currentAgendaItem.type"
+        @update:model-value="updateAgendaType"
+      />
+      <UiButton><UiIcon class="trash" icon-name="trash" /></UiButton>
     </div>
     <div class="row-2">
       <UiLabel class="startsAt" label="Начало">
-        <UiInputDate type="time" v-model="agendaItemForm.startsAt" />
+        <UiInputDate
+          type="time"
+          :model-value="currentAgendaItem.startsAt"
+          @update:model-value="updateAgendaStartsAt"
+        />
       </UiLabel>
       <UiLabel class="endsAt" label="Окончание">
-        <UiInputDate type="time" v-model="agendaItemForm.endsAt" />
+        <UiInputDate
+          type="time"
+          :model-value="currentAgendaItem.endsAt"
+          @update:model-value="updateAgendaEndsAt"
+        />
       </UiLabel>
     </div>
     <div class="row-3">
       <UiLabel :label="labelType">
-        <UiInput v-model="agendaItemForm.title" />
+        <UiInput
+          :model-value="currentAgendaItem.title"
+          @update:model-value="updateAgendaTitle"
+        />
       </UiLabel>
     </div>
   </div>
@@ -33,43 +46,50 @@ export default {
   name: 'AgendaItemForm',
   components: { UiDropdown, UiIcon, UiButton, UiInputDate, UiLabel, UiInput },
   props: {
-    agendaItem: {
-      type: Object,
+    agendaId: {
+      type: String,
+      required: true,
+      validator: agenda => agenda !== '',
     },
   },
   data: () => ({
     options: agendaItemsOptions,
     currentValue: 'registration',
   }),
-  watch: {
-    agendaItemProxy: {
-      deep: true,
-      immediate: true,
-      handler() {
-        console.log(this.agendaItemProxy);
-      },
+  mounted() {
+    this.currentAgendaItem.type = this.currentValue;
+  },
+  methods: {
+    updateAgendaType(event) {
+      this.$store.dispatch('updateAgendaType', [event, this.agendaId]);
     },
-    currentValue: {
-      deep: true,
-      immediate: true,
-      handler() {
-        this.agendaItemProxy.type = this.currentValue;
-      },
+    updateAgendaStartsAt(event) {
+      this.$store.dispatch('updateAgendaStartsAt', [event, this.agendaId]);
+    },
+    updateAgendaEndsAt(event) {
+      this.$store.dispatch('updateAgendaEndsAt', [event, this.agendaId]);
+    },
+    updateAgendaTitle(event) {
+      this.$store.dispatch('updateAgendaTitle', [event, this.agendaId]);
     },
   },
   computed: {
-    agendaItemForm() {
-      return this.$store.state.creating.agendaItemForm;
+    agenda() {
+      return this.$store.state.creating.meetupForm.agenda;
+    },
+    currentAgendaItem() {
+      let currentItem = null;
+      this.agenda.forEach(item => {
+        if (this.agendaId === item.id) {
+          currentItem = item;
+        }
+      });
+      return currentItem;
     },
     labelType() {
       return this.currentValue === 'talk' || this.currentValue === 'other'
         ? 'Тема'
         : 'Нестандартный текст (необязательно)';
-    },
-  },
-  methods: {
-    remove(id) {
-      this.$store.dispatch('removeAgendaItem', id);
     },
   },
 };

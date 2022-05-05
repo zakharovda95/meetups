@@ -1,35 +1,20 @@
 <template>
   <div class="create-view">
     <h3>Создайте митап</h3>
-    <div class="creation-form">
-      <form>
-        <UiLabel label="Заголовок">
-          <UiInput v-model="meetupForm.title" required />
-        </UiLabel>
-        <UiLabel label="Дата мероприятия">
-          <UiInputDate v-model="meetupForm.date" />
-        </UiLabel>
-        <UiLabel label="Место проведения">
-          <UiInput v-model="meetupForm.place" />
-        </UiLabel>
-        <UiLabel label="Описание">
-          <UiInput multiline v-model="meetupForm.description" />
-        </UiLabel>
-      </form>
-    </div>
+    <CreateForm />
     <UiImageUploader
       class="uploader"
-      :preview="preview"
-      @upload="uploadUrl"
-      @remove="removeUrl"
+      @upload="uploadImage"
+      @remove="removeImage"
     />
     <div class="agenda-item-group">
       <h3>Программа</h3>
       <AgendaItemForm
         v-for="agenda in meetupForm.agenda"
         :key="agenda.id"
+        :agenda-id="agenda.id"
         class="agenda-item"
-      ></AgendaItemForm>
+      />
       <div class="add-button">
         <UiButton variant="blue" @click="addAgendaItem">
           + Добавить пункт программы
@@ -44,22 +29,18 @@
 </template>
 <script>
 import UiImageUploader from '@/components/sections/CreationAndEditingComponents/ImageUploader';
-import UiInput from '@/components/ui/UiInput';
-import UiInputDate from '@/components/ui/UiInputDate';
-import UiLabel from '@/components/ui/UiLabel';
+import CreateForm from '@/components/sections/CreationAndEditingComponents/CreateForm';
 import UiButton from '@/components/ui/UiButton';
-import { removeImage } from '@/requesters/firebase/_firebase.storage.requesters';
-import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
+// import { removeImage } from '@/requesters/firebase/_firebase.storage.requesters';
+// import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
 import AgendaItemForm from '@/components/sections/CreationAndEditingComponents/AgendaItemForm';
 export default {
   name: 'CreateView',
   components: {
     AgendaItemForm,
     UiImageUploader,
-    UiLabel,
-    UiInput,
-    UiInputDate,
     UiButton,
+    CreateForm,
   },
   data: () => ({
     preview: null,
@@ -71,30 +52,26 @@ export default {
   },
   methods: {
     addAgendaItem() {
-      this.$store.dispatch('addAgendaItem', this.agendaItemForm);
+      this.$store.dispatch('addAgendaItem');
     },
-    uploadUrl(url) {
-      console.log(url);
-      this.meetupForm.imageId = url.url;
-      this.meetupForm.image = url.url;
-      this.meetupForm.file = url.file;
+    uploadImage(url) {
+      this.$store.dispatch('uploadImage', url);
     },
-    removeUrl() {
-      this.meetupForm.imageId = null;
-      this.meetupForm.image = null;
+    removeImage() {
+      this.$store.dispatch('removeImage');
     },
-    async cancel() {
-      if (this.meetupForm.image) {
-        console.log(this.meetupForm.image);
-        await removeImage('/covers/', this.meetupForm.image);
-      }
-      this.meetupForm = {};
-      await this.$router.push({ name: 'meetups' });
-    },
-    async create() {
-      await setFirebaseData('meetups/' + this.meetupForm.id, this.meetupForm);
-      await this.$router.push({ name: 'meetups' });
-    },
+    // async cancel() {
+    //   if (this.meetupForm.image) {
+    //     console.log(this.meetupForm.image);
+    //     await removeImage('/covers/', this.meetupForm.image);
+    //   }
+    //   this.meetupForm = {};
+    //   await this.$router.push({ name: 'meetups' });
+    // },
+    // async create() {
+    //   await setFirebaseData('meetups/' + this.meetupForm.id, this.meetupForm);
+    //   await this.$router.push({ name: 'meetups' });
+    // },
   },
 };
 </script>
