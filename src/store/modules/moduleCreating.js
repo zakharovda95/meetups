@@ -19,13 +19,13 @@ export const moduleCreating = {
     addAgendaItem(state) {
       const agendaItemForm = {
         id: uuid.v1(),
-        type: '',
+        type: 'registration',
         title: '',
         speaker: '',
         description: '',
         language: '',
-        startsAt: '07:00',
-        endsAt: '08:00',
+        startsAt: '',
+        endsAt: '',
       };
       state.meetupForm.agenda.push(agendaItemForm);
     },
@@ -75,6 +75,24 @@ export const moduleCreating = {
       });
       elem.title = payload[0];
     },
+    updateAgendaSpeaker(state, payload) {
+      const elem = state.meetupForm.agenda.find(item => {
+        return item.id === payload[1];
+      });
+      elem.speaker = payload[0];
+    },
+    updateAgendaLanguage(state, payload) {
+      const elem = state.meetupForm.agenda.find(item => {
+        return item.id === payload[1];
+      });
+      elem.language = payload[0];
+    },
+    updateAgendaDescription(state, payload) {
+      const elem = state.meetupForm.agenda.find(item => {
+        return item.id === payload[1];
+      });
+      elem.description = payload[0];
+    },
   },
   actions: {
     addAgendaItem({ commit }, payload) {
@@ -108,7 +126,16 @@ export const moduleCreating = {
       commit('updateAgendaEndsAt', payload);
     },
     updateAgendaTitle({ commit }, payload) {
-      commit('updateAgendaEndsAt', payload);
+      commit('updateAgendaTitle', payload);
+    },
+    updateAgendaSpeaker({ commit }, payload) {
+      commit('updateAgendaSpeaker', payload);
+    },
+    updateAgendaLanguage({ commit }, payload) {
+      commit('updateAgendaLanguage', payload);
+    },
+    updateAgendaDescription({ commit }, payload) {
+      commit('updateAgendaDescription', payload);
     },
   },
 };

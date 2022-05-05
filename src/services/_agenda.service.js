@@ -32,6 +32,18 @@ export const agendaItemsOptions = [
     name: 'Другое',
   },
 ];
+
+export const agendaLangOptions = [
+  {
+    value: 'en',
+    name: 'EN',
+  },
+  {
+    value: 'ru',
+    name: 'RU',
+  },
+];
+
 export const agendaItemIcons = {
   registration: 'clipboard',
   opening: 'clock',

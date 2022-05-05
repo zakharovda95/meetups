@@ -1,19 +1,19 @@
 <template>
   <div class="create-view">
     <h3>Создайте митап</h3>
-    <CreateForm />
     <UiImageUploader
       class="uploader"
       @upload="uploadImage"
       @remove="removeImage"
     />
+    <CreateForm class="forms" />
     <div class="agenda-item-group">
       <h3>Программа</h3>
       <AgendaItemForm
+        class="agenda-forms"
         v-for="agenda in meetupForm.agenda"
         :key="agenda.id"
         :agenda-id="agenda.id"
-        class="agenda-item"
       />
       <div class="add-button">
         <UiButton variant="blue" @click="addAgendaItem">
@@ -76,32 +76,69 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.create-view {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  margin-top: 24px;
-  background: white;
-  padding: 10px;
-  h3 {
-    font-family: JetBrainMono-Bold, sans-serif;
-    color: #3535ad;
-  }
-  .creation-form {
+@media (max-width: 1019px) {
+  .create-view {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    justify-content: center;
+    width: 90%;
+    margin-top: 24px;
+    background: white;
+    padding: 10px;
+    h3 {
+      font-family: JetBrainMono-Bold, sans-serif;
+      color: #3535ad;
+      text-align: center;
+    }
+    .forms {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .uploader {
+      width: 100%;
+    }
+    .agenda-forms {
+      width: 100%;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .creation-buttons {
+      display: flex;
+      align-self: center;
+    }
   }
-  .uploader {
-    width: 100%;
-  }
-  .agenda-item {
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-  .creation-buttons {
+}
+@media (min-width: 1020px) {
+  .create-view {
     display: flex;
-    align-self: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin-top: 24px;
+    background: white;
+    padding: 10px;
+    h3 {
+      font-family: JetBrainMono-Bold, sans-serif;
+      color: #3535ad;
+    }
+    .forms {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .uploader {
+      width: 100%;
+    }
+    .agenda-forms {
+      width: 100%;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .creation-buttons {
+      display: flex;
+      align-self: center;
+    }
   }
 }
 </style>

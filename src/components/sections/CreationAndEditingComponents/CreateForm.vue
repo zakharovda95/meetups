@@ -66,4 +66,24 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@media (max-width: 1019px) {
+  .creation-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    form {
+      width: 80%;
+    }
+  }
+}
+@media (min-width: 1020px) {
+  .creation-form {
+    width: 100%;
+    display: flex;
+    form {
+      width: 100%;
+    }
+  }
+}
+</style>

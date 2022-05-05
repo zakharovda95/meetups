@@ -5,7 +5,7 @@
     @change="proxyDropdown = $event.target.value"
   >
     <option v-for="option in options" :value="option.value" :key="option.name">
-      <div class="text">Тип: {{ option.name }}</div>
+      <div class="text">{{ type }}: {{ option.name }}</div>
     </option>
   </select>
 </template>
@@ -22,6 +22,7 @@ export default {
       default: () => [],
     },
     modelValue: String,
+    type: String,
   },
   computed: {
     proxyDropdown: {
