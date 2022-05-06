@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     meetupId() {
-      return Number(this.$route.params.meetupId);
+      return this.$route.params.meetupId;
     },
     meetup() {
       return this.$store.getters.meetup;

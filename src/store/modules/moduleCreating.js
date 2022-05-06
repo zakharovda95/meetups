@@ -1,4 +1,5 @@
 import { uuid } from 'vue-uuid';
+import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
 
 export const moduleCreating = {
   state: () => ({
@@ -14,6 +15,7 @@ export const moduleCreating = {
       description: '',
       agenda: [],
     },
+    isLoading: false,
   }),
   mutations: {
     addAgendaItem(state) {
@@ -93,6 +95,13 @@ export const moduleCreating = {
       });
       elem.description = payload[0];
     },
+    removeAgendaItem(state, payload) {
+      state.meetupForm.agenda.forEach((item, index, array) => {
+        if (item.id === payload) {
+          array.splice(index, 1);
+        }
+      });
+    },
   },
   actions: {
     addAgendaItem({ commit }, payload) {
@@ -136,6 +145,15 @@ export const moduleCreating = {
     },
     updateAgendaDescription({ commit }, payload) {
       commit('updateAgendaDescription', payload);
+    },
+    removeAgendaItem({ commit }, payload) {
+      commit('removeAgendaItem', payload);
+    },
+    async createMeetup({ state, dispatch }) {
+      state.isLoading = true;
+      await setFirebaseData('meetups/' + state.meetupForm.id, state.meetupForm);
+      await dispatch('getMeetups');
+      state.isLoading = false;
     },
   },
 };

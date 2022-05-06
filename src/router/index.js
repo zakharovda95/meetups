@@ -23,7 +23,7 @@ const routes = [
     path: '/meetup',
     name: 'meetup',
     redirect: { name: 'meetupById' },
-    component: import('@/layouts/MeetupPageLayout.vue'),
+    component: () => import('@/layouts/MeetupPageLayout.vue'),
     children: [
       {
         path: ':meetupId',

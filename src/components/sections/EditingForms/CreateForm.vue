@@ -61,9 +61,6 @@ export default {
       this.$store.dispatch('updateDescription', event);
     },
   },
-  updated() {
-    console.log(this.meetupForm);
-  },
 };
 </script>
 <style scoped lang="scss">

@@ -22,18 +22,18 @@
       </div>
     </div>
     <div class="creation-buttons">
-      <UiButton variant="bgBlue" @click="create">Создать</UiButton>
+      <UiButton variant="bgBlue" @click="createMeetup">Создать</UiButton>
       <UiButton variant="bgRed" @click="cancel">Отменить</UiButton>
     </div>
   </div>
 </template>
 <script>
-import UiImageUploader from '@/components/sections/CreationAndEditingComponents/ImageUploader';
-import CreateForm from '@/components/sections/CreationAndEditingComponents/CreateForm';
+import UiImageUploader from '@/components/sections/EditingForms/ImageUploader';
+import CreateForm from '@/components/sections/EditingForms/CreateForm';
 import UiButton from '@/components/ui/UiButton';
 // import { removeImage } from '@/requesters/firebase/_firebase.storage.requesters';
 // import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
-import AgendaItemForm from '@/components/sections/CreationAndEditingComponents/AgendaItemForm';
+import AgendaItemForm from '@/components/sections/EditingForms/AgendaItemForm';
 export default {
   name: 'CreateView',
   components: {
@@ -60,18 +60,16 @@ export default {
     removeImage() {
       this.$store.dispatch('removeImage');
     },
-    // async cancel() {
-    //   if (this.meetupForm.image) {
-    //     console.log(this.meetupForm.image);
-    //     await removeImage('/covers/', this.meetupForm.image);
-    //   }
-    //   this.meetupForm = {};
-    //   await this.$router.push({ name: 'meetups' });
-    // },
-    // async create() {
-    //   await setFirebaseData('meetups/' + this.meetupForm.id, this.meetupForm);
-    //   await this.$router.push({ name: 'meetups' });
-    // },
+    createMeetup() {
+      this.$store.dispatch('createMeetup');
+      if (!this.$store.state.creating.isLoading) {
+        this.$store.dispatch('setMeetupById', this.meetupForm.id);
+        this.$router.push({
+          name: 'Meetup',
+          params: { meetupId: this.meetupForm.id },
+        });
+      }
+    },
   },
 };
 </script>

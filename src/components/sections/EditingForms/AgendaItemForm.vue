@@ -7,7 +7,7 @@
         :model-value="currentAgendaItem.type"
         @update:model-value="updateAgendaType"
       />
-      <UiIcon class="trash" icon-name="trash" />
+      <UiIcon @click="removeAgendaItem" class="trash" icon-name="trash" />
     </div>
     <div class="row-2">
       <UiLabel class="startsAt" label="Начало">
@@ -110,6 +110,9 @@ export default {
     updateAgendaDescription(event) {
       this.$store.dispatch('updateAgendaDescription', [event, this.agendaId]);
     },
+    removeAgendaItem() {
+      this.$store.dispatch('removeAgendaItem', this.agendaId);
+    },
   },
   computed: {
     agenda() {
@@ -156,6 +159,12 @@ export default {
       .trash {
         width: 32px;
         margin-right: 30px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 3px;
+      }
+      .trash:active {
+        background: rgba(42, 48, 87, 0.3);
       }
     }
     .row-2 {
@@ -193,6 +202,12 @@ export default {
       .trash {
         width: 32px;
         margin-right: 30px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 3px;
+      }
+      .trash:active {
+        background: rgba(42, 48, 87, 0.3);
       }
     }
     .row-2 {
