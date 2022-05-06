@@ -1,6 +1,7 @@
+import { uuid } from 'vue-uuid';
 export const meetups = [
   {
-    id: Date.now(),
+    id: uuid.v1(),
     title: 'Конференция супер серьезных людей',
     description:
       'Самые серьезные люди мира соберуться, чтобы обсудить самые серьезные вещи',
@@ -11,7 +12,7 @@ export const meetups = [
     place: 'Pizza Hut',
     agenda: [
       {
-        id: Date.now() + 2324,
+        id: uuid.v1(),
         startsAt: '08:00',
         endsAt: '09:00',
         type: 'registration',
@@ -21,7 +22,7 @@ export const meetups = [
         language: null,
       },
       {
-        id: Date.now() - 12127,
+        id: uuid.v1(),
         startsAt: '09:00',
         endsAt: '09:30',
         type: 'opening',
@@ -31,7 +32,7 @@ export const meetups = [
         language: 'RU',
       },
       {
-        id: Date.now() + 12132435,
+        id: uuid.v1(),
         startsAt: '10:00',
         endsAt: '11:00',
         type: 'talk',
@@ -43,7 +44,7 @@ export const meetups = [
     ],
   },
   {
-    id: Date.now() + 972,
+    id: uuid.v1(),
     title: 'Встреча фанатов Наруто',
     description: 'Встреча сильнейших шиноби всех деревень ниндзя',
     imageId: 1,
@@ -64,7 +65,7 @@ export const meetups = [
         language: null,
       },
       {
-        id: Date.now() + 987,
+        id: uuid.v1(),
         startsAt: '11:00',
         endsAt: '11:30',
         type: 'opening',
@@ -74,7 +75,7 @@ export const meetups = [
         language: null,
       },
       {
-        id: Date.now() - 12223,
+        id: uuid.v1(),
         startsAt: '12:00',
         endsAt: '13:00',
         type: 'coffee',
@@ -84,7 +85,7 @@ export const meetups = [
         language: null,
       },
       {
-        id: Date.now() + 12134,
+        id: uuid.v1(),
         startsAt: '12:00',
         endsAt: '13:00',
         type: 'talk',
@@ -94,7 +95,7 @@ export const meetups = [
         language: 'EN',
       },
       {
-        id: Date.now() + 9834,
+        id: uuid.v1(),
         startsAt: '13:00',
         endsAt: '15:00',
         type: 'afterparty',
@@ -106,7 +107,7 @@ export const meetups = [
     ],
   },
   {
-    id: Date.now() - 8432,
+    id: uuid.v1(),
     title: 'Онлайн концерт Олега Газманова',
     description: 'Не пропусти стрим тысячелетия',
     imageId: null,
@@ -117,7 +118,7 @@ export const meetups = [
     agenda: null,
   },
   {
-    id: Date.now() + 112,
+    id: uuid.v1(),
     title: 'Приключение Финна и Джейка',
     description: 'Очередная захватывающая история',
     imageId: 4,
@@ -128,7 +129,7 @@ export const meetups = [
     place: 'Какая-то пещера',
     agenda: [
       {
-        id: Date.now() + 635,
+        id: uuid.v1(),
         startsAt: '10:00',
         endsAt: '10:30',
         type: 'registration',
@@ -138,7 +139,7 @@ export const meetups = [
         language: null,
       },
       {
-        id: Date.now() - 848,
+        id: uuid.v1(),
         startsAt: '11:00',
         endsAt: '11:30',
         type: 'opening',
@@ -148,7 +149,7 @@ export const meetups = [
         language: null,
       },
       {
-        id: Date.now() - 100,
+        id: uuid.v1(),
         startsAt: '12:00',
         endsAt: '13:00',
         type: 'break',
@@ -158,7 +159,7 @@ export const meetups = [
         language: null,
       },
       {
-        id: Date.now() - 8,
+        id: uuid.v1(),
         startsAt: '12:00',
         endsAt: '13:00',
         type: 'talk',
@@ -168,7 +169,7 @@ export const meetups = [
         language: 'EN',
       },
       {
-        id: Date.now() - 7,
+        id: uuid.v1(),
         startsAt: '13:00',
         endsAt: '15:00',
         type: 'afterparty',
@@ -180,7 +181,7 @@ export const meetups = [
     ],
   },
   {
-    id: Date.now() + 2,
+    id: uuid.v1(),
     title: 'Встреча любителей игры в нарды',
     description: 'Может партеечку?',
     imageId: null,
@@ -190,7 +191,7 @@ export const meetups = [
     place: 'В том анекдоте',
     agenda: [
       {
-        id: Date.now() - 17,
+        id: uuid.v1(),
         startsAt: '10:00',
         endsAt: '10:30',
         type: 'registration',
@@ -200,7 +201,7 @@ export const meetups = [
         language: null,
       },
       {
-        id: Date.now() + 4,
+        id: uuid.v1(),
         startsAt: '11:00',
         endsAt: '11:30',
         type: 'opening',
@@ -210,7 +211,7 @@ export const meetups = [
         language: null,
       },
       {
-        id: Date.now() - 2,
+        id: uuid.v1(),
         startsAt: '12:00',
         endsAt: '13:00',
         type: 'break',
@@ -220,7 +221,7 @@ export const meetups = [
         language: null,
       },
       {
-        id: Date.now() - 1,
+        id: uuid.v1(),
         startsAt: '12:00',
         endsAt: '13:00',
         type: 'talk',
@@ -230,7 +231,7 @@ export const meetups = [
         language: 'EN',
       },
       {
-        id: Date.now() + 3,
+        id: uuid.v1(),
         startsAt: '13:00',
         endsAt: '15:00',
         type: 'afterparty',

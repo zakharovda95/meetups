@@ -35,11 +35,11 @@ export const agendaItemsOptions = [
 
 export const agendaLangOptions = [
   {
-    value: 'en',
+    value: 'EN',
     name: 'EN',
   },
   {
-    value: 'ru',
+    value: 'RU',
     name: 'RU',
   },
 ];

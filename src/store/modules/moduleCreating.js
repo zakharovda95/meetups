@@ -26,9 +26,12 @@ export const moduleCreating = {
         speaker: '',
         description: '',
         language: '',
-        startsAt: '',
-        endsAt: '',
+        startsAt: '07:00',
+        endsAt: '08:00',
       };
+      if (state.meetupForm.agenda.length) {
+        agendaItemForm.startsAt = state.meetupForm.agenda.at(-1).endsAt;
+      }
       state.meetupForm.agenda.push(agendaItemForm);
     },
     updateTitle(state, payload) {

@@ -5,8 +5,8 @@
     </div>
     <div class="meetup-item-wrapper-info">
       <div class="meetup-item-badge">
-        <UiBadge v-if="false">Участник</UiBadge>
-        <UiBadge variant="organizer">Организатор</UiBadge>
+        <UiBadge>Участник</UiBadge>
+        <UiBadge v-if="false" variant="organizer">Организатор</UiBadge>
       </div>
       <MeetupInfo :meetup="meetup"></MeetupInfo>
     </div>

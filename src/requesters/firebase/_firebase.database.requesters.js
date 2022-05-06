@@ -6,8 +6,8 @@ export async function setFirebaseData(path, data) {
   await set(ref(fbDb, path), data);
 }
 // Получение данных из БД
-export function getFirebaseData(path) {
-  return get(ref(fbDb, path)).then(snapshot => {
+export async function getFirebaseData(path) {
+  return await get(ref(fbDb, path)).then(snapshot => {
     if (snapshot.exists()) {
       return snapshot.val();
     } else {

@@ -56,9 +56,10 @@ export default {
         const url = await getStorageDataLink(path);
         this.url = url;
         this.$emit('upload', { url, file });
+        this.$toast.success('Картинка загружена!');
       } catch (err) {
-        console.log(err);
         this.$emit('error', err);
+        this.$toast.error('Ошибка' + err);
       } finally {
         this.loading = false;
       }
@@ -69,11 +70,11 @@ export default {
         event.preventDefault();
         this.loading = true;
         const file = this.$refs.input.files[0];
-        console.log(file);
         await removeImage('/covers/', file);
         this.$emit('remove');
         this.url = undefined;
         this.loading = false;
+        this.$toast.success('Картинка удалена!');
       }
       this.$emit('remove');
       this.$refs.input.value = null;

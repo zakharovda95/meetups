@@ -31,9 +31,8 @@
 import UiImageUploader from '@/components/sections/EditingForms/ImageUploader';
 import CreateForm from '@/components/sections/EditingForms/CreateForm';
 import UiButton from '@/components/ui/UiButton';
-// import { removeImage } from '@/requesters/firebase/_firebase.storage.requesters';
-// import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
 import AgendaItemForm from '@/components/sections/EditingForms/AgendaItemForm';
+import { removeImage } from '@/requesters/firebase/_firebase.storage.requesters';
 export default {
   name: 'CreateView',
   components: {
@@ -44,6 +43,7 @@ export default {
   },
   data: () => ({
     preview: null,
+    file: null,
   }),
   computed: {
     meetupForm() {
@@ -55,19 +55,29 @@ export default {
       this.$store.dispatch('addAgendaItem');
     },
     uploadImage(url) {
+      this.file = url.file;
       this.$store.dispatch('uploadImage', url);
     },
     removeImage() {
+      this.file = null;
       this.$store.dispatch('removeImage');
     },
+    async cancel() {
+      await removeImage('/covers/', this.file);
+      await this.$router.push({ name: 'meetups' });
+      this.$toast.error('Создание митапа отменено');
+    },
     createMeetup() {
-      this.$store.dispatch('createMeetup');
-      if (!this.$store.state.creating.isLoading) {
-        this.$store.dispatch('setMeetupById', this.meetupForm.id);
+      try {
+        this.$store.dispatch('createMeetup');
         this.$router.push({
-          name: 'Meetup',
+          name: 'meetup',
           params: { meetupId: this.meetupForm.id },
         });
+        this.$toast.success('Митап создан!');
+      } catch (err) {
+        this.$router.push({ name: 'meetups' });
+        this.$toast.error('Ошибка' + err);
       }
     },
   },
