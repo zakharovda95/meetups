@@ -21,20 +21,14 @@
 </template>
 
 <script>
-import {
-  getStorageDataLink,
-  uploadImage,
-  removeImage,
-} from '@/requesters/firebase/_firebase.storage.requesters';
-
 export default {
   name: 'UiImageUploader',
-  emits: ['select', 'upload', 'error', 'remove'],
+  emits: ['select', 'error', 'remove'],
   props: {
     preview: String,
+    loading: Boolean,
   },
   data: () => ({
-    loading: false,
     url: undefined,
   }),
   created() {
@@ -45,35 +39,16 @@ export default {
   methods: {
     selectImage() {
       const file = this.$refs.input.files[0];
+      this.url = URL.createObjectURL(file);
       this.$emit('select', file);
-      this.uploadImg(file);
-    },
-    async uploadImg(file) {
-      try {
-        this.loading = true;
-        const res = await uploadImage('/covers/', file);
-        const path = res.metadata.fullPath;
-        const url = await getStorageDataLink(path);
-        this.url = url;
-        this.$emit('upload', { url, file });
-        this.$toast.success('Картинка загружена!');
-      } catch (err) {
-        this.$emit('error', err);
-        this.$toast.error('Ошибка' + err);
-      } finally {
-        this.loading = false;
-      }
+      this.$toast.success('Картинка загружена!');
     },
 
     async removeImg(event) {
       if (this.url) {
         event.preventDefault();
-        this.loading = true;
-        const file = this.$refs.input.files[0];
-        await removeImage('/covers/', file);
         this.$emit('remove');
         this.url = undefined;
-        this.loading = false;
         this.$toast.success('Картинка удалена!');
       }
       this.$emit('remove');

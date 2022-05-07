@@ -1,12 +1,13 @@
 <template>
-  <div class="create-view">
+  <div class="create-view" :class="loadingClass">
     <h3>Создайте митап</h3>
     <UiImageUploader
+      :loading="isLoading"
       class="uploader"
-      @upload="uploadImage"
+      @select="selectImage"
       @remove="removeImage"
     />
-    <CreateForm class="forms" />
+    <CreateForm class="forms" :loading="isLoading" />
     <div class="agenda-item-group">
       <h3>Программа</h3>
       <AgendaItemForm
@@ -14,16 +15,21 @@
         v-for="agenda in meetupForm.agenda"
         :key="agenda.id"
         :agenda-id="agenda.id"
+        :loading="isLoading"
       />
       <div class="add-button">
-        <UiButton variant="blue" @click="addAgendaItem">
+        <UiButton :disabled="isLoading" variant="blue" @click="addAgendaItem">
           + Добавить пункт программы
         </UiButton>
       </div>
     </div>
     <div class="creation-buttons">
-      <UiButton variant="bgBlue" @click="createMeetup">Создать</UiButton>
-      <UiButton variant="bgRed" @click="cancel">Отменить</UiButton>
+      <UiButton :disabled="isLoading" variant="bgBlue" @click="createMeetup"
+        >Создать</UiButton
+      >
+      <UiButton :disabled="isLoading" variant="bgRed" @click="cancel"
+        >Отменить</UiButton
+      >
     </div>
   </div>
 </template>
@@ -32,7 +38,11 @@ import UiImageUploader from '@/components/sections/EditingForms/ImageUploader';
 import CreateForm from '@/components/sections/EditingForms/CreateForm';
 import UiButton from '@/components/ui/UiButton';
 import AgendaItemForm from '@/components/sections/EditingForms/AgendaItemForm';
-import { removeImage } from '@/requesters/firebase/_firebase.storage.requesters';
+import {
+  getStorageDataLink,
+  uploadImage,
+} from '@/requesters/firebase/_firebase.storage.requesters';
+//import { removeImage } from '@/requesters/firebase/_firebase.storage.requesters';
 export default {
   name: 'CreateView',
   components: {
@@ -44,47 +54,71 @@ export default {
   data: () => ({
     preview: null,
     file: null,
+    isLoading: false,
   }),
+  created() {
+    this.$store.dispatch('initMeetupForm');
+  },
   computed: {
     meetupForm() {
       return this.$store.state.creating.meetupForm;
+    },
+    loadingClass() {
+      return {
+        'loading': this.isLoading,
+      };
     },
   },
   methods: {
     addAgendaItem() {
       this.$store.dispatch('addAgendaItem');
     },
-    uploadImage(url) {
-      this.file = url.file;
-      this.$store.dispatch('uploadImage', url);
+    selectImage(file) {
+      this.file = file;
+    },
+    async uploadImage() {
+      try {
+        const res = await uploadImage('/covers/', this.file);
+        const path = res.metadata.fullPath;
+        const url = await getStorageDataLink(path);
+        this.$store.dispatch('uploadImage', { url, file: this.file });
+      } catch (err) {
+        this.$toast.error('Ошибка123' + err);
+      }
     },
     removeImage() {
       this.file = null;
-      this.$store.dispatch('removeImage');
+      //this.$store.dispatch('removeImage');
     },
-    async cancel() {
-      await removeImage('/covers/', this.file);
-      await this.$router.push({ name: 'meetups' });
+    cancel() {
+      //await removeImage('/covers/', this.file);
+      this.file = null;
+      this.$router.push({ name: 'meetups' });
       this.$toast.error('Создание митапа отменено');
+      this.$store.dispatch('resetMeetupForm');
     },
-    createMeetup() {
-      try {
-        this.$store.dispatch('createMeetup');
-        this.$router.push({
-          name: 'meetup',
-          params: { meetupId: this.meetupForm.id },
-        });
-        this.$toast.success('Митап создан!');
-      } catch (err) {
-        this.$router.push({ name: 'meetups' });
-        this.$toast.error('Ошибка' + err);
+    async createMeetup() {
+      this.isLoading = true;
+      if (this.file) {
+        await this.uploadImage();
       }
+      await this.$store.dispatch('createMeetup');
+      await this.$router.push({
+        name: 'meetup',
+        params: { meetupId: this.meetupForm.id },
+      });
+      await this.$toast.success('Митап создан!');
+      await this.$store.dispatch('resetMeetupForm');
+      this.isLoading = false;
     },
   },
 };
 </script>
 <style scoped lang="scss">
 @media (max-width: 1019px) {
+  .loading {
+    background: #444343;
+  }
   .create-view {
     display: flex;
     flex-direction: column;
@@ -119,6 +153,9 @@ export default {
 }
 @media (min-width: 1020px) {
   .create-view {
+    .loading {
+      background: #444343;
+    }
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -146,6 +183,9 @@ export default {
     .creation-buttons {
       display: flex;
       align-self: center;
+    }
+    .loading {
+      cursor: no-drop;
     }
   }
 }

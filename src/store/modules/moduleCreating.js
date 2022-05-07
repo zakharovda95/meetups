@@ -1,34 +1,18 @@
 import { uuid } from 'vue-uuid';
 import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
+import {
+  defaultMeetupAgendaItemForm,
+  defaultMeetupForm,
+} from '@/services/_forms.service';
 
 export const moduleCreating = {
   state: () => ({
-    meetupForm: {
-      id: uuid.v1(),
-      imageId: null,
-      image: null,
-      imageFile: null,
-      organizer: '123',
-      title: '',
-      date: '',
-      place: '',
-      description: '',
-      agenda: [],
-    },
+    meetupForm: null,
     isLoading: false,
   }),
   mutations: {
     addAgendaItem(state) {
-      const agendaItemForm = {
-        id: uuid.v1(),
-        type: 'registration',
-        title: '',
-        speaker: '',
-        description: '',
-        language: '',
-        startsAt: '07:00',
-        endsAt: '08:00',
-      };
+      const agendaItemForm = defaultMeetupAgendaItemForm;
       if (state.meetupForm.agenda.length) {
         agendaItemForm.startsAt = state.meetupForm.agenda.at(-1).endsAt;
       }
@@ -105,6 +89,12 @@ export const moduleCreating = {
         }
       });
     },
+    initMeetupForm(state) {
+      state.meetupForm = defaultMeetupForm;
+    },
+    resetMeetupForm(state) {
+      state.meetupForm = null;
+    },
   },
   actions: {
     addAgendaItem({ commit }, payload) {
@@ -151,6 +141,12 @@ export const moduleCreating = {
     },
     removeAgendaItem({ commit }, payload) {
       commit('removeAgendaItem', payload);
+    },
+    initMeetupForm({ commit }) {
+      commit('initMeetupForm');
+    },
+    resetMeetupForm({ commit }) {
+      commit('resetMeetupForm');
     },
     async createMeetup({ state, dispatch }) {
       state.isLoading = true;

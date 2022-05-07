@@ -4,18 +4,21 @@
       <UiLabel label="Заголовок">
         <UiInput
           required
+          :disabled="loading"
           :model-value="meetupForm.title"
           @update:model-value="updateTitle"
         />
       </UiLabel>
       <UiLabel label="Дата мероприятия">
         <UiInputDate
+          :disabled="loading"
           :model-value="meetupForm.date"
           @update:model-value="updateDate"
         />
       </UiLabel>
       <UiLabel label="Место проведения">
         <UiInput
+          :disabled="loading"
           :model-value="meetupForm.place"
           @update:model-value="updatePlace"
         />
@@ -23,6 +26,7 @@
       <UiLabel label="Описание">
         <UiInput
           multiline
+          :disabled="loading"
           :model-value="meetupForm.description"
           @update:model-value="updateDescription"
         />
@@ -41,7 +45,9 @@ export default {
     UiInput,
     UiInputDate,
   },
-  data: () => ({}),
+  props: {
+    loading: Boolean,
+  },
   computed: {
     meetupForm() {
       return this.$store.state.creating.meetupForm;

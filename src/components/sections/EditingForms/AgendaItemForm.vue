@@ -4,6 +4,7 @@
       <UiDropdown
         :options="options"
         type="Тип"
+        :disabled="loading"
         :model-value="currentAgendaItem.type"
         @update:model-value="updateAgendaType"
       />
@@ -13,7 +14,7 @@
       <UiLabel class="startsAt" label="Начало">
         <UiInputDate
           type="time"
-          placeholder="08:00"
+          :disabled="loading"
           :model-value="currentAgendaItem.startsAt"
           @update:model-value="updateAgendaStartsAt"
         />
@@ -21,7 +22,7 @@
       <UiLabel class="endsAt" label="Окончание">
         <UiInputDate
           type="time"
-          placeholder="09:00"
+          :disabled="loading"
           :model-value="currentAgendaItem.endsAt"
           @update:model-value="updateAgendaEndsAt"
         />
@@ -30,6 +31,7 @@
     <div class="row-3">
       <UiLabel :label="labelType">
         <UiInput
+          :disabled="loading"
           :model-value="currentAgendaItem.title"
           @update:model-value="updateAgendaTitle"
         />
@@ -39,6 +41,7 @@
       <div class="row-4">
         <UiLabel label="Докладчик">
           <UiInput
+            :disabled="loading"
             :model-value="currentAgendaItem.speaker"
             @update:model-value="updateAgendaSpeaker"
           />
@@ -48,6 +51,7 @@
         <UiDropdown
           :options="langOptions"
           type="Язык"
+          :disabled="loading"
           :model-value="currentAgendaItem.language"
           @update:model-value="updateAgendaLanguage"
         />
@@ -57,6 +61,7 @@
       <UiLabel label="Описание">
         <UiInput
           multiline
+          :disabled="loading"
           :model-value="currentAgendaItem.description"
           @update:model-value="updateAgendaDescription"
         />
@@ -83,6 +88,7 @@ export default {
       required: true,
       validator: agenda => agenda !== '',
     },
+    loading: Boolean,
   },
   data: () => ({
     options: agendaItemsOptions,
