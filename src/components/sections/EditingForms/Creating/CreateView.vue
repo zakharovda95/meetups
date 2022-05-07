@@ -61,7 +61,12 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['addAgendaItem', 'uploadImage', 'resetMeetupForm']),
+    ...mapActions([
+      'addAgendaItem',
+      'uploadImage',
+      'resetMeetupForm',
+      'createMeetup',
+    ]),
     selectImage(file) {
       this.file = file;
     },
@@ -72,7 +77,7 @@ export default {
         const url = await getStorageDataLink(path);
         this.uploadImage({ url, file: this.file });
       } catch (err) {
-        this.$toast.error('Ошибка123' + err);
+        this.$toast.error('Ошибка' + err);
       }
     },
     removeImage() {
@@ -89,7 +94,7 @@ export default {
       if (this.file) {
         await this.uploadImg();
       }
-      await this.$store.dispatch('createMeetup');
+      await this.createMeetup();
       await this.$router.push({
         name: 'meetup',
         params: { meetupId: this.meetupForm.id },

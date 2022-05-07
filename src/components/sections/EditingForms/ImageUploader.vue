@@ -31,7 +31,7 @@ export default {
   data: () => ({
     url: undefined,
   }),
-  created() {
+  mounted() {
     if (this.preview) {
       this.url = this.preview;
     }

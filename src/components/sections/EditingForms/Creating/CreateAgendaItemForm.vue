@@ -150,6 +150,7 @@ export default {
     flex-direction: column;
     width: 100%;
     border: 1px solid blue;
+    margin-top: 25px;
     .row-1,
     .row-5 {
       display: flex;

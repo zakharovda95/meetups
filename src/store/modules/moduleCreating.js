@@ -118,8 +118,8 @@ export const moduleCreating = {
     },
   },
   actions: {
-    addAgendaItem({ commit }, payload) {
-      commit('addAgendaItem', payload);
+    addAgendaItem({ commit }) {
+      commit('addAgendaItem');
     },
     updateTitle({ commit }, payload) {
       commit('updateTitle', payload);
