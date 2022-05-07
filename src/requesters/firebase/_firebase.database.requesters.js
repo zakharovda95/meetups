@@ -15,3 +15,7 @@ export async function getFirebaseData(path) {
     }
   });
 }
+// Удаление данных из БД
+export async function removeFirebaseData(path) {
+  await set(ref(fbDb, path), null);
+}

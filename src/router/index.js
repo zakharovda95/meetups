@@ -69,7 +69,8 @@ const routes = [
     ],
   },
   {
-    path: '',
+    path: '/meetups',
+    alias: '/admin',
     name: 'createEdit',
     redirect: { name: 'create' },
     component: () => import('@/layouts/CreateEditLayout.vue'),
@@ -80,7 +81,7 @@ const routes = [
         component: () => import('@/pages/CreatePage.vue'),
       },
       {
-        path: 'edit',
+        path: ':meetupId/edit',
         name: 'edit',
         component: () => import('@/pages/EditPage.vue'),
       },

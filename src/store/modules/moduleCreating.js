@@ -1,20 +1,38 @@
 import { uuid } from 'vue-uuid';
 import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
-import {
-  defaultMeetupAgendaItemForm,
-  defaultMeetupForm,
-} from '@/services/_forms.service';
+import moment from 'moment';
 
 export const moduleCreating = {
   state: () => ({
-    meetupForm: null,
+    meetupForm: {
+      id: uuid.v1(),
+      imageId: null,
+      image: null,
+      imageName: null,
+      organizer: '123',
+      title: '',
+      date: moment().format('YYYY-MM-DD'),
+      place: '',
+      description: '',
+      agenda: [],
+    },
     isLoading: false,
   }),
   mutations: {
     addAgendaItem(state) {
-      const agendaItemForm = defaultMeetupAgendaItemForm;
+      const agendaItemForm = {
+        id: uuid.v1(),
+        type: 'registration',
+        title: '',
+        speaker: '',
+        description: '',
+        language: '',
+        startsAt: '07:00',
+        endsAt: '08:00',
+      };
       if (state.meetupForm.agenda.length) {
         agendaItemForm.startsAt = state.meetupForm.agenda.at(-1).endsAt;
+        agendaItemForm.endsAt = agendaItemForm.startsAt;
       }
       state.meetupForm.agenda.push(agendaItemForm);
     },
@@ -31,14 +49,9 @@ export const moduleCreating = {
       state.meetupForm.description = payload;
     },
     uploadImage(state, payload) {
-      state.meetupForm.image = payload.url;
       state.meetupForm.imageId = uuid.v1();
-      state.meetupForm.imageFile = payload.file;
-    },
-    removeImage(state) {
-      state.meetupForm.image = null;
-      state.meetupForm.imageId = null;
-      state.meetupForm.imageFile = null;
+      state.meetupForm.image = payload.url;
+      state.meetupForm.imageName = payload.file.name;
     },
     updateAgendaType(state, payload) {
       const elem = state.meetupForm.agenda.find(item => {
@@ -89,11 +102,19 @@ export const moduleCreating = {
         }
       });
     },
-    initMeetupForm(state) {
-      state.meetupForm = defaultMeetupForm;
-    },
     resetMeetupForm(state) {
-      state.meetupForm = null;
+      state.meetupForm = {
+        id: uuid.v1(),
+        imageId: null,
+        image: null,
+        imageName: null,
+        organizer: '123',
+        title: '',
+        date: '',
+        place: '',
+        description: '',
+        agenda: [],
+      };
     },
   },
   actions: {
@@ -114,9 +135,6 @@ export const moduleCreating = {
     },
     uploadImage({ commit }, payload) {
       commit('uploadImage', payload);
-    },
-    removeImage({ commit }) {
-      commit('removeImage');
     },
     updateAgendaType({ commit }, payload) {
       commit('updateAgendaType', payload);
@@ -141,9 +159,6 @@ export const moduleCreating = {
     },
     removeAgendaItem({ commit }, payload) {
       commit('removeAgendaItem', payload);
-    },
-    initMeetupForm({ commit }) {
-      commit('initMeetupForm');
     },
     resetMeetupForm({ commit }) {
       commit('resetMeetupForm');

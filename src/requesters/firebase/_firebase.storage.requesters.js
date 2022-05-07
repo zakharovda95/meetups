@@ -32,9 +32,8 @@ export async function uploadImage(path, file) {
   });
 }
 // Удаление файла из стораджа
-export async function removeImage(path, file) {
-  const ref = createStorageImageUrl(path, file);
-  await deleteObject(ref)
+export async function removeImage(path) {
+  await deleteObject(ref(fbStorage, path))
     .then(() => {
       console.log('Удалено!');
     })

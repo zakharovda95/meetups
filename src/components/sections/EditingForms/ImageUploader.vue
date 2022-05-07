@@ -11,7 +11,6 @@
         ref="input"
         accept="image/*"
         class="input"
-        v-bind="$attrs"
         :disabled="loading"
         @change="selectImage"
         @click="removeImg"
@@ -28,6 +27,7 @@ export default {
     preview: String,
     loading: Boolean,
   },
+  inheritAttrs: false,
   data: () => ({
     url: undefined,
   }),

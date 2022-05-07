@@ -47,7 +47,7 @@ export const moduleMain = {
     },
     setMeetups(state, payload) {
       payload.forEach(item => {
-        item.dateUnix = item.date;
+        item.dateUnix = moment(item.date).valueOf();
         item.date = moment(item.date).format('DD MMMM yy г.');
       });
       state.meetups = payload;

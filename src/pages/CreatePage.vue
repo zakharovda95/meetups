@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import CreateView from '@/components/sections/EditingForms/CreateView.vue';
+import CreateView from '@/components/sections/EditingForms/Creating/CreateView.vue';
 export default {
   name: 'CreatePage',
   components: { CreateView },

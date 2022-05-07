@@ -6,9 +6,13 @@
         type="Тип"
         :disabled="loading"
         :model-value="currentAgendaItem.type"
-        @update:model-value="updateAgendaType"
+        @update:model-value="updateAgendaType([$event, agendaId])"
       />
-      <UiIcon @click="removeAgendaItem" class="trash" icon-name="trash" />
+      <UiIcon
+        @click="removeAgendaItem(agendaId)"
+        class="trash"
+        icon-name="trash"
+      />
     </div>
     <div class="row-2">
       <UiLabel class="startsAt" label="Начало">
@@ -16,7 +20,7 @@
           type="time"
           :disabled="loading"
           :model-value="currentAgendaItem.startsAt"
-          @update:model-value="updateAgendaStartsAt"
+          @update:model-value="updateAgendaStartsAt([$event, agendaId])"
         />
       </UiLabel>
       <UiLabel class="endsAt" label="Окончание">
@@ -24,7 +28,7 @@
           type="time"
           :disabled="loading"
           :model-value="currentAgendaItem.endsAt"
-          @update:model-value="updateAgendaEndsAt"
+          @update:model-value="updateAgendaEndsAt([$event, agendaId])"
         />
       </UiLabel>
     </div>
@@ -33,7 +37,7 @@
         <UiInput
           :disabled="loading"
           :model-value="currentAgendaItem.title"
-          @update:model-value="updateAgendaTitle"
+          @update:model-value="updateAgendaTitle([$event, agendaId])"
         />
       </UiLabel>
     </div>
@@ -43,7 +47,7 @@
           <UiInput
             :disabled="loading"
             :model-value="currentAgendaItem.speaker"
-            @update:model-value="updateAgendaSpeaker"
+            @update:model-value="updateAgendaSpeaker([$event, agendaId])"
           />
         </UiLabel>
       </div>
@@ -53,7 +57,7 @@
           type="Язык"
           :disabled="loading"
           :model-value="currentAgendaItem.language"
-          @update:model-value="updateAgendaLanguage"
+          @update:model-value="updateAgendaLanguage([$event, agendaId])"
         />
       </div>
     </div>
@@ -63,7 +67,7 @@
           multiline
           :disabled="loading"
           :model-value="currentAgendaItem.description"
-          @update:model-value="updateAgendaDescription"
+          @update:model-value="updateAgendaDescription([$event, agendaId])"
         />
       </UiLabel>
     </div>
@@ -79,46 +83,37 @@ import UiDropdown from '@/components/ui/UiDropdown';
 import UiInputDate from '@/components/ui/UiInputDate';
 import UiInput from '@/components/ui/UiInput';
 import UiLabel from '@/components/ui/UiLabel';
+import { mapActions } from 'vuex';
 export default {
-  name: 'AgendaItemForm',
+  name: 'CreateAgendaItemForm',
   components: { UiDropdown, UiIcon, UiInputDate, UiLabel, UiInput },
+  inheritAttrs: false,
   props: {
     agendaId: {
       type: String,
       required: true,
       validator: agenda => agenda !== '',
     },
-    loading: Boolean,
+    loading: {
+      type: Boolean,
+      default: false,
+    },
   },
   data: () => ({
     options: agendaItemsOptions,
     langOptions: agendaLangOptions,
   }),
   methods: {
-    updateAgendaType(event) {
-      this.$store.dispatch('updateAgendaType', [event, this.agendaId]);
-    },
-    updateAgendaStartsAt(event) {
-      this.$store.dispatch('updateAgendaStartsAt', [event, this.agendaId]);
-    },
-    updateAgendaEndsAt(event) {
-      this.$store.dispatch('updateAgendaEndsAt', [event, this.agendaId]);
-    },
-    updateAgendaTitle(event) {
-      this.$store.dispatch('updateAgendaTitle', [event, this.agendaId]);
-    },
-    updateAgendaSpeaker(event) {
-      this.$store.dispatch('updateAgendaSpeaker', [event, this.agendaId]);
-    },
-    updateAgendaLanguage(event) {
-      this.$store.dispatch('updateAgendaLanguage', [event, this.agendaId]);
-    },
-    updateAgendaDescription(event) {
-      this.$store.dispatch('updateAgendaDescription', [event, this.agendaId]);
-    },
-    removeAgendaItem() {
-      this.$store.dispatch('removeAgendaItem', this.agendaId);
-    },
+    ...mapActions([
+      'updateAgendaType',
+      'updateAgendaStartsAt',
+      'updateAgendaEndsAt',
+      'updateAgendaTitle',
+      'updateAgendaSpeaker',
+      'updateAgendaLanguage',
+      'updateAgendaDescription',
+      'removeAgendaItem',
+    ]),
   },
   computed: {
     agenda() {

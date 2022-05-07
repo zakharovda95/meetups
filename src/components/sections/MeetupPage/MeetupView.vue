@@ -6,7 +6,7 @@
     </div>
     <div class="info-buttons-group">
       <MeetupInfo :meetup="meetup" />
-      <MeetupButtonGroup />
+      <MeetupButtonGroup :meetup="meetup" />
     </div>
     <div class="meetup-view-wrapper-description-agenda">
       <router-view />

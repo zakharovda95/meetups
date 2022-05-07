@@ -3,7 +3,6 @@
     <form>
       <UiLabel label="Заголовок">
         <UiInput
-          required
           :disabled="loading"
           :model-value="meetupForm.title"
           @update:model-value="updateTitle"
@@ -38,6 +37,7 @@
 import UiInput from '@/components/ui/UiInput';
 import UiLabel from '@/components/ui/UiLabel';
 import UiInputDate from '@/components/ui/UiInputDate';
+import { mapActions } from 'vuex';
 export default {
   name: 'CreateForm',
   components: {
@@ -46,7 +46,10 @@ export default {
     UiInputDate,
   },
   props: {
-    loading: Boolean,
+    loading: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     meetupForm() {
@@ -54,18 +57,12 @@ export default {
     },
   },
   methods: {
-    updateTitle(event) {
-      this.$store.dispatch('updateTitle', event);
-    },
-    updateDate(event) {
-      this.$store.dispatch('updateDate', event);
-    },
-    updatePlace(event) {
-      this.$store.dispatch('updatePlace', event);
-    },
-    updateDescription(event) {
-      this.$store.dispatch('updateDescription', event);
-    },
+    ...mapActions([
+      'updateTitle',
+      'updateDate',
+      'updatePlace',
+      'updateDescription',
+    ]),
   },
 };
 </script>
