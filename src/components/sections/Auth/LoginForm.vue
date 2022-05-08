@@ -8,7 +8,9 @@
       <UiLabel label="Пароль">
         <UiInput type="password" v-model="userData.password" />
       </UiLabel>
-      <UiButton class="login-button" variant="bgBlue"> Войти </UiButton>
+      <UiButton class="login-button" variant="bgBlue" @click="signUp">
+        Войти
+      </UiButton>
       <p>
         Нет аккаунта?
         <UiLink class="registration-link" to="/">Зарегистрируйтесь</UiLink>
@@ -21,15 +23,26 @@ import UiLabel from '@/components/ui/UiLabel';
 import UiInput from '@/components/ui/UiInput';
 import UiLink from '@/components/ui/UiLink';
 import UiButton from '@/components/ui/UiButton';
+import { login } from '@/requesters/firebase/_firebase.auth.requesters';
 export default {
   name: 'LoginForm',
   components: { UiButton, UiInput, UiLink, UiLabel },
+  created() {
+    this.$toast.show('Вы можете зайти под демо пользователем');
+  },
   data: () => ({
     userData: {
       email: '',
       password: '',
     },
   }),
+  methods: {
+    async signUp() {
+      const userData = await login(this.userData.email, this.userData.password);
+      await this.$store.dispatch('setUserInfo', userData);
+      await this.$router.push({ name: 'meetups' });
+    },
+  },
 };
 </script>
 <style scoped lang="scss">

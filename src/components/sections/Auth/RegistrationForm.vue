@@ -1,21 +1,29 @@
 <template>
   <div class="registration-form">
     <h3>Зарегистрируйтесь</h3>
-    <form>
+    <form ref="form">
       <UiLabel class="login-field" label="Email">
-        <UiInput type="email" v-model="userData.email" />
+        <UiInput required type="email" v-model="userData.email" />
       </UiLabel>
-      <UiLabel label="Логин"><UiInput v-model="userData.login" /></UiLabel>
+      <UiLabel label="Логин">
+        <UiInput required v-model="userData.login" />
+      </UiLabel>
       <UiLabel label="Пароль">
-        <UiInput type="password" v-model="userData.password" />
+        <UiInput required type="password" v-model="userData.password" />
       </UiLabel>
       <UiLabel label="Повторите пароль">
-        <UiInput type="password" v-model="userData.passwordRepeat" />
+        <UiInput required type="password" v-model="userData.passwordRepeat" />
       </UiLabel>
-      <UiCheckbox v-model="userData.isConfirmation">
+      <UiCheckbox required v-model="userData.isConfirmation">
         Я согласен с условиями
       </UiCheckbox>
-      <UiButton class="register-button" variant="bgBlue">
+      <UiButton
+        :disabled="!userData.isConfirmation"
+        type="submit"
+        @click.prevent="registration"
+        class="register-button"
+        variant="bgBlue"
+      >
         Зарегистрироваться
       </UiButton>
       <p>
@@ -30,6 +38,7 @@ import UiInput from '@/components/ui/UiInput';
 import UiLink from '@/components/ui/UiLink';
 import UiButton from '@/components/ui/UiButton';
 import UiCheckbox from '@/components/ui/UiCheckbox';
+import { register } from '@/requesters/firebase/_firebase.auth.requesters';
 export default {
   name: 'RegistrationForm',
   components: { UiButton, UiInput, UiCheckbox, UiLink, UiLabel },
@@ -42,6 +51,11 @@ export default {
       isConfirmation: false,
     },
   }),
+  methods: {
+    async registration() {
+      await register(this.userData.email, this.userData.password);
+    },
+  },
 };
 </script>
 <style scoped lang="scss">

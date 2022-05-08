@@ -11,6 +11,7 @@ moment.locale('ru');
 
 export const moduleMain = {
   state: () => ({
+    userInfo: null,
     isLoading: false,
     mainPageIcons: [],
     meetups: [],
@@ -61,6 +62,10 @@ export const moduleMain = {
     updateRadioValue(state, payload) {
       state.meetupSortParam = payload;
     },
+    setUserInfo(state, payload) {
+      state.userInfo = payload;
+      console.log(state.userInfo);
+    },
   },
   actions: {
     setMeetupById({ commit }, payload) {
@@ -93,6 +98,9 @@ export const moduleMain = {
     },
     updateRadioValue({ commit }, payload) {
       commit('updateRadioValue', payload);
+    },
+    setUserInfo({ commit }, payload) {
+      commit('setUserInfo', payload);
     },
   },
 };
