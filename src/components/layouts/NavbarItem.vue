@@ -7,7 +7,7 @@
         </div>
       </header>
     </div>
-    <div class="navbar-links-public" v-if="false">
+    <div class="navbar-links-public">
       <nav class="navbar-wrapper-nav">
         <UiLink
           variant="nav-link"
@@ -25,7 +25,7 @@
         </UiLink>
       </nav>
     </div>
-    <div class="navbar-links-authorized">
+    <div class="navbar-links-authorized" v-if="false">
       <nav class="navbar-wrapper-nav">
         <UiLink
           variant="nav-link"

@@ -53,7 +53,7 @@ const routes = [
   {
     path: '/auth',
     name: 'auth',
-    redirect: { name: 'registration' },
+    redirect: { name: 'register' },
     component: () => import('@/layouts/AuthPageLayout.vue'),
     children: [
       {

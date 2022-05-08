@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
 import { getStorage } from 'firebase/storage';
-
+import { getAuth } from 'firebase/auth';
+// firebase config
 const fbApp = initializeApp({
   apiKey: 'AIzaSyCGNfhjhWS5MqYUNcrdgTU1wpJrWkaNKq0',
   authDomain: 'meetups-ddc9b.firebaseapp.com',
@@ -14,5 +15,5 @@ const fbApp = initializeApp({
 });
 const fbDb = getDatabase(fbApp);
 const fbStorage = getStorage(fbApp);
-
-export { fbDb, fbStorage };
+const fbAuth = getAuth(fbApp);
+export { fbDb, fbStorage, fbAuth };
