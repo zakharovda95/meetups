@@ -18,6 +18,10 @@ export const moduleEditing = {
         startsAt: '07:00',
         endsAt: '08:00',
       };
+      // eslint-disable-next-line no-prototype-builtins
+      if (!state.editableMeetup.hasOwnProperty('agenda')) {
+        state.editableMeetup.agenda = [];
+      }
       if (state.editableMeetup.agenda.length) {
         agendaItemForm.startsAt = state.editableMeetup.agenda.at(-1).endsAt;
         agendaItemForm.endsAt = agendaItemForm.startsAt;

@@ -70,11 +70,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions([
-      'getEditableMeetup',
-      'addAgendaItemToEditableMeetup',
-      'editMeetup',
-    ]),
+    ...mapActions(['getEditableMeetup', 'addAgendaItemToEditableMeetup']),
     selectImage(file) {
       this.file = file;
     },
@@ -101,7 +97,7 @@ export default {
       if (this.file) {
         await this.uploadImg();
       }
-      await this.editMeetup();
+      await this.$store.dispatch('editMeetup');
       await this.$router.push({
         name: 'meetup',
         params: { meetupId: this.meetupId },

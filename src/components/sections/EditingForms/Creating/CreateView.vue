@@ -61,12 +61,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions([
-      'addAgendaItem',
-      'uploadImage',
-      'resetMeetupForm',
-      'createMeetup',
-    ]),
+    ...mapActions(['addAgendaItem', 'uploadImage', 'resetMeetupForm']),
     selectImage(file) {
       this.file = file;
     },
@@ -94,7 +89,7 @@ export default {
       if (this.file) {
         await this.uploadImg();
       }
-      await this.createMeetup();
+      await this.$store.dispatch('createMeetup');
       await this.$router.push({
         name: 'meetup',
         params: { meetupId: this.meetupForm.id },

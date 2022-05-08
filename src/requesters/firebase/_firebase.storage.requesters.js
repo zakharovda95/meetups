@@ -23,7 +23,6 @@ export async function createIconsList(action, path) {
 export function createStorageImageUrl(path, file) {
   return ref(ref(fbStorage, path), file.name);
 }
-
 // Загрузка файла в сторадж
 export async function uploadImage(path, file) {
   const ref = createStorageImageUrl(path, file);

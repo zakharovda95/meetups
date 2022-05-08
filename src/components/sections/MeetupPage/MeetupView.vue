@@ -26,7 +26,6 @@ export default {
     UiLoading,
     MeetupButtonGroup,
   },
-
   mounted() {
     this.$store.dispatch('setMeetupById', this.meetupId);
   },

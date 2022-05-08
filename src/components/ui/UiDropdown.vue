@@ -5,7 +5,7 @@
     @change="proxyDropdown = $event.target.value"
   >
     <option v-for="option in options" :value="option.value" :key="option.name">
-      <div class="text">{{ type }}: {{ option.name }}</div>
+      {{ type }}: {{ option.name }}
     </option>
   </select>
 </template>
