@@ -12,7 +12,7 @@
   </div>
 </template>
 <script>
-import NavbarItem from '@/components/layouts/NavbarItem';
+import NavbarItem from '@/components/layouts/Navbar/NavbarItem';
 import FooterItem from '@/components/layouts/FooterItem';
 export default {
   name: 'MainPageLayout',

@@ -39,6 +39,8 @@ import UiLink from '@/components/ui/UiLink';
 import UiButton from '@/components/ui/UiButton';
 import UiCheckbox from '@/components/ui/UiCheckbox';
 import { register } from '@/requesters/firebase/_firebase.auth.requesters';
+import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
+
 export default {
   name: 'RegistrationForm',
   components: { UiButton, UiInput, UiCheckbox, UiLink, UiLabel },
@@ -53,7 +55,19 @@ export default {
   }),
   methods: {
     async registration() {
-      await register(this.userData.email, this.userData.password);
+      const response = await register(
+        this.userData.email,
+        this.userData.password,
+      );
+      const user = {
+        info: {
+          uid: response.uid,
+          name: this.userData.login,
+        },
+      };
+      await setFirebaseData('users/', user);
+      await this.$store.dispatch('getUsers');
+      await this.$router.push({ name: 'login' });
     },
   },
 };

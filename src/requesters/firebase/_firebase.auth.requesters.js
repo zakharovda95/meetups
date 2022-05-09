@@ -6,7 +6,7 @@ import { fbAuth } from '@/requesters/firebase/_options.firebase';
 
 // регистрация
 export function register(email, password) {
-  createUserWithEmailAndPassword(fbAuth, email, password)
+  return createUserWithEmailAndPassword(fbAuth, email, password)
     .then(userCredential => {
       return userCredential.user;
     })
