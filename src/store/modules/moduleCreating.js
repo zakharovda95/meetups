@@ -9,7 +9,10 @@ export const moduleCreating = {
       imageId: null,
       image: null,
       imageName: null,
-      organizer: '123',
+      organizer: {
+        uid: '',
+        name: '',
+      },
       title: '',
       date: moment().format('YYYY-MM-DD'),
       place: '',
@@ -47,6 +50,10 @@ export const moduleCreating = {
     },
     updateDescription(state, payload) {
       state.meetupForm.description = payload;
+    },
+    setOrganizer(state, payload) {
+      state.meetupForm.organizer.uid = payload.uid;
+      state.meetupForm.organizer.name = payload.name;
     },
     uploadImage(state, payload) {
       state.meetupForm.imageId = uuid.v1();
@@ -133,6 +140,9 @@ export const moduleCreating = {
     updateDescription({ commit }, payload) {
       commit('updateDescription', payload);
     },
+    setOrganizer({ commit }, payload) {
+      commit('setOrganizer', payload);
+    },
     uploadImage({ commit }, payload) {
       commit('uploadImage', payload);
     },
@@ -163,8 +173,10 @@ export const moduleCreating = {
     resetMeetupForm({ commit }) {
       commit('resetMeetupForm');
     },
-    async createMeetup({ state, dispatch }) {
+    async createMeetup({ state, dispatch, rootState }) {
       state.isLoading = true;
+      const payload = rootState.main.userInfo;
+      dispatch('setOrganizer', payload);
       await setFirebaseData('meetups/' + state.meetupForm.id, state.meetupForm);
       await dispatch('getMeetups');
       state.isLoading = false;

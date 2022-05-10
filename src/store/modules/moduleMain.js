@@ -69,6 +69,9 @@ export const moduleMain = {
     setUserInfo(state, payload) {
       const id = payload.uid;
       state.userInfo = state.users.find(user => user.uid === id);
+      state.userInfo.accessToken = payload.accessToken;
+      localStorage.setItem('access_token', payload.accessToken);
+      localStorage.setItem('user_data', JSON.stringify(state.userInfo));
     },
     logout(state) {
       state.userInfo = null;

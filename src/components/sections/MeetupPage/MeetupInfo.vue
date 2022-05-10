@@ -3,7 +3,7 @@
   <div class="meetup_info" v-else>
     <div class="mdl-card__supporting-text">
       <UiIcon class="ui_icon__card" icon-name="organizer"></UiIcon
-      >{{ meetup.organizer }}
+      >{{ meetup.organizer.name }}
     </div>
     <div class="mdl-card__supporting-text">
       <UiIcon class="ui_icon__card" icon-name="location"></UiIcon

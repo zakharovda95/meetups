@@ -14,7 +14,7 @@
         Создать митап
       </UiLink>
       <UiLink variant="nav-link" @click="logOut" to="#"
-        >Выйти ({{ userName }} )</UiLink
+        >Выйти ({{ userName }})</UiLink
       >
     </nav>
   </div>
