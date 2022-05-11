@@ -12,7 +12,7 @@
       <UiLink variant="nav-link" :to="{ name: 'registration' }">
         Регистрация
       </UiLink>
-      <UiLink variant="nav-link" :to="{ name: 'create' }">
+      <UiLink variant="nav-link" :to="{ name: 'login' }">
         Создать митап
       </UiLink>
     </nav>

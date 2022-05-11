@@ -8,8 +8,9 @@ import {
 } from '@/services/_sorting.service';
 import { getEventsDates } from '@/services/_events-dates.service';
 import { onAuthStateChanged } from 'firebase/auth';
-import { fbAuth } from '@/requesters/firebase/_options.firebase';
+import { fbAuth, fbDb } from '@/requesters/firebase/_options.firebase';
 import { logout } from '@/requesters/firebase/_firebase.auth.requesters';
+import { ref, onValue } from 'firebase/database';
 
 moment.locale('ru');
 
@@ -35,13 +36,7 @@ export const moduleMain = {
       return sortMeetupsByDate(state.meetups, state.meetupSortParam);
     },
     meetup(state) {
-      let elem = null;
-      state.meetups.forEach(item => {
-        if (item.id === state.meetupId) {
-          elem = item;
-        }
-      });
-      return elem;
+      return state.meetups.find(item => item.id === state.meetupId);
     },
   },
   mutations: {
@@ -78,16 +73,15 @@ export const moduleMain = {
     setMeetupById({ commit }, payload) {
       commit('chooseMeetupById', payload);
     },
-    async getMeetups({ commit }) {
+    getMeetups({ commit }) {
       try {
-        commit('checkLoading', true);
-        const response = await getFirebaseData('meetups');
-        const result = Object.values(response);
-        commit('setMeetups', result);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        commit('checkLoading', false);
+        onValue(ref(fbDb, 'meetups'), snapshot => {
+          const response = snapshot.val();
+          const result = Object.values(response);
+          commit('setMeetups', result);
+        });
+      } catch (error) {
+        console.log(error);
       }
     },
     async getIconList({ commit }) {
