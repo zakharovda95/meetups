@@ -1,4 +1,7 @@
-import { getFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
+import {
+  getFirebaseData,
+  setFirebaseData,
+} from '@/requesters/firebase/_firebase.database.requesters';
 import { createIconsList } from '@/requesters/firebase/_firebase.storage.requesters';
 import moment from 'moment';
 import 'moment/locale/ru';
@@ -20,7 +23,6 @@ export const moduleMain = {
     isLoading: false,
     mainPageIcons: [],
     meetups: [],
-    //users: [],
     inputValue: '',
     meetupId: '',
     meetupSortParam: 'all',
@@ -67,6 +69,17 @@ export const moduleMain = {
     },
     clearUserInfo(state) {
       state.userInfo = null;
+    },
+    async pushCreatedMeetup(state, payload) {
+      state.userInfo.meetups.organizer.push(payload);
+      await setFirebaseData('users/' + state.userInfo.uid, state.userInfo);
+      state.userInfo = await getFirebaseData('users/' + state.userInfo.uid);
+    },
+    async pushMeetupForParticipation(state, payload) {
+      state.userInfo.meetups.participant.push(payload);
+      await setFirebaseData('users/' + state.userInfo.uid, state.userInfo);
+      state.userInfo = await getFirebaseData('users/' + state.userInfo.uid);
+      console.log(state.userInfo);
     },
   },
   actions: {
@@ -116,6 +129,12 @@ export const moduleMain = {
     async signOut({ commit }) {
       await logout();
       commit('clearUserInfo');
+    },
+    pushCreatedMeetup({ commit }, payload) {
+      commit('pushCreatedMeetup', payload);
+    },
+    pushMeetupForParticipation({ commit }, payload) {
+      commit('pushMeetupForParticipation', payload);
     },
   },
 };

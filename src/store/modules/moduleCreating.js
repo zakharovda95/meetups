@@ -177,6 +177,7 @@ export const moduleCreating = {
       state.isLoading = true;
       const payload = rootState.main.userInfo;
       dispatch('setOrganizer', payload);
+      dispatch('pushCreatedMeetup', state.meetupForm.id);
       await setFirebaseData('meetups/' + state.meetupForm.id, state.meetupForm);
       await dispatch('getMeetups');
       state.isLoading = false;

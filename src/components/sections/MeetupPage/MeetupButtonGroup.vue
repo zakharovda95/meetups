@@ -1,12 +1,14 @@
 <template>
   <div class="meetup-button-group">
-    <div class="organizer-button-group">
+    <div class="organizer-button-group" v-if="isOrganizer">
       <UiButton variant="bgBlue" @click="editMeetup">Редактировать</UiButton>
       <UiButton variant="bgRed" @click="removeMeetup">Удалить</UiButton>
     </div>
-    <div class="participant-button-group" v-if="false">
-      <UiButton variant="bgBlue">Участвовать</UiButton>
-      <UiButton variant="bgRed">Отменить участие</UiButton>
+    <div class="participant-button-group">
+      <UiButton v-if="!isParticipant" variant="bgBlue" @click="participate">
+        Участвовать
+      </UiButton>
+      <UiButton v-else variant="bgRed">Отменить участие</UiButton>
     </div>
   </div>
 </template>
@@ -28,6 +30,17 @@ export default {
   data: () => ({
     isLoading: false,
   }),
+  computed: {
+    userMeetups() {
+      return this.$store.state.main?.userInfo?.meetups;
+    },
+    isParticipant() {
+      return this.userMeetups.participant.some(item => item === this.meetup.id);
+    },
+    isOrganizer() {
+      return this.userMeetups.organizer.some(item => item === this.meetup.id);
+    },
+  },
   methods: {
     editMeetup() {
       this.$router.push({ name: 'edit', params: { meetupId: this.meetup.id } });
@@ -40,6 +53,10 @@ export default {
       await this.$router.push({ name: 'meetups' });
       await this.$toast.success('Митап удален!');
       this.isLoading = false;
+    },
+    async participate() {
+      const id = this.$route.params.meetupId;
+      await this.$store.dispatch('pushMeetupForParticipation', id);
     },
   },
 };

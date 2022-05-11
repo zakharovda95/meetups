@@ -4,9 +4,9 @@
       <MeetupCover :title="meetup.title" :image="meetup.image" />
     </div>
     <div class="meetup-item-wrapper-info">
-      <div class="meetup-item-badge">
-        <UiBadge>Участник</UiBadge>
-        <UiBadge v-if="false" variant="organizer">Организатор</UiBadge>
+      <div class="meetup-item-badge" v-if="userMeetups">
+        <UiBadge v-if="isParticipant">Участник</UiBadge>
+        <UiBadge v-if="isOrganizer" variant="organizer">Организатор</UiBadge>
       </div>
       <MeetupInfo :meetup="meetup"></MeetupInfo>
     </div>
@@ -38,6 +38,17 @@ export default {
     meetup: {
       type: Object,
       default: () => {},
+    },
+  },
+  computed: {
+    userMeetups() {
+      return this.$store.state.main?.userInfo?.meetups;
+    },
+    isParticipant() {
+      return this.userMeetups.participant.some(item => item === this.meetup.id);
+    },
+    isOrganizer() {
+      return this.userMeetups.organizer.some(item => item === this.meetup.id);
     },
   },
 };
