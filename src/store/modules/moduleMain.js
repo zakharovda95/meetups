@@ -15,7 +15,7 @@ export const moduleMain = {
     isLoading: false,
     mainPageIcons: [],
     meetups: [],
-    users: [],
+    //users: [],
     inputValue: '',
     meetupId: '',
     meetupSortParam: 'all',
@@ -63,9 +63,9 @@ export const moduleMain = {
     updateRadioValue(state, payload) {
       state.meetupSortParam = payload;
     },
-    setUsers(state, payload) {
-      state.users = payload;
-    },
+    // setUsers(state, payload) {
+    //   state.users = payload;
+    // },
     setUserInfo(state, payload) {
       const id = payload.uid;
       state.userInfo = state.users.find(user => user.uid === id);
@@ -81,18 +81,18 @@ export const moduleMain = {
     setMeetupById({ commit }, payload) {
       commit('chooseMeetupById', payload);
     },
-    async getUsers({ commit }) {
-      try {
-        commit('checkLoading', true);
-        const response = await getFirebaseData('users');
-        const result = Object.values(response);
-        commit('setUsers', result);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        commit('checkLoading', false);
-      }
-    },
+    // async getUsers({ commit }) {
+    //   try {
+    //     commit('checkLoading', true);
+    //     const response = await getFirebaseData('users');
+    //     const result = Object.values(response);
+    //     commit('setUsers', result);
+    //   } catch (err) {
+    //     console.log(err);
+    //   } finally {
+    //     commit('checkLoading', false);
+    //   }
+    // },
     async getMeetups({ commit }) {
       try {
         commit('checkLoading', true);

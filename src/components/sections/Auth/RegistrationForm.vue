@@ -3,16 +3,16 @@
     <h3>Зарегистрируйтесь</h3>
     <form ref="form">
       <UiLabel class="login-field" label="Email">
-        <UiInput required type="email" v-model="userData.email" />
+        <UiInput type="email" v-model="userData.email" />
       </UiLabel>
       <UiLabel label="Логин">
-        <UiInput required v-model="userData.login" />
+        <UiInput v-model="userData.login" />
       </UiLabel>
       <UiLabel label="Пароль">
-        <UiInput required type="password" v-model="userData.password" />
+        <UiInput type="password" v-model="userData.password" />
       </UiLabel>
       <UiLabel label="Повторите пароль">
-        <UiInput required type="password" v-model="userData.passwordRepeat" />
+        <UiInput type="password" v-model="userData.passwordRepeat" />
       </UiLabel>
       <UiCheckbox required v-model="userData.isConfirmation">
         Я согласен с условиями
@@ -59,14 +59,16 @@ export default {
         this.userData.email,
         this.userData.password,
       );
-      const user = {
-        info: {
-          uid: response.uid,
-          name: this.userData.login,
+      const userForm = {
+        uid: response.uid,
+        name: this.userData.login,
+        email: response.email,
+        meetups: {
+          participant: ['test'],
+          organizer: ['test'],
         },
       };
-      await setFirebaseData('users/', user);
-      await this.$store.dispatch('getUsers');
+      await setFirebaseData('users/' + response.uid, userForm);
       await this.$router.push({ name: 'login' });
     },
   },
