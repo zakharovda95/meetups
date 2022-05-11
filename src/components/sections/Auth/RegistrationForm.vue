@@ -64,8 +64,8 @@ export default {
         name: this.userData.login,
         email: response.email,
         meetups: {
-          participant: ['test'],
-          organizer: ['test'],
+          participant: ['Как участник'],
+          organizer: ['Как организатор'],
         },
       };
       await setFirebaseData('users/' + response.uid, userForm);

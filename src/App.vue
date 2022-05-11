@@ -4,15 +4,20 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'App',
   created() {
-    this.$store.dispatch('getMeetups');
-    this.$store.dispatch('getIconList');
-    this.$store.dispatch('getUsers');
+    this.getMeetups();
+    this.getIconList();
+    this.checkUserStatus();
     setTimeout(() => {
       this.$toast.show('Приветствую на моем демонстрационном проекте!');
     }, 2000);
+  },
+  methods: {
+    ...mapActions(['getMeetups', 'getIconList', 'checkUserStatus']),
   },
 };
 </script>

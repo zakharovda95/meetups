@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
 import { fbAuth } from '@/requesters/firebase/_options.firebase';
 
@@ -23,4 +24,10 @@ export function login(email, password) {
     .catch(error => {
       return error.code + error.message;
     });
+}
+
+// выход
+
+export async function logout() {
+  await signOut(fbAuth);
 }

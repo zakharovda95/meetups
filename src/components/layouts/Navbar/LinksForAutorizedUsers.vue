@@ -39,9 +39,9 @@ export default {
     },
   },
   methods: {
-    logOut() {
-      this.$store.dispatch('logout');
-      this.$router.push({ name: 'meetups' });
+    async logOut() {
+      await this.$store.dispatch('signOut');
+      await this.$router.push({ name: 'meetups' });
     },
   },
 };

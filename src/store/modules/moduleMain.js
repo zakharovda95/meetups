@@ -7,6 +7,10 @@ import {
   sortMeetupsByDate,
 } from '@/services/_sorting.service';
 import { getEventsDates } from '@/services/_events-dates.service';
+import { onAuthStateChanged } from 'firebase/auth';
+import { fbAuth } from '@/requesters/firebase/_options.firebase';
+import { logout } from '@/requesters/firebase/_firebase.auth.requesters';
+
 moment.locale('ru');
 
 export const moduleMain = {
@@ -63,17 +67,10 @@ export const moduleMain = {
     updateRadioValue(state, payload) {
       state.meetupSortParam = payload;
     },
-    // setUsers(state, payload) {
-    //   state.users = payload;
-    // },
-    setUserInfo(state, payload) {
-      const id = payload.uid;
-      state.userInfo = state.users.find(user => user.uid === id);
-      state.userInfo.accessToken = payload.accessToken;
-      localStorage.setItem('access_token', payload.accessToken);
-      localStorage.setItem('user_data', JSON.stringify(state.userInfo));
+    async setUserInfo(state, payload) {
+      state.userInfo = await getFirebaseData('users/' + payload.uid);
     },
-    logout(state) {
+    clearUserInfo(state) {
       state.userInfo = null;
     },
   },
@@ -81,18 +78,6 @@ export const moduleMain = {
     setMeetupById({ commit }, payload) {
       commit('chooseMeetupById', payload);
     },
-    // async getUsers({ commit }) {
-    //   try {
-    //     commit('checkLoading', true);
-    //     const response = await getFirebaseData('users');
-    //     const result = Object.values(response);
-    //     commit('setUsers', result);
-    //   } catch (err) {
-    //     console.log(err);
-    //   } finally {
-    //     commit('checkLoading', false);
-    //   }
-    // },
     async getMeetups({ commit }) {
       try {
         commit('checkLoading', true);
@@ -124,8 +109,19 @@ export const moduleMain = {
     setUserInfo({ commit }, payload) {
       commit('setUserInfo', payload);
     },
-    logout({ commit }) {
-      commit('logout');
+    checkUserStatus({ commit }) {
+      onAuthStateChanged(fbAuth, async user => {
+        if (user) {
+          const data = await getFirebaseData('users/' + user.uid);
+          commit('setUserInfo', data);
+        } else {
+          console.log('Вы не авторизованы');
+        }
+      });
+    },
+    async signOut({ commit }) {
+      await logout();
+      commit('clearUserInfo');
     },
   },
 };
