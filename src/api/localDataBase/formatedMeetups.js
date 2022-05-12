@@ -8,7 +8,10 @@ export const meetups = [
     imageId: null,
     image: null,
     date: 1646208000000,
-    organizer: 'Эл Гор',
+    organizer: {
+      uid: uuid.v1(),
+      name: 'Эрл Гор',
+    },
     place: 'Pizza Hut',
     agenda: [
       {
@@ -51,7 +54,10 @@ export const meetups = [
     image:
       'https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetup_naruto_cover.jpg?alt=media&token=c0229277-561f-4ea0-879b-f3442ae555ff',
     date: 1650016800000,
-    organizer: 'Udzumaki123',
+    organizer: {
+      uid: uuid.v1(),
+      name: 'Удзумаки123',
+    },
     place: 'Деревня скрытая в листве',
     agenda: [
       {
@@ -113,7 +119,10 @@ export const meetups = [
     imageId: null,
     image: null,
     date: 1644483600000,
-    organizer: 'Олег Газманов',
+    organizer: {
+      uid: uuid.v1(),
+      name: 'Олег Газманов',
+    },
     place: 'Интернет',
     agenda: null,
   },
@@ -125,7 +134,10 @@ export const meetups = [
     image:
       'https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetup_adventure_cover.jpg?alt=media&token=06d1cfcf-35ca-4f36-8267-eebf19ffa0aa',
     date: 1666260000000,
-    organizer: 'Финн Парнишка и Джейк Пес',
+    organizer: {
+      uid: uuid.v1(),
+      name: 'Финн Парнишка, Джейк Пес',
+    },
     place: 'Какая-то пещера',
     agenda: [
       {
@@ -187,7 +199,10 @@ export const meetups = [
     imageId: null,
     image: null,
     date: 1656601200000,
-    organizer: 'Армяне',
+    organizer: {
+      uid: uuid.v1(),
+      name: 'Армяне',
+    },
     place: 'В том анекдоте',
     agenda: [
       {

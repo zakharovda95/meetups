@@ -12,18 +12,12 @@ export default {
     this.getMeetups();
     this.getIconList();
     this.checkUserStatus();
-    //this.watchChanges();
     setTimeout(() => {
       this.$toast.show('Приветствую на моем демонстрационном проекте!');
     }, 2000);
   },
   methods: {
-    ...mapActions([
-      'getMeetups',
-      'getIconList',
-      'checkUserStatus',
-      //'watchChanges',
-    ]),
+    ...mapActions(['getMeetups', 'getIconList', 'checkUserStatus']),
   },
 };
 </script>

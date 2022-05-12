@@ -79,7 +79,22 @@ export const moduleMain = {
       state.userInfo.meetups.participant.push(payload);
       await setFirebaseData('users/' + state.userInfo.uid, state.userInfo);
       state.userInfo = await getFirebaseData('users/' + state.userInfo.uid);
-      console.log(state.userInfo);
+    },
+    async cutMeetupFromParticipationMeetups(state, payload) {
+      state.userInfo.meetups.participant =
+        state.userInfo.meetups.participant.filter(item => {
+          return item !== payload;
+        });
+      await setFirebaseData('users/' + state.userInfo.uid, state.userInfo);
+      state.userInfo = await getFirebaseData('users/' + state.userInfo.uid);
+    },
+    async cutMeetupFromOrganizedMeetups(state, payload) {
+      state.userInfo.meetups.organizer =
+        state.userInfo.meetups.organizer.filter(item => {
+          return item !== payload;
+        });
+      await setFirebaseData('users/' + state.userInfo.uid, state.userInfo);
+      state.userInfo = await getFirebaseData('users/' + state.userInfo.uid);
     },
   },
   actions: {
@@ -135,6 +150,12 @@ export const moduleMain = {
     },
     pushMeetupForParticipation({ commit }, payload) {
       commit('pushMeetupForParticipation', payload);
+    },
+    cutMeetupFromParticipationMeetups({ commit }, payload) {
+      commit('cutMeetupFromParticipationMeetups', payload);
+    },
+    cutMeetupFromOrganizedMeetups({ commit }, payload) {
+      commit('cutMeetupFromOrganizedMeetups', payload);
     },
   },
 };

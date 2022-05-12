@@ -45,10 +45,18 @@ export default {
       return this.$store.state.main?.userInfo?.meetups;
     },
     isParticipant() {
-      return this.userMeetups.participant.some(item => item === this.meetup.id);
+      if (this.userMeetups) {
+        return this.userMeetups.participant.some(
+          item => item === this.meetup.id,
+        );
+      }
+      return false;
     },
     isOrganizer() {
-      return this.userMeetups.organizer.some(item => item === this.meetup.id);
+      if (this.userMeetups) {
+        return this.userMeetups.organizer.some(item => item === this.meetup.id);
+      }
+      return false;
     },
   },
 };
