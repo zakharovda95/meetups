@@ -85,6 +85,16 @@ const routes = [
         name: 'edit',
         component: () => import('@/pages/EditPage.vue'),
       },
+      {
+        path: 'organizer',
+        name: 'organizer',
+        component: () => import('@/pages/MeetupsIOrganizedPage.vue'),
+      },
+      {
+        path: 'participant',
+        name: 'participant',
+        component: () => import('@/pages/MeetupsIParticipatePage.vue'),
+      },
     ],
   },
 ];

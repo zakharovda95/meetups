@@ -8,8 +8,12 @@
       >
         &#10229; К списку
       </UiLink>
-      <UiLink variant="nav-link" to="/">Мои митапы</UiLink>
-      <UiLink variant="nav-link" to="/"> Организуемые митапы </UiLink>
+      <UiLink variant="nav-link" :to="{ name: 'participant' }">
+        Мои митапы
+      </UiLink>
+      <UiLink variant="nav-link" :to="{ name: 'organizer' }">
+        Организуемые митапы
+      </UiLink>
       <UiLink variant="nav-link" :to="{ name: 'create' }">
         Создать митап
       </UiLink>

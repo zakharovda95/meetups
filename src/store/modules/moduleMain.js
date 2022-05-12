@@ -7,6 +7,7 @@ import moment from 'moment';
 import 'moment/locale/ru';
 import {
   filterMeetupsByInput,
+  getMeetupsIOrganizedOrParticipate,
   sortMeetupsByDate,
 } from '@/services/_sorting.service';
 import { getEventsDates } from '@/services/_events-dates.service';
@@ -36,6 +37,18 @@ export const moduleMain = {
     },
     sortedMeetups(state) {
       return sortMeetupsByDate(state.meetups, state.meetupSortParam);
+    },
+    meetupsIOrganized(state) {
+      return getMeetupsIOrganizedOrParticipate(
+        state.meetups,
+        state.userInfo.meetups.organizer,
+      );
+    },
+    meetupsIParticipate(state) {
+      return getMeetupsIOrganizedOrParticipate(
+        state.meetups,
+        state.userInfo.meetups.participant,
+      );
     },
     meetup(state) {
       return state.meetups.find(item => item.id === state.meetupId);
