@@ -1,8 +1,6 @@
 <template>
-  <div class="ui_loading">
-    <div
-      class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"
-    ></div>
+  <div class="ui-loading">
+    <slot />
   </div>
 </template>
 <script>
@@ -11,7 +9,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.ui_loading {
+.ui-loading {
   @import '../../assets/styles/_constants.scss';
   display: flex;
   align-items: center;

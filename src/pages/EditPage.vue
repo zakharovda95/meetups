@@ -1,5 +1,5 @@
 <template>
-  <div class="create-page">
+  <div class="edit-page">
     <EditView />
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.create-page {
+.edit-page {
   display: flex;
   justify-content: center;
 }

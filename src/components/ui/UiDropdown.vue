@@ -2,7 +2,7 @@
   <select
     class="ui-dropdown"
     v-bind="$attrs"
-    @change="proxyDropdown = $event.target.value"
+    @change="modelValueProxy = $event.target.value"
   >
     <option v-for="option in options" :value="option.value" :key="option.name">
       {{ type }}: {{ option.name }}
@@ -13,7 +13,6 @@
 <script>
 export default {
   name: 'UiDropdown',
-  inheritAttrs: false,
   emits: ['update:modelValue'],
   props: {
     options: {
@@ -25,7 +24,7 @@ export default {
     type: String,
   },
   computed: {
-    proxyDropdown: {
+    modelValueProxy: {
       get() {
         return this.modelValue;
       },

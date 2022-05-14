@@ -1,5 +1,5 @@
 <template>
-  <div class="meetup-item-badge" :class="type">
+  <div class="ui-badge" :class="type">
     <slot />
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
 <style scoped lang="scss">
 @import '../../assets/styles/_constants.scss';
 @import '../../assets/fonts/_fonts.css';
-.meetup-item-badge {
+.ui-badge {
   font-family: 'JetBrainMono-Light', sans-serif;
   display: flex;
   padding: 3px;

@@ -1,8 +1,8 @@
 <template>
-  <div class="navbar-wrapper">
-    <div class="navbar-wrapper-header-wrapper">
-      <header class="navbar-wrapper-header">
-        <div class="navbar-wrapper-header-logo">
+  <div class="navbar-item">
+    <div class="header-wrapper">
+      <header class="header">
+        <div class="logo">
           <UiLink :to="{ name: 'meetups' }">MEETUPS</UiLink>
         </div>
       </header>
@@ -30,24 +30,23 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../../assets/fonts/_fonts.css';
 @import '../../../assets/styles/constants';
-.navbar-wrapper {
+.navbar-item {
   display: flex;
   flex-direction: column;
   font-family: 'JetBrainMono-Bold', sans-serif;
 
-  .navbar-wrapper-header-wrapper {
+  .header-wrapper {
     display: flex;
     height: 80px;
     background-color: $main-color;
 
-    .navbar-wrapper-header {
+    .header {
       display: flex;
       width: 100%;
       justify-content: center;
 
-      .navbar-wrapper-header-logo {
+      .logo {
         display: flex;
         align-self: center;
         font-size: 2.5em;

@@ -1,9 +1,7 @@
 <template>
-  <div class="meetup-layout">
+  <div class="create-and-edit-layout">
     <NavbarItem />
-    <div class="pages">
-      <router-view />
-    </div>
+    <router-view />
     <FooterItem />
   </div>
 </template>
@@ -11,19 +9,11 @@
 import NavbarItem from '@/components/layouts/Navbar/NavbarItem';
 import FooterItem from '@/components/layouts/FooterItem';
 export default {
-  name: 'MeetupPageLayout',
+  name: 'CreateAndEditPageLayout',
   components: {
     NavbarItem,
     FooterItem,
   },
 };
 </script>
-<style scoped lang="scss">
-.meetup-layout {
-  .pages {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-}
-</style>
+<style scoped lang="scss"></style>

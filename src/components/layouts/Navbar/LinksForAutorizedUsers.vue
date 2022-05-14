@@ -1,6 +1,6 @@
 <template>
-  <div class="navbar-links-authorized" v-if="isAuthorized">
-    <nav class="navbar-wrapper-nav">
+  <div class="links-for-authorized-users" v-if="isAuthorized">
+    <nav class="links">
       <UiLink
         variant="nav-link"
         v-if="$route.meta.showReturnToMeetupList"
@@ -17,9 +17,9 @@
       <UiLink variant="nav-link" :to="{ name: 'create' }">
         Создать митап
       </UiLink>
-      <UiLink variant="nav-link" @click="logOut" to="#"
-        >Выйти ({{ userName }})</UiLink
-      >
+      <UiLink variant="nav-link" @click="logOut" to="#">
+        Выйти ({{ userName }})
+      </UiLink>
     </nav>
   </div>
 </template>
@@ -51,14 +51,13 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../../assets/fonts/_fonts.css';
 @import '../../../assets/styles/constants';
-.navbar-links-authorized {
+.links-for-authorized-users {
   display: flex;
   justify-content: center;
   height: 80px;
   background: $navbar-color-white;
-  .navbar-wrapper-nav {
+  .links {
     display: flex;
     align-self: center;
     font-size: 1.4em;

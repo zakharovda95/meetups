@@ -1,6 +1,6 @@
 <template>
-  <div class="navbar-links-public" v-if="!isAuthorized">
-    <nav class="navbar-wrapper-nav">
+  <div class="public-links" v-if="!isAuthorized">
+    <nav class="links">
       <UiLink
         variant="nav-link"
         v-if="$route.meta.showReturnToMeetupList"
@@ -35,14 +35,13 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../../assets/fonts/_fonts.css';
 @import '../../../assets/styles/constants';
-.navbar-links-public {
+.public-links {
   display: flex;
   justify-content: center;
   height: 80px;
   background: $navbar-color-white;
-  .navbar-wrapper-nav {
+  .links {
     display: flex;
     align-self: center;
     font-size: 1.4em;

@@ -12,7 +12,6 @@
 <script>
 export default {
   name: 'UiCheckbox',
-  inheritAttrs: false,
   props: {
     modelValue: {
       type: String,
@@ -22,6 +21,7 @@ export default {
       type: String,
     },
   },
+  inheritAttrs: false,
   computed: {
     proxyModelValue: {
       get() {
@@ -36,7 +36,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '../../assets/styles/_constants.scss';
-@import '../../assets/fonts/_fonts.css';
 .ui-checkbox {
   display: flex;
   margin: 10px;

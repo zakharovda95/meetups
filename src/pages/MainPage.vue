@@ -1,7 +1,7 @@
 <template>
   <div class="main-page">
-    <UiLoading v-if="loading" />
-    <div v-else class="main-page-content">
+    <UiLoading v-if="isLoading" />
+    <div v-else class="content">
       <MeetupsList />
     </div>
   </div>
@@ -16,7 +16,7 @@ export default {
     UiLoading,
   },
   computed: {
-    loading() {
+    isLoading() {
       return this.$store.state.main.isLoading;
     },
   },
@@ -29,7 +29,7 @@ export default {
     margin: 0 auto;
     width: 90%;
     height: 100%;
-    .main-page-content {
+    .content {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -45,7 +45,7 @@ export default {
     flex-direction: column;
     width: 50%;
     height: 100%;
-    .main-page-content {
+    .content {
       display: flex;
       flex-direction: column;
       justify-content: center;

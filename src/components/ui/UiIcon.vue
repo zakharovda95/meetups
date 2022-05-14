@@ -1,5 +1,5 @@
 <template>
-  <img class="ui_icon" :alt="iconName" :src="iconSrc" />
+  <img class="ui-icon" :alt="iconName" :src="icon?.url" />
 </template>
 <script>
 export default {
@@ -15,14 +15,8 @@ export default {
     icons() {
       return this.$store.state.main.mainPageIcons;
     },
-    iconSrc() {
-      let url = '';
-      this.icons.forEach(item => {
-        if (item.name.includes(this.iconName)) {
-          url = item.url;
-        }
-      });
-      return url;
+    icon() {
+      return this.icons.find(icon => icon.name.includes(this.iconName));
     },
   },
 };

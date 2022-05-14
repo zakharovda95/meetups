@@ -1,6 +1,6 @@
 <template>
   <div class="ui-message">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 <script>
@@ -9,8 +9,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../../assets/styles/_constants.scss';
 .ui-message {
-  @import '../../assets/styles/_constants.scss';
   display: flex;
   align-items: center;
   align-self: center;

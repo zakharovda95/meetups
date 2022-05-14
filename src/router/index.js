@@ -73,7 +73,7 @@ const routes = [
     alias: '/admin',
     name: 'createEdit',
     redirect: { name: 'create' },
-    component: () => import('@/layouts/CreateEditLayout.vue'),
+    component: () => import('@/layouts/CreateAndEditPageLayout.vue'),
     children: [
       {
         path: 'create',

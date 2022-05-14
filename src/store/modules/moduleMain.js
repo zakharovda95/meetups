@@ -116,6 +116,7 @@ export const moduleMain = {
     },
     getMeetups({ commit }) {
       try {
+        commit('checkLoading', true);
         onValue(ref(fbDb, 'meetups'), snapshot => {
           const response = snapshot.val();
           const result = Object.values(response);
@@ -123,7 +124,19 @@ export const moduleMain = {
         });
       } catch (error) {
         console.log(error);
+      } finally {
+        commit('checkLoading', false);
       }
+    },
+    checkUserStatus({ commit }) {
+      onAuthStateChanged(fbAuth, async user => {
+        if (user) {
+          const data = await getFirebaseData('users/' + user.uid);
+          commit('setUserInfo', data);
+        } else {
+          console.log('Вы не авторизованы');
+        }
+      });
     },
     async getIconList({ commit }) {
       try {
@@ -143,16 +156,6 @@ export const moduleMain = {
     },
     setUserInfo({ commit }, payload) {
       commit('setUserInfo', payload);
-    },
-    checkUserStatus({ commit }) {
-      onAuthStateChanged(fbAuth, async user => {
-        if (user) {
-          const data = await getFirebaseData('users/' + user.uid);
-          commit('setUserInfo', data);
-        } else {
-          console.log('Вы не авторизованы');
-        }
-      });
     },
     async signOut({ commit }) {
       await logout();

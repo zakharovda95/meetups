@@ -1,7 +1,7 @@
 <template>
   <div class="registration-form">
     <h3>Зарегистрируйтесь</h3>
-    <form ref="form">
+    <form>
       <UiLabel class="login-field" label="Email">
         <UiInput type="email" v-model="userData.email" />
       </UiLabel>

@@ -1,6 +1,6 @@
 <template>
-  <div class="filter-panel-wrapper">
-    <div class="filter-panel-wrapper-radio-group">
+  <div class="filter-panel">
+    <div class="radio">
       <UiRadio
         @update:model-value="updateRadioValue"
         :model-value="radioModel"
@@ -30,14 +30,14 @@
         Ожидаемые
       </UiRadio>
     </div>
-    <div class="filter-panel-wrapper-input-group">
+    <div class="input">
       <UiInput
         placeholder="Поиск"
         @update:model-value="updateInput"
         :model-value="inputValue"
       />
     </div>
-    <div class="filter-panel-wrapper-toggle-group">
+    <div class="toggle">
       <UiLink variant="nav-link" :to="{ name: 'meetups' }">Список</UiLink>
       <UiLink variant="nav-link" :to="{ name: 'calendar' }"> Календарь </UiLink>
     </div>
@@ -75,7 +75,7 @@ export default {
 <style scoped lang="scss">
 @import '../../assets/styles/constants';
 @media (max-width: 1019px) {
-  .filter-panel-wrapper {
+  .filter-panel {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -84,16 +84,16 @@ export default {
     background-color: $navbar-color-white;
     width: 100%;
     min-height: 90px;
-    .filter-panel-wrapper-radio-group {
+    .radio {
       display: flex;
       justify-content: space-between;
     }
-    .filter-panel-wrapper-input-group {
+    .input {
       display: flex;
       align-self: center;
       margin-left: 5px;
     }
-    .filter-panel-wrapper-toggle-group {
+    .toggle {
       display: flex;
       align-self: center;
       align-items: center;
@@ -102,7 +102,7 @@ export default {
   }
 }
 @media (min-width: 1020px) {
-  .filter-panel-wrapper {
+  .filter-panel {
     display: flex;
     justify-content: space-between;
     margin-top: 25px;
@@ -110,13 +110,13 @@ export default {
     background-color: whitesmoke;
     width: 50%;
     min-height: 80px;
-    .filter-panel-wrapper-radio-group,
-    .filter-panel-wrapper-input-group {
+    .radio,
+    .input {
       display: flex;
       align-self: center;
       margin-left: 5px;
     }
-    .filter-panel-wrapper-toggle-group {
+    .toggle {
       display: flex;
       align-self: center;
       align-items: center;

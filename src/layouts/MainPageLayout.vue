@@ -1,17 +1,11 @@
 <template>
-  <div class="layout-wrapper">
-    <div class="layout-wrapper-navbar">
-      <NavbarItem />
-    </div>
-    <div class="layout-wrapper-filter-panel">
+  <div class="main-layout">
+    <NavbarItem />
+    <div class="filter-panel">
       <FilterPanel />
     </div>
-    <div class="layout-wrapper-pages">
-      <router-view />
-    </div>
-    <div class="layout-wrapper-footer">
-      <FooterItem />
-    </div>
+    <router-view />
+    <FooterItem />
   </div>
 </template>
 <script>
@@ -28,8 +22,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.layout-wrapper {
-  .layout-wrapper-filter-panel {
+.main-layout {
+  .filter-panel {
     display: flex;
     justify-content: center;
   }

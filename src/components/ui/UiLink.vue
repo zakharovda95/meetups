@@ -1,6 +1,6 @@
 <template>
-  <component class="ui-link" :is="tag" :class="linkClasses"
-    ><slot></slot>
+  <component class="ui-link" :is="tag" :class="linkClasses">
+    <slot />
   </component>
 </template>
 <script>
@@ -31,7 +31,6 @@ export default {
 
 <style scoped lang="scss">
 @import '../../assets/styles/_constants.scss';
-@import '../../assets/fonts/_fonts.css';
 .ui-link {
   text-decoration: none;
   font-family: 'JetBrainMono-Light', sans-serif;

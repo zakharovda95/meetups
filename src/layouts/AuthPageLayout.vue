@@ -1,14 +1,8 @@
 <template>
-  <div class="layout-wrapper">
-    <div class="layout-wrapper-navbar">
-      <NavbarItem />
-    </div>
-    <div class="layout-wrapper-pages">
-      <router-view />
-    </div>
-    <div class="layout-wrapper-footer">
-      <FooterItem />
-    </div>
+  <div class="auth-layout">
+    <NavbarItem />
+    <router-view />
+    <FooterItem />
   </div>
 </template>
 <script>
@@ -22,7 +16,4 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss">
-.layout-wrapper {
-}
-</style>
+<style scoped lang="scss"></style>

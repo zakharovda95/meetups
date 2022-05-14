@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" class="ui_button" :class="btnVariant" :type="btnType">
+  <component :is="tag" class="ui-button" :class="btnVariant" :type="btnType">
     <slot></slot>
   </component>
 </template>
@@ -38,7 +38,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.ui_button {
+.ui-button {
   margin: 5px;
   font-family: JetBrainMono-Bold, sans-serif;
   letter-spacing: 2px;
