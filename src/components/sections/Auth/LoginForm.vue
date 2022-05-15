@@ -23,7 +23,7 @@ import UiLabel from '@/components/ui/UiLabel';
 import UiInput from '@/components/ui/UiInput';
 import UiLink from '@/components/ui/UiLink';
 import UiButton from '@/components/ui/UiButton';
-import { login } from '@/requesters/firebase/_firebase.auth.requesters';
+import { fbLogin } from '@/requesters/firebase/_firebase.auth.requesters';
 export default {
   name: 'LoginForm',
   components: { UiButton, UiInput, UiLink, UiLabel },
@@ -38,7 +38,10 @@ export default {
   }),
   methods: {
     async logIn() {
-      const userData = await login(this.userData.email, this.userData.password);
+      const userData = await fbLogin(
+        this.userData.email,
+        this.userData.password,
+      );
       await this.$store.dispatch('setUserInfo', userData);
       await this.$router.push({ name: 'meetups' });
     },

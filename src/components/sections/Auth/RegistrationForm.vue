@@ -38,8 +38,8 @@ import UiInput from '@/components/ui/UiInput';
 import UiLink from '@/components/ui/UiLink';
 import UiButton from '@/components/ui/UiButton';
 import UiCheckbox from '@/components/ui/UiCheckbox';
-import { register } from '@/requesters/firebase/_firebase.auth.requesters';
-import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
+import { fbRegister } from '@/requesters/firebase/_firebase.auth.requesters';
+import { fbSetData } from '@/requesters/firebase/_firebase.database.requesters';
 
 export default {
   name: 'RegistrationForm',
@@ -55,7 +55,7 @@ export default {
   }),
   methods: {
     async registration() {
-      const response = await register(
+      const response = await fbRegister(
         this.userData.email,
         this.userData.password,
       );
@@ -68,7 +68,7 @@ export default {
           organizer: ['Как организатор'],
         },
       };
-      await setFirebaseData('users/' + response.uid, userForm);
+      await fbSetData('users/' + response.uid, userForm);
       await this.$router.push({ name: 'login' });
     },
   },

@@ -1,8 +1,8 @@
 import { uuid } from 'vue-uuid';
-import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
+import { fbSetData } from '@/requesters/firebase/_firebase.database.requesters';
 import moment from 'moment';
 
-export const moduleCreating = {
+export const moduleCreatingStore = {
   state: () => ({
     meetupForm: {
       id: uuid.v1(),
@@ -175,10 +175,10 @@ export const moduleCreating = {
     },
     async createMeetup({ state, dispatch, rootState }) {
       state.isLoading = true;
-      const payload = rootState.main.userInfo;
+      const payload = rootState.user.data.userInfo;
       dispatch('setOrganizer', payload);
-      dispatch('pushCreatedMeetup', state.meetupForm.id);
-      await setFirebaseData('meetups/' + state.meetupForm.id, state.meetupForm);
+      dispatch('pushCreatedMeetupToUserData', state.meetupForm.id);
+      await fbSetData('meetups/' + state.meetupForm.id, state.meetupForm);
       await dispatch('getMeetups');
       state.isLoading = false;
     },

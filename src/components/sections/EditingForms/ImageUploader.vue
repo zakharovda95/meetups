@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { DEFAULT_IMAGE } from '@/assets/styles/_constants';
+
 export default {
   name: 'UiImageUploader',
   emits: ['select', 'error', 'remove'],
@@ -62,11 +64,9 @@ export default {
       };
     },
     bgImage() {
-      if (this.url) {
-        return `linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.url})`;
-      } else {
-        return `linear-gradient( 0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://firebasestorage.googleapis.com/v0/b/meetups-ddc9b.appspot.com/o/covers%2Fmeetups_card__background.jpg?alt=media&token=744441d9-c81e-4332-82a5-f41e5cc96b58')`;
-      }
+      return this.url
+        ? `linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.url})`
+        : `linear-gradient( 0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${DEFAULT_IMAGE})`;
     },
     text() {
       if (!this.url && !this.loading) {

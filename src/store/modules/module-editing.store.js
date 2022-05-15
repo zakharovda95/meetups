@@ -1,8 +1,8 @@
 import moment from 'moment';
 import { uuid } from 'vue-uuid';
-import { setFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
+import { fbSetData } from '@/requesters/firebase/_firebase.database.requesters';
 
-export const moduleEditing = {
+export const moduleEditingStore = {
   state: () => ({
     editableMeetup: {},
   }),
@@ -104,7 +104,7 @@ export const moduleEditing = {
     },
     async getEditableMeetup({ dispatch, rootState, commit }, payload) {
       await dispatch('getMeetups');
-      const meetups = rootState.main.meetups;
+      const meetups = rootState.meetups.meetups;
       const editableMeetup = meetups.find(item => item.id === payload);
       commit('getEditableMeetup', editableMeetup);
     },
@@ -149,7 +149,7 @@ export const moduleEditing = {
     },
     async editMeetup({ state, dispatch }) {
       state.isLoading = true;
-      await setFirebaseData(
+      await fbSetData(
         'meetups/' + state.editableMeetup.id,
         state.editableMeetup,
       );

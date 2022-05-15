@@ -56,10 +56,10 @@ export default {
   },
   computed: {
     inputValue() {
-      return this.$store.state.main.inputValue;
+      return this.$store.state.meetups.inputValue;
     },
     radioModel() {
-      return this.$store.state.main.meetupSortParam;
+      return this.$store.state.meetups.meetupSortParam;
     },
   },
   methods: {

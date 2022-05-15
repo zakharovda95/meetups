@@ -39,8 +39,8 @@ import CreateForm from '@/components/sections/EditingForms/Creating/CreateForm';
 import UiButton from '@/components/ui/UiButton';
 import CreateAgendaItemForm from '@/components/sections/EditingForms/Creating/CreateAgendaItemForm';
 import {
-  getStorageDataLink,
-  uploadImage,
+  fbGetStorageDataLink,
+  fbUploadImage,
 } from '@/requesters/firebase/_firebase.storage.requesters';
 import { mapActions } from 'vuex';
 export default {
@@ -67,9 +67,9 @@ export default {
     },
     async uploadImg() {
       try {
-        const res = await uploadImage('/covers/', this.file);
+        const res = await fbUploadImage('/covers/', this.file);
         const path = res.metadata.fullPath;
-        const url = await getStorageDataLink(path);
+        const url = await fbGetStorageDataLink(path);
         this.uploadImage({ url, file: this.file });
       } catch (err) {
         this.$toast.error('Ошибка' + err);

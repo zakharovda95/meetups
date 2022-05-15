@@ -1,5 +1,5 @@
 <template>
-  <div class="meetup-toggle-wrapper">
+  <div class="meetup-toggle">
     <UiLink variant="nav-link" :to="{ name: 'description' }">Описание</UiLink>
     <UiLink variant="nav-link" :to="{ name: 'agenda' }">Программа</UiLink>
   </div>
@@ -14,7 +14,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.meetup-toggle-wrapper {
+.meetup-toggle {
   display: flex;
   margin-bottom: 25px;
   margin-top: 25px;

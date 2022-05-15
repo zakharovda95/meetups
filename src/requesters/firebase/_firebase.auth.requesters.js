@@ -5,8 +5,8 @@ import {
 } from 'firebase/auth';
 import { fbAuth } from '@/requesters/firebase/_options.firebase';
 
-// регистрация
-export function register(email, password) {
+/** Регистрация **/
+export function fbRegister(email, password) {
   return createUserWithEmailAndPassword(fbAuth, email, password)
     .then(userCredential => {
       return userCredential.user;
@@ -15,8 +15,9 @@ export function register(email, password) {
       return error.code + error.message;
     });
 }
-// вход
-export function login(email, password) {
+
+/** Вход **/
+export function fbLogin(email, password) {
   return signInWithEmailAndPassword(fbAuth, email, password)
     .then(userCredential => {
       return userCredential.user;
@@ -26,8 +27,7 @@ export function login(email, password) {
     });
 }
 
-// выход
-
-export async function logout() {
+/** Выход **/
+export async function fbLogout() {
   await signOut(fbAuth);
 }

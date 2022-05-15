@@ -1,20 +1,20 @@
 <template>
   <hr />
-  <div class="agenda-item-wrapper">
-    <div class="agenda-item-wrapper-icon">
-      <UiIcon class="agenda-item-icon" :icon-name="agendaItemIconName" />
+  <div class="agenda-item">
+    <div class="icon-wrapper">
+      <UiIcon class="icon" :icon-name="agendaItemIconName" />
     </div>
-    <div class="agenda-item-wrapper-info">
-      <div class="agenda-item-wrapper-info-time">
+    <div class="info-wrapper">
+      <div class="time">
         {{ agendaItem.startsAt }} - {{ agendaItem.endsAt }}
       </div>
-      <div class="agenda-item-wrapper-info-title">
+      <div class="title">
         {{ title }}
 
-        <div class="agenda-item-wrapper-info-description">
+        <div class="description">
           {{ agendaItem.description }}
         </div>
-        <div class="agenda-item-wrapper-info-speaker">
+        <div class="speaker">
           {{ agendaItem.speaker }} {{ agendaItem.language }}
         </div>
       </div>
@@ -31,7 +31,7 @@ export default {
   props: {
     agendaItem: {
       type: Object,
-      default: () => {},
+      default: () => ({}),
     },
   },
   computed: {
@@ -49,35 +49,35 @@ export default {
 
 <style scoped lang="scss">
 @import '../../../assets/styles/constants';
-.agenda-item-wrapper {
+.agenda-item {
   display: flex;
   margin-top: 30px;
-  .agenda-item-wrapper-icon {
+  .icon-wrapper {
     margin-right: 10px;
     display: flex;
-    .agenda-item-icon {
+    .icon {
       display: flex;
       width: 32px;
     }
   }
-  .agenda-item-wrapper-info {
+  .info-wrapper {
     display: flex;
     align-self: center;
-    .agenda-item-wrapper-info-time {
+    .time {
       display: flex;
       color: $main-color;
     }
-    .agenda-item-wrapper-info-title {
+    .title {
       display: flex;
       align-self: center;
       flex-direction: column;
       margin-left: 25px;
-      .agenda-item-wrapper-info-description {
+      .description {
         display: flex;
         font-size: 0.8em;
         margin-top: 10px;
       }
-      .agenda-item-wrapper-info-speaker {
+      .speaker {
         display: flex;
         font-size: 0.8em;
         margin-top: 10px;

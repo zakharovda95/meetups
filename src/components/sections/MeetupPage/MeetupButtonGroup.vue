@@ -1,10 +1,10 @@
 <template>
   <div class="meetup-button-group">
-    <div class="organizer-button-group" v-if="isOrganizer">
+    <div class="organizer" v-if="isOrganizer">
       <UiButton variant="bgBlue" @click="editMeetup">Редактировать</UiButton>
       <UiButton variant="bgRed" @click="removeMeetup">Удалить</UiButton>
     </div>
-    <div class="participant-button-group" v-if="!isOrganizer">
+    <div class="participant" v-if="!isOrganizer">
       <UiButton v-if="!isParticipant" variant="bgBlue" @click="participate">
         Участвовать
       </UiButton>
@@ -20,8 +20,8 @@
 </template>
 <script>
 import UiButton from '@/components/ui/UiButton';
-import { removeImage } from '@/requesters/firebase/_firebase.storage.requesters';
-import { removeFirebaseData } from '@/requesters/firebase/_firebase.database.requesters';
+import { fbRemoveImage } from '@/requesters/firebase/_firebase.storage.requesters';
+import { fbRemoveData } from '@/requesters/firebase/_firebase.database.requesters';
 import { mapActions } from 'vuex';
 export default {
   name: 'MeetupButtonGroup',
@@ -39,7 +39,7 @@ export default {
   }),
   computed: {
     userMeetups() {
-      return this.$store.state.main?.userInfo?.meetups;
+      return this.$store.state.user.data.userInfo?.meetups;
     },
     isParticipant() {
       if (this.userMeetups) {
@@ -59,26 +59,26 @@ export default {
   methods: {
     ...mapActions([
       'getMeetups',
-      'pushMeetupForParticipation',
-      'cutMeetupFromParticipationMeetups',
-      'cutMeetupFromOrganizedMeetups',
+      'pushMeetupForParticipationToUserData',
+      'cutMeetupFromParticipationMeetupsInUserData',
+      'cutMeetupFromOrganizedMeetupsInUserData',
     ]),
     editMeetup() {
       this.$router.push({ name: 'edit', params: { meetupId: this.meetup.id } });
     },
     async removeMeetup() {
-      await removeImage('covers/' + this.meetup.imageName);
-      await removeFirebaseData('meetups/' + this.meetup.id);
-      await this.cutMeetupFromOrganizedMeetups(this.meetup.id);
-      await this.getMeetups();
+      await fbRemoveImage('covers/' + this.meetup.imageName);
+      await fbRemoveData('meetups/' + this.meetup.id);
+      await this.cutMeetupFromOrganizedMeetupsInUserData(this.meetup.id);
+      // await this.getMeetups();
       await this.$router.push({ name: 'meetups' });
       await this.$toast.success('Митап удален!');
     },
     async participate() {
-      await this.pushMeetupForParticipation(this.meetup.id);
+      await this.pushMeetupForParticipationToUserData(this.meetup.id);
     },
     async cancelParticipation() {
-      await this.cutMeetupFromParticipationMeetups(this.meetup.id);
+      await this.cutMeetupFromParticipationMeetupsInUserData(this.meetup.id);
     },
   },
 };
@@ -86,8 +86,8 @@ export default {
 <style scoped lang="scss">
 .meetup-button-group {
   display: flex;
-  .organizer-button-group,
-  .participant-button-group {
+  .organizer,
+  .participant {
     display: flex;
     flex-direction: column;
   }

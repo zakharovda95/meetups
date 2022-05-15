@@ -43,8 +43,8 @@ import { mapActions } from 'vuex';
 import EditAgendaItemForm from '@/components/sections/EditingForms/Editing/EditAgendaItemForm';
 import UiButton from '@/components/ui/UiButton';
 import {
-  getStorageDataLink,
-  uploadImage,
+  fbGetStorageDataLink,
+  fbUploadImage,
 } from '@/requesters/firebase/_firebase.storage.requesters';
 export default {
   name: 'EditView',
@@ -84,10 +84,10 @@ export default {
     },
     async uploadImg() {
       try {
-        const res = await uploadImage('/covers/', this.file);
+        const res = await fbUploadImage('/covers/', this.file);
         const path = res.metadata.fullPath;
-        const url = await getStorageDataLink(path);
-        this.uploadImage({ url, file: this.file });
+        const url = await fbGetStorageDataLink(path);
+        await this.fbUploadImage({ url, file: this.file });
       } catch (err) {
         this.$toast.error('Ошибка' + err);
       }

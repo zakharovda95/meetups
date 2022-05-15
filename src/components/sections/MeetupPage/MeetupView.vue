@@ -1,7 +1,7 @@
 <template>
   <ui-loading v-if="!meetup" />
-  <div class="meetup-view-wrapper" v-else>
-    <div class="meetup-view-wrapper-cover">
+  <div class="meetup-view" v-else>
+    <div class="cover">
       <MeetupCover :image="meetup.image" :title="meetup.title" />
     </div>
     <div class="info-buttons-group">
@@ -27,7 +27,7 @@ export default {
     MeetupButtonGroup,
   },
   mounted() {
-    this.$store.dispatch('setMeetupById', this.meetupId);
+    this.$store.dispatch('chooseMeetupById', this.meetupId);
   },
   computed: {
     meetupId() {
@@ -41,14 +41,14 @@ export default {
 </script>
 <style scoped lang="scss">
 @media (max-width: 1019px) {
-  .meetup-view-wrapper {
+  .meetup-view {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'JetBrainMono-Light', sans-serif;
     background: whitesmoke;
     padding: 25px;
-    .meetup-view-wrapper-cover {
+    .cover {
       display: flex;
       align-self: center;
       width: 100%;
@@ -70,14 +70,14 @@ export default {
   }
 }
 @media (min-width: 1020px) {
-  .meetup-view-wrapper {
+  .meetup-view {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'JetBrainMono-Light', sans-serif;
     background: whitesmoke;
     padding: 25px;
-    .meetup-view-wrapper-cover {
+    .cover {
       display: flex;
       align-self: center;
       width: 100%;

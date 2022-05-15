@@ -1,11 +1,7 @@
 <template>
-  <div class="meetup-agenda-wrapper" v-if="agenda">
+  <div class="meetup-agenda" v-if="agenda">
     <h4>Программа:</h4>
-    <div
-      class="meetup-agenda-wrapper-item"
-      v-for="item in agenda"
-      :key="item.id"
-    >
+    <div class="item" v-for="item in agenda" :key="item.id">
       <MeetupAgendaItem :agenda-item="item" />
     </div>
   </div>
@@ -29,7 +25,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.meetup-agenda-wrapper {
+.meetup-agenda {
   display: flex;
   flex-direction: column;
 }

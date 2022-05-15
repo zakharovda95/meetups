@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     userMeetups() {
-      return this.$store.state.main?.userInfo?.meetups;
+      return this.$store.state.user.data.userInfo?.meetups;
     },
     isParticipant() {
       if (this.userMeetups) {
@@ -62,9 +62,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../../assets/fonts/_fonts.css';
 @import '../../../assets/styles/constants';
-
 .meetup-item-wrapper {
   display: flex;
   flex-direction: column;

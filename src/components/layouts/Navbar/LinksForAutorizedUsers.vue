@@ -17,7 +17,7 @@
       <UiLink variant="nav-link" :to="{ name: 'create' }">
         Создать митап
       </UiLink>
-      <UiLink variant="nav-link" @click="logOut" to="#">
+      <UiLink variant="nav-link" @click="logout" to="#">
         Выйти ({{ userName }})
       </UiLink>
     </nav>
@@ -25,6 +25,7 @@
 </template>
 <script>
 import UiLink from '@/components/ui/UiLink';
+import { fbLogout } from '@/requesters/firebase/_firebase.auth.requesters';
 
 export default {
   name: 'LinksForAuthorizedUsers',
@@ -39,12 +40,13 @@ export default {
   },
   computed: {
     userName() {
-      return this.$store.state.main.userInfo.name;
+      return this.$store.state.user.data.userInfo.name;
     },
   },
   methods: {
-    async logOut() {
-      await this.$store.dispatch('signOut');
+    async logout() {
+      await fbLogout();
+      await this.$store.dispatch('clearUserInfo');
       await this.$router.push({ name: 'meetups' });
     },
   },

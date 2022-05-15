@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     loading() {
-      return this.$store.state.main.isLoading;
+      return this.$store.state.meetups.isLoading;
     },
   },
 };

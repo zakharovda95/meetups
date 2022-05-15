@@ -21,10 +21,3 @@ export function sortMeetupsByDate(array, option) {
     }
   });
 }
-
-export function getMeetupsIOrganizedOrParticipate(array, options) {
-  console.log(array, options);
-  return array.filter(item => {
-    return options.map(elem => elem === item.id);
-  });
-}

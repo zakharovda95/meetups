@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     icons() {
-      return this.$store.state.main.mainPageIcons;
+      return this.$store.state.meetups.data.icons;
     },
     icon() {
       return this.icons.find(icon => icon.name.includes(this.iconName));
