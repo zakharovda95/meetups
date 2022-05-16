@@ -40,7 +40,6 @@ export default {
 <style scoped lang="scss">
 .ui-button {
   margin: 5px;
-  font-family: JetBrainMono-Bold, sans-serif;
   letter-spacing: 2px;
 }
 </style>

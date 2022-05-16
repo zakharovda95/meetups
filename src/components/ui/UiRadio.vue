@@ -50,23 +50,21 @@ export default {
   cursor: pointer;
   padding: 0 15px;
   line-height: 34px;
-  background: $main-color;
-  border-radius: 6px;
-  font-family: 'JetBrainMono-Light', sans-serif;
-  color: $font-color-white;
+  background: $UI_COLOR;
+  color: $FONT_COLOR_LIGHT;
+  border-radius: 18px;
   font-size: 1.1em;
 }
 
 /* Checked */
 .ui-checkbox input[type='radio']:checked + label {
-  font-family: 'JetBrainMono-Light', sans-serif;
-  background: $font-color-white;
-  color: $main-color;
-  border: 2px solid $main-color;
+  background: $ITEMS_COLOR;
+  color: $FONT_COLOR_DARK;
+  border: 1px solid $UI_COLOR;
 }
 
 /* Hover */
 .ui-checkbox label:hover {
-  color: #666;
+  color: $FONT_COLOR_DARK;
 }
 </style>

@@ -38,12 +38,12 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../../assets/styles/_constants.scss';
 .ui-input {
-  margin: 5px;
+  border: 1px solid $UI_COLOR;
+  border-radius: 18px;
   padding: 8px;
   font-size: 1.1em;
-  font-family: JetBrainMono-Light, sans-serif;
   max-width: 70vw;
-  border: 1px solid blue;
 }
 </style>

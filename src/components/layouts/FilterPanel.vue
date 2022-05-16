@@ -1,5 +1,5 @@
 <template>
-  <div class="filter-panel">
+  <div class="filter-panel mdl-shadow--2dp">
     <div class="radio">
       <UiRadio
         @update:model-value="updateRadioValue"
@@ -32,7 +32,7 @@
     </div>
     <div class="input">
       <UiInput
-        placeholder="Поиск"
+        placeholder="Поиск..."
         @update:model-value="updateInput"
         :model-value="inputValue"
       />
@@ -56,24 +56,24 @@ export default {
   },
   computed: {
     inputValue() {
-      return this.$store.state.meetups.inputValue;
+      return this.$store.state.meetups.sortingParams.inputValue;
     },
     radioModel() {
-      return this.$store.state.meetups.meetupSortParam;
+      return this.$store.state.meetups.sortingParams.radioButtonValue;
     },
   },
   methods: {
-    updateInput(payload) {
-      this.$store.dispatch('updateInputValue', payload);
+    updateInput(value) {
+      this.$store.dispatch('updateInputValue', value);
     },
-    updateRadioValue(payload) {
-      this.$store.dispatch('updateRadioValue', payload);
+    updateRadioValue(value) {
+      this.$store.dispatch('updateRadioValue', value);
     },
   },
 };
 </script>
 <style scoped lang="scss">
-@import '../../assets/styles/constants';
+@import '../../assets/styles/_constants.scss';
 @media (max-width: 1019px) {
   .filter-panel {
     display: flex;
@@ -81,8 +81,9 @@ export default {
     justify-content: center;
     margin-top: 25px;
     flex-wrap: wrap;
-    background-color: $navbar-color-white;
-    width: 100%;
+    background-color: $ITEMS_COLOR;
+    border-radius: 0 24px 24px 24px;
+    width: 91%;
     min-height: 90px;
     .radio {
       display: flex;
@@ -107,7 +108,8 @@ export default {
     justify-content: space-between;
     margin-top: 25px;
     flex-wrap: wrap;
-    background-color: whitesmoke;
+    background-color: $ITEMS_COLOR;
+    border-radius: 0 24px 24px 24px;
     width: 50%;
     min-height: 80px;
     .radio,

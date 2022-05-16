@@ -33,15 +33,14 @@ export default {
 @import '../../assets/styles/_constants.scss';
 .ui-link {
   text-decoration: none;
-  font-family: 'JetBrainMono-Light', sans-serif;
-  color: $FONT_COLOR;
+  color: $FONT_COLOR_DARK;
 }
 .nav-link {
   display: flex;
   align-self: center;
   margin: 10px;
   padding: 10px;
-  color: $FONT_COLOR;
+  color: $FONT_COLOR_DARK;
   text-align: center;
   letter-spacing: 0.5px;
   font-size: 1.2em;

@@ -46,7 +46,7 @@ export default {
       margin-top: 20px;
       #logo {
         display: flex;
-        color: $FONT_COLOR;
+        color: $FONT_COLOR_DARK;
         font-size: 2.8em;
         font-family: 'JetBrainMono-Bold', sans-serif;
         align-self: center;
@@ -75,7 +75,7 @@ export default {
       margin-left: 20px;
       #logo {
         display: flex;
-        color: $FONT_COLOR;
+        color: $FONT_COLOR_DARK;
         font-size: 2.8em;
         font-family: 'JetBrainMono-Bold', sans-serif;
         align-self: center;
