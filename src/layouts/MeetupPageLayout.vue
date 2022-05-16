@@ -1,10 +1,8 @@
 <template>
   <div class="meetup-layout">
-    <NavbarItem />
-    <div class="pages">
-      <router-view />
-    </div>
-    <FooterItem />
+    <NavbarItem id="navbar" />
+    <router-view id="content" />
+    <FooterItem id="footer" />
   </div>
 </template>
 <script>
@@ -20,10 +18,14 @@ export default {
 </script>
 <style scoped lang="scss">
 .meetup-layout {
-  .pages {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  #navbar {
+    flex: 0 0 auto;
+  }
+  #content {
+    flex: 1 0 auto;
+  }
+  #footer {
+    flex: 0 0 auto;
   }
 }
 </style>

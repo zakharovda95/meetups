@@ -43,9 +43,8 @@ export default {
   width: 100%;
   .mdl-card__supporting-text {
     margin-bottom: -15px;
-    font-family: JetBrainMono-Bold, sans-serif;
     font-size: 1.1em;
-    color: $footer-color;
+    color: $FONT_COLOR_DARK;
   }
   .ui_icon__card {
     width: 32px;

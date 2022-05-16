@@ -24,23 +24,22 @@ export default {
   margin-top: 20px;
   height: 50px;
   width: 100%;
-  background: $footer-color;
+  background: $FOOTER_COLOR;
   .logo {
     font-size: 1.2em;
     margin: 20px;
-    color: $font-color-white;
-    font-family: 'JetBrainMono-Light', sans-serif;
+    color: $FONT_COLOR_LIGHT;
   }
   .date {
     display: flex;
-    font-family: 'JetBrainMono-Light', sans-serif;
-    color: $font-color-white;
+    color: $FONT_COLOR_LIGHT;
     align-self: center;
     margin-left: 20px;
   }
   .links {
     display: flex;
     .link {
+      color: $FONT_COLOR_LIGHT;
       margin-right: 20px;
     }
   }

@@ -23,11 +23,11 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../../assets/styles/_constants.scss';
 label {
   display: flex;
-  font-family: 'JetBrainMono-Light', sans-serif;
   font-size: 1.4em;
-  color: #3535ad;
+  color: $FONT_COLOR_DARK;
   input {
     margin-right: 10px;
     width: 20px;

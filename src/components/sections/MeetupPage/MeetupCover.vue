@@ -44,8 +44,7 @@ export default {
     text-align: center;
     display: flex;
     align-self: center;
-    color: $font-color-white;
-    font-family: JetBrainMono-Light, sans-serif;
+    color: $FONT_COLOR_LIGHT;
     font-size: 2em;
   }
 }

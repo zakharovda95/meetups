@@ -20,7 +20,6 @@ export default {
     display: flex;
     margin: 0 auto;
     width: 90%;
-    height: 100%;
     .content {
       display: flex;
       flex-direction: column;
@@ -36,7 +35,6 @@ export default {
     display: flex;
     flex-direction: column;
     width: 50%;
-    height: 100%;
     .content {
       display: flex;
       flex-direction: column;

@@ -16,6 +16,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../../assets/styles/_constants.scss';
 .ui-label {
   display: flex;
   flex-direction: column;
@@ -24,9 +25,8 @@ export default {
   label {
     width: 100%;
     font-size: 1.4em;
-    font-family: 'JetBrainMono-Light', sans-serif;
     margin: 5px;
-    color: #3535ad;
+    color: $FONT_COLOR_DARK;
   }
 }
 </style>

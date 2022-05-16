@@ -1,11 +1,13 @@
 <template>
   <div class="main-layout">
-    <NavbarItem />
-    <div class="filter-panel">
-      <FilterPanel />
+    <NavbarItem id="navbar" />
+    <div class="content">
+      <div class="filter-panel">
+        <FilterPanel />
+      </div>
+      <router-view />
     </div>
-    <router-view />
-    <FooterItem />
+    <FooterItem id="footer" />
   </div>
 </template>
 <script>
@@ -23,9 +25,21 @@ export default {
 </script>
 <style scoped lang="scss">
 .main-layout {
-  .filter-panel {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  #navbar {
+    flex: 0 0 auto;
+  }
+  .content {
+    flex: 1 0 auto;
+    .filter-panel {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  #footer {
+    flex: 0 0 auto;
   }
 }
 </style>

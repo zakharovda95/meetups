@@ -1,17 +1,17 @@
 <template>
-  <div class="meetup-item-wrapper">
-    <div class="meetup-item-wrapper-cover">
+  <div class="meetup-item mdl-shadow--2dp">
+    <div class="cover">
       <MeetupCover :title="meetup.title" :image="meetup.image" />
     </div>
-    <div class="meetup-item-wrapper-info">
-      <div class="meetup-item-badge" v-if="userMeetups">
+    <div class="info">
+      <div class="badge" v-if="userMeetups">
         <UiBadge v-if="isParticipant">Участник</UiBadge>
         <UiBadge v-if="isOrganizer" variant="organizer">Организатор</UiBadge>
       </div>
       <MeetupInfo :meetup="meetup"></MeetupInfo>
     </div>
     <hr />
-    <div class="meetup-item-wrapper-link">
+    <div class="link">
       <UiLink
         variant="nav-link"
         :to="{ name: 'meetup', params: { meetupId: meetup.id } }"
@@ -63,35 +63,22 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '../../../assets/styles/constants';
-.meetup-item-wrapper {
+.meetup-item {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-top: 25px;
-  background: $navbar-color-white;
-  .meetup-item-wrapper-info {
-    .meetup-item-badge {
+  background: $ITEMS_COLOR;
+  .info {
+    .badge {
       display: flex;
       justify-content: flex-end;
     }
   }
-
-  .meetup-item-wrapper-title {
+  .link {
     display: flex;
-
-    .meetup-item-wrapper-title-text {
-      display: flex;
-      align-self: flex-end;
-      font-family: JetBrainMono-Bold, sans-serif;
-      font-size: 2em;
-      color: white;
-      margin-left: 25px;
-    }
-  }
-  .meetup-item-wrapper-link {
-    margin-top: -15px;
     text-align: center;
-    width: 120px;
+    margin-top: -16px;
   }
 }
 </style>

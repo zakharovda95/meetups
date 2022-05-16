@@ -37,13 +37,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../assets/styles/_constants.scss';
 .ui-dropdown {
-  font-family: JetBrainMono-Light, sans-serif;
   color: blue;
   font-size: 1.2rem;
   display: flex;
   padding: 5px;
-  border: 2px solid blue;
+  border: 2px solid $FONT_COLOR_DARK;
   option {
     padding: 5px;
   }

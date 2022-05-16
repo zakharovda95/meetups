@@ -1,5 +1,5 @@
 <template>
-  <div class="login-form">
+  <div class="login-form mdl-shadow--2dp">
     <h3>Войдите</h3>
     <form>
       <UiLabel class="login-field" label="Email">
@@ -8,7 +8,7 @@
       <UiLabel label="Пароль">
         <UiInput type="password" v-model="userData.password" />
       </UiLabel>
-      <UiButton class="login-button" variant="bgBlue" @click="logIn">
+      <UiButton class="login-button" variant="bgMain" @click="logIn">
         Войти
       </UiButton>
       <p>
@@ -45,19 +45,22 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../../../assets/styles/_constants.scss';
 @media (max-width: 1019px) {
   .login-form {
     display: flex;
     flex-direction: column;
+    align-self: center;
     margin: 25px;
     width: 90%;
+    height: 50vh;
     padding: 25px;
     background: white;
     text-align: center;
+    border-radius: 0 25px 25px 25px;
 
     h3 {
-      font-family: 'JetBrainMono-Light', sans-serif;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
     }
 
     form {
@@ -67,18 +70,24 @@ export default {
     }
 
     .login-button {
+      display: flex;
+      justify-content: center;
+      align-self: center;
       margin-top: 25px;
+      width: 150px;
+    }
+    .login-button:hover {
+      background-color: $FONT_COLOR_DARK;
+      color: $FONT_COLOR_LIGHT;
     }
 
     p {
-      font-family: 'JetBrainMono-Light', sans-serif;
       font-size: 1.4em;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
       margin-top: 25px;
 
       .registration-link {
-        font-family: 'JetBrainMono-Light', sans-serif;
-        color: #687ade;
+        color: $MAIN_COLOR;
         text-decoration: underline;
       }
     }
@@ -89,13 +98,15 @@ export default {
     display: flex;
     flex-direction: column;
     margin: 25px;
-    width: 40%;
+    width: 30%;
+    height: 50vh;
     padding: 25px;
     background: white;
     text-align: center;
+    align-self: center;
+    border-radius: 0 25px 25px 25px;
     h3 {
-      font-family: 'JetBrainMono-Light', sans-serif;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
     }
     form {
       display: flex;
@@ -103,16 +114,23 @@ export default {
       flex-direction: column;
     }
     .login-button {
+      display: flex;
+      justify-content: center;
+      align-self: center;
       margin-top: 25px;
+      width: 150px;
+    }
+    .login-button:hover {
+      background-color: $FONT_COLOR_DARK;
+      color: $FONT_COLOR_LIGHT;
     }
     p {
-      font-family: 'JetBrainMono-Light', sans-serif;
       font-size: 1.4em;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
       margin-top: 25px;
+
       .registration-link {
-        font-family: 'JetBrainMono-Light', sans-serif;
-        color: #687ade;
+        color: $MAIN_COLOR;
         text-decoration: underline;
       }
     }

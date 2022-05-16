@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 <script>
@@ -29,7 +29,6 @@ export default {
   padding: 0;
   body {
     width: 100%;
-    height: 100%;
     background-color: $LAYOUT_COLOR;
     font-family: 'JetBrainMono-Light', sans-serif;
   }

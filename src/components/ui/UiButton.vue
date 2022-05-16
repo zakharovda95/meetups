@@ -22,10 +22,8 @@ export default {
         'mdl-button mdl-js-button mdl-button--primary': this.variant === 'blue',
         'mdl-button mdl-js-button mdl-button--accent': this.variant === 'red',
         'mdl-button mdl-js-button': this.variant === 'black',
-        'mdl-button mdl-js-button mdl-button--raised mdl-button--colored':
-          this.variant === 'bgBlue',
-        'mdl-button mdl-js-button mdl-button--raised mdl-button--accent':
-          this.variant === 'bgRed',
+        'bg-main': this.variant === 'bgMain',
+        'bg-red': this.variant === 'bgWrong',
       };
     },
     btnType() {
@@ -38,8 +36,17 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../../assets/styles/_constants.scss';
 .ui-button {
   margin: 5px;
   letter-spacing: 2px;
+  cursor: pointer;
+}
+.bg-main {
+  background: $UI_COLOR;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  font-size: 1.3em;
 }
 </style>

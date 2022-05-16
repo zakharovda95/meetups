@@ -12,15 +12,18 @@ export default {
 @import '../../assets/styles/_constants.scss';
 .ui-message {
   display: flex;
+  height: 100%;
+  width: 80%;
   align-items: center;
   align-self: center;
   justify-content: center;
-  border: 3px solid $main-color;
+  flex-wrap: wrap;
+  border: 2px solid $MAIN_COLOR;
   margin-top: 25px;
   padding: 25px;
-  background: $navbar-color-white;
+  background: $HOVER_COLOR;
   font-size: 1.5em;
-  font-family: 'JetBrainMono-Light', sans-serif;
-  color: $main-color;
+  color: $FONT_COLOR_LIGHT;
+  border-radius: 25px;
 }
 </style>

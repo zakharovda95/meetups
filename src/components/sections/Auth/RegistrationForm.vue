@@ -1,5 +1,5 @@
 <template>
-  <div class="registration-form">
+  <div class="registration-form mdl-shadow--2dp">
     <h3>Зарегистрируйтесь</h3>
     <form>
       <UiLabel class="login-field" label="Email">
@@ -22,7 +22,7 @@
         type="submit"
         @click.prevent="registration"
         class="register-button"
-        variant="bgBlue"
+        variant="bgMain"
       >
         Зарегистрироваться
       </UiButton>
@@ -59,6 +59,7 @@ export default {
         this.userData.email,
         this.userData.password,
       );
+      console.log(response);
       const userForm = {
         uid: response.uid,
         name: this.userData.login,
@@ -75,6 +76,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../../../assets/styles/_constants.scss';
 @media (max-width: 1019px) {
   .registration-form {
     display: flex;
@@ -84,10 +86,10 @@ export default {
     padding: 25px;
     background: white;
     text-align: center;
+    border-radius: 0 25px 25px 25px;
 
     h3 {
-      font-family: 'JetBrainMono-Light', sans-serif;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
     }
 
     form {
@@ -101,14 +103,12 @@ export default {
     }
 
     p {
-      font-family: 'JetBrainMono-Light', sans-serif;
       font-size: 1.4em;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
       margin-top: 25px;
 
       .login-link {
-        font-family: 'JetBrainMono-Light', sans-serif;
-        color: #687ade;
+        color: $MAIN_COLOR;
         text-decoration: underline;
       }
     }
@@ -123,9 +123,9 @@ export default {
     padding: 25px;
     background: white;
     text-align: center;
+    border-radius: 0 25px 25px 25px;
     h3 {
-      font-family: 'JetBrainMono-Light', sans-serif;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
     }
     form {
       display: flex;
@@ -136,13 +136,11 @@ export default {
       margin-top: 25px;
     }
     p {
-      font-family: 'JetBrainMono-Light', sans-serif;
       font-size: 1.4em;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
       margin-top: 25px;
       .login-link {
-        font-family: 'JetBrainMono-Light', sans-serif;
-        color: #687ade;
+        color: $MAIN_COLOR;
         text-decoration: underline;
       }
     }

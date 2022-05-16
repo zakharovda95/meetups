@@ -45,7 +45,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'JetBrainMono-Light', sans-serif;
     background: whitesmoke;
     padding: 25px;
     .cover {
@@ -74,7 +73,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'JetBrainMono-Light', sans-serif;
     background: whitesmoke;
     padding: 25px;
     .cover {
