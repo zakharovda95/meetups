@@ -56,14 +56,8 @@ export default {
 @import '../../../assets/styles/constants';
 .links-for-authorized-users {
   display: flex;
-  justify-content: center;
-  height: 80px;
-  background: $navbar-color-white;
   .links {
     display: flex;
-    align-self: center;
-    font-size: 1.4em;
-    font-family: 'JetBrainMono-Light', sans-serif;
   }
 }
 </style>

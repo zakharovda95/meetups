@@ -1,15 +1,14 @@
 <template>
-  <div class="navbar-item">
-    <div class="header-wrapper">
-      <header class="header">
-        <div class="logo">
-          <UiLink :to="{ name: 'meetups' }">MEETUPS</UiLink>
-        </div>
-      </header>
+  <header class="navbar-item mdl-shadow--4dp">
+    <div class="content">
+      <UiLink id="logo" :to="{ name: 'index' }"> RENCONTRES </UiLink>
+      <PublicLinks id="public-links" :is-authorized="isAuthorized" />
+      <LinksForAuthorizedUsers
+        id="private-links"
+        :is-authorized="isAuthorized"
+      />
     </div>
-    <PublicLinks :is-authorized="isAuthorized" />
-    <LinksForAuthorizedUsers :is-authorized="isAuthorized" />
-  </div>
+  </header>
 </template>
 <script>
 import UiLink from '@/components/ui/UiLink';
@@ -30,26 +29,61 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../../assets/styles/constants';
-.navbar-item {
-  display: flex;
-  flex-direction: column;
-  font-family: 'JetBrainMono-Bold', sans-serif;
-
-  .header-wrapper {
+@import '../../../assets/styles/_constants.scss';
+@media (max-width: 1019px) {
+  .navbar-item {
     display: flex;
-    height: 80px;
-    background-color: $main-color;
-
-    .header {
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: $MAIN_COLOR;
+    .content {
       display: flex;
-      width: 100%;
+      flex-wrap: wrap;
+      flex-direction: column;
       justify-content: center;
-
-      .logo {
+      width: 100%;
+      height: 100%;
+      margin-top: 20px;
+      #logo {
         display: flex;
+        color: $FONT_COLOR;
+        font-size: 2.8em;
+        font-family: 'JetBrainMono-Bold', sans-serif;
         align-self: center;
-        font-size: 2.5em;
+        text-decoration: none;
+      }
+      #public-links,
+      #private-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+@media (min-width: 1020px) {
+  .navbar-item {
+    display: flex;
+    width: 100%;
+    height: 72px;
+    background-color: $MAIN_COLOR;
+    .content {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      margin-left: 20px;
+      #logo {
+        display: flex;
+        color: $FONT_COLOR;
+        font-size: 2.8em;
+        font-family: 'JetBrainMono-Bold', sans-serif;
+        align-self: center;
+        text-decoration: none;
+      }
+      #public-links,
+      #private-links {
+        margin-right: 20px;
       }
     }
   }

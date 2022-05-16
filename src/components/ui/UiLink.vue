@@ -19,7 +19,7 @@ export default {
   computed: {
     linkClasses() {
       return {
-        'ui-link-header-nav-links': this.variant === 'nav-link',
+        'nav-link': this.variant === 'nav-link',
         'ui-link-filter-panel-button-link':
           this.variant === 'filter-button-link',
         'ui-link-event-calendar-item': this.variant === 'calendar-link',
@@ -34,19 +34,21 @@ export default {
 .ui-link {
   text-decoration: none;
   font-family: 'JetBrainMono-Light', sans-serif;
-  color: $font-color-white;
+  color: $FONT_COLOR;
 }
-.ui-link-header-nav-links {
+.nav-link {
   display: flex;
   align-self: center;
   margin: 10px;
   padding: 10px;
-  color: $main-color;
+  color: $FONT_COLOR;
   text-align: center;
   letter-spacing: 0.5px;
+  font-size: 1.2em;
 }
-.ui-link-header-nav-links:hover {
-  background: $navbar-link-hover;
+.nav-link:hover {
+  border-radius: 21px;
+  background: $HOVER_COLOR;
 }
 .ui-link-filter-panel-button-link {
   display: flex;
@@ -68,6 +70,6 @@ export default {
 }
 
 .router-link-exact-active {
-  border-bottom: 2px solid $main-color;
+  border-bottom: 1px solid $HOVER_COLOR;
 }
 </style>

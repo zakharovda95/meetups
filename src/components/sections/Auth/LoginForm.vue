@@ -38,11 +38,7 @@ export default {
   }),
   methods: {
     async logIn() {
-      const userData = await fbLogin(
-        this.userData.email,
-        this.userData.password,
-      );
-      await this.$store.dispatch('setUserInfo', userData);
+      await fbLogin(this.userData.email, this.userData.password);
       await this.$router.push({ name: 'meetups' });
     },
   },

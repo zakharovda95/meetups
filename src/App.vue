@@ -23,13 +23,15 @@ export default {
 </script>
 <style lang="scss">
 @import './assets/styles/_constants.scss';
+@import './assets/fonts/_fonts.css';
 * {
   margin: 0;
   padding: 0;
   body {
     width: 100%;
     height: 100%;
-    background-color: $layout-color;
+    background-color: $LAYOUT_COLOR;
+    font-family: 'JetBrainMono-Light', sans-serif;
   }
 }
 </style>

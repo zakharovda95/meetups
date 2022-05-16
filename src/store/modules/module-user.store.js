@@ -9,7 +9,7 @@ export const moduleUserStore = {
   state: () => ({
     data: {
       userInfo: null,
-      errorMessage: '',
+      errorMessage: null,
     },
   }),
   mutations: {

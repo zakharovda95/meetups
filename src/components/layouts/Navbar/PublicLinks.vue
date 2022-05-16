@@ -1,18 +1,14 @@
 <template>
   <div class="public-links" v-if="!isAuthorized">
     <nav class="links">
-      <UiLink
-        variant="nav-link"
-        v-if="$route.meta.showReturnToMeetupList"
-        :to="{ name: 'meetups' }"
-      >
+      <UiLink variant="nav-link" v-if="backArrowLink" :to="{ name: 'meetups' }">
         &#10229; К списку
       </UiLink>
       <UiLink variant="nav-link" :to="{ name: 'login' }">Вход</UiLink>
       <UiLink variant="nav-link" :to="{ name: 'registration' }">
         Регистрация
       </UiLink>
-      <UiLink variant="nav-link" :to="{ name: 'login' }">
+      <UiLink variant="nav-link" to="/" @click="redirectToLogin">
         Создать митап
       </UiLink>
     </nav>
@@ -32,20 +28,26 @@ export default {
       default: false,
     },
   },
+  computed: {
+    backArrowLink() {
+      return this.$route.meta.showReturnToMeetupList;
+    },
+  },
+  methods: {
+    redirectToLogin() {
+      this.$router.replace({ path: '/auth/login' });
+      this.$toast.error('Чтобы создать встречу залогиньтесь!');
+    },
+  },
 };
 </script>
 <style scoped lang="scss">
-@import '../../../assets/styles/constants';
+@import '../../../assets/styles/_constants.scss';
+@import '../../../assets/fonts/_fonts.css';
 .public-links {
   display: flex;
-  justify-content: center;
-  height: 80px;
-  background: $navbar-color-white;
   .links {
     display: flex;
-    align-self: center;
-    font-size: 1.4em;
-    font-family: 'JetBrainMono-Light', sans-serif;
   }
 }
 </style>

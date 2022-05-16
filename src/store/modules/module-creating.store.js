@@ -4,6 +4,7 @@ import moment from 'moment';
 
 export const moduleCreatingStore = {
   state: () => ({
+    isLoading: false,
     meetupForm: {
       id: uuid.v1(),
       imageId: null,
@@ -19,7 +20,6 @@ export const moduleCreatingStore = {
       description: '',
       agenda: [],
     },
-    isLoading: false,
   }),
   mutations: {
     addAgendaItem(state) {
@@ -55,10 +55,10 @@ export const moduleCreatingStore = {
       state.meetupForm.organizer.uid = payload.uid;
       state.meetupForm.organizer.name = payload.name;
     },
-    uploadImage(state, payload) {
+    uploadImage(state, image) {
       state.meetupForm.imageId = uuid.v1();
-      state.meetupForm.image = payload.url;
-      state.meetupForm.imageName = payload.file.name;
+      state.meetupForm.image = image.url;
+      state.meetupForm.imageName = image.file.name;
     },
     updateAgendaType(state, payload) {
       const elem = state.meetupForm.agenda.find(item => {

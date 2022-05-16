@@ -8,6 +8,9 @@ import CreateView from '@/components/sections/EditingForms/Creating/CreateView.v
 export default {
   name: 'CreatePage',
   components: { CreateView },
+  mounted() {
+    console.log(this.$route);
+  },
 };
 </script>
 <style scoped lang="scss">
