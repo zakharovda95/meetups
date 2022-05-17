@@ -52,6 +52,7 @@ export default {
 .agenda-item {
   display: flex;
   margin-top: 30px;
+  width: 100%;
   .icon-wrapper {
     margin-right: 10px;
     display: flex;
@@ -65,7 +66,8 @@ export default {
     align-self: center;
     .time {
       display: flex;
-      color: $main-color;
+      color: $FONT_COLOR_DARK;
+      align-self: center;
     }
     .title {
       display: flex;

@@ -12,8 +12,4 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss">
-.meetup-description {
-  display: flex;
-}
-</style>
+<style scoped lang="scss"></style>

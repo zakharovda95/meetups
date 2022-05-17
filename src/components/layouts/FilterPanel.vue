@@ -1,6 +1,6 @@
 <template>
   <div class="filter-panel mdl-shadow--2dp">
-    <div class="radio">
+    <div class="radio" v-show="!currentRouteIsCalendar">
       <UiRadio
         @update:model-value="updateRadioValue"
         :model-value="radioModel"
@@ -30,7 +30,7 @@
         Ожидаемые
       </UiRadio>
     </div>
-    <div class="input">
+    <div class="input" v-show="!currentRouteIsCalendar">
       <UiInput
         placeholder="Поиск..."
         @update:model-value="updateInput"
@@ -60,6 +60,9 @@ export default {
     },
     radioModel() {
       return this.$store.state.meetups.sortingParams.radioButtonValue;
+    },
+    currentRouteIsCalendar() {
+      return this.$route.name === 'calendar';
     },
   },
   methods: {

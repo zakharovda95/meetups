@@ -1,5 +1,5 @@
 <template>
-  <div class="meetup-cover">
+  <div class="meetup-cover mdl-shadow--2dp">
     <h1 class="title">{{ title }}</h1>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="meetup-toggle">
+  <div class="meetup-toggle mdl-shadow--2dp">
     <UiLink variant="nav-link" :to="{ name: 'description' }">Описание</UiLink>
     <UiLink variant="nav-link" :to="{ name: 'agenda' }">Программа</UiLink>
   </div>
@@ -14,10 +14,12 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../../../assets/styles/_constants.scss';
 .meetup-toggle {
   display: flex;
-  margin-bottom: 25px;
-  margin-top: 25px;
-  background: whitesmoke;
+  margin: 24px 0;
+  padding-left: 12px;
+  background: $ITEMS_COLOR;
+  border-radius: 0 24px 24px 24px;
 }
 </style>

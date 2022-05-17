@@ -1,6 +1,6 @@
 <template>
   <div class="ui-loading">
-    <slot />
+    <h2>ИДЕТ ЗАГРУЗКА...</h2>
   </div>
 </template>
 <script>

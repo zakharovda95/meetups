@@ -21,11 +21,13 @@ export default {
 @media (max-width: 1019px) {
   .meetup-page {
     display: flex;
+    flex: 0 0 auto;
     flex-direction: column;
     margin: 0 auto;
     width: 90%;
     .content {
       display: flex;
+      flex: 1 0 auto;
       flex-direction: column;
       justify-content: center;
       margin: 0 auto;
@@ -37,10 +39,12 @@ export default {
   .meetup-page {
     margin: 0 auto;
     display: flex;
+    flex: 0 0 auto;
     flex-direction: column;
     width: 50%;
     .content {
       display: flex;
+      flex: 1 0 auto;
       flex-direction: column;
       justify-content: center;
       margin: 0 auto;

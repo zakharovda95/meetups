@@ -1,29 +1,29 @@
 <template>
-  <ui-loading v-if="!meetup" />
-  <div class="meetup-view" v-else>
+  <UiLoading v-if="!meetup" />
+  <div class="meetup-view mdl-shadow--2dp" v-else>
     <div class="cover">
       <MeetupCover :image="meetup.image" :title="meetup.title" />
     </div>
-    <div class="info-buttons-group">
+    <div class="buttons">
       <MeetupInfo :meetup="meetup" />
       <MeetupButtonGroup :meetup="meetup" />
     </div>
-    <div class="meetup-view-wrapper-description-agenda">
+    <div class="content">
       <router-view />
     </div>
   </div>
 </template>
 <script>
+import UiLoading from '@/components/ui/UiLoading';
 import MeetupCover from '@/components/sections/MeetupPage/MeetupCover';
 import MeetupInfo from '@/components/sections/MeetupPage/MeetupInfo';
-import UiLoading from '@/components/ui/UiLoading';
 import MeetupButtonGroup from '@/components/sections/MeetupPage/MeetupButtonGroup';
 export default {
   name: 'MeetupView',
   components: {
+    UiLoading,
     MeetupCover,
     MeetupInfo,
-    UiLoading,
     MeetupButtonGroup,
   },
   mounted() {
@@ -47,24 +47,25 @@ export default {
     align-items: center;
     background: whitesmoke;
     padding: 25px;
+    margin-bottom: 38px;
     .cover {
       display: flex;
       align-self: center;
       width: 100%;
     }
-    .meetup-view-wrapper-description-agenda {
-      display: flex;
-      flex-direction: column;
-      align-self: center;
-      font-size: 1.5em;
-      width: 100%;
-    }
-    .info-buttons-group {
+    .buttons {
       display: flex;
       flex-direction: column;
       align-self: center;
       width: 100%;
       align-items: center;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      font-size: 1.5em;
+      width: 100%;
     }
   }
 }
@@ -75,24 +76,25 @@ export default {
     align-items: center;
     background: whitesmoke;
     padding: 25px;
+    margin-bottom: 56px;
     .cover {
       display: flex;
       align-self: center;
       width: 100%;
     }
-    .meetup-view-wrapper-description-agenda {
-      display: flex;
-      flex-direction: column;
-      align-self: center;
-      font-size: 1.5em;
-      width: 100%;
-    }
-    .info-buttons-group {
+    .buttons {
       margin-top: 20px;
       display: flex;
       align-self: center;
       width: 100%;
       justify-content: space-between;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      font-size: 1.5em;
+      width: 100%;
     }
   }
 }

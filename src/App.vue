@@ -30,7 +30,6 @@ export default {
   body {
     width: 100%;
     background-color: $LAYOUT_COLOR;
-    font-family: 'JetBrainMono-Light', sans-serif;
   }
 }
 </style>

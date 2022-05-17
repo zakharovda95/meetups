@@ -18,12 +18,12 @@ export default {
   align-self: center;
   justify-content: center;
   flex-wrap: wrap;
-  border: 2px solid $MAIN_COLOR;
+  border: 2px solid $UI_COLOR;
   margin-top: 25px;
   padding: 25px;
-  background: $HOVER_COLOR;
+  background: $MAIN_COLOR;
   font-size: 1.5em;
-  color: $FONT_COLOR_LIGHT;
+  color: $FONT_COLOR_DARK;
   border-radius: 25px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="meetup-button-group">
+  <div class="meetup-button-group" v-if="isAuthorized">
     <div class="organizer" v-if="isOrganizer">
       <UiButton variant="bgBlue" @click="editMeetup">Редактировать</UiButton>
       <UiButton variant="bgRed" @click="removeMeetup">Удалить</UiButton>
@@ -40,6 +40,9 @@ export default {
   computed: {
     userMeetups() {
       return this.$store.state.user.data.userInfo?.meetups;
+    },
+    isAuthorized() {
+      return !!this.$store.state.user.data.userInfo;
     },
     isParticipant() {
       if (this.userMeetups) {

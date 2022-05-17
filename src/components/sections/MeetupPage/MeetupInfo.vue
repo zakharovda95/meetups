@@ -11,13 +11,14 @@
     </div>
     <div class="mdl-card__supporting-text">
       <UiIcon class="ui_icon__card" icon-name="calendar"></UiIcon
-      >{{ meetup.date }}
+      >{{ meetup.date }} ( {{ daysBeforeTheEvent }} )
     </div>
   </div>
 </template>
 <script>
 import UiIcon from '@/components/ui/UiIcon';
 import UiLoading from '@/components/ui/UiLoading';
+import moment from 'moment';
 export default {
   name: 'MeetupInfo',
   components: {
@@ -34,11 +35,25 @@ export default {
     loading() {
       return this.$store.state.meetups.isLoading;
     },
+    daysBeforeTheEvent() {
+      const dateNow = moment().valueOf();
+      const eventDate = this.meetup.dateUnix;
+      if (moment(eventDate).format('DD') > moment(dateNow).format('DD')) {
+        return `Через ${moment(eventDate - dateNow).format('DDD')} дн.`;
+      }
+      if (moment(eventDate).format('DD') === moment(dateNow).format('DD')) {
+        return 'Мероприятие состоится сегодня';
+      }
+      if (moment(eventDate).format('DD') < moment(dateNow).format('DD')) {
+        return 'Мероприятие прошло';
+      }
+      return '';
+    },
   },
 };
 </script>
 <style scoped lang="scss">
-@import '../../../assets/styles/constants';
+@import '../../../assets/styles/_constants.scss';
 .meetup_info {
   width: 100%;
   .mdl-card__supporting-text {
