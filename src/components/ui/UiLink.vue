@@ -20,9 +20,7 @@ export default {
     linkClasses() {
       return {
         'nav-link': this.variant === 'nav-link',
-        'ui-link-filter-panel-button-link':
-          this.variant === 'filter-button-link',
-        'ui-link-event-calendar-item': this.variant === 'calendar-link',
+        'calendar-link': this.variant === 'calendar-link',
       };
     },
   },
@@ -49,23 +47,13 @@ export default {
   border-radius: 21px;
   background: $HOVER_COLOR;
 }
-.ui-link-filter-panel-button-link {
-  display: flex;
-  align-self: center;
-  margin: 10px;
-  padding: 10px 15px 10px 15px;
-  color: $font-color-white;
-  font-size: 1.2em;
-  text-align: center;
-  letter-spacing: 0.5px;
-  background: $main-color;
-}
 
-.ui-link-event-calendar-item {
-  font-size: 0.9rem;
+.calendar-link {
+  font-size: 0.8rem;
   overflow: hidden;
-  color: white;
-  background: $main-color;
+  background: $MAIN_COLOR;
+  color: $FONT_COLOR_DARK;
+  padding: 2px;
 }
 
 .router-link-exact-active {

@@ -41,6 +41,7 @@ export default {
   margin: 5px;
   letter-spacing: 2px;
   cursor: pointer;
+  color: $FONT_COLOR_DARK;
 }
 .bg-main {
   background: $UI_COLOR;

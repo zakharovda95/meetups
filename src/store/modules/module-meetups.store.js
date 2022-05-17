@@ -6,7 +6,7 @@ import {
   filterMeetupsByInput,
   sortMeetupsByDate,
 } from '@/services/_sorting.service';
-import { getEventsDates } from '@/services/_events-dates.service';
+import { getEventsDates } from '@/services/_event-calendar.service';
 import { onAuthStateChanged } from 'firebase/auth';
 import { fbAuth, fbDb } from '@/requesters/firebase/_options.firebase';
 import { ref, onValue } from 'firebase/database';
