@@ -35,6 +35,7 @@
         placeholder="Поиск..."
         @update:model-value="updateInput"
         :model-value="inputValue"
+        name="''"
       />
     </div>
     <div class="toggle">

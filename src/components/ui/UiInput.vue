@@ -8,8 +8,13 @@
   ></component>
 </template>
 <script>
+import { Field } from 'vee-validate';
+
 export default {
   name: 'UiInput',
+  components: {
+    Field,
+  },
   props: {
     type: {
       type: String,
@@ -32,7 +37,7 @@ export default {
       },
     },
     tag() {
-      return this.multiline ? 'textarea' : 'input';
+      return this.multiline ? 'textarea' : Field;
     },
   },
 };

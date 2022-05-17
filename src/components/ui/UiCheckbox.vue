@@ -8,8 +8,8 @@
 export default {
   name: 'UiCheckbox',
   props: ['modelValue'],
-  emits: ['update:ModelValue'],
   inheritAttrs: false,
+  emits: ['update:modelValue'],
   computed: {
     modelValueProxy: {
       get() {

@@ -1,7 +1,7 @@
 <template>
   <div class="login-form mdl-shadow--2dp">
     <h3>Войдите</h3>
-    <form>
+    <Form @submit="check">
       <UiLabel class="login-field" label="Email">
         <UiInput type="email" v-model="userData.email" />
       </UiLabel>
@@ -15,7 +15,7 @@
         Нет аккаунта?
         <UiLink class="registration-link" to="/">Зарегистрируйтесь</UiLink>
       </p>
-    </form>
+    </Form>
   </div>
 </template>
 <script>
@@ -24,9 +24,10 @@ import UiInput from '@/components/ui/UiInput';
 import UiLink from '@/components/ui/UiLink';
 import UiButton from '@/components/ui/UiButton';
 import { fbLogin } from '@/requesters/firebase/_firebase.auth.requesters';
+import { Form } from 'vee-validate';
 export default {
   name: 'LoginForm',
-  components: { UiButton, UiInput, UiLink, UiLabel },
+  components: { UiButton, UiInput, UiLink, UiLabel, Form },
   mounted() {
     this.$toast.show('Вы можете зайти под демо пользователем');
   },

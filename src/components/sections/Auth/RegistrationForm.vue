@@ -1,18 +1,35 @@
 <template>
   <div class="registration-form mdl-shadow--2dp">
     <h3>Зарегистрируйтесь</h3>
-    <form>
+    <Form @submit="registration">
       <UiLabel class="login-field" label="Email">
-        <UiInput type="email" v-model="userData.email" />
+        <UiInput
+          name="email"
+          :rules="validateEmail"
+          type="email"
+          v-model.trim="userData.email"
+        />
+        <ErrorMessage name="email" class="error" />
       </UiLabel>
       <UiLabel label="Логин">
-        <UiInput v-model="userData.login" />
+        <UiInput name="login" v-model.trim="userData.login" />
+        <ErrorMessage name="login" class="error" />
       </UiLabel>
       <UiLabel label="Пароль">
-        <UiInput type="password" v-model="userData.password" />
+        <UiInput
+          name="password"
+          type="password"
+          v-model.trim="userData.password"
+        />
+        <ErrorMessage class="error" name="password" />
       </UiLabel>
       <UiLabel label="Повторите пароль">
-        <UiInput type="password" v-model="userData.passwordRepeat" />
+        <UiInput
+          name="passwordRepeat"
+          type="password"
+          v-model.trim="userData.passwordRepeat"
+        />
+        <ErrorMessage name="passwordRepeat" class="error" />
       </UiLabel>
       <UiCheckbox required v-model="userData.isConfirmation">
         Я согласен с условиями
@@ -20,7 +37,6 @@
       <UiButton
         :disabled="!userData.isConfirmation"
         type="submit"
-        @click.prevent="registration"
         class="register-button"
         variant="bgMain"
       >
@@ -29,7 +45,7 @@
       <p>
         Уже есть аккаунт? <UiLink class="login-link" to="/">Войдите</UiLink>
       </p>
-    </form>
+    </Form>
   </div>
 </template>
 <script>
@@ -40,10 +56,20 @@ import UiButton from '@/components/ui/UiButton';
 import UiCheckbox from '@/components/ui/UiCheckbox';
 import { fbRegister } from '@/requesters/firebase/_firebase.auth.requesters';
 import { fbSetData } from '@/requesters/firebase/_firebase.database.requesters';
-
+import { ErrorMessage, Form } from 'vee-validate';
+import { validateEmail } from '@/services/_validation.servisce';
 export default {
   name: 'RegistrationForm',
-  components: { UiButton, UiInput, UiCheckbox, UiLink, UiLabel },
+  components: {
+    UiButton,
+    UiInput,
+    UiCheckbox,
+    UiLink,
+    UiLabel,
+    Form,
+    ErrorMessage,
+  },
+
   data: () => ({
     userData: {
       email: '',
@@ -54,23 +80,29 @@ export default {
     },
   }),
   methods: {
+    validateEmail(value) {
+      return validateEmail(value);
+    },
     async registration() {
-      const response = await fbRegister(
-        this.userData.email,
-        this.userData.password,
-      );
-      console.log(response);
-      const userForm = {
-        uid: response.uid,
-        name: this.userData.login,
-        email: response.email,
-        meetups: {
-          participant: ['Как участник'],
-          organizer: ['Как организатор'],
-        },
-      };
-      await fbSetData('users/' + response.uid, userForm);
-      await this.$router.push({ name: 'login' });
+      try {
+        const response = await fbRegister(
+          this.userData.email,
+          this.userData.password,
+        );
+        const userForm = {
+          uid: response.uid,
+          name: this.userData.login,
+          email: response.email,
+          meetups: {
+            participant: ['Как участник'],
+            organizer: ['Как организатор'],
+          },
+        };
+        await fbSetData('users/' + response.uid, userForm);
+        await this.$router.push({ name: 'login' });
+      } catch (error) {
+        this.errors = error;
+      }
     },
   },
 };
@@ -96,6 +128,10 @@ export default {
       display: flex;
       margin: 0 auto;
       flex-direction: column;
+      .error {
+        color: red;
+        font-size: 0.7rem;
+      }
     }
 
     .register-button {
@@ -131,6 +167,10 @@ export default {
       display: flex;
       margin: 0 auto;
       flex-direction: column;
+      .error {
+        color: red;
+        font-size: 0.7rem;
+      }
     }
     .register-button {
       margin-top: 25px;
