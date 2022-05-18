@@ -2,7 +2,7 @@
   <div class="registration-form mdl-shadow--2dp">
     <h3>Зарегистрируйтесь</h3>
     <Form @submit="registration">
-      <UiLabel class="login-field" label="Email">
+      <UiLabel label="Email">
         <UiInput
           name="email"
           :rules="validateEmail"
@@ -12,12 +12,17 @@
         <ErrorMessage name="email" class="error" />
       </UiLabel>
       <UiLabel label="Логин">
-        <UiInput name="login" v-model.trim="userData.login" />
+        <UiInput
+          name="login"
+          :rules="validateLogin"
+          v-model.trim="userData.login"
+        />
         <ErrorMessage name="login" class="error" />
       </UiLabel>
       <UiLabel label="Пароль">
         <UiInput
           name="password"
+          :rules="validatePassword"
           type="password"
           v-model.trim="userData.password"
         />
@@ -26,6 +31,7 @@
       <UiLabel label="Повторите пароль">
         <UiInput
           name="passwordRepeat"
+          :rules="validatePasswordRepeat"
           type="password"
           v-model.trim="userData.passwordRepeat"
         />
@@ -36,6 +42,7 @@
       </UiCheckbox>
       <UiButton
         :disabled="!userData.isConfirmation"
+        :class="{ 'disabled': !userData.isConfirmation }"
         type="submit"
         class="register-button"
         variant="bgMain"
@@ -57,7 +64,12 @@ import UiCheckbox from '@/components/ui/UiCheckbox';
 import { fbRegister } from '@/requesters/firebase/_firebase.auth.requesters';
 import { fbSetData } from '@/requesters/firebase/_firebase.database.requesters';
 import { ErrorMessage, Form } from 'vee-validate';
-import { validateEmail } from '@/services/_validation.servisce';
+import {
+  validateEmail,
+  validateLogin,
+  validatePassword,
+  validatePasswordRepeat,
+} from '@/services/_validation.servisce';
 export default {
   name: 'RegistrationForm',
   components: {
@@ -83,6 +95,15 @@ export default {
     validateEmail(value) {
       return validateEmail(value);
     },
+    validateLogin(value) {
+      return validateLogin(value);
+    },
+    validatePassword(value) {
+      return validatePassword(value);
+    },
+    validatePasswordRepeat(value) {
+      return validatePasswordRepeat(value, this.userData.password);
+    },
     async registration() {
       try {
         const response = await fbRegister(
@@ -101,7 +122,11 @@ export default {
         await fbSetData('users/' + response.uid, userForm);
         await this.$router.push({ name: 'login' });
       } catch (error) {
-        this.errors = error;
+        this.$toast.error(
+          'Пожалуйста повторите еще раз! Firebase`у что то не понравилось:(' +
+            <br /> +
+            error,
+        );
       }
     },
   },
@@ -129,23 +154,27 @@ export default {
       margin: 0 auto;
       flex-direction: column;
       .error {
-        color: red;
+        color: $ERROR_COLOR;
         font-size: 0.7rem;
       }
-    }
+      .register-button {
+        margin-top: 25px;
+      }
+      .disabled {
+        background: $DISABLED_COLOR;
+        color: $FONT_COLOR_LIGHT;
+        cursor: no-drop;
+      }
 
-    .register-button {
-      margin-top: 25px;
-    }
+      p {
+        font-size: 1.4em;
+        color: $FONT_COLOR_DARK;
+        margin-top: 25px;
 
-    p {
-      font-size: 1.4em;
-      color: $FONT_COLOR_DARK;
-      margin-top: 25px;
-
-      .login-link {
-        color: $MAIN_COLOR;
-        text-decoration: underline;
+        .login-link {
+          color: $MAIN_COLOR;
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -168,20 +197,25 @@ export default {
       margin: 0 auto;
       flex-direction: column;
       .error {
-        color: red;
+        color: $ERROR_COLOR;
         font-size: 0.7rem;
       }
-    }
-    .register-button {
-      margin-top: 25px;
-    }
-    p {
-      font-size: 1.4em;
-      color: $FONT_COLOR_DARK;
-      margin-top: 25px;
-      .login-link {
-        color: $MAIN_COLOR;
-        text-decoration: underline;
+      .register-button {
+        margin-top: 25px;
+      }
+      .disabled {
+        background: $DISABLED_COLOR;
+        color: $FONT_COLOR_LIGHT;
+        cursor: no-drop;
+      }
+      p {
+        font-size: 1.4em;
+        color: $FONT_COLOR_DARK;
+        margin-top: 25px;
+        .login-link {
+          color: $MAIN_COLOR;
+          text-decoration: underline;
+        }
       }
     }
   }

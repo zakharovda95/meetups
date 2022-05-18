@@ -9,12 +9,29 @@ export function validateEmail(value) {
   return true;
 }
 
+export function validateLogin(value) {
+  if (!value) {
+    return 'Обязательное поле';
+  }
+  return true;
+}
+
 export function validatePassword(value) {
   if (!value) {
     return 'Обязательное поле';
   }
   if (value.length < 6) {
     return 'Минимум 6 символов';
+  }
+  return true;
+}
+
+export function validatePasswordRepeat(value1, value2) {
+  if (!value1) {
+    return 'Обязательное поле';
+  }
+  if (value1 !== value2) {
+    return 'Пароли не совпадают';
   }
   return true;
 }

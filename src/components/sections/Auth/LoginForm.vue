@@ -1,14 +1,26 @@
 <template>
   <div class="login-form mdl-shadow--2dp">
     <h3>Войдите</h3>
-    <Form @submit="check">
+    <Form @submit="login">
       <UiLabel class="login-field" label="Email">
-        <UiInput type="email" v-model="userData.email" />
+        <UiInput
+          name="email"
+          :rules="validateEmail"
+          type="email"
+          v-model="userData.email"
+        />
+        <ErrorMessage name="email" class="error" />
       </UiLabel>
       <UiLabel label="Пароль">
-        <UiInput type="password" v-model="userData.password" />
+        <UiInput
+          name="password"
+          :rules="validatePassword"
+          type="password"
+          v-model="userData.password"
+        />
+        <ErrorMessage name="password" class="error" />
       </UiLabel>
-      <UiButton class="login-button" variant="bgMain" @click="logIn">
+      <UiButton class="login-button" type="submit" variant="bgMain">
         Войти
       </UiButton>
       <p>
@@ -24,10 +36,14 @@ import UiInput from '@/components/ui/UiInput';
 import UiLink from '@/components/ui/UiLink';
 import UiButton from '@/components/ui/UiButton';
 import { fbLogin } from '@/requesters/firebase/_firebase.auth.requesters';
-import { Form } from 'vee-validate';
+import { Form, ErrorMessage } from 'vee-validate';
+import {
+  validateEmail,
+  validatePassword,
+} from '@/services/_validation.servisce';
 export default {
   name: 'LoginForm',
-  components: { UiButton, UiInput, UiLink, UiLabel, Form },
+  components: { UiButton, UiInput, UiLink, UiLabel, Form, ErrorMessage },
   mounted() {
     this.$toast.show('Вы можете зайти под демо пользователем');
   },
@@ -38,9 +54,19 @@ export default {
     },
   }),
   methods: {
-    async logIn() {
-      await fbLogin(this.userData.email, this.userData.password);
-      await this.$router.push({ name: 'meetups' });
+    validateEmail(value) {
+      return validateEmail(value);
+    },
+    validatePassword(value) {
+      return validatePassword(value);
+    },
+    async login() {
+      try {
+        await fbLogin(this.userData.email, this.userData.password);
+        await this.$router.push({ name: 'meetups' });
+      } catch (err) {
+        this.$toast.error(err);
+      }
     },
   },
 };
@@ -68,28 +94,31 @@ export default {
       display: flex;
       margin: 0 auto;
       flex-direction: column;
-    }
+      .error {
+        color: $ERROR_COLOR;
+        font-size: 0.7rem;
+      }
+      .login-button {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        margin-top: 25px;
+        width: 150px;
+      }
+      .login-button:hover {
+        background-color: $FONT_COLOR_DARK;
+        color: $FONT_COLOR_LIGHT;
+      }
 
-    .login-button {
-      display: flex;
-      justify-content: center;
-      align-self: center;
-      margin-top: 25px;
-      width: 150px;
-    }
-    .login-button:hover {
-      background-color: $FONT_COLOR_DARK;
-      color: $FONT_COLOR_LIGHT;
-    }
+      p {
+        font-size: 1.4em;
+        color: $FONT_COLOR_DARK;
+        margin-top: 25px;
 
-    p {
-      font-size: 1.4em;
-      color: $FONT_COLOR_DARK;
-      margin-top: 25px;
-
-      .registration-link {
-        color: $MAIN_COLOR;
-        text-decoration: underline;
+        .registration-link {
+          color: $MAIN_COLOR;
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -113,26 +142,30 @@ export default {
       display: flex;
       margin: 0 auto;
       flex-direction: column;
-    }
-    .login-button {
-      display: flex;
-      justify-content: center;
-      align-self: center;
-      margin-top: 25px;
-      width: 150px;
-    }
-    .login-button:hover {
-      background-color: $FONT_COLOR_DARK;
-      color: $FONT_COLOR_LIGHT;
-    }
-    p {
-      font-size: 1.4em;
-      color: $FONT_COLOR_DARK;
-      margin-top: 25px;
+      .error {
+        color: $ERROR_COLOR;
+        font-size: 0.7rem;
+      }
+      .login-button {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        margin-top: 25px;
+        width: 150px;
+      }
+      .login-button:hover {
+        background-color: $FONT_COLOR_DARK;
+        color: $FONT_COLOR_LIGHT;
+      }
+      p {
+        font-size: 1.4em;
+        color: $FONT_COLOR_DARK;
+        margin-top: 25px;
 
-      .registration-link {
-        color: $MAIN_COLOR;
-        text-decoration: underline;
+        .registration-link {
+          color: $MAIN_COLOR;
+          text-decoration: underline;
+        }
       }
     }
   }

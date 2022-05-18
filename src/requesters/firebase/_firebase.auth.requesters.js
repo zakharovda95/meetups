@@ -23,7 +23,7 @@ export function fbLogin(email, password) {
       return userCredential.user;
     })
     .catch(error => {
-      return error.code + error.message;
+      `${error.code} Неверные данные! Попробуйте еще раз!`;
     });
 }
 
