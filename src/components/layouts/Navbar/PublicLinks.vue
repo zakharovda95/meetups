@@ -43,11 +43,21 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '../../../assets/styles/_constants.scss';
-@import '../../../assets/fonts/_fonts.css';
-.public-links {
-  display: flex;
-  .links {
+@media (max-width: 1019px) {
+  .public-links {
     display: flex;
+    .links {
+      display: flex;
+      margin-bottom: 20px;
+    }
+  }
+}
+@media (min-width: 1020px) {
+  .public-links {
+    display: flex;
+    .links {
+      display: flex;
+    }
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="create-view">
+  <div class="create-view mdl-shadow--4dp">
     <h3>Создайте митап</h3>
     <UiImageUploader
       class="uploader"
@@ -18,18 +18,22 @@
         :agenda-id="agenda.id"
       />
       <div class="add-button">
-        <UiButton :disabled="isLoading" variant="blue" @click="addAgendaItem">
+        <UiButton
+          :disabled="isLoading"
+          variant="default"
+          @click="addAgendaItem"
+        >
           + Добавить пункт программы
         </UiButton>
       </div>
     </div>
     <div class="creation-buttons">
-      <UiButton :disabled="isLoading" variant="bgBlue" @click="createMeetup"
-        >Создать</UiButton
-      >
-      <UiButton :disabled="isLoading" variant="bgRed" @click="cancel"
-        >Отменить</UiButton
-      >
+      <UiButton :disabled="isLoading" variant="bgWrong" @click="createMeetup">
+        Создать
+      </UiButton>
+      <UiButton :disabled="isLoading" variant="bgMain" @click="cancel">
+        Отменить
+      </UiButton>
     </div>
   </div>
 </template>
@@ -102,6 +106,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../../../../assets/styles/_constants.scss';
 @media (max-width: 1019px) {
   .create-view {
     display: flex;
@@ -109,11 +114,11 @@ export default {
     justify-content: center;
     width: 90%;
     margin-top: 24px;
-    background: white;
+    background: $ITEMS_COLOR;
     padding: 10px;
+    border-radius: 0 24px 24px 24px;
     h3 {
-      font-family: JetBrainMono-Bold, sans-serif;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
       text-align: center;
     }
     .forms {
@@ -132,6 +137,7 @@ export default {
     .creation-buttons {
       display: flex;
       align-self: center;
+      margin-left: 20px;
     }
   }
 }
@@ -142,22 +148,23 @@ export default {
     justify-content: center;
     width: 50%;
     margin-top: 24px;
-    background: white;
+    background: $ITEMS_COLOR;
     padding: 10px;
+    border-radius: 0 34px 34px 34px;
     h3 {
-      font-family: JetBrainMono-Bold, sans-serif;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
     }
     .forms {
       display: flex;
       flex-direction: column;
-      width: 100%;
+      justify-self: center;
+      width: 70%;
     }
     .uploader {
-      width: 100%;
+      width: 70%;
     }
     .agenda-forms {
-      width: 100%;
+      width: 70%;
       margin-top: 15px;
       margin-bottom: 15px;
     }

@@ -43,7 +43,6 @@ export const moduleMeetupsStore = {
       );
     },
     meetup(state) {
-      console.log(state.data.meetups);
       return state.data.meetups.find(
         meetup => meetup.id === state.currentMeetupId,
       );

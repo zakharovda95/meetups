@@ -1,19 +1,19 @@
 <template>
   <div class="meetup-button-group" v-if="isAuthorized">
     <div class="organizer" v-if="isOrganizer">
-      <UiButton variant="bgBlue" @click="editMeetup">Редактировать</UiButton>
-      <UiButton variant="bgRed" @click="removeMeetup">Удалить</UiButton>
+      <UiButton variant="bgWrong" @click="editMeetup">Редактировать</UiButton>
+      <UiButton variant="bgMain" @click="removeMeetup">Удалить</UiButton>
     </div>
     <div class="participant" v-if="!isOrganizer">
-      <UiButton v-if="!isParticipant" variant="bgBlue" @click="participate">
+      <UiButton v-if="!isParticipant" variant="bgWrong" @click="participate">
         Участвовать
       </UiButton>
       <UiButton
         v-if="isParticipant"
-        variant="bgRed"
+        variant="bgMain"
         @click="cancelParticipation"
       >
-        Отменить участие
+        Отменить
       </UiButton>
     </div>
   </div>
@@ -67,13 +67,15 @@ export default {
       'cutMeetupFromOrganizedMeetupsInUserData',
     ]),
     editMeetup() {
-      this.$router.push({ name: 'edit', params: { meetupId: this.meetup.id } });
+      this.$router.push({
+        name: 'edit',
+        params: { meetupId: this.meetup.id },
+      });
     },
     async removeMeetup() {
       await fbRemoveImage('covers/' + this.meetup.imageName);
       await fbRemoveData('meetups/' + this.meetup.id);
       await this.cutMeetupFromOrganizedMeetupsInUserData(this.meetup.id);
-      // await this.getMeetups();
       await this.$router.push({ name: 'meetups' });
       await this.$toast.success('Митап удален!');
     },

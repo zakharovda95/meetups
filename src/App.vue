@@ -19,6 +19,20 @@ export default {
   methods: {
     ...mapActions(['getMeetups', 'getIconList', 'checkUserStatus']),
   },
+  computed: {
+    user() {
+      return this.$store.state.user.data.userInfo;
+    },
+  },
+  watch: {
+    user: {
+      deep: true,
+      immediate: true,
+      handler(a) {
+        console.log(a);
+      },
+    },
+  },
 };
 </script>
 <style lang="scss">

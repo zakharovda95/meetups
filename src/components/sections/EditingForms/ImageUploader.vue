@@ -60,7 +60,7 @@ export default {
   computed: {
     uploaderClass() {
       return {
-        'loading': this.loading,
+        loading: this.loading,
       };
     },
     bgImage() {
@@ -88,16 +88,14 @@ export default {
 @import '../../../assets/styles/constants';
 .image-uploader {
   display: flex;
-
   .input {
     opacity: 0;
     height: 0;
   }
-
   .preview {
     background-size: cover;
     background-position: center;
-    border: 2px solid white;
+    border: 3px solid $ITEMS_COLOR;
     transition: 0.2s border-color;
     cursor: pointer;
     display: flex;
@@ -111,14 +109,13 @@ export default {
 
   .text {
     color: white;
-    font-family: 'JetBrainMono-Light', sans-serif;
     font-weight: 600;
     font-size: 20px;
     line-height: 28px;
   }
 }
 .preview:hover {
-  border-color: blue;
+  border-color: $MAIN_COLOR;
 }
 .loading {
   cursor: no-drop;

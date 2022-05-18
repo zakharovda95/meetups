@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { fbAuth, fbDb } from '@/requesters/firebase/_options.firebase';
 import {
-  fbGetData,
+  // fbGetData,
   fbSetData,
 } from '@/requesters/firebase/_firebase.database.requesters';
 import { onValue, ref } from 'firebase/database';
@@ -16,7 +16,6 @@ export const moduleUserStore = {
   mutations: {
     setUserInfo(state, userInfo) {
       state.data.userInfo = userInfo;
-      console.log(state.data.userInfo);
     },
     setUserInfoErrorMessage(state, errorMessage) {
       state.data.errorMessage = errorMessage;
@@ -46,31 +45,35 @@ export const moduleUserStore = {
     clearUserInfo({ commit }) {
       commit('clearUserInfo');
     },
-    async pushCreatedMeetupToUserData(state, meetup) {
+    async pushCreatedMeetupToUserData({ state }, meetup) {
       state.data.userInfo.meetups.organizer.push(meetup);
-      await fbSetData('users/' + state.userInfo.uid, state.userInfo);
-      state.data.userInfo = await fbGetData('users/' + state.userInfo.uid);
+      await fbSetData('users/' + state.data.userInfo.uid, state.data.userInfo);
+      // const newValue = await fbGetData('users/' + state.data.userInfo.uid);
+      // commit('setUserInfo', newValue);
     },
-    async cutMeetupFromOrganizedMeetupsInUserData(state, meetupId) {
-      state.userInfo.meetups.organizer =
-        state.userInfo.meetups.organizer.filter(id => {
+    async cutMeetupFromOrganizedMeetupsInUserData({ state }, meetupId) {
+      state.data.userInfo.meetups.organizer =
+        state.data.userInfo.meetups.organizer.filter(id => {
           return id !== meetupId;
         });
-      await fbSetData('users/' + state.userInfo.uid, state.userInfo);
-      state.userInfo = await fbGetData('users/' + state.userInfo.uid);
+      await fbSetData('users/' + state.data.userInfo.uid, state.data.userInfo);
+      // const newValue = await fbGetData('users/' + state.data.userInfo.uid);
+      // commit('setUserInfo', newValue);
     },
-    async pushMeetupForParticipationToUserData(state, meetupId) {
+    async pushMeetupForParticipationToUserData({ state }, meetupId) {
       state.data.userInfo.meetups.participant.push(meetupId);
-      await fbSetData('users/' + state.userInfo.uid, state.userInfo);
-      state.data.userInfo = await fbGetData('users/' + state.userInfo.uid);
+      await fbSetData('users/' + state.data.userInfo.uid, state.data.userInfo);
+      // const newValue = await fbGetData('users/' + state.data.userInfo.uid);
+      // commit('setUserInfo', newValue);
     },
-    async cutMeetupFromParticipationMeetupsInUserData(state, meetupId) {
+    async cutMeetupFromParticipationMeetupsInUserData({ state }, meetupId) {
       state.data.userInfo.meetups.participant =
         state.data.userInfo.meetups.participant.filter(id => {
           return id !== meetupId;
         });
-      await fbSetData('users/' + state.userInfo.uid, state.userInfo);
-      state.data.userInfo = await fbGetData('users/' + state.userInfo.uid);
+      await fbSetData('users/' + state.data.userInfo.uid, state.data.userInfo);
+      // const newValue = await fbGetData('users/' + state.data.userInfo.uid);
+      // commit('setUserInfo', newValue);
     },
   },
 };

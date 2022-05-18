@@ -28,16 +28,17 @@ export default {
 .ui-badge {
   font-family: 'JetBrainMono-Light', sans-serif;
   display: flex;
-  padding: 3px;
+  padding: 5px;
+  border-radius: 15px;
 }
 .badge-participant {
-  background: rgba(4, 173, 105, 0.2);
+  background: $BADGE_COLOR_PARTICIPANT;
   font-size: 0.8rem;
-  color: #04bb72;
+  color: $FONT_COLOR_DARK;
 }
 .badge-organizer {
-  background: rgba(4, 9, 196, 0.2);
+  background: $BADGE_COLOR_ORGANIZER;
   font-size: 0.8rem;
-  color: $main-color;
+  color: $FONT_COLOR_DARK;
 }
 </style>

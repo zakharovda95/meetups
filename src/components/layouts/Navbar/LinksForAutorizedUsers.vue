@@ -1,6 +1,6 @@
 <template>
   <div class="links-for-authorized-users" v-if="isAuthorized">
-    <nav class="links" v-if="width >= 1019 || isShowed">
+    <nav class="links" v-if="isShowed || widthX > 1019">
       <UiLink
         variant="nav-link"
         v-if="$route.meta.showReturnToMeetupList"
@@ -21,12 +21,7 @@
         Выйти ({{ userName }})
       </UiLink>
     </nav>
-    <UiButton
-      class="show"
-      variant="roundRed"
-      @click="showMenu"
-      v-if="width <= 1019"
-    >
+    <UiButton class="mobile-menu-button" variant="roundRed" @click="showMenu">
       <UiIcon id="arrow" :icon-name="isShowed ? 'top' : 'down'" />
     </UiButton>
   </div>
@@ -45,8 +40,8 @@ export default {
     UiIcon,
   },
   data: () => ({
-    width: 0,
     isShowed: false,
+    widthX: window.innerWidth,
   }),
   props: {
     isAuthorized: {
@@ -65,15 +60,14 @@ export default {
       await this.$store.dispatch('clearUserInfo');
       await this.$router.push({ name: 'meetups' });
     },
-    resize() {
-      this.width = document.documentElement.clientWidth;
-    },
     showMenu() {
       this.isShowed = !this.isShowed;
     },
   },
   created() {
-    window.addEventListener('resize', this.resize);
+    window.addEventListener('resize', () => {
+      this.widthX = window.innerWidth;
+    });
   },
 };
 </script>
@@ -90,7 +84,7 @@ export default {
       flex-wrap: wrap;
       margin-bottom: 20px;
     }
-    .show {
+    .mobile-menu-button {
       text-align: center;
       margin: 0 auto;
       #arrow {
@@ -104,6 +98,12 @@ export default {
     display: flex;
     .links {
       display: flex;
+    }
+    .mobile-menu-button {
+      display: none;
+      #arrow {
+        width: 19px;
+      }
     }
   }
 }

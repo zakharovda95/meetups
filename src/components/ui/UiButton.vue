@@ -19,6 +19,7 @@ export default {
   computed: {
     btnVariant() {
       return {
+        default: this.variant === 'default',
         'bg-main': this.variant === 'bgMain',
         'bg-red': this.variant === 'bgWrong',
         'round-red': this.variant === 'roundRed',
@@ -48,6 +49,13 @@ export default {
   padding: 10px;
   font-size: 1.3em;
 }
+.bg-red {
+  background: $MAIN_COLOR;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  font-size: 1.3em;
+}
 .round-red {
   width: 48px;
   height: 48px;
@@ -57,5 +65,11 @@ export default {
   font-size: 2em;
   text-align: center;
   color: $FONT_COLOR_LIGHT;
+}
+.default {
+  border: none;
+  background: none;
+  color: $FONT_COLOR_DARK;
+  font-size: 1.2rem;
 }
 </style>

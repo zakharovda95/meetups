@@ -42,7 +42,7 @@
       </UiCheckbox>
       <UiButton
         :disabled="!userData.isConfirmation"
-        :class="{ 'disabled': !userData.isConfirmation }"
+        :class="{ disabled: !userData.isConfirmation }"
         type="submit"
         class="register-button"
         variant="bgMain"
