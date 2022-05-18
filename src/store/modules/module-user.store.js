@@ -1,9 +1,10 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import { fbAuth } from '@/requesters/firebase/_options.firebase';
+import { fbAuth, fbDb } from '@/requesters/firebase/_options.firebase';
 import {
   fbGetData,
   fbSetData,
 } from '@/requesters/firebase/_firebase.database.requesters';
+import { onValue, ref } from 'firebase/database';
 
 export const moduleUserStore = {
   state: () => ({
@@ -15,6 +16,7 @@ export const moduleUserStore = {
   mutations: {
     setUserInfo(state, userInfo) {
       state.data.userInfo = userInfo;
+      console.log(state.data.userInfo);
     },
     setUserInfoErrorMessage(state, errorMessage) {
       state.data.errorMessage = errorMessage;
@@ -28,8 +30,13 @@ export const moduleUserStore = {
     isUserAuthorized({ commit }) {
       onAuthStateChanged(fbAuth, async user => {
         if (user) {
-          const userInfo = await fbGetData('users/' + user.uid);
-          commit('setUserInfo', userInfo);
+          // const userInfo = await fbGetData('users/' + user.uid);
+          // commit('setUserInfo', userInfo);
+          // console.log(userInfo);
+          onValue(ref(fbDb, 'users/' + user.uid), response => {
+            const userInfo = response.val();
+            commit('setUserInfo', userInfo);
+          });
         } else {
           const errorMessage = 'Вы не авторизованы!';
           commit('setUserInfoErrorMessage', errorMessage);

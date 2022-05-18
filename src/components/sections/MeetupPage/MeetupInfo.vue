@@ -1,17 +1,16 @@
 <template>
   <UiLoading v-if="loading" />
-  <div class="meetup_info" v-else>
+  <div class="meetup-info" v-else>
     <div class="mdl-card__supporting-text">
-      <UiIcon class="ui_icon__card" icon-name="organizer"></UiIcon
+      <UiIcon class="card" icon-name="organizer"></UiIcon
       >{{ meetup.organizer.name }}
     </div>
     <div class="mdl-card__supporting-text">
-      <UiIcon class="ui_icon__card" icon-name="location"></UiIcon
-      >{{ meetup.place }}
+      <UiIcon class="card" icon-name="location"></UiIcon>{{ meetup.place }}
     </div>
     <div class="mdl-card__supporting-text">
-      <UiIcon class="ui_icon__card" icon-name="calendar"></UiIcon
-      >{{ meetup.date }} ( {{ daysBeforeTheEvent }} )
+      <UiIcon class="card" icon-name="calendar"></UiIcon>{{ meetup.date }} (
+      {{ daysBeforeTheEvent }} )
     </div>
   </div>
 </template>
@@ -54,14 +53,14 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '../../../assets/styles/_constants.scss';
-.meetup_info {
+.meetup-info {
   width: 100%;
   .mdl-card__supporting-text {
     margin-bottom: -15px;
     font-size: 1.1em;
     color: $FONT_COLOR_DARK;
   }
-  .ui_icon__card {
+  .card {
     width: 32px;
     margin-right: 25px;
   }

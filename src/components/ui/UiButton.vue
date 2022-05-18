@@ -1,6 +1,6 @@
 <template>
   <component :is="tag" class="ui-button" :class="btnVariant" :type="btnType">
-    <slot></slot>
+    <slot />
   </component>
 </template>
 <script>
@@ -19,11 +19,9 @@ export default {
   computed: {
     btnVariant() {
       return {
-        'mdl-button mdl-js-button mdl-button--primary': this.variant === 'blue',
-        'mdl-button mdl-js-button mdl-button--accent': this.variant === 'red',
-        'mdl-button mdl-js-button': this.variant === 'black',
         'bg-main': this.variant === 'bgMain',
         'bg-red': this.variant === 'bgWrong',
+        'round-red': this.variant === 'roundRed',
       };
     },
     btnType() {
@@ -49,5 +47,15 @@ export default {
   border-radius: 25px;
   padding: 10px;
   font-size: 1.3em;
+}
+.round-red {
+  width: 48px;
+  height: 48px;
+  background: $UI_COLOR;
+  border-radius: 50px;
+  border: none;
+  font-size: 2em;
+  text-align: center;
+  color: $FONT_COLOR_LIGHT;
 }
 </style>

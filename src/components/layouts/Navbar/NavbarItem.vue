@@ -36,20 +36,21 @@ export default {
     flex-wrap: wrap;
     width: 100%;
     background-color: $MAIN_COLOR;
+    min-height: 70px;
     .content {
       display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
       justify-content: center;
+      flex-direction: column;
       width: 100%;
       height: 100%;
       margin-top: 20px;
       #logo {
         display: flex;
+        justify-content: center;
+        height: 80%;
         color: $FONT_COLOR_DARK;
         font-size: 2.8em;
         font-family: 'JetBrainMono-Bold', sans-serif;
-        align-self: center;
         text-decoration: none;
       }
       #public-links,
