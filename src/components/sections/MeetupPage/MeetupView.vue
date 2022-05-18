@@ -47,7 +47,7 @@ export default {
     align-items: center;
     background: whitesmoke;
     padding: 25px;
-    margin-bottom: 38px;
+    margin-bottom: 46px;
     .cover {
       display: flex;
       align-self: center;

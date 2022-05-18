@@ -50,7 +50,8 @@
         Зарегистрироваться
       </UiButton>
       <p>
-        Уже есть аккаунт? <UiLink class="login-link" to="/">Войдите</UiLink>
+        Уже есть аккаунт?
+        <UiLink class="login-link" :to="{ name: 'login' }">Войдите</UiLink>
       </p>
     </Form>
   </div>
@@ -121,6 +122,7 @@ export default {
         };
         await fbSetData('users/' + response.uid, userForm);
         await this.$router.push({ name: 'login' });
+        await this.$toast.success('Регистрация прошла успешно!');
       } catch (error) {
         this.$toast.error(
           'Пожалуйста повторите еще раз! Firebase`у что то не понравилось:(' +

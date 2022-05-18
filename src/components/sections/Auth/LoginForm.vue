@@ -25,7 +25,9 @@
       </UiButton>
       <p>
         Нет аккаунта?
-        <UiLink class="registration-link" to="/">Зарегистрируйтесь</UiLink>
+        <UiLink class="registration-link" :to="{ name: 'registration' }">
+          Зарегистрируйтесь
+        </UiLink>
       </p>
     </Form>
   </div>
@@ -61,11 +63,17 @@ export default {
       return validatePassword(value);
     },
     async login() {
-      try {
-        await fbLogin(this.userData.email, this.userData.password);
+      const isSuccess = await fbLogin(
+        this.userData.email,
+        this.userData.password,
+      );
+      if (isSuccess === 'auth/user-not-found') {
+        this.$toast.error('Неверный логин/пароль');
+      }
+      if (isSuccess === 'auth/wrong-password') {
+        this.$toast.error('Неверный пароль');
+      } else {
         await this.$router.push({ name: 'meetups' });
-      } catch (err) {
-        this.$toast.error(err);
       }
     },
   },
