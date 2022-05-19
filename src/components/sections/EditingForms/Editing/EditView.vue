@@ -1,36 +1,40 @@
 <template>
   <div class="edit-view">
     <h3>Редактирование митапа</h3>
-    <ImageUploader
-      class="uploader"
-      :loading="isLoading"
-      :preview="editableMeetup.image"
-      @select="selectImage"
-      @remove="removeImage"
-    />
-    <EditForm class="meetup-form" :loading="isLoading" />
-    <h3>Программа</h3>
-    <EditAgendaItemForm
-      v-for="agenda in editableMeetup.agenda"
-      :key="agenda.id"
-      :loading="isLoading"
-      class="agenda-form"
-      :agenda-id="agenda.id"
-    />
-    <div class="add-button">
-      <UiButton
-        :disabled="isLoading"
-        variant="blue"
-        @click="addAgendaItemToEditableMeetup"
-      >
-        + Добавить пункт программы
-      </UiButton>
+    <div class="uploader">
+      <ImageUploader
+        class="uploader"
+        :loading="isLoading"
+        :preview="editableMeetup.image"
+        @select="selectImage"
+        @remove="removeImage"
+      />
+    </div>
+    <EditForm class="forms" :loading="isLoading" />
+    <div class="agenda">
+      <h3>Программа</h3>
+      <EditAgendaItemForm
+        v-for="agenda in editableMeetup.agenda"
+        :key="agenda.id"
+        :loading="isLoading"
+        class="agenda-item"
+        :agenda-id="agenda.id"
+      />
+      <div class="add-button">
+        <UiButton
+          :disabled="isLoading"
+          variant="default"
+          @click="addAgendaItemToEditableMeetup"
+        >
+          + Добавить пункт программы
+        </UiButton>
+      </div>
     </div>
     <div class="editing-buttons">
-      <UiButton :disabled="isLoading" variant="bgBlue" @click="editMeetup">
+      <UiButton :disabled="isLoading" variant="bgWrong" @click="editMeetup">
         Сохранить
       </UiButton>
-      <UiButton :disabled="isLoading" variant="bgRed" @click="cancel">
+      <UiButton :disabled="isLoading" variant="bgMain" @click="cancel">
         Отменить
       </UiButton>
     </div>
@@ -109,6 +113,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../../../../assets/styles/_constants.scss';
 @media (max-width: 1019px) {
   .edit-view {
     display: flex;
@@ -116,29 +121,35 @@ export default {
     justify-content: center;
     width: 90%;
     margin-top: 24px;
-    background: white;
+    background: $ITEMS_COLOR;
     padding: 10px;
+    border-radius: 0 24px 24px 24px;
     h3 {
-      font-family: JetBrainMono-Bold, sans-serif;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
       text-align: center;
     }
-    .meetup-form {
+    .forms {
       display: flex;
       flex-direction: column;
       width: 100%;
     }
     .uploader {
       width: 100%;
+      margin: 0 auto;
     }
-    .agenda-form {
-      width: 100%;
-      margin-top: 15px;
-      margin-bottom: 15px;
+    .agenda {
+      width: 80%;
+      margin: 0 auto;
+      .add-button {
+        display: flex;
+        justify-content: center;
+        margin: 24px 0;
+      }
     }
     .editing-buttons {
       display: flex;
       align-self: center;
+      margin-left: 20px;
     }
   }
 }
@@ -146,27 +157,33 @@ export default {
   .edit-view {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 50%;
     margin-top: 24px;
-    background: white;
+    background: $ITEMS_COLOR;
     padding: 10px;
+    border-radius: 0 34px 34px 34px;
     h3 {
-      font-family: JetBrainMono-Bold, sans-serif;
-      color: #3535ad;
+      color: $FONT_COLOR_DARK;
+      text-align: center;
     }
-    .meetup-form {
+    .forms {
       display: flex;
       flex-direction: column;
-      width: 100%;
+      width: 80%;
+      margin: 0 auto;
     }
     .uploader {
-      width: 100%;
+      width: 80%;
+      margin: 0 auto;
     }
-    .agenda-form {
-      width: 100%;
-      margin-top: 15px;
-      margin-bottom: 15px;
+    .agenda {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      margin: 0 auto;
+      .add-button {
+        margin: 24px 0;
+      }
     }
     .editing-buttons {
       display: flex;

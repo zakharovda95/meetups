@@ -1,9 +1,9 @@
 <template>
   <div class="filter-panel-wrapper">
     <div class="items">
-      <UiButton @click="previousMonth">&#8592;</UiButton>
+      <UiButton @click="previousMonth" variant="default">&#8592;</UiButton>
       <div class="date">{{ month }} {{ year }}</div>
-      <UiButton @click="nextMonth">&#8594;</UiButton>
+      <UiButton @click="nextMonth" variant="default">&#8594;</UiButton>
     </div>
   </div>
 </template>

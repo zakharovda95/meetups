@@ -103,8 +103,7 @@ export const moduleEditingStore = {
       commit('addAgendaItemToEditableMeetup');
     },
     async getEditableMeetup({ dispatch, rootState, commit }, payload) {
-      await dispatch('getMeetups');
-      const meetups = rootState.meetups.meetups;
+      const meetups = rootState.meetups.data.meetups;
       const editableMeetup = meetups.find(item => item.id === payload);
       commit('getEditableMeetup', editableMeetup);
     },
@@ -147,13 +146,12 @@ export const moduleEditingStore = {
     removeEditableAgendaItem({ commit }, payload) {
       commit('removeEditableAgendaItem', payload);
     },
-    async editMeetup({ state, dispatch }) {
+    async editMeetup({ state }) {
       state.isLoading = true;
       await fbSetData(
         'meetups/' + state.editableMeetup.id,
         state.editableMeetup,
       );
-      await dispatch('getMeetups');
       state.isLoading = false;
     },
   },

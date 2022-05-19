@@ -22,6 +22,7 @@
           :model-value="currentAgendaItem.startsAt"
           @update:model-value="updateAgendaStartsAt([$event, agendaId])"
         />
+        <ErrorMessage name="start" />
       </UiLabel>
       <UiLabel class="endsAt" label="Окончание">
         <UiInputDate
@@ -35,6 +36,7 @@
     <div class="row-3">
       <UiLabel :label="labelType">
         <UiInput
+          name="title"
           :disabled="loading"
           :model-value="currentAgendaItem.title"
           @update:model-value="updateAgendaTitle([$event, agendaId])"
@@ -45,6 +47,7 @@
       <div class="row-4">
         <UiLabel label="Докладчик">
           <UiInput
+            name="speaker"
             :disabled="loading"
             :model-value="currentAgendaItem.speaker"
             @update:model-value="updateAgendaSpeaker([$event, agendaId])"
@@ -64,6 +67,7 @@
     <div class="row-6" v-if="agendaType">
       <UiLabel label="Описание">
         <UiInput
+          name="description"
           multiline
           :disabled="loading"
           :model-value="currentAgendaItem.description"
@@ -86,7 +90,13 @@ import UiLabel from '@/components/ui/UiLabel';
 import { mapActions } from 'vuex';
 export default {
   name: 'CreateAgendaItemForm',
-  components: { UiDropdown, UiIcon, UiInputDate, UiLabel, UiInput },
+  components: {
+    UiDropdown,
+    UiIcon,
+    UiInputDate,
+    UiLabel,
+    UiInput,
+  },
   inheritAttrs: false,
   props: {
     agendaId: {

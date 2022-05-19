@@ -1,17 +1,17 @@
 <template>
-  <UiInput
+  <input
+    class="ui-input-date"
     :type="type"
     ref="input"
     :value="modelValue"
     @input="modelValueProxy = $event.target.value"
-  ></UiInput>
+  />
 </template>
 <script>
-import UiInput from '@/components/ui/UiInput';
 import moment from 'moment';
+import UiInput from '@/components/ui/UiInput';
 export default {
   name: 'UiInputDate',
-  components: { UiInput },
   props: {
     type: {
       type: String,
@@ -45,4 +45,14 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import '../../assets/styles/_constants.scss';
+.ui-input-date {
+  border: 1px solid $UI_COLOR;
+  border-radius: 18px;
+  padding: 7px 7px 7px 15px;
+  font-size: 1.1em;
+  max-width: 70vw;
+  background: $ITEMS_COLOR;
+}
+</style>

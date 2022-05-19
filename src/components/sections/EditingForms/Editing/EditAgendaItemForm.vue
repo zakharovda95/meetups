@@ -35,6 +35,7 @@
     <div class="row-3">
       <UiLabel :label="labelType">
         <UiInput
+          name="title"
           :disabled="loading"
           :model-value="currentAgendaItem.title"
           @update:model-value="editAgendaTitle([$event, agendaId])"
@@ -45,6 +46,7 @@
       <div class="row-4">
         <UiLabel label="Докладчик">
           <UiInput
+            name="speaker"
             :disabled="loading"
             :model-value="currentAgendaItem.speaker"
             @update:model-value="editAgendaSpeaker([$event, agendaId])"
@@ -65,6 +67,7 @@
       <UiLabel label="Описание">
         <UiInput
           multiline
+          name="description"
           :disabled="loading"
           :model-value="currentAgendaItem.description"
           @update:model-value="editAgendaDescription([$event, agendaId])"
@@ -150,12 +153,15 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '../../../../assets/styles/_constants.scss';
 @media (max-width: 1019px) {
   .edit-agenda-item-form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    border: 1px solid blue;
+    border: 1px solid $MAIN_COLOR;
+    border-radius: 0 24px 24px 24px;
+    margin-top: 25px;
     .row-1,
     .row-5 {
       display: flex;
@@ -164,11 +170,12 @@ export default {
       padding: 15px;
       margin-left: 5px;
       .trash {
-        width: 32px;
+        width: 28px;
         margin-right: 30px;
         cursor: pointer;
         padding: 5px;
         border-radius: 3px;
+        margin-top: -10px;
       }
       .trash:active {
         background: rgba(42, 48, 87, 0.3);
@@ -177,7 +184,7 @@ export default {
     .row-2 {
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
+      width: 95%;
       padding: 15px;
       .startsAt {
         width: 35vw;
@@ -189,6 +196,7 @@ export default {
     .row-3,
     .row-4,
     .row-6 {
+      width: 90%;
       margin-left: 15px;
     }
   }
@@ -198,7 +206,9 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100%;
-    border: 1px solid blue;
+    border: 2px solid $MAIN_COLOR;
+    border-radius: 0 24px 24px 24px;
+    margin-top: 25px;
     .row-1,
     .row-5 {
       display: flex;
@@ -207,7 +217,7 @@ export default {
       padding: 15px;
       margin-left: 5px;
       .trash {
-        width: 32px;
+        width: 28px;
         margin-right: 30px;
         cursor: pointer;
         padding: 5px;

@@ -3,6 +3,7 @@
     <form>
       <UiLabel label="Заголовок">
         <UiInput
+          name="title"
           :disabled="loading"
           :model-value="editableMeetup.title"
           @update:model-value="editTitle"
@@ -17,6 +18,7 @@
       </UiLabel>
       <UiLabel label="Место проведения">
         <UiInput
+          name="place"
           :disabled="loading"
           :model-value="editableMeetup.place"
           @update:model-value="editPlace"
@@ -25,6 +27,7 @@
       <UiLabel label="Описание">
         <UiInput
           multiline
+          name="description"
           :disabled="loading"
           :model-value="editableMeetup.description"
           @update:model-value="editDescription"

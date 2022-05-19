@@ -132,6 +132,7 @@ export const moduleCreatingStore = {
       commit('updateTitle', payload);
     },
     updateDate({ commit }, payload) {
+      console.log(payload);
       commit('updateDate', payload);
     },
     updatePlace({ commit }, payload) {
@@ -179,7 +180,6 @@ export const moduleCreatingStore = {
       dispatch('setOrganizer', payload);
       dispatch('pushCreatedMeetupToUserData', state.meetupForm.id);
       await fbSetData('meetups/' + state.meetupForm.id, state.meetupForm);
-      await dispatch('getMeetups');
       state.isLoading = false;
     },
   },
