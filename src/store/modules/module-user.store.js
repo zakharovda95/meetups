@@ -32,6 +32,7 @@ export const moduleUserStore = {
           // const userInfo = await fbGetData('users/' + user.uid);
           // commit('setUserInfo', userInfo);
           // console.log(userInfo);
+          /** Фаербейсовский сокет - прослушка изменений БД **/
           onValue(ref(fbDb, 'users/' + user.uid), response => {
             const userInfo = response.val();
             commit('setUserInfo', userInfo);

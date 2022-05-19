@@ -31,7 +31,7 @@ export default {
   },
   inheritAttrs: false,
   data: () => ({
-    url: undefined,
+    url: null,
   }),
   mounted() {
     if (this.preview) {
@@ -80,6 +80,10 @@ export default {
       }
       return '';
     },
+  },
+  beforeUnmount() {
+    this.url = null;
+    this.$refs.input.value = null;
   },
 };
 </script>

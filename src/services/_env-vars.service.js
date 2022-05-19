@@ -1,3 +1,4 @@
+/** Конфиги приложения **/
 export const APP_CONFIGS = {
   API_KEY: process.env.VUE_APP_API_KEY,
   AUTH_DOMAIN: process.env.VUE_APP_AUTH_DOMAIN,

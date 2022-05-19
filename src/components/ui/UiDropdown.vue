@@ -39,11 +39,12 @@ export default {
 <style scoped lang="scss">
 @import '../../assets/styles/_constants.scss';
 .ui-dropdown {
-  color: blue;
+  color: $FONT_COLOR_DARK;
   font-size: 1.2rem;
   display: flex;
   padding: 5px;
-  border: 2px solid $FONT_COLOR_DARK;
+  border: 2px solid $UI_COLOR;
+  border-radius: 22px;
   option {
     padding: 5px;
   }

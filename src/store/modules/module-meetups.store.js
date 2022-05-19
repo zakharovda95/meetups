@@ -79,6 +79,7 @@ export const moduleMeetupsStore = {
     getMeetups({ commit }) {
       try {
         commit('checkLoading', true);
+        /** Фаербейсовский сокет - прослушка изменений БД **/
         onValue(ref(fbDb, 'meetups'), response => {
           const data = response.val();
           const formattedData = Object.values(data);

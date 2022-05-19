@@ -1,20 +1,22 @@
 <template>
   <div class="create-view mdl-shadow--4dp">
     <h3>Создайте митап</h3>
-    <UiImageUploader
-      class="uploader"
-      :loading="isLoading"
-      @select="selectImage"
-      @remove="removeImage"
-    />
+    <div class="uploader">
+      <UiImageUploader
+        class="uploader"
+        :loading="isLoading"
+        @select="selectImage"
+        @remove="removeImage"
+      />
+    </div>
     <CreateForm class="forms" :loading="isLoading" />
-    <div class="agenda-item-group">
+    <div class="agenda">
       <h3>Программа</h3>
       <CreateAgendaItemForm
         v-for="agenda in meetupForm.agenda"
         :key="agenda.id"
         :loading="isLoading"
-        class="agenda-forms"
+        class="agenda-item"
         :agenda-id="agenda.id"
       />
       <div class="add-button">
@@ -103,6 +105,9 @@ export default {
       this.isLoading = false;
     },
   },
+  beforeUnmount() {
+    this.file = null;
+  },
 };
 </script>
 <style scoped lang="scss">
@@ -128,11 +133,16 @@ export default {
     }
     .uploader {
       width: 100%;
+      margin: 0 auto;
     }
-    .agenda-forms {
-      width: 100%;
-      margin-top: 15px;
-      margin-bottom: 15px;
+    .agenda {
+      width: 80%;
+      margin: 0 auto;
+      .add-button {
+        display: flex;
+        justify-content: center;
+        margin: 24px 0;
+      }
     }
     .creation-buttons {
       display: flex;
@@ -145,7 +155,6 @@ export default {
   .create-view {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 50%;
     margin-top: 24px;
     background: $ITEMS_COLOR;
@@ -153,20 +162,26 @@ export default {
     border-radius: 0 34px 34px 34px;
     h3 {
       color: $FONT_COLOR_DARK;
+      text-align: center;
     }
     .forms {
       display: flex;
       flex-direction: column;
-      justify-self: center;
-      width: 70%;
+      width: 80%;
+      margin: 0 auto;
     }
     .uploader {
-      width: 70%;
+      width: 80%;
+      margin: 0 auto;
     }
-    .agenda-forms {
-      width: 70%;
-      margin-top: 15px;
-      margin-bottom: 15px;
+    .agenda {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      margin: 0 auto;
+      .add-button {
+        margin: 24px 0;
+      }
     }
     .creation-buttons {
       display: flex;
