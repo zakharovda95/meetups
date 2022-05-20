@@ -11,26 +11,20 @@ export default {
   created() {
     this.getMeetups();
     this.getIconList();
-    this.checkUserStatus();
+    this.isUserAuthorized();
     setTimeout(() => {
       this.$toast.show('Приветствую на моем демонстрационном проекте!');
     }, 2000);
   },
   methods: {
-    ...mapActions(['getMeetups', 'getIconList', 'checkUserStatus']),
+    ...mapActions(['getMeetups', 'getIconList', 'isUserAuthorized']),
   },
   computed: {
     user() {
       return this.$store.state.user.data.userInfo;
     },
-  },
-  watch: {
-    user: {
-      deep: true,
-      immediate: true,
-      handler(a) {
-        console.log(a);
-      },
+    meetups() {
+      return this.$store.state.meetups.data.meetups;
     },
   },
 };

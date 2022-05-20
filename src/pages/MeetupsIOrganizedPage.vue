@@ -1,5 +1,6 @@
 <template>
-  <div class="organized-page">
+  <UiLoading v-if="loading" />
+  <div class="organized-page" v-else>
     <div class="content">
       <MeetupsList />
     </div>
@@ -7,10 +8,17 @@
 </template>
 <script>
 import MeetupsList from '@/components/sections/MeetupList/MeetupsList';
+import UiLoading from '@/components/ui/UiLoading';
 export default {
   name: 'MeetupsIOrganizedPage',
   components: {
     MeetupsList,
+    UiLoading,
+  },
+  computed: {
+    loading() {
+      return !!this.$store.state.meetups.data.meetups.length;
+    },
   },
 };
 </script>

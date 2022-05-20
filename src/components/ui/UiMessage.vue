@@ -13,7 +13,7 @@ export default {
 .ui-message {
   display: flex;
   height: 100%;
-  width: 80%;
+  width: 100%;
   align-items: center;
   align-self: center;
   justify-content: center;

@@ -1,6 +1,7 @@
 import { uuid } from 'vue-uuid';
 import { fbSetData } from '@/requesters/firebase/_firebase.database.requesters';
 import moment from 'moment';
+import { cloneDeep } from 'lodash';
 
 export const moduleCreatingStore = {
   state: () => ({
@@ -176,7 +177,7 @@ export const moduleCreatingStore = {
     },
     async createMeetup({ state, dispatch, rootState }) {
       state.isLoading = true;
-      const payload = rootState.user.data.userInfo;
+      const payload = cloneDeep(rootState.user.data.userInfo);
       dispatch('setOrganizer', payload);
       dispatch('pushCreatedMeetupToUserData', state.meetupForm.id);
       await fbSetData('meetups/' + state.meetupForm.id, state.meetupForm);

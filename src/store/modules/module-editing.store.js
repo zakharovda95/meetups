@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { uuid } from 'vue-uuid';
 import { fbSetData } from '@/requesters/firebase/_firebase.database.requesters';
+import { cloneDeep } from 'lodash';
 
 export const moduleEditingStore = {
   state: () => ({
@@ -103,7 +104,7 @@ export const moduleEditingStore = {
       commit('addAgendaItemToEditableMeetup');
     },
     async getEditableMeetup({ dispatch, rootState, commit }, payload) {
-      const meetups = rootState.meetups.data.meetups;
+      const meetups = cloneDeep(rootState.meetups.data.meetups);
       const editableMeetup = meetups.find(item => item.id === payload);
       commit('getEditableMeetup', editableMeetup);
     },

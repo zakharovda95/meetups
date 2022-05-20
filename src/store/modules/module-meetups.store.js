@@ -1,14 +1,14 @@
-import { fbGetData } from '@/requesters/firebase/_firebase.database.requesters';
+//import { fbGetData } from '@/requesters/firebase/_firebase.database.requesters';
 import { fbCreateIconsList } from '@/requesters/firebase/_firebase.storage.requesters';
 import moment from 'moment';
 import 'moment/locale/ru';
 import {
   filterMeetupsByInput,
+  filterMeetupsInWhichIOrganizeOrParticipate,
   sortMeetupsByDate,
-} from '@/services/_sorting.service';
+} from '@/services/_meetups.service';
 import { getEventsDates } from '@/services/_event-calendar.service';
-import { onAuthStateChanged } from 'firebase/auth';
-import { fbAuth, fbDb } from '@/requesters/firebase/_options.firebase';
+import { fbDb } from '@/requesters/firebase/_options.firebase';
 import { ref, onValue } from 'firebase/database';
 
 moment.locale('ru');
@@ -30,16 +30,42 @@ export const moduleMeetupsStore = {
     eventsDates(state) {
       return getEventsDates(state.data.meetups);
     },
-    filteredMeetups(state, getters) {
+    filteredMeetups(state) {
+      const sortedMeetups = sortMeetupsByDate(
+        state.data.meetups,
+        state.sortingParams.radioButtonValue,
+      );
       return filterMeetupsByInput(
-        getters.sortedMeetups,
+        sortedMeetups,
         state.sortingParams.inputValue,
       );
     },
-    sortedMeetups(state) {
-      return sortMeetupsByDate(
+    meetupsIOrganize(state, getters, rootState) {
+      const meetups = filterMeetupsInWhichIOrganizeOrParticipate(
         state.data.meetups,
+        rootState.user.data.userInfo?.meetups?.organizer,
+      );
+      const sortedMeetups = sortMeetupsByDate(
+        meetups,
         state.sortingParams.radioButtonValue,
+      );
+      return filterMeetupsByInput(
+        sortedMeetups,
+        state.sortingParams.inputValue,
+      );
+    },
+    meetupsIParticipate(state, getters, rootState) {
+      const meetups = filterMeetupsInWhichIOrganizeOrParticipate(
+        state.data.meetups,
+        rootState.user.data.userInfo?.meetups?.participant,
+      );
+      const sortedMeetups = sortMeetupsByDate(
+        meetups,
+        state.sortingParams.radioButtonValue,
+      );
+      return filterMeetupsByInput(
+        sortedMeetups,
+        state.sortingParams.inputValue,
       );
     },
     meetup(state) {
@@ -59,9 +85,6 @@ export const moduleMeetupsStore = {
     chooseMeetupById(state, id) {
       state.currentMeetupId = id;
     },
-    checkLoading(state, value) {
-      state.isLoading = value;
-    },
     setIcons(state, iconUrl) {
       state.data.icons.push(iconUrl);
     },
@@ -76,39 +99,27 @@ export const moduleMeetupsStore = {
     chooseMeetupById({ commit }, meetupId) {
       commit('chooseMeetupById', meetupId);
     },
-    getMeetups({ commit }) {
+    async getMeetups({ state, commit }) {
       try {
-        commit('checkLoading', true);
+        state.isLoading = true;
         /** Фаербейсовский сокет - прослушка изменений БД **/
-        onValue(ref(fbDb, 'meetups'), response => {
+        await onValue(ref(fbDb, 'meetups'), response => {
           const data = response.val();
           const formattedData = Object.values(data);
           commit('setMeetups', formattedData);
+          state.isLoading = false;
         });
       } catch (error) {
         console.log(error);
-      } finally {
-        commit('checkLoading', false);
       }
     },
-    checkUserStatus({ commit }) {
-      onAuthStateChanged(fbAuth, async user => {
-        if (user) {
-          const data = await fbGetData('users/' + user.uid);
-          commit('setUserInfo', data);
-        } else {
-          console.log('Вы не авторизованы');
-        }
-      });
-    },
-    async getIconList({ commit }) {
+    async getIconList({ commit, state }) {
       try {
-        commit('checkLoading', true);
+        state.isLoading = true;
         await fbCreateIconsList(commit, 'icons/');
+        state.isLoading = false;
       } catch (err) {
         console.log(err);
-      } finally {
-        commit('checkLoading', false);
       }
     },
     updateInputValue({ commit }, value) {

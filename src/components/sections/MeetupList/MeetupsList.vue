@@ -26,16 +26,10 @@ export default {
         return this.$store.getters.filteredMeetups;
       }
       if (this.$route.name === 'organizer') {
-        return this.$store.getters.filteredMeetups;
+        return this.$store.getters.meetupsIOrganize;
       }
       if (this.$route.name === 'participant') {
-        return this.$store.getters.filteredMeetups;
-      }
-      return false;
-    },
-    user() {
-      if (this.$store.user.data.userInfo) {
-        return this.$store.user.data.userInfo;
+        return this.$store.getters.meetupsIParticipate;
       }
       return false;
     },
@@ -57,7 +51,7 @@ export default {
   #message {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 94%;
   }
   .meetups-list {
     width: 100%;

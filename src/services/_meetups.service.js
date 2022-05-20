@@ -23,3 +23,17 @@ export function sortMeetupsByDate(array, option) {
     }
   });
 }
+
+/** Сортировка митапов которые я организую/учавствую **/
+export function filterMeetupsInWhichIOrganizeOrParticipate(
+  meetups,
+  userMeetups,
+) {
+  return meetups.filter(item => {
+    for (const elem of userMeetups) {
+      if (item.id === elem) {
+        return true;
+      }
+    }
+  });
+}

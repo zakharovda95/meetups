@@ -1,9 +1,6 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { fbAuth, fbDb } from '@/requesters/firebase/_options.firebase';
-import {
-  // fbGetData,
-  fbSetData,
-} from '@/requesters/firebase/_firebase.database.requesters';
+import { fbSetData } from '@/requesters/firebase/_firebase.database.requesters';
 import { onValue, ref } from 'firebase/database';
 
 export const moduleUserStore = {
