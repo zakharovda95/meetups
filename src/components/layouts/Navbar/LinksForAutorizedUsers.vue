@@ -21,7 +21,7 @@
         Выйти ({{ userName }})
       </UiLink>
     </nav>
-    <UiButton class="mobile-menu-button" variant="roundRed" @click="showMenu">
+    <UiButton class="mobile-menu-button" variant="roundBtn" @click="showMenu">
       <UiIcon id="arrow" :icon-name="isShowed ? 'top' : 'down'" />
     </UiButton>
   </div>

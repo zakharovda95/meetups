@@ -48,10 +48,10 @@ export default {
 <style scoped lang="scss">
 @import '../../assets/styles/_constants.scss';
 .ui-input-date {
-  border: 1px solid $UI_COLOR;
+  border: 3px solid $UI_COLOR;
   border-radius: 18px;
-  padding: 7px 7px 7px 15px;
-  font-size: 1.1em;
+  padding: 5px 5px 5px 15px;
+  font-size: 1.2em;
   max-width: 70vw;
   background: $ITEMS_COLOR;
 }

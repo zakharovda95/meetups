@@ -19,10 +19,10 @@ export default {
   computed: {
     btnVariant() {
       return {
-        default: this.variant === 'default',
+        'default': this.variant === 'default',
         'bg-main': this.variant === 'bgMain',
         'bg-red': this.variant === 'bgWrong',
-        'round-red': this.variant === 'roundRed',
+        'round-btn': this.variant === 'roundBtn',
       };
     },
     btnType() {
@@ -42,21 +42,23 @@ export default {
   cursor: pointer;
   color: $FONT_COLOR_DARK;
 }
-.bg-main {
-  background: $UI_COLOR;
-  border: none;
-  border-radius: 25px;
-  padding: 10px;
-  font-size: 1.3em;
-}
 .bg-red {
-  background: $MAIN_COLOR;
+  background: $ERROR_COLOR;
+  color: $FONT_COLOR_LIGHT;
   border: none;
   border-radius: 25px;
   padding: 10px;
   font-size: 1.3em;
 }
-.round-red {
+.bg-main {
+  background: $MAIN_COLOR;
+  color: $FONT_COLOR_DARK;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  font-size: 1.3em;
+}
+.round-btn {
   width: 48px;
   height: 48px;
   background: $UI_COLOR;

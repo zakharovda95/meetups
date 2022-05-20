@@ -1,16 +1,16 @@
 <template>
   <div class="meetup-button-group" v-if="isAuthorized">
     <div class="organizer" v-if="isOrganizer">
-      <UiButton variant="bgWrong" @click="editMeetup">Редактировать</UiButton>
-      <UiButton variant="bgMain" @click="removeMeetup">Удалить</UiButton>
+      <UiButton variant="bgMain" @click="editMeetup">Редактировать</UiButton>
+      <UiButton variant="bgWrong" @click="removeMeetup">Удалить</UiButton>
     </div>
     <div class="participant" v-if="!isOrganizer">
-      <UiButton v-if="!isParticipant" variant="bgWrong" @click="participate">
+      <UiButton v-if="!isParticipant" variant="bgMain" @click="participate">
         Участвовать
       </UiButton>
       <UiButton
         v-if="isParticipant"
-        variant="bgMain"
+        variant="bgWrong"
         @click="cancelParticipation"
       >
         Отменить

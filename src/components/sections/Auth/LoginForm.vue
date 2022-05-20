@@ -73,6 +73,7 @@ export default {
       if (isSuccess === 'auth/wrong-password') {
         this.$toast.error('Неверный пароль');
       } else {
+        await this.$store.dispatch('checkUserStatus');
         await this.$router.push({ name: 'meetups' });
       }
     },

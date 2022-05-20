@@ -48,8 +48,10 @@ import EditAgendaItemForm from '@/components/sections/EditingForms/Editing/EditA
 import UiButton from '@/components/ui/UiButton';
 import {
   fbGetStorageDataLink,
+  fbRemoveImage,
   fbUploadImage,
 } from '@/requesters/firebase/_firebase.storage.requesters';
+
 export default {
   name: 'EditView',
   components: {
@@ -88,12 +90,15 @@ export default {
     },
     async uploadImg() {
       try {
+        await fbRemoveImage('/covers/' + this.editableMeetup.imageName);
         const res = await fbUploadImage('/covers/', this.file);
         const path = res.metadata.fullPath;
-        const url = await fbGetStorageDataLink(path);
-        await this.fbUploadImage({ url, file: this.file });
+        this.editableMeetup.image = await fbGetStorageDataLink(path);
+        this.editableMeetup.imageId = this.$uuid.v1();
+        this.editableMeetup.imageName = res.metadata.name;
       } catch (err) {
-        this.$toast.error('Ошибка' + err);
+        console.log(err);
+        this.$toast.error('Что то пошло не так!');
       }
     },
     async editMeetup() {

@@ -35,7 +35,7 @@ export function fbUploadImage(path, file) {
   });
 }
 
-/** Удаление их хранилища **/
+/** Удаление из хранилища **/
 export function fbRemoveImage(path) {
   deleteObject(ref(fbStorage, path))
     .then(() => {
