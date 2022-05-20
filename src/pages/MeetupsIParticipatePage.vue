@@ -1,16 +1,16 @@
 <template>
   <div class="participant-page">
     <div class="content">
-      <MeetupsIParticipate />
+      <MeetupsList />
     </div>
   </div>
 </template>
 <script>
-import MeetupsIParticipate from '@/components/sections/MeetupList/MeetupsIParticipate';
+import MeetupsList from '@/components/sections/MeetupList/MeetupsList';
 export default {
   name: 'MeetupsIParticipatePage',
   components: {
-    MeetupsIParticipate,
+    MeetupsList,
   },
 };
 </script>

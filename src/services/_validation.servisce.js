@@ -1,3 +1,4 @@
+/** Валидация форм регистрации и входа **/
 export function validateEmail(value) {
   if (!value) {
     return 'Обязательное поле';

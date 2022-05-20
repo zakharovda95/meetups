@@ -51,7 +51,7 @@ export default {
   padding: 0 15px;
   line-height: 34px;
   background: $UI_COLOR;
-  color: $FONT_COLOR_LIGHT;
+  color: $FONT_COLOR_DARK;
   border-radius: 18px;
   font-size: 1.1em;
 }
@@ -65,6 +65,7 @@ export default {
 
 /* Hover */
 .ui-checkbox label:hover {
+  background: $HOVER_COLOR;
   color: $FONT_COLOR_DARK;
 }
 </style>

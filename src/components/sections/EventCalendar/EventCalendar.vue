@@ -63,7 +63,7 @@ export default {
       align-items: stretch;
       padding: 5px;
       gap: 5px;
-      color: $main-color;
+      color: $FONT_COLOR_DARK;
     }
   }
 }
@@ -84,7 +84,7 @@ export default {
       align-items: stretch;
       padding: 5px;
       gap: 5px;
-      color: $main-color;
+      color: $FONT_COLOR_DARK;
     }
   }
 }

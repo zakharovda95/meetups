@@ -42,6 +42,10 @@ export default {
   cursor: pointer;
   color: $FONT_COLOR_DARK;
 }
+.ui-button:hover {
+  background: $HOVER_COLOR;
+  color: $FONT_COLOR_DARK;
+}
 .bg-red {
   background: $ERROR_COLOR;
   color: $FONT_COLOR_LIGHT;

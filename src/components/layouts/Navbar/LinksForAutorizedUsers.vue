@@ -91,6 +91,9 @@ export default {
         width: 19px;
       }
     }
+    .mobile-menu-button:hover {
+      background: $FOOTER_COLOR;
+    }
   }
 }
 @media (min-width: 1020px) {

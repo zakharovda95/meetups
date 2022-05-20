@@ -8,9 +8,9 @@
     <div class="mdl-card__supporting-text">
       <UiIcon class="card" icon-name="location"></UiIcon>{{ meetup.place }}
     </div>
-    <div class="mdl-card__supporting-text">
-      <UiIcon class="card" icon-name="calendar"></UiIcon>{{ meetup.date }} (
-      {{ daysBeforeTheEvent }} )
+    <div class="mdl-card__supporting-text time">
+      <UiIcon class="card" icon-name="calendar"></UiIcon>
+      <div class="text">{{ meetup.date }} ({{ daysBeforeTheEvent }})</div>
     </div>
   </div>
 </template>
@@ -37,13 +37,13 @@ export default {
     daysBeforeTheEvent() {
       const dateNow = moment().valueOf();
       const eventDate = this.meetup.dateUnix;
-      if (moment(eventDate).format('DD') > moment(dateNow).format('DD')) {
-        return `Через ${moment(eventDate - dateNow).format('DDD')} дн.`;
+      if (eventDate > dateNow) {
+        return `Через ${moment(eventDate - dateNow).format('DDD')} дн`;
       }
-      if (moment(eventDate).format('DD') === moment(dateNow).format('DD')) {
+      if (moment(eventDate).day() === moment(dateNow).day()) {
         return 'Мероприятие состоится сегодня';
       }
-      if (moment(eventDate).format('DD') < moment(dateNow).format('DD')) {
+      if (eventDate < dateNow) {
         return 'Мероприятие прошло';
       }
       return '';
@@ -61,8 +61,11 @@ export default {
     color: $FONT_COLOR_DARK;
   }
   .card {
-    width: 32px;
+    width: 28px;
     margin-right: 25px;
+  }
+  .time {
+    display: flex;
   }
 }
 </style>

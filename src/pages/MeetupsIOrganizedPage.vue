@@ -1,16 +1,16 @@
 <template>
   <div class="organized-page">
     <div class="content">
-      <MeetupsIOrganized />
+      <MeetupsList />
     </div>
   </div>
 </template>
 <script>
-import MeetupsIOrganized from '@/components/sections/MeetupList/MeetupsIOrganized';
+import MeetupsList from '@/components/sections/MeetupList/MeetupsList';
 export default {
   name: 'MeetupsIOrganizedPage',
   components: {
-    MeetupsIOrganized,
+    MeetupsList,
   },
 };
 </script>

@@ -26,12 +26,10 @@ export const moduleUserStore = {
     },
   },
   actions: {
+    /** Проверка авторизован ли пользователь **/
     isUserAuthorized({ commit }) {
       onAuthStateChanged(fbAuth, async user => {
         if (user) {
-          // const userInfo = await fbGetData('users/' + user.uid);
-          // commit('setUserInfo', userInfo);
-          // console.log(userInfo);
           /** Фаербейсовский сокет - прослушка изменений БД **/
           onValue(ref(fbDb, 'users/' + user.uid), response => {
             const userInfo = response.val();
@@ -46,11 +44,10 @@ export const moduleUserStore = {
     clearUserInfo({ commit }) {
       commit('clearUserInfo');
     },
+    /** Добавление/удаление информации о митапах (как участник/как организатор) в userInfo**/
     async pushCreatedMeetupToUserData({ state }, meetup) {
       state.data.userInfo.meetups.organizer.push(meetup);
       await fbSetData('users/' + state.data.userInfo.uid, state.data.userInfo);
-      // const newValue = await fbGetData('users/' + state.data.userInfo.uid);
-      // commit('setUserInfo', newValue);
     },
     async cutMeetupFromOrganizedMeetupsInUserData({ state }, meetupId) {
       state.data.userInfo.meetups.organizer =
@@ -58,14 +55,10 @@ export const moduleUserStore = {
           return id !== meetupId;
         });
       await fbSetData('users/' + state.data.userInfo.uid, state.data.userInfo);
-      // const newValue = await fbGetData('users/' + state.data.userInfo.uid);
-      // commit('setUserInfo', newValue);
     },
     async pushMeetupForParticipationToUserData({ state }, meetupId) {
       state.data.userInfo.meetups.participant.push(meetupId);
       await fbSetData('users/' + state.data.userInfo.uid, state.data.userInfo);
-      // const newValue = await fbGetData('users/' + state.data.userInfo.uid);
-      // commit('setUserInfo', newValue);
     },
     async cutMeetupFromParticipationMeetupsInUserData({ state }, meetupId) {
       state.data.userInfo.meetups.participant =
@@ -73,8 +66,6 @@ export const moduleUserStore = {
           return id !== meetupId;
         });
       await fbSetData('users/' + state.data.userInfo.uid, state.data.userInfo);
-      // const newValue = await fbGetData('users/' + state.data.userInfo.uid);
-      // commit('setUserInfo', newValue);
     },
   },
 };

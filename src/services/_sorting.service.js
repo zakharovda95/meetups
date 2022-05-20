@@ -1,9 +1,11 @@
+/** Сортировка по значению инпута **/
 export function filterMeetupsByInput(array, inputValue) {
   return array.filter(item => {
     return item.title.toUpperCase().includes(inputValue.toUpperCase());
   });
 }
 
+/** Сортировка будущих и прошедших мероприятий **/
 export function sortMeetupsByDate(array, option) {
   return array.filter(item => {
     const nowDate = Date.now();

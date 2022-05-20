@@ -1,3 +1,4 @@
+/** Опции дропдауна и нейминг иконок **/
 export const agendaItemsOptions = [
   {
     value: 'registration',
