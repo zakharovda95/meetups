@@ -29,9 +29,11 @@ export default {
   flex-direction: column;
   height: 100vh;
   #navbar {
+    position: fixed;
     flex: 0 0 auto;
   }
   .content {
+    margin-top: 80px;
     flex: 1 0 auto;
     .filter-panel {
       display: flex;

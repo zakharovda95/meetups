@@ -8,6 +8,16 @@ import CreateView from '@/components/sections/EditingForms/Creating/CreateView.v
 export default {
   name: 'CreatePage',
   components: { CreateView },
+  methods: {
+    guard() {
+      if (!this.$store.state.user.data.userInfo) {
+        this.$router.replace({ name: 'meetups' });
+      }
+    },
+  },
+  created() {
+    this.guard();
+  },
 };
 </script>
 <style scoped lang="scss">

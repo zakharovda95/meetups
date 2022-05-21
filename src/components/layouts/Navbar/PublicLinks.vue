@@ -8,19 +8,28 @@
       <UiLink variant="nav-link" :to="{ name: 'registration' }">
         Регистрация
       </UiLink>
-      <UiLink variant="nav-link" to="/" @click="redirectToLogin">
+      <UiLink v-if="!auth" @click.prevent="openModal" variant="nav-link" to="/">
         Создать митап
       </UiLink>
     </nav>
   </div>
+  <teleport to="#modals">
+    <UiModal
+      header="Чтобы создать митап зарегистрируйтесь или войдите"
+      v-if="isModalOpen"
+      @update:closeModal="isModalOpen = false"
+    />
+  </teleport>
 </template>
 <script>
 import UiLink from '@/components/ui/UiLink';
+import UiModal from '@/components/ui/UiModal';
 
 export default {
   name: 'PublicLinks',
   components: {
     UiLink,
+    UiModal,
   },
   props: {
     isAuthorized: {
@@ -28,15 +37,25 @@ export default {
       default: false,
     },
   },
+  data: () => ({
+    isModalOpen: false,
+  }),
   computed: {
+    auth() {
+      return (
+        this.$route.name === 'login' || this.$route.name === 'registration'
+      );
+    },
     backArrowLink() {
       return this.$route.meta.showReturnToMeetupList;
     },
   },
   methods: {
-    redirectToLogin() {
-      this.$router.replace({ path: '/auth/login' });
-      this.$toast.error('Чтобы создать встречу залогиньтесь!');
+    openModal() {
+      this.isModalOpen = true;
+      this.isModalOpen
+        ? (document.body.style.overflow = 'hidden')
+        : (document.body.style.overflow = 'auto');
     },
   },
 };
