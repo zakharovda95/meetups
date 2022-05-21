@@ -1,24 +1,16 @@
 <template>
   <div class="main-page">
-    <UiLoading v-if="isLoading" />
-    <div v-else class="content">
+    <div class="content">
       <MeetupsList />
     </div>
   </div>
 </template>
 <script>
 import MeetupsList from '@/components/sections/MeetupList/MeetupsList';
-import UiLoading from '@/components/ui/UiLoading';
 export default {
   name: 'MainPage',
   components: {
     MeetupsList,
-    UiLoading,
-  },
-  computed: {
-    isLoading() {
-      return this.$store.state.meetups.isLoading;
-    },
   },
 };
 </script>

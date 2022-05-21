@@ -52,7 +52,7 @@ export default {
   border: none;
   border-radius: 25px;
   padding: 10px;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 .bg-main {
   background: $MAIN_COLOR;
@@ -60,12 +60,12 @@ export default {
   border: none;
   border-radius: 25px;
   padding: 10px;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 .round-btn {
   width: 48px;
   height: 48px;
-  background: $UI_COLOR;
+  background: $FOOTER_COLOR;
   border-radius: 50px;
   border: none;
   font-size: 2em;

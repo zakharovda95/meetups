@@ -92,7 +92,7 @@ export default {
       }
     }
     .mobile-menu-button:hover {
-      background: $FOOTER_COLOR;
+      background: $UI_COLOR;
     }
   }
 }

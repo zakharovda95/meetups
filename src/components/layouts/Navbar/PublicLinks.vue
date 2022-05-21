@@ -12,14 +12,14 @@
         Создать митап
       </UiLink>
     </nav>
+    <teleport to="#modals">
+      <UiModal
+        header="Чтобы создать митап зарегистрируйтесь или войдите"
+        v-if="isModalOpen"
+        @update:closeModal="isModalOpen = false"
+      />
+    </teleport>
   </div>
-  <teleport to="#modals">
-    <UiModal
-      header="Чтобы создать митап зарегистрируйтесь или войдите"
-      v-if="isModalOpen"
-      @update:closeModal="isModalOpen = false"
-    />
-  </teleport>
 </template>
 <script>
 import UiLink from '@/components/ui/UiLink';

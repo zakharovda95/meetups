@@ -1,6 +1,5 @@
 <template>
-  <UiLoading v-if="loading" />
-  <div class="participant-page" v-if="!loading">
+  <div class="participant-page">
     <div class="content">
       <MeetupsList />
     </div>
@@ -8,17 +7,25 @@
 </template>
 <script>
 import MeetupsList from '@/components/sections/MeetupList/MeetupsList';
-import UiLoading from '@/components/ui/UiLoading';
 export default {
   name: 'MeetupsIParticipatePage',
   components: {
     MeetupsList,
-    UiLoading,
   },
   computed: {
-    loading() {
-      return !!this.$store.state.meetups.data.meetups?.length;
+    isUserAuthorized() {
+      return !this.$store.state.user.data.isUserAuthorized;
     },
+  },
+  methods: {
+    guard() {
+      if (!this.isUserAuthorized) {
+        this.$router.replace({ name: 'meetups' });
+      }
+    },
+  },
+  created() {
+    this.guard();
   },
 };
 </script>

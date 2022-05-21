@@ -6,7 +6,9 @@
           <UiButton variant="default" @click="close"> Закрыть </UiButton>
         </div>
         <p>{{ header }}</p>
-        <UiLink variant="nav-link" :to="{ name: 'login' }">Вход</UiLink>
+        <UiLink id="link" variant="nav-link" :to="{ name: 'login' }">
+          Вход
+        </UiLink>
         <UiLink variant="nav-link" :to="{ name: 'registration' }">
           Регистрация
         </UiLink>
@@ -39,35 +41,73 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '../../assets/styles/_constants.scss';
-.ui-modal {
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-  height: 100%;
-  .layout {
-    display: flex;
+@media (max-width: 1019px) {
+  .ui-modal {
+    position: absolute;
+    z-index: 100;
     width: 100%;
     height: 100%;
-    background: $MODAL_LAYOUT;
-    justify-content: center;
-    .content {
+    .layout {
       display: flex;
-      flex-direction: column;
-      align-self: center;
-      background: $ITEMS_COLOR;
-      width: 40vw;
-      height: 30vh;
-      border-radius: 0 24px 24px 24px;
-      border: 4px solid $MAIN_COLOR;
-      .close {
+      width: 100%;
+      height: 100%;
+      background: $MODAL_LAYOUT;
+      justify-content: center;
+      .content {
         display: flex;
-        width: 100%;
-        justify-content: flex-end;
-        margin-bottom: 20px;
+        flex-direction: column;
+        align-self: center;
+        background: $ITEMS_COLOR;
+        border-radius: 0 24px 24px 24px;
+        border: 4px solid $MAIN_COLOR;
+        max-width: 85%;
+        .close {
+          display: flex;
+          width: 100%;
+          justify-content: flex-end;
+          margin-bottom: 20px;
+        }
+        p {
+          text-align: center;
+          font-size: 1.2rem;
+          width: 70%;
+          margin: 0 auto;
+        }
       }
-      p {
-        text-align: center;
-        font-size: 1.2rem;
+    }
+  }
+}
+@media (min-width: 1020px) {
+  .ui-modal {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    .layout {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      background: $MODAL_LAYOUT;
+      justify-content: center;
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        background: $ITEMS_COLOR;
+        width: 40vw;
+        height: 30vh;
+        border-radius: 0 24px 24px 24px;
+        border: 4px solid $MAIN_COLOR;
+        .close {
+          display: flex;
+          width: 100%;
+          justify-content: flex-end;
+          margin-bottom: 20px;
+        }
+        p {
+          text-align: center;
+          font-size: 1.2rem;
+        }
       }
     }
   }

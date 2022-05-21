@@ -1,6 +1,5 @@
 <template>
-  <UiLoading v-if="loading" />
-  <div class="organized-page" v-else>
+  <div class="organized-page">
     <div class="content">
       <MeetupsList />
     </div>
@@ -13,12 +12,21 @@ export default {
   name: 'MeetupsIOrganizedPage',
   components: {
     MeetupsList,
-    UiLoading,
   },
   computed: {
-    loading() {
-      return !!this.$store.state.meetups.data.meetups.length;
+    isUserAuthorized() {
+      return !this.$store.state.user.data.isUserAuthorized;
     },
+  },
+  methods: {
+    guard() {
+      if (!this.isUserAuthorized) {
+        this.$router.replace({ name: 'meetups' });
+      }
+    },
+  },
+  created() {
+    this.guard();
   },
 };
 </script>

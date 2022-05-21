@@ -8,9 +8,14 @@ import CreateView from '@/components/sections/EditingForms/Creating/CreateView.v
 export default {
   name: 'CreatePage',
   components: { CreateView },
+  computed: {
+    isUserAuthorized() {
+      return !this.$store.state.user.data.isUserAuthorized;
+    },
+  },
   methods: {
     guard() {
-      if (!this.$store.state.user.data.userInfo) {
+      if (!this.isUserAuthorized) {
         this.$router.replace({ name: 'meetups' });
       }
     },

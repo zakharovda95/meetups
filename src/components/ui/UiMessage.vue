@@ -13,7 +13,7 @@ export default {
 .ui-message {
   display: flex;
   height: 100%;
-  width: 100%;
+  width: 90%;
   align-items: center;
   align-self: center;
   justify-content: center;
@@ -22,8 +22,9 @@ export default {
   margin-top: 25px;
   padding: 25px;
   background: $MAIN_COLOR;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: $FONT_COLOR_DARK;
-  border-radius: 25px;
+  border-radius: 13px;
+  text-align: center;
 }
 </style>
