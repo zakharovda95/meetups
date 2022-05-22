@@ -10,16 +10,23 @@
       :meetup="meetup"
     ></MeetupItem>
   </div>
+  <UiShift v-if="!isNoScroll" hash="#modals" id="scroll-up">&#9650;</UiShift>
 </template>
 <script>
 import MeetupItem from '@/components/sections/MeetupList/MeetupItem';
 import UiMessage from '@/components/ui/UiMessage';
+import UiShift from '@/components/ui/UiShift';
 export default {
   name: 'MeetupsList',
   components: {
+    UiShift,
     MeetupItem,
     UiMessage,
   },
+  data: () => ({
+    offsetX: window.pageXOffset,
+    offsetY: window.pageYOffset,
+  }),
   computed: {
     isUserAuthorized() {
       return this.$store.state.user.data.isUserAuthorized;
@@ -36,6 +43,21 @@ export default {
       }
       return false;
     },
+    isNoScroll() {
+      return this.offsetX === 0 && this.offsetY === 0;
+    },
+  },
+  methods: {
+    handleScroll() {
+      this.offsetX = window.pageXOffset;
+      this.offsetY = window.pageYOffset;
+    },
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
 };
 </script>
@@ -49,6 +71,11 @@ export default {
   .meetups-list {
     width: 100%;
   }
+  #scroll-up {
+    position: fixed;
+    bottom: 37vh;
+    right: 10px;
+  }
 }
 @media (min-width: 1020px) {
   #message {
@@ -58,6 +85,11 @@ export default {
   }
   .meetups-list {
     width: 100%;
+  }
+  #scroll-up {
+    position: fixed;
+    bottom: 40vh;
+    right: 50px;
   }
 }
 </style>

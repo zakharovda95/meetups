@@ -20,6 +20,7 @@ export default {
   emits: ['update:closeModal'],
   methods: {
     close() {
+      document.body.style.overflow = 'auto';
       this.$emit('update:closeModal');
     },
   },

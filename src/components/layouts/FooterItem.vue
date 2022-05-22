@@ -3,8 +3,22 @@
     <div class="logo">RENCONTRES</div>
     <div class="date">2022 г.</div>
     <div class="links">
-      <UiLink class="link" to="/">GitHub</UiLink>
-      <UiLink class="link" to="/">Сайт</UiLink>
+      <UiLink
+        tag="a"
+        class="link"
+        target="_blank"
+        href="https://github.com/zakharovda95/vuejs-option_api-20220404-pet_project-meetups-spa"
+      >
+        GitHub
+      </UiLink>
+      <UiLink
+        tag="a"
+        class="link"
+        target="_blank"
+        href="https://vk.com/id625689222"
+      >
+        Сайт
+      </UiLink>
     </div>
   </footer>
 </template>
