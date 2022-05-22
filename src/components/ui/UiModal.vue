@@ -3,15 +3,9 @@
     <div class="layout">
       <div class="content" @click.stop>
         <div class="close">
-          <UiButton variant="default" @click="close"> Закрыть </UiButton>
+          <UiButton variant="default" @click="close">Закрыть</UiButton>
         </div>
-        <p>{{ header }}</p>
-        <UiLink id="link" variant="nav-link" :to="{ name: 'login' }">
-          Вход
-        </UiLink>
-        <UiLink variant="nav-link" :to="{ name: 'registration' }">
-          Регистрация
-        </UiLink>
+        <slot />
       </div>
     </div>
   </div>
@@ -22,14 +16,7 @@ import UiButton from '@/components/ui/UiButton';
 export default {
   name: 'UiModal',
   components: {
-    UiLink,
     UiButton,
-  },
-  props: {
-    header: {
-      type: String,
-      required: true,
-    },
   },
   emits: ['update:closeModal'],
   methods: {
@@ -67,12 +54,6 @@ export default {
           justify-content: flex-end;
           margin-bottom: 20px;
         }
-        p {
-          text-align: center;
-          font-size: 1.2rem;
-          width: 70%;
-          margin: 0 auto;
-        }
       }
     }
   }
@@ -103,10 +84,6 @@ export default {
           width: 100%;
           justify-content: flex-end;
           margin-bottom: 20px;
-        }
-        p {
-          text-align: center;
-          font-size: 1.2rem;
         }
       }
     }

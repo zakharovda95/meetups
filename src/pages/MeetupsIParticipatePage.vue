@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     isUserAuthorized() {
-      return !this.$store.state.user.data.isUserAuthorized;
+      return this.$store.state.user.data.isUserAuthorized;
     },
   },
   methods: {

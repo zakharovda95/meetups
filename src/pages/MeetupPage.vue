@@ -1,6 +1,6 @@
 <template>
   <div class="meetup-page">
-    <MeetupToggle />
+    <MeetupToggle id="toggle" />
     <div class="content">
       <MeetupView />
     </div>
@@ -25,6 +25,9 @@ export default {
     flex-direction: column;
     margin: 0 auto;
     width: 90%;
+    #toggle {
+      margin-top: 40px;
+    }
     .content {
       display: flex;
       flex: 1 0 auto;

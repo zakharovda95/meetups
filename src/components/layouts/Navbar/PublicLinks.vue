@@ -13,23 +13,24 @@
       </UiLink>
     </nav>
     <teleport to="#modals">
-      <UiModal
-        header="Чтобы создать митап зарегистрируйтесь или войдите"
+      <PublicModalLinks
         v-if="isModalOpen"
         @update:closeModal="isModalOpen = false"
-      />
+      >
+        Чтобы создать митап зарегистрируйтесь или войдите
+      </PublicModalLinks>
     </teleport>
   </div>
 </template>
 <script>
 import UiLink from '@/components/ui/UiLink';
-import UiModal from '@/components/ui/UiModal';
+import PublicModalLinks from '@/components/layouts/Navbar/PublicModalLinks';
 
 export default {
   name: 'PublicLinks',
   components: {
+    PublicModalLinks,
     UiLink,
-    UiModal,
   },
   props: {
     isAuthorized: {

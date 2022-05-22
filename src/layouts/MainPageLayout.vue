@@ -35,6 +35,7 @@ export default {
     .content {
       flex: 1 0 auto;
       .filter-panel {
+        margin-top: 30px;
         display: flex;
         justify-content: center;
       }
