@@ -18,6 +18,9 @@ export default {
 </script>
 <style scoped lang="scss">
 .meetup-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   #navbar {
     flex: 0 0 auto;
   }

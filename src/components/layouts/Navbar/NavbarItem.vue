@@ -47,10 +47,8 @@ export default {
       #logo {
         display: flex;
         justify-content: center;
-        height: 80%;
         color: $FONT_COLOR_DARK;
         font-size: 2.8em;
-        font-family: 'JetBrainMono-Bold', sans-serif;
         text-decoration: none;
       }
       #public-links,
@@ -78,7 +76,6 @@ export default {
         display: flex;
         color: $FONT_COLOR_DARK;
         font-size: 2.8em;
-        font-family: 'JetBrainMono-Bold', sans-serif;
         align-self: center;
         text-decoration: none;
       }

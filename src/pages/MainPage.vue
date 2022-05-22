@@ -12,6 +12,21 @@ export default {
   components: {
     MeetupsList,
   },
+  computed: {
+    isUserAuthorized() {
+      return this.$store.state.user.data.isUserAuthorized;
+    },
+  },
+  methods: {
+    guard() {
+      if (!this.isUserAuthorized) {
+        this.$router.replace({ name: 'meetups' });
+      }
+    },
+  },
+  created() {
+    this.guard();
+  },
 };
 </script>
 <style scoped lang="scss">

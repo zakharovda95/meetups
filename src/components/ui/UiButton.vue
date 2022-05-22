@@ -76,7 +76,6 @@ export default {
   border: none;
   background: none;
   color: $FONT_COLOR_DARK;
-  font-size: 1.2rem;
   padding: 8px;
 }
 .default:hover {

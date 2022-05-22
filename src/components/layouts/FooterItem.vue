@@ -1,6 +1,6 @@
 <template>
   <footer class="footer-item">
-    <div class="logo">MEETUPS</div>
+    <div class="logo">RENCONTRES</div>
     <div class="date">2022 г.</div>
     <div class="links">
       <UiLink class="link" to="/">GitHub</UiLink>

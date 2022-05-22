@@ -86,6 +86,7 @@ export default {
     }
     .mobile-menu-button {
       position: relative;
+      top: 15px;
       text-align: center;
       margin: 0 auto;
       #arrow {

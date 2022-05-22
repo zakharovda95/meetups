@@ -25,6 +25,7 @@ export default {
     flex: 0 0 auto;
   }
   #content {
+    margin-top: 20px;
     flex: 1 0 auto;
   }
   #footer {

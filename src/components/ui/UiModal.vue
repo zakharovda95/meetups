@@ -11,7 +11,6 @@
   </div>
 </template>
 <script>
-import UiLink from '@/components/ui/UiLink';
 import UiButton from '@/components/ui/UiButton';
 export default {
   name: 'UiModal',
@@ -53,6 +52,7 @@ export default {
           width: 100%;
           justify-content: flex-end;
           margin-bottom: 20px;
+          margin-right: 12px;
         }
       }
     }
@@ -84,6 +84,7 @@ export default {
           width: 100%;
           justify-content: flex-end;
           margin-bottom: 20px;
+          margin-right: 12px;
         }
       }
     }

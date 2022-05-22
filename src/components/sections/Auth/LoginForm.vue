@@ -43,6 +43,10 @@ import {
   validateEmail,
   validatePassword,
 } from '@/services/_validation.servisce';
+import {
+  setLocalStorageData,
+  updateToken,
+} from '@/services/_local-storage.service';
 export default {
   name: 'LoginForm',
   components: { UiButton, UiInput, UiLink, UiLabel, Form, ErrorMessage },
@@ -73,7 +77,7 @@ export default {
       if (isSuccess === 'auth/wrong-password') {
         this.$toast.error('Неверный пароль');
       } else {
-        localStorage.setItem('user_token', isSuccess.uid);
+        setLocalStorageData('user_token', isSuccess.uid);
         await this.$store.dispatch('isUserAuthorized');
         await this.$router.push({ name: 'meetups' });
       }

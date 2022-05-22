@@ -21,14 +21,17 @@ export default {
     UiMessage,
   },
   computed: {
+    isUserAuthorized() {
+      return this.$store.state.user.data.isUserAuthorized;
+    },
     meetups() {
       if (this.$route.name === 'meetups') {
         return this.$store.getters.filteredMeetups;
       }
-      if (this.$route.name === 'organizer') {
+      if (this.$route.name === 'organizer' && this.isUserAuthorized) {
         return this.$store.getters.meetupsIOrganize;
       }
-      if (this.$route.name === 'participant') {
+      if (this.$route.name === 'participant' && this.isUserAuthorized) {
         return this.$store.getters.meetupsIParticipate;
       }
       return false;

@@ -3,10 +3,12 @@ import { fbAuth, fbDb } from '@/requesters/firebase/_options.firebase';
 import { fbSetData } from '@/requesters/firebase/_firebase.database.requesters';
 import { onValue, ref } from 'firebase/database';
 import {
-  checkLocalStorageToken,
-  removeToken,
-  updateToken,
-} from '@/services/_guards.service';
+  checkLocalStorageData,
+  getLocalStorageData,
+  removeLocalStorageData,
+  setLocalStorageData,
+  setObjectInLocalStorage,
+} from '@/services/_local-storage.service';
 
 export const moduleUserStore = {
   state: () => ({
@@ -30,13 +32,13 @@ export const moduleUserStore = {
   actions: {
     /** Проверка авторизован ли пользователь **/
     isUserAuthorized({ commit }) {
-      commit('isUserAuthorized', checkLocalStorageToken());
+      commit('isUserAuthorized', checkLocalStorageData('user_token'));
       onAuthStateChanged(fbAuth, async user => {
         if (user) {
           /** Фаербейсовский сокет - прослушка изменений БД **/
           onValue(ref(fbDb, 'users/' + user.uid), response => {
             const userInfo = response.val();
-            updateToken(userInfo.uid);
+            setLocalStorageData('user_token', userInfo.uid);
             commit('setUserInfo', userInfo);
           });
         } else {
@@ -45,7 +47,7 @@ export const moduleUserStore = {
       });
     },
     clearUserInfo({ commit }) {
-      removeToken();
+      removeLocalStorageData('user_token');
       commit('clearUserInfo');
     },
     /** Добавление/удаление информации о митапах (как участник/как организатор) в userInfo**/
