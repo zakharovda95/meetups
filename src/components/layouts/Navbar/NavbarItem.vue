@@ -29,7 +29,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../../assets/styles/_constants.scss';
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .navbar-item {
     display: flex;
@@ -50,12 +51,14 @@ export default {
         color: $FONT_COLOR_DARK;
         font-size: 2.8em;
         text-decoration: none;
+        font-family: 'JetBrainMono-Bold', sans-serif;
       }
       #public-links,
       #private-links {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        font-family: 'JetBrainMono-Bold', sans-serif;
       }
     }
   }
@@ -78,10 +81,12 @@ export default {
         font-size: 2.8em;
         align-self: center;
         text-decoration: none;
+        font-family: 'JetBrainMono-Bold', sans-serif;
       }
       #public-links,
       #private-links {
         margin-right: 20px;
+        font-family: 'JetBrainMono-Bold', sans-serif;
       }
     }
   }

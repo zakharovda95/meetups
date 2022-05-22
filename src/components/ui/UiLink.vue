@@ -28,10 +28,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../assets/styles/_constants.scss';
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 .ui-link {
   text-decoration: none;
   color: $FONT_COLOR_DARK;
+  font-family: 'JetBrainMono-Light', sans-serif;
 }
 .nav-link {
   display: flex;
@@ -42,10 +44,12 @@ export default {
   text-align: center;
   letter-spacing: 0.5px;
   font-size: 1.2em;
+  font-family: 'JetBrainMono-Light', sans-serif;
 }
 .nav-link:hover {
   border-radius: 21px;
   background: $HOVER_COLOR;
+  font-family: 'JetBrainMono-Light', sans-serif;
 }
 
 .calendar-link {
@@ -54,9 +58,11 @@ export default {
   background: $MAIN_COLOR;
   color: $FONT_COLOR_DARK;
   padding: 2px;
+  font-family: 'JetBrainMono-Light', sans-serif;
 }
 
 .router-link-exact-active {
   border-bottom: 1px solid $HOVER_COLOR;
+  font-family: 'JetBrainMono-Light', sans-serif;
 }
 </style>

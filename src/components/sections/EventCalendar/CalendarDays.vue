@@ -23,7 +23,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../../assets/styles/constants';
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .calendar-days {
     display: grid;
@@ -37,6 +38,7 @@ export default {
     background-color: $ITEMS_COLOR;
     .day {
       color: $FONT_COLOR_DARK;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
   }
   .calendar-days:first-child {
@@ -56,6 +58,7 @@ export default {
     background-color: $ITEMS_COLOR;
     .day {
       color: $FONT_COLOR_DARK;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
   }
   .calendar-days:first-child {

@@ -9,7 +9,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../assets/styles/_constants.scss';
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 .ui-message {
   display: flex;
   height: 100%;
@@ -26,5 +27,6 @@ export default {
   color: $FONT_COLOR_DARK;
   border-radius: 13px;
   text-align: center;
+  font-family: 'JetBrainMono-Light', sans-serif;
 }
 </style>

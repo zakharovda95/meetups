@@ -25,8 +25,14 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 .meetup-agenda {
   display: flex;
   flex-direction: column;
+  font-family: 'JetBrainMono-Light', sans-serif;
+  h4 {
+    font-family: 'JetBrainMono-Bold', sans-serif;
+  }
 }
 </style>

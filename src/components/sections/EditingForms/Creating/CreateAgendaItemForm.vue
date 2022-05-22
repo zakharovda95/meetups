@@ -154,7 +154,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../../../assets/styles/_constants.scss';
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .agenda-item-form {
     display: flex;

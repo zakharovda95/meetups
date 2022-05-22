@@ -40,12 +40,14 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .meetup-view {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: whitesmoke;
+    background: $ITEMS_COLOR;
     padding: 25px;
     margin-bottom: 46px;
     .cover {
@@ -66,6 +68,7 @@ export default {
       align-self: center;
       font-size: 1.5em;
       width: 100%;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
   }
 }
@@ -74,7 +77,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: whitesmoke;
+    background: $ITEMS_COLOR;
     padding: 25px;
     margin-bottom: 56px;
     .cover {
@@ -95,6 +98,7 @@ export default {
       align-self: center;
       font-size: 1.5em;
       width: 100%;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
   }
 }

@@ -28,7 +28,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../../assets/styles/constants';
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 .meetup-cover {
   background-size: cover;
   background-position: center;
@@ -46,6 +47,7 @@ export default {
     align-self: center;
     color: $FONT_COLOR_LIGHT;
     font-size: 2em;
+    font-family: 'JetBrainMono-Bold', sans-serif;
   }
 }
 </style>

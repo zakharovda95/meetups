@@ -86,7 +86,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../../assets/styles/_constants.scss';
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .login-form {
     display: flex;
@@ -102,6 +103,7 @@ export default {
 
     h3 {
       color: $FONT_COLOR_DARK;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
 
     form {
@@ -111,6 +113,7 @@ export default {
       .error {
         color: $ERROR_COLOR;
         font-size: 0.7rem;
+        font-family: 'JetBrainMono-Light', sans-serif;
       }
       .login-button {
         display: flex;
@@ -151,6 +154,7 @@ export default {
     border-radius: 0 25px 25px 25px;
     h3 {
       color: $FONT_COLOR_DARK;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
     form {
       display: flex;
@@ -159,6 +163,7 @@ export default {
       .error {
         color: $ERROR_COLOR;
         font-size: 0.7rem;
+        font-family: 'JetBrainMono-Light', sans-serif;
       }
       .login-button {
         display: flex;
@@ -175,6 +180,7 @@ export default {
         font-size: 1.4em;
         color: $FONT_COLOR_DARK;
         margin-top: 25px;
+        font-family: 'JetBrainMono-Light', sans-serif;
 
         .registration-link {
           color: $MAIN_COLOR;

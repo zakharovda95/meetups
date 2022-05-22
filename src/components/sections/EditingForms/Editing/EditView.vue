@@ -118,7 +118,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../../../assets/styles/_constants.scss';
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .edit-view {
     display: flex;
@@ -132,6 +133,7 @@ export default {
     h3 {
       color: $FONT_COLOR_DARK;
       text-align: center;
+      font-family: 'JetBrainMono-Bold', sans-serif;
     }
     .forms {
       display: flex;
@@ -170,6 +172,7 @@ export default {
     h3 {
       color: $FONT_COLOR_DARK;
       text-align: center;
+      font-family: 'JetBrainMono-Bold', sans-serif;
     }
     .forms {
       display: flex;

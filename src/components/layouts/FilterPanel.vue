@@ -77,7 +77,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../assets/styles/_constants.scss';
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .filter-panel {
     display: flex;
@@ -92,17 +93,20 @@ export default {
     .radio {
       display: flex;
       justify-content: space-between;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
     .input {
       display: flex;
       align-self: center;
       margin-left: 5px;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
     .toggle {
       display: flex;
       align-self: center;
       align-items: center;
       margin-right: 5px;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
   }
 }
@@ -121,12 +125,14 @@ export default {
       display: flex;
       align-self: center;
       margin-left: 5px;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
     .toggle {
       display: flex;
       align-self: center;
       align-items: center;
       margin-right: 5px;
+      font-family: 'JetBrainMono-Light', sans-serif;
     }
   }
 }

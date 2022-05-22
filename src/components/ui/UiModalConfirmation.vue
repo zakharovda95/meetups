@@ -35,7 +35,10 @@ export default {
   data: () => ({}),
 };
 </script>
+
 <style scoped lang="scss">
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 .ui-modal-confirmation {
   width: 90%;
   margin: 0 auto;

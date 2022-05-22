@@ -30,7 +30,8 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import '../../assets/styles/constants';
+@import '~@/assets/styles/_constants.scss';
+@import '~@/assets/fonts/_fonts.css';
 .footer-item {
   display: flex;
   align-items: center;
@@ -43,18 +44,21 @@ export default {
     font-size: 1.2em;
     margin: 20px;
     color: $FONT_COLOR_LIGHT;
+    font-family: 'JetBrainMono-Bold', sans-serif;
   }
   .date {
     display: flex;
     color: $FONT_COLOR_LIGHT;
     align-self: center;
     margin-left: 20px;
+    font-family: 'JetBrainMono-Bold', sans-serif;
   }
   .links {
     display: flex;
     .link {
       color: $FONT_COLOR_LIGHT;
       margin-right: 20px;
+      font-family: 'JetBrainMono-Bold', sans-serif;
     }
   }
 }
