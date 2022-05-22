@@ -1,13 +1,16 @@
 <template>
   <div class="app">
     <router-view />
+    <UiContacts id="contacts" />
   </div>
 </template>
 <script>
 import { mapActions } from 'vuex';
+import UiContacts from '@/components/ui/UiContacts';
 
 export default {
   name: 'App',
+  components: { UiContacts },
   created() {
     this.getMeetups();
     this.getIconList();
@@ -31,13 +34,30 @@ export default {
 </script>
 <style lang="scss">
 @import './assets/styles/_constants.scss';
-@import './assets/fonts/_fonts.css';
-* {
-  margin: 0;
-  padding: 0;
-  body {
-    width: 100%;
-    background-color: $LAYOUT_COLOR;
+@media (max-width: 1019px) {
+  * {
+    margin: 0;
+    padding: 0;
+    body {
+      width: 100%;
+      background-color: $LAYOUT_COLOR;
+      #contacts {
+        display: none;
+      }
+    }
+  }
+}
+@media (min-width: 1020px) {
+  * {
+    margin: 0;
+    padding: 0;
+    body {
+      width: 100%;
+      background-color: $LAYOUT_COLOR;
+      #contacts {
+        display: flex;
+      }
+    }
   }
 }
 </style>
