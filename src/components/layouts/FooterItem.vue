@@ -1,7 +1,7 @@
 <template>
   <footer class="footer-item">
-    <div class="logo"><b>RENCONTRES</b></div>
-    <div class="date"><b>2022 г.</b></div>
+    <div class="logo">RENCONTRES</div>
+    <div class="date">2022 г.</div>
     <div class="links">
       <UiLink
         tag="a"
@@ -9,7 +9,7 @@
         target="_blank"
         href="https://github.com/zakharovda95/vuejs-option_api-20220404-pet_project-meetups-spa"
       >
-        <b>GitHub</b>
+        GitHub
       </UiLink>
       <UiLink
         tag="a"
@@ -17,7 +17,7 @@
         target="_blank"
         href="https://vk.com/id625689222"
       >
-        <b>Сайт</b>
+        Сайт
       </UiLink>
     </div>
   </footer>
