@@ -20,15 +20,16 @@ export default {
   emits: ['update:closeModal'],
   methods: {
     close() {
-      document.body.style.overflow = 'auto';
       this.$emit('update:closeModal');
     },
+  },
+  beforeUnmount() {
+    document.body.style.overflow = 'auto';
   },
 };
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .ui-modal {
     position: absolute;
@@ -49,14 +50,14 @@ export default {
         border-radius: 0 24px 24px 24px;
         border: 4px solid $MAIN_COLOR;
         max-width: 85%;
-        font-family: 'JetBrainMono-Light', sans-serif;
+        font-family: Roboto, sans-serif;
         .close {
           display: flex;
           width: 100%;
           justify-content: flex-end;
           margin-bottom: 20px;
           margin-right: 12px;
-          font-family: JetBrainMono-Light sans-serif;
+          font-family: Roboto, sans-serif;
         }
       }
     }
@@ -83,14 +84,14 @@ export default {
         height: 30vh;
         border-radius: 0 24px 24px 24px;
         border: 4px solid $MAIN_COLOR;
-        font-family: 'JetBrainMono-Light', sans-serif;
+        font-family: Roboto, sans-serif;
         .close {
           display: flex;
           width: 100%;
           justify-content: flex-end;
           margin-bottom: 20px;
           margin-right: 12px;
-          font-family: 'JetBrainMono-Light', sans-serif;
+          font-family: Roboto, sans-serif;
         }
       }
     }

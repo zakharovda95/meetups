@@ -15,13 +15,12 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .meetup-toggle {
   display: flex;
   margin: 24px 0;
   padding-left: 12px;
   background: $ITEMS_COLOR;
   border-radius: 0 24px 24px 24px;
-  font-family: 'JetBrainMono-Light', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 </style>

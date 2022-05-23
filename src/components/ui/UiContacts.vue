@@ -37,7 +37,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .ui-contacts {
   position: fixed;
   top: 40vh;

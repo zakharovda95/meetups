@@ -73,7 +73,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .links-for-authorized-users {
     display: flex;
@@ -84,7 +83,7 @@ export default {
       flex-direction: column;
       flex-wrap: wrap;
       margin-bottom: 20px;
-      font-family: 'JetBrainMono-Bold', sans-serif;
+      font-family: Roboto, sans-serif;
     }
     .mobile-menu-button {
       position: relative;
@@ -93,7 +92,7 @@ export default {
       margin: 0 auto;
       #arrow {
         width: 19px;
-        font-family: 'JetBrainMono-Bold', sans-serif;
+        font-family: Roboto, sans-serif;
       }
     }
     .mobile-menu-button:hover {

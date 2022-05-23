@@ -41,7 +41,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .meetup-view {
     display: flex;
@@ -68,7 +67,7 @@ export default {
       align-self: center;
       font-size: 1.5em;
       width: 100%;
-      font-family: 'JetBrainMono-Light', sans-serif;
+      font-family: Roboto, sans-serif;
     }
   }
 }
@@ -98,7 +97,7 @@ export default {
       align-self: center;
       font-size: 1.5em;
       width: 100%;
-      font-family: 'JetBrainMono-Light', sans-serif;
+      font-family: Roboto, sans-serif;
     }
   }
 }

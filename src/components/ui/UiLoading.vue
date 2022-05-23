@@ -11,11 +11,10 @@ export default {
 <style scoped lang="scss">
 .ui-loading {
   @import '~@/assets/styles/_constants.scss';
-  @import '~@/assets/fonts/_fonts.css';
   display: flex;
   align-items: center;
   align-self: center;
   justify-content: center;
-  font-family: 'JetBrainMono-Light', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 </style>

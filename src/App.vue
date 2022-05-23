@@ -34,12 +34,11 @@ export default {
 </script>
 <style lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   * {
     margin: 0;
     padding: 0;
-    font-family: 'JetBrainMono-Light', sans-serif;
+    font-family: Roboto sans-serif;
     body {
       width: 100%;
       background-color: $LAYOUT_COLOR;

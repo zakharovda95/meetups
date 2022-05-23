@@ -14,8 +14,7 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 h4 {
-  font-family: 'JetBrainMono-Bold', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 </style>

@@ -9,7 +9,9 @@
         @remove="removeImage"
       />
     </div>
-    <CreateForm class="forms" :loading="isLoading" />
+    <div class="forms">
+      <CreateForm class="forms-item" :loading="isLoading" />
+    </div>
     <div class="agenda">
       <h3>Программа</h3>
       <CreateAgendaItemForm
@@ -112,7 +114,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .create-view {
     display: flex;
@@ -126,20 +127,28 @@ export default {
     h3 {
       color: $FONT_COLOR_DARK;
       text-align: center;
-      font-family: 'JetBrainMono-Bold', sans-serif;
+      font-family: Roboto, sans-serif;
     }
     .forms {
       display: flex;
-      flex-direction: column;
       width: 100%;
+      .forms-item {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+      }
     }
     .uploader {
       width: 100%;
       margin: 0 auto;
     }
     .agenda {
-      width: 80%;
+      width: 90%;
       margin: 0 auto;
+      .agenda-item {
+        width: 100%;
+      }
       .add-button {
         display: flex;
         justify-content: center;
@@ -165,13 +174,17 @@ export default {
     h3 {
       color: $FONT_COLOR_DARK;
       text-align: center;
-      font-family: 'JetBrainMono-Bold', sans-serif;
+      font-family: Roboto, sans-serif;
     }
     .forms {
       display: flex;
-      flex-direction: column;
-      width: 80%;
-      margin: 0 auto;
+      width: 100%;
+      .forms-item {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
+      }
     }
     .uploader {
       width: 80%;

@@ -31,7 +31,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .ui-scroll-up {
     z-index: 100;
@@ -47,7 +46,7 @@ export default {
       align-self: center;
       color: $FONT_COLOR_LIGHT;
       font-size: 1.1rem;
-      font-family: 'JetBrainMono-Light', sans-serif;
+      font-family: Roboto, sans-serif;
     }
   }
   .ui-scroll-up:hover {
@@ -69,7 +68,7 @@ export default {
       align-self: center;
       color: $FONT_COLOR_LIGHT;
       font-size: 1.8rem;
-      font-family: 'JetBrainMono-Light', sans-serif;
+      font-family: Roboto, sans-serif;
     }
   }
   .ui-scroll-up:hover {

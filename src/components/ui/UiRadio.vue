@@ -36,13 +36,12 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .ui-checkbox {
   display: flex;
   margin: 10px;
   justify-content: center;
   align-items: center;
-  font-family: 'JetBrainMono-Light', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 .ui-checkbox input {
   display: none;
@@ -56,7 +55,7 @@ export default {
   color: $FONT_COLOR_DARK;
   border-radius: 18px;
   font-size: 1.1em;
-  font-family: 'JetBrainMono-Light', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 /* Checked */
@@ -64,13 +63,13 @@ export default {
   background: $ITEMS_COLOR;
   color: $FONT_COLOR_DARK;
   border: 1px solid $UI_COLOR;
-  font-family: 'JetBrainMono-Light', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 /* Hover */
 .ui-checkbox label:hover {
   background: $HOVER_COLOR;
   color: $FONT_COLOR_DARK;
-  font-family: 'JetBrainMono-Light', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 </style>

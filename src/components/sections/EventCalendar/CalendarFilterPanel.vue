@@ -25,7 +25,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .filter-panel-wrapper {
     width: 100%;
@@ -52,7 +51,7 @@ export default {
       .date {
         display: flex;
         align-self: center;
-        font-family: 'JetBrainMono-Light', sans-serif;
+        font-family: Roboto, sans-serif;
       }
     }
   }
@@ -82,7 +81,7 @@ export default {
       .date {
         display: flex;
         align-self: center;
-        font-family: 'JetBrainMono-Light', sans-serif;
+        font-family: Roboto, sans-serif;
       }
     }
   }

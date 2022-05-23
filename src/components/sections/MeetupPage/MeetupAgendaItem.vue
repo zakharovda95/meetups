@@ -49,12 +49,11 @@ export default {
 
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .agenda-item {
   display: flex;
   margin-top: 30px;
   width: 100%;
-  font-family: 'JetBrainMono-Light', sans-serif;
+  font-family: Roboto, sans-serif;
   .icon-wrapper {
     margin-right: 10px;
     display: flex;

@@ -38,7 +38,6 @@ export default {
 
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .ui-dropdown {
   color: $FONT_COLOR_DARK;
   font-size: 1.2rem;
@@ -46,10 +45,10 @@ export default {
   padding: 5px;
   border: 2px solid $UI_COLOR;
   border-radius: 22px;
-  font-family: JetBrainMono-Light sans-serif;
+  font-family: Roboto, sans-serif;
   option {
     padding: 5px;
-    font-family: 'JetBrainMono-Light', sans-serif;
+    font-family: Roboto, sans-serif;
   }
 }
 </style>

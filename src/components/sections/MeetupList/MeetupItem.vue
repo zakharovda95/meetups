@@ -63,14 +63,13 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .meetup-item {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-top: 25px;
   background: $ITEMS_COLOR;
-  font-family: 'JetBrainMono-Light', sans-serif;
+  font-family: Roboto, sans-serif;
   .info {
     .badge {
       display: flex;

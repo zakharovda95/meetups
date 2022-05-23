@@ -90,7 +90,6 @@ export default {
 
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .image-uploader {
   display: flex;
   .input {
@@ -117,7 +116,7 @@ export default {
     font-weight: 600;
     font-size: 20px;
     line-height: 28px;
-    font-family: 'JetBrainMono-Bold', sans-serif;
+    font-family: Roboto, sans-serif;
   }
 }
 .preview:hover {

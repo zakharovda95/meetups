@@ -24,9 +24,8 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .ui-badge {
-  font-family: 'JetBrainMono-Light', sans-serif;
+  font-family: Roboto sans-serif;
   display: flex;
   padding: 5px;
   border-radius: 15px;
@@ -35,12 +34,11 @@ export default {
   background: $BADGE_COLOR_PARTICIPANT;
   font-size: 0.8rem;
   color: $FONT_COLOR_DARK;
-  font-family: 'JetBrainMono-Light', sans-serif;
+  font-family: Roboto sans-serif;
 }
 .badge-organizer {
   background: $BADGE_COLOR_ORGANIZER;
   font-size: 0.8rem;
   color: $FONT_COLOR_DARK;
-  font-family: 'JetBrainMono-Light', sans-serif;
 }
 </style>

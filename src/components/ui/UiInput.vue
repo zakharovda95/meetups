@@ -44,7 +44,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .ui-input {
   border: 3px solid $UI_COLOR;
   border-radius: 18px;
@@ -52,6 +51,6 @@ export default {
   font-size: 1.1em;
   max-width: 70vw;
   background: $ITEMS_COLOR;
-  font-family: 'JetBrainMono-Light', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 </style>

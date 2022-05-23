@@ -63,14 +63,13 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .public-links {
     display: flex;
     .links {
       display: flex;
       margin-bottom: 20px;
-      font-family: 'JetBrainMono-Bold', sans-serif;
+      font-family: Roboto, sans-serif;
     }
   }
 }
@@ -79,7 +78,7 @@ export default {
     display: flex;
     .links {
       display: flex;
-      font-family: 'JetBrainMono-Bold', sans-serif;
+      font-family: Roboto, sans-serif;
     }
   }
 }

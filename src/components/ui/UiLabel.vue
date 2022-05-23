@@ -17,7 +17,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .ui-label {
   display: flex;
   flex-direction: column;
@@ -28,7 +27,7 @@ export default {
     font-size: 1.4em;
     margin: 5px;
     color: $FONT_COLOR_DARK;
-    font-family: 'JetBrainMono-Light', sans-serif;
+    font-family: Roboto, sans-serif;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <footer class="footer-item">
-    <div class="logo">RENCONTRES</div>
-    <div class="date">2022 г.</div>
+    <div class="logo"><b>RENCONTRES</b></div>
+    <div class="date"><b>2022 г.</b></div>
     <div class="links">
       <UiLink
         tag="a"
@@ -9,7 +9,7 @@
         target="_blank"
         href="https://github.com/zakharovda95/vuejs-option_api-20220404-pet_project-meetups-spa"
       >
-        GitHub
+        <b>GitHub</b>
       </UiLink>
       <UiLink
         tag="a"
@@ -17,7 +17,7 @@
         target="_blank"
         href="https://vk.com/id625689222"
       >
-        Сайт
+        <b>Сайт</b>
       </UiLink>
     </div>
   </footer>
@@ -31,7 +31,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .footer-item {
   display: flex;
   align-items: center;
@@ -44,21 +43,21 @@ export default {
     font-size: 1.2em;
     margin: 20px;
     color: $FONT_COLOR_LIGHT;
-    font-family: 'JetBrainMono-Bold', sans-serif;
+    font-family: Roboto, sans-serif;
   }
   .date {
     display: flex;
     color: $FONT_COLOR_LIGHT;
     align-self: center;
     margin-left: 20px;
-    font-family: 'JetBrainMono-Bold', sans-serif;
+    font-family: Roboto, sans-serif;
   }
   .links {
     display: flex;
     .link {
       color: $FONT_COLOR_LIGHT;
       margin-right: 20px;
-      font-family: 'JetBrainMono-Bold', sans-serif;
+      font-family: Roboto, sans-serif;
     }
   }
 }

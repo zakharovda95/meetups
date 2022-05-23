@@ -53,14 +53,13 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 .meetup-info {
   width: 100%;
   .mdl-card__supporting-text {
     margin-bottom: -15px;
     font-size: 1.1em;
     color: $FONT_COLOR_DARK;
-    font-family: 'JetBrainMono-Light', sans-serif;
+    font-family: Roboto, sans-serif;
   }
   .card {
     width: 28px;

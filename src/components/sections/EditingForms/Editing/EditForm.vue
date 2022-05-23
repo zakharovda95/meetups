@@ -67,14 +67,13 @@ export default {
 </script>
 <style scoped lang="scss">
 @import '~@/assets/styles/_constants.scss';
-@import '~@/assets/fonts/_fonts.css';
 @media (max-width: 1019px) {
   .edit-form {
     width: 100%;
     display: flex;
     align-items: center;
     form {
-      width: 80%;
+      width: 100%;
     }
   }
 }
