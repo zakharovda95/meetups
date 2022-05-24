@@ -4,10 +4,8 @@ import { fbSetData } from '@/requesters/firebase/_firebase.database.requesters';
 import { onValue, ref } from 'firebase/database';
 import {
   checkLocalStorageData,
-  getLocalStorageData,
   removeLocalStorageData,
   setLocalStorageData,
-  setObjectInLocalStorage,
 } from '@/services/_local-storage.service';
 
 export const moduleUserStore = {

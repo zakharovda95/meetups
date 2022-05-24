@@ -55,8 +55,8 @@ export default {
   },
   data: () => ({
     userData: {
-      email: '',
-      password: '',
+      email: 'testUser@mail.com',
+      password: '123456',
     },
   }),
   methods: {
