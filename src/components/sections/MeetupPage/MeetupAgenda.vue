@@ -1,11 +1,11 @@
 <template>
   <div class="meetup-agenda" v-if="agenda">
-    <h4>Программа:</h4>
+    <h4>Расписание:</h4>
     <div class="item" v-for="item in agenda" :key="item.id">
       <MeetupAgendaItem :agenda-item="item" />
     </div>
   </div>
-  <UiMessage v-else>Программа не найдена</UiMessage>
+  <UiMessage v-else>Нет расписания</UiMessage>
   <hr />
 </template>
 <script>
@@ -29,9 +29,9 @@ export default {
 .meetup-agenda {
   display: flex;
   flex-direction: column;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
   h4 {
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
   }
 }
 </style>

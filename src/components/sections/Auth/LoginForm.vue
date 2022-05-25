@@ -94,7 +94,6 @@ export default {
     align-self: center;
     margin: 25px;
     width: 90%;
-    height: 50vh;
     padding: 25px;
     background: white;
     text-align: center;
@@ -102,7 +101,7 @@ export default {
 
     h3 {
       color: $FONT_COLOR_DARK;
-      font-family: Roboto, sans-serif;
+      font-family: 'Comic Sans MS', sans-serif;
     }
 
     form {
@@ -112,7 +111,7 @@ export default {
       .error {
         color: $ERROR_COLOR;
         font-size: 0.7rem;
-        font-family: Roboto, sans-serif;
+        font-family: 'Comic Sans MS', sans-serif;
       }
       .login-button {
         display: flex;
@@ -144,7 +143,7 @@ export default {
     display: flex;
     flex-direction: column;
     margin: 25px;
-    width: 30%;
+    width: 40%;
     height: 50vh;
     padding: 25px;
     background: white;
@@ -153,7 +152,7 @@ export default {
     border-radius: 0 25px 25px 25px;
     h3 {
       color: $FONT_COLOR_DARK;
-      font-family: Roboto, sans-serif;
+      font-family: 'Comic Sans MS', sans-serif;
     }
     form {
       display: flex;
@@ -162,7 +161,7 @@ export default {
       .error {
         color: $ERROR_COLOR;
         font-size: 0.7rem;
-        font-family: Roboto, sans-serif;
+        font-family: 'Comic Sans MS', sans-serif;
       }
       .login-button {
         display: flex;

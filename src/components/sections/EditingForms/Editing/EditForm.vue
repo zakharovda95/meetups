@@ -1,39 +1,37 @@
 <template>
   <div class="edit-form">
-    <form>
-      <UiLabel label="Заголовок">
-        <UiInput
-          name="title"
-          :disabled="loading"
-          :model-value="editableMeetup.title"
-          @update:model-value="editTitle"
-        />
-      </UiLabel>
-      <UiLabel label="Дата мероприятия">
-        <UiInputDate
-          :disabled="loading"
-          :model-value="editableMeetup.date"
-          @update:model-value="editDate"
-        />
-      </UiLabel>
-      <UiLabel label="Место проведения">
-        <UiInput
-          name="place"
-          :disabled="loading"
-          :model-value="editableMeetup.place"
-          @update:model-value="editPlace"
-        />
-      </UiLabel>
-      <UiLabel label="Описание">
-        <UiInput
-          multiline
-          name="description"
-          :disabled="loading"
-          :model-value="editableMeetup.description"
-          @update:model-value="editDescription"
-        />
-      </UiLabel>
-    </form>
+    <UiLabel label="Заголовок">
+      <UiInput
+        name="title"
+        :disabled="loading"
+        :model-value="editableMeetup.title"
+        @update:model-value="editTitle"
+      />
+    </UiLabel>
+    <UiLabel label="Дата мероприятия">
+      <UiInputDate
+        :disabled="loading"
+        :model-value="editableMeetup.date"
+        @update:model-value="editDate"
+      />
+    </UiLabel>
+    <UiLabel label="Место проведения">
+      <UiInput
+        name="place"
+        :disabled="loading"
+        :model-value="editableMeetup.place"
+        @update:model-value="editPlace"
+      />
+    </UiLabel>
+    <UiLabel label="Описание">
+      <UiInput
+        multiline
+        name="description"
+        :disabled="loading"
+        :model-value="editableMeetup.description"
+        @update:model-value="editDescription"
+      />
+    </UiLabel>
   </div>
 </template>
 <script>
@@ -72,18 +70,12 @@ export default {
     width: 100%;
     display: flex;
     align-items: center;
-    form {
-      width: 100%;
-    }
   }
 }
 @media (min-width: 1020px) {
   .edit-form {
     width: 100%;
     display: flex;
-    form {
-      width: 100%;
-    }
   }
 }
 </style>

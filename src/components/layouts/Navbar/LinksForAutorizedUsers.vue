@@ -9,14 +9,12 @@
         &#10229; К списку
       </UiLink>
       <UiLink variant="nav-link" :to="{ name: 'participant' }">
-        Мои митапы
+        Учавствую
       </UiLink>
       <UiLink variant="nav-link" :to="{ name: 'organizer' }">
-        Организуемые митапы
+        Организую
       </UiLink>
-      <UiLink variant="nav-link" :to="{ name: 'create' }">
-        Создать митап
-      </UiLink>
+      <UiLink variant="nav-link" :to="{ name: 'create' }"> Создать </UiLink>
       <UiLink variant="nav-link" @click="logout" to="#">
         Выйти ({{ userName }})
       </UiLink>
@@ -83,7 +81,6 @@ export default {
       flex-direction: column;
       flex-wrap: wrap;
       margin-bottom: 20px;
-      font-family: Roboto, sans-serif;
     }
     .mobile-menu-button {
       position: relative;
@@ -92,7 +89,7 @@ export default {
       margin: 0 auto;
       #arrow {
         width: 19px;
-        font-family: Roboto, sans-serif;
+        font-family: 'Comic Sans MS', sans-serif;
       }
     }
     .mobile-menu-button:hover {
@@ -105,13 +102,11 @@ export default {
     display: flex;
     .links {
       display: flex;
-      font-family: 'JetBrainMono-Bold', sans-serif;
     }
     .mobile-menu-button {
       display: none;
       #arrow {
         width: 19px;
-        font-family: 'JetBrainMono-Bold', sans-serif;
       }
     }
   }

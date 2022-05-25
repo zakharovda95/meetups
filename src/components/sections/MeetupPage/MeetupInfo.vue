@@ -2,11 +2,12 @@
   <UiLoading v-if="loading" />
   <div class="meetup-info" v-else>
     <div class="mdl-card__supporting-text">
-      <UiIcon class="card" icon-name="organizer"></UiIcon
-      >{{ meetup.organizer.name }}
+      <UiIcon class="card" icon-name="organizer"></UiIcon>
+      <div class="text">{{ meetup.organizer.name }}</div>
     </div>
     <div class="mdl-card__supporting-text">
-      <UiIcon class="card" icon-name="location"></UiIcon>{{ meetup.place }}
+      <UiIcon class="card" icon-name="location"></UiIcon>
+      <div class="text">{{ meetup.place }}</div>
     </div>
     <div class="mdl-card__supporting-text time">
       <UiIcon class="card" icon-name="calendar"></UiIcon>
@@ -56,10 +57,15 @@ export default {
 .meetup-info {
   width: 100%;
   .mdl-card__supporting-text {
+    display: flex;
     margin-bottom: -15px;
     font-size: 1.1em;
     color: $FONT_COLOR_DARK;
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
+    .text {
+      display: flex;
+      align-self: center;
+    }
   }
   .card {
     width: 28px;

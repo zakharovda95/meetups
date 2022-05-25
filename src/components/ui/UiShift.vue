@@ -46,7 +46,7 @@ export default {
       align-self: center;
       color: $FONT_COLOR_LIGHT;
       font-size: 1.1rem;
-      font-family: Roboto, sans-serif;
+      font-family: 'Comic Sans MS', sans-serif;
     }
   }
   .ui-scroll-up:hover {
@@ -68,7 +68,7 @@ export default {
       align-self: center;
       color: $FONT_COLOR_LIGHT;
       font-size: 1.8rem;
-      font-family: Roboto, sans-serif;
+      font-family: 'Comic Sans MS', sans-serif;
     }
   }
   .ui-scroll-up:hover {

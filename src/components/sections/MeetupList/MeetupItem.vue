@@ -69,7 +69,7 @@ export default {
   width: 100%;
   margin-top: 25px;
   background: $ITEMS_COLOR;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
   .info {
     .badge {
       display: flex;

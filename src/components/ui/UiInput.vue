@@ -51,6 +51,6 @@ export default {
   font-size: 1.1em;
   max-width: 70vw;
   background: $ITEMS_COLOR;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 </style>

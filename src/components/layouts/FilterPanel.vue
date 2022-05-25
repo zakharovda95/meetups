@@ -71,6 +71,7 @@ export default {
       this.$store.dispatch('updateInputValue', value);
     },
     updateRadioValue(value) {
+      this.$router.push({ query: { time: value } });
       this.$store.dispatch('updateRadioValue', value);
     },
   },
@@ -124,14 +125,12 @@ export default {
       display: flex;
       align-self: center;
       margin-left: 5px;
-      font-family: Roboto, sans-serif;
     }
     .toggle {
       display: flex;
       align-self: center;
       align-items: center;
       margin-right: 5px;
-      font-family: Roboto, sans-serif;
     }
   }
 }

@@ -27,14 +27,14 @@ export default {
     font-size: 1.2rem;
     width: 70%;
     margin: 0 auto;
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
   }
 }
 @media (min-width: 1020px) {
   p {
     text-align: center;
     font-size: 1.2rem;
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
   }
 }
 </style>

@@ -70,18 +70,12 @@ export default {
     width: 100%;
     display: flex;
     align-items: center;
-    form {
-      width: 80%;
-    }
   }
 }
 @media (min-width: 1020px) {
   .creation-form {
     width: 100%;
     display: flex;
-    form {
-      width: 100%;
-    }
   }
 }
 </style>

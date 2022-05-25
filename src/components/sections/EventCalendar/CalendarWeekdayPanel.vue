@@ -20,7 +20,7 @@ export default {
     background-color: $ITEMS_COLOR;
     border: 1px solid $UI_COLOR;
     padding: 5px;
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
   }
 }
 @media (min-width: 1020px) {
@@ -29,7 +29,7 @@ export default {
     border: 1px solid $UI_COLOR;
     padding: 5px;
     color: $FONT_COLOR_DARK;
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
   }
 }
 </style>

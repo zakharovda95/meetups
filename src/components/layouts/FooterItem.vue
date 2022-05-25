@@ -1,6 +1,6 @@
 <template>
   <footer class="footer-item">
-    <div class="logo">RENCONTRES</div>
+    <div class="logo">ВСТРЕЧИ</div>
     <div class="date">2022 г.</div>
     <div class="links">
       <UiLink
@@ -43,21 +43,22 @@ export default {
     font-size: 1.2em;
     margin: 20px;
     color: $FONT_COLOR_LIGHT;
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
+    cursor: default;
   }
   .date {
     display: flex;
     color: $FONT_COLOR_LIGHT;
     align-self: center;
     margin-left: 20px;
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
+    cursor: default;
   }
   .links {
     display: flex;
     .link {
       color: $FONT_COLOR_LIGHT;
       margin-right: 20px;
-      font-family: Roboto, sans-serif;
     }
   }
 }

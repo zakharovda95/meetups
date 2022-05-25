@@ -9,15 +9,15 @@
         Регистрация
       </UiLink>
       <UiLink v-if="!auth" @click.prevent="openModal" variant="nav-link" to="/">
-        Создать митап
+        Создать
       </UiLink>
     </nav>
-    <teleport to="#modals">
+    <teleport to="#aboard">
       <PublicModalLinks
         v-if="isModalOpen"
         @update:closeModal="isModalOpen = false"
       >
-        Чтобы создать митап зарегистрируйтесь или войдите
+        <b>Чтобы создать встречу зарегистрируйтесь или войдите</b>
       </PublicModalLinks>
     </teleport>
   </div>
@@ -66,19 +66,19 @@ export default {
 @media (max-width: 1019px) {
   .public-links {
     display: flex;
+    flex-wrap: wrap;
     .links {
       display: flex;
       margin-bottom: 20px;
-      font-family: Roboto, sans-serif;
     }
   }
 }
 @media (min-width: 1020px) {
   .public-links {
     display: flex;
+    flex-wrap: wrap;
     .links {
       display: flex;
-      font-family: Roboto, sans-serif;
     }
   }
 }

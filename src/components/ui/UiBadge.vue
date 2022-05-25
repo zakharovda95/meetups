@@ -34,7 +34,7 @@ export default {
   background: $BADGE_COLOR_PARTICIPANT;
   font-size: 0.8rem;
   color: $FONT_COLOR_DARK;
-  font-family: Roboto sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 .badge-organizer {
   background: $BADGE_COLOR_ORGANIZER;

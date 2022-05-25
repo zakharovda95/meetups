@@ -45,10 +45,10 @@ export default {
   padding: 5px;
   border: 2px solid $UI_COLOR;
   border-radius: 22px;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
   option {
     padding: 5px;
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
   }
 }
 </style>

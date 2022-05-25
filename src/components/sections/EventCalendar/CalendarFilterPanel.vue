@@ -51,7 +51,7 @@ export default {
       .date {
         display: flex;
         align-self: center;
-        font-family: Roboto, sans-serif;
+        font-family: 'Comic Sans MS', sans-serif;
       }
     }
   }
@@ -81,7 +81,7 @@ export default {
       .date {
         display: flex;
         align-self: center;
-        font-family: Roboto, sans-serif;
+        font-family: 'Comic Sans MS', sans-serif;
       }
     }
   }

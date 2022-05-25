@@ -15,6 +15,6 @@ export default {
   align-items: center;
   align-self: center;
   justify-content: center;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 </style>

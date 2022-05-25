@@ -26,6 +26,6 @@ export default {
   color: $FONT_COLOR_DARK;
   border-radius: 13px;
   text-align: center;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 </style>

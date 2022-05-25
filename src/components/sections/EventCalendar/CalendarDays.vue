@@ -37,7 +37,7 @@ export default {
     background-color: $ITEMS_COLOR;
     .day {
       color: $FONT_COLOR_DARK;
-      font-family: Roboto, sans-serif;
+      font-family: 'Comic Sans MS', sans-serif;
     }
   }
   .calendar-days:first-child {
@@ -57,7 +57,7 @@ export default {
     background-color: $ITEMS_COLOR;
     .day {
       color: $FONT_COLOR_DARK;
-      font-family: Roboto, sans-serif;
+      font-family: 'Comic Sans MS', sans-serif;
     }
   }
   .calendar-days:first-child {

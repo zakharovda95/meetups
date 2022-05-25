@@ -1,6 +1,6 @@
 <template>
   <div class="edit-view">
-    <h3>Редактирование митапа</h3>
+    <h3>Редактирование встречи</h3>
     <div class="uploader">
       <ImageUploader
         class="uploader"
@@ -14,7 +14,7 @@
       <EditForm class="forms-item" :loading="isLoading" />
     </div>
     <div class="agenda">
-      <h3>Программа</h3>
+      <h3>Расписание</h3>
       <EditAgendaItemForm
         v-for="agenda in editableMeetup.agenda"
         :key="agenda.id"
@@ -28,7 +28,7 @@
           variant="default"
           @click="addAgendaItemToEditableMeetup"
         >
-          + Добавить пункт программы
+          + Добавить пункт расписания
         </UiButton>
       </div>
     </div>
@@ -134,7 +134,7 @@ export default {
     h3 {
       color: $FONT_COLOR_DARK;
       text-align: center;
-      font-family: Roboto, sans-serif;
+      font-family: 'Comic Sans MS', sans-serif;
     }
     .forms {
       display: flex;
@@ -178,6 +178,7 @@ export default {
     h3 {
       color: $FONT_COLOR_DARK;
       text-align: center;
+      font-family: 'Comic Sans MS', sans-serif;
     }
     .forms {
       display: flex;

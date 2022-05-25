@@ -16,7 +16,7 @@
         Отменить
       </UiButton>
     </div>
-    <teleport to="#modals">
+    <teleport to="#aboard">
       <UiModalConfirmation
         v-if="isModalOpen"
         @update:close-modal="isModalOpen = false"

@@ -1,7 +1,7 @@
 <template>
   <header class="navbar-item mdl-shadow--4dp">
     <div class="content">
-      <UiLink id="logo" :to="{ name: 'index' }"> <b>RENCONTRES</b> </UiLink>
+      <UiLink id="logo" :to="{ name: 'index' }"> <b>ВСТРЕЧИ</b> </UiLink>
       <PublicLinks id="public-links" :is-authorized="isAuthorized" />
       <LinksForAuthorizedUsers
         id="private-links"
@@ -48,16 +48,15 @@ export default {
         display: flex;
         justify-content: center;
         color: $FONT_COLOR_DARK;
-        font-size: 2.8em;
+        font-size: 2.6em;
         text-decoration: none;
-        font-family: Roboto, sans-serif;
+        font-family: 'Comic Sans MS', sans-serif;
       }
       #public-links,
       #private-links {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        font-family: Roboto, sans-serif;
       }
     }
   }
@@ -77,10 +76,10 @@ export default {
       #logo {
         display: flex;
         color: $FONT_COLOR_DARK;
-        font-size: 2.8em;
+        font-size: 2.6em;
         align-self: center;
         text-decoration: none;
-        font-family: Roboto, sans-serif;
+        font-family: 'Comic Sans MS', sans-serif;
       }
       #public-links,
       #private-links {

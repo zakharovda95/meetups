@@ -10,7 +10,7 @@
       :meetup="meetup"
     ></MeetupItem>
   </div>
-  <UiShift v-if="!isNoScroll" hash="#modals" id="scroll-up">&#9650;</UiShift>
+  <UiShift v-if="!isNoScroll" hash="#aboard" id="scroll-up">&#9650;</UiShift>
 </template>
 <script>
 import MeetupItem from '@/components/sections/MeetupList/MeetupItem';

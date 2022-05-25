@@ -41,12 +41,12 @@ export default {
   letter-spacing: 2px;
   cursor: pointer;
   color: $FONT_COLOR_DARK;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 .ui-button:hover {
   background: $HOVER_COLOR;
   color: $FONT_COLOR_DARK;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 .bg-red {
   background: $ERROR_COLOR;
@@ -55,7 +55,7 @@ export default {
   border-radius: 25px;
   padding: 10px;
   font-size: 1.2em;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 .bg-main {
   background: $MAIN_COLOR;
@@ -64,7 +64,7 @@ export default {
   border-radius: 25px;
   padding: 10px;
   font-size: 1.2em;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 .round-btn {
   width: 48px;
@@ -75,18 +75,18 @@ export default {
   font-size: 2em;
   text-align: center;
   color: $FONT_COLOR_LIGHT;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 .default {
   border: none;
   background: none;
   color: $FONT_COLOR_DARK;
   padding: 8px;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 .default:hover {
   border-radius: 18px;
   background: $HOVER_COLOR;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 </style>

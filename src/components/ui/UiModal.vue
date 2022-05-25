@@ -50,14 +50,14 @@ export default {
         border-radius: 0 24px 24px 24px;
         border: 4px solid $MAIN_COLOR;
         max-width: 85%;
-        font-family: Roboto, sans-serif;
+        font-family: 'Comic Sans MS', sans-serif;
         .close {
           display: flex;
           width: 100%;
           justify-content: flex-end;
           margin-bottom: 20px;
           margin-right: 12px;
-          font-family: Roboto, sans-serif;
+          font-family: 'Comic Sans MS', sans-serif;
         }
       }
     }
@@ -84,14 +84,14 @@ export default {
         height: 30vh;
         border-radius: 0 24px 24px 24px;
         border: 4px solid $MAIN_COLOR;
-        font-family: Roboto, sans-serif;
+        font-family: 'Comic Sans MS', sans-serif;
         .close {
           display: flex;
           width: 100%;
           justify-content: flex-end;
           margin-bottom: 20px;
           margin-right: 12px;
-          font-family: Roboto, sans-serif;
+          font-family: 'Comic Sans MS', sans-serif;
         }
       }
     }

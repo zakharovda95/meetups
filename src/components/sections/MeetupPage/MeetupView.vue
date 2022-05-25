@@ -67,7 +67,7 @@ export default {
       align-self: center;
       font-size: 1.5em;
       width: 100%;
-      font-family: Roboto, sans-serif;
+      font-family: 'Comic Sans MS', sans-serif;
     }
   }
 }
@@ -97,7 +97,7 @@ export default {
       align-self: center;
       font-size: 1.5em;
       width: 100%;
-      font-family: Roboto, sans-serif;
+      font-family: 'Comic Sans MS', sans-serif;
     }
   }
 }

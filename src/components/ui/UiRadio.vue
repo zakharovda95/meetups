@@ -41,7 +41,7 @@ export default {
   margin: 10px;
   justify-content: center;
   align-items: center;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 .ui-checkbox input {
   display: none;
@@ -55,7 +55,7 @@ export default {
   color: $FONT_COLOR_DARK;
   border-radius: 18px;
   font-size: 1.1em;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 
 /* Checked */
@@ -63,13 +63,13 @@ export default {
   background: $ITEMS_COLOR;
   color: $FONT_COLOR_DARK;
   border: 1px solid $UI_COLOR;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 
 /* Hover */
 .ui-checkbox label:hover {
   background: $HOVER_COLOR;
   color: $FONT_COLOR_DARK;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 </style>

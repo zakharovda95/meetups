@@ -53,7 +53,7 @@ export default {
   display: flex;
   margin-top: 30px;
   width: 100%;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
   .icon-wrapper {
     margin-right: 10px;
     display: flex;

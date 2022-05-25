@@ -38,7 +38,7 @@ export default {
   * {
     margin: 0;
     padding: 0;
-    font-family: Roboto sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
     body {
       width: 100%;
       background-color: $LAYOUT_COLOR;

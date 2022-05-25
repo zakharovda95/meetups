@@ -107,7 +107,7 @@ export default {
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-width: 380px;
+    min-width: 320px;
     height: 228px;
   }
 
@@ -116,7 +116,7 @@ export default {
     font-weight: 600;
     font-size: 20px;
     line-height: 28px;
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
   }
 }
 .preview:hover {

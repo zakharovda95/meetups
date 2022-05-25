@@ -28,13 +28,13 @@ label {
   display: flex;
   font-size: 1.4em;
   color: $FONT_COLOR_DARK;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
   input {
     margin-right: 10px;
     width: 20px;
     height: 20px;
     border: 2px solid blue;
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
   }
 }
 </style>

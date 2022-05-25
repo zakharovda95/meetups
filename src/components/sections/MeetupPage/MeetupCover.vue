@@ -46,7 +46,7 @@ export default {
     align-self: center;
     color: $FONT_COLOR_LIGHT;
     font-size: 2em;
-    font-family: Roboto, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
   }
 }
 </style>

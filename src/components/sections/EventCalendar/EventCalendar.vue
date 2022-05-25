@@ -64,7 +64,7 @@ export default {
       padding: 5px;
       gap: 5px;
       color: $FONT_COLOR_DARK;
-      font-family: Roboto, sans-serif;
+      font-family: 'Comic Sans MS', sans-serif;
     }
   }
 }
@@ -86,7 +86,7 @@ export default {
       padding: 5px;
       gap: 5px;
       color: $FONT_COLOR_DARK;
-      font-family: Roboto, sans-serif;
+      font-family: 'Comic Sans MS', sans-serif;
     }
   }
 }

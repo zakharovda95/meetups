@@ -1,7 +1,9 @@
 <template>
   <div class="meetup-toggle mdl-shadow--2dp">
-    <UiLink variant="nav-link" :to="{ name: 'description' }">Описание</UiLink>
-    <UiLink variant="nav-link" :to="{ name: 'agenda' }">Программа</UiLink>
+    <UiLink variant="nav-link" :to="{ name: 'description' }">
+      Подробности
+    </UiLink>
+    <UiLink variant="nav-link" :to="{ name: 'agenda' }">Расписание</UiLink>
   </div>
 </template>
 <script>
@@ -21,6 +23,6 @@ export default {
   padding-left: 12px;
   background: $ITEMS_COLOR;
   border-radius: 0 24px 24px 24px;
-  font-family: Roboto, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
 }
 </style>
