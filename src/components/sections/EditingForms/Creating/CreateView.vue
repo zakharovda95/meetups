@@ -13,7 +13,7 @@
       <CreateForm class="forms-item" :loading="isLoading" />
     </div>
     <div class="agenda">
-      <h3>Расписание</h3>
+      <h3>Программа</h3>
       <CreateAgendaItemForm
         v-for="agenda in meetupForm.agenda"
         :key="agenda.id"
@@ -27,7 +27,7 @@
           variant="default"
           @click="addAgendaItem"
         >
-          + Добавить пункт расписания
+          + Добавить пункт программы
         </UiButton>
       </div>
     </div>

@@ -14,7 +14,7 @@
       <EditForm class="forms-item" :loading="isLoading" />
     </div>
     <div class="agenda">
-      <h3>Расписание</h3>
+      <h3>Программа</h3>
       <EditAgendaItemForm
         v-for="agenda in editableMeetup.agenda"
         :key="agenda.id"
@@ -28,7 +28,7 @@
           variant="default"
           @click="addAgendaItemToEditableMeetup"
         >
-          + Добавить пункт расписания
+          + Добавить пункт программы
         </UiButton>
       </div>
     </div>

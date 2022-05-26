@@ -1,4 +1,3 @@
-//import { fbGetData } from '@/requesters/firebase/_firebase.database.requesters';
 import { fbCreateIconsList } from '@/requesters/firebase/_firebase.storage.requesters';
 import moment from 'moment';
 import 'moment/locale/ru';

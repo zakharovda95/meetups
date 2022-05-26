@@ -1,3 +1,33 @@
+/** Формы создания и редактирования встречь **/
+import { uuid } from 'vue-uuid';
+import moment from 'moment';
+
+export const meetupDefaultForm = {
+  id: uuid.v1(),
+  imageId: null,
+  image: null,
+  imageName: null,
+  organizer: {
+    uid: '',
+    name: '',
+  },
+  title: '',
+  date: moment().format('YYYY-MM-DD'),
+  place: '',
+  description: '',
+  agenda: [],
+};
+
+export const agendaItemDefaultForm = {
+  id: uuid.v1(),
+  type: 'registration',
+  title: '',
+  speaker: '',
+  description: '',
+  language: '',
+  startsAt: '07:00',
+  endsAt: '08:00',
+};
 /** Опции дропдауна и нейминг иконок **/
 export const agendaItemsOptions = [
   {

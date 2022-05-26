@@ -48,7 +48,7 @@ export const moduleCalendarStore = {
       state.data.formattedEvents.forEach(event => {
         state.data.daysInCurrentMonth.forEach(day => {
           if (
-            state.data.currentMonth === event.date.month &&
+            state.data.currentMonth + 1 === event.date.month &&
             state.data.currentYear === event.date.year &&
             day.day === event.date.day
           ) {

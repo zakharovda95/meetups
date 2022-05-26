@@ -1,39 +1,19 @@
 import { uuid } from 'vue-uuid';
 import { fbSetData } from '@/requesters/firebase/_firebase.database.requesters';
-import moment from 'moment';
 import { cloneDeep } from 'lodash';
+import {
+  agendaItemDefaultForm,
+  meetupDefaultForm,
+} from '@/services/_agenda.service';
 
 export const moduleCreatingStore = {
   state: () => ({
     isLoading: false,
-    meetupForm: {
-      id: uuid.v1(),
-      imageId: null,
-      image: null,
-      imageName: null,
-      organizer: {
-        uid: '',
-        name: '',
-      },
-      title: '',
-      date: moment().format('YYYY-MM-DD'),
-      place: '',
-      description: '',
-      agenda: [],
-    },
+    meetupForm: cloneDeep(meetupDefaultForm),
   }),
   mutations: {
     addAgendaItem(state) {
-      const agendaItemForm = {
-        id: uuid.v1(),
-        type: 'registration',
-        title: '',
-        speaker: '',
-        description: '',
-        language: '',
-        startsAt: '07:00',
-        endsAt: '08:00',
-      };
+      const agendaItemForm = cloneDeep(agendaItemDefaultForm);
       if (state.meetupForm.agenda.length) {
         agendaItemForm.startsAt = state.meetupForm.agenda.at(-1).endsAt;
         agendaItemForm.endsAt = agendaItemForm.startsAt;
@@ -111,18 +91,7 @@ export const moduleCreatingStore = {
       });
     },
     resetMeetupForm(state) {
-      state.meetupForm = {
-        id: uuid.v1(),
-        imageId: null,
-        image: null,
-        imageName: null,
-        organizer: '123',
-        title: '',
-        date: '',
-        place: '',
-        description: '',
-        agenda: [],
-      };
+      state.meetupForm = cloneDeep(meetupDefaultForm);
     },
   },
   actions: {

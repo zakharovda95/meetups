@@ -3,7 +3,7 @@
     <UiLink variant="nav-link" :to="{ name: 'description' }">
       Подробности
     </UiLink>
-    <UiLink variant="nav-link" :to="{ name: 'agenda' }">Расписание</UiLink>
+    <UiLink variant="nav-link" :to="{ name: 'agenda' }">Программа</UiLink>
   </div>
 </template>
 <script>
